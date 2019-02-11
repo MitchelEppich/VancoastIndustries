@@ -1,0 +1,372 @@
+@tailwind preflight;
+@tailwind utilities;
+
+/****SCROLLBAR*****/
+
+/******MIXINS*******/
+@mixin element($element) {
+    &__#{$element} {
+        @content;
+    }
+}
+
+// Block Element
+// @access public
+// @param {String} $element - Element's name
+@mixin element($element) {
+    &__#{$element} {
+        @content;
+    }
+}
+// Block Modifier
+// @access public
+// @param {String} $modifier - Modifier's name
+@mixin modifier($modifier) {
+    &--#{$modifier} {
+        @content;
+    }
+}
+article.vcCheckout {
+    padding-top: 150px;
+}
+article.vcCheckout h1 {
+    font-size: 80px;
+}
+/** Progress Bar **/
+.vcProgressbar {
+    counter-reset: vc-step;
+    position: relative;
+    max-width: 1500px;
+    padding: 50px 0px;
+    overflow: hidden;
+    width: 100%;
+}
+.vcProgressbar ul {
+    width: 100%;
+}
+.vcProgressbar ul li {
+    list-style-type: none;
+    float: left;
+    width: 20%;
+}
+.vcProgressbar ul li a {
+    text-decoration: none;
+}
+.vcProgressbar ul li {
+    position: relative;
+    text-transform: uppercase;
+}
+.vcProgressbar ul li a {
+    color: #777;
+    line-height: 30px;
+}
+.vcProgressbar ul li.complete a,
+.vcProgressbar ul li.active a {
+    color: #1426de;
+}
+.vcProgressbar ul li:after {
+    counter-increment: vc-step;
+    content: counter(vc-step);
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    height: 50px;
+    width: 50px;
+    border: 2px solid #777;
+    color: #777;
+    background: #fff;
+    border-radius: 100px;
+    z-index: 1;
+    font-size: 20px;
+    line-height: 55px;
+}
+.vcProgressbar ul li.complete:after,
+.vcProgressbar ul li.active:after {
+    border: 2px solid blue;
+    color: blue;
+}
+.vcProgressbar ul li:before {
+    display: block;
+    position: absolute;
+    right: 50%;
+    top: 35%;
+    content: "";
+    height: 2px;
+    background: #777;
+    width: 500%;
+    z-index: -1;
+}
+.vcProgressbar ul li.active:before {
+    display: block;
+    position: absolute;
+    right: 50%;
+    top: 35%;
+    content: "";
+    height: 2px;
+    background: blue;
+    width: 500%;
+    z-index: 0;
+}
+.vcProgressbar ul li {
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+/** end Progress bar **/
+nav.vcCheckout-menu {
+    text-align: center;
+    padding: 20px 0px 50px 0px;
+}
+nav.vcCheckout-menu ul {
+    display: inline-flex;
+    width: 100%;
+}
+nav.vcCheckout-menu ul li {
+    font-size: 35px;
+    line-height: 40px;
+    width: 25%;
+}
+nav.vcCheckout-menu ul li a,
+nav.vcCheckout-menu ul li:after {
+    content: ">";
+    display: inline-flex;
+    font-size: 35px;
+    color: #ccc;
+}
+nav.vcCheckout-menu ul li:last-child:after {
+    content: none;
+}
+nav.vcCheckout-menu ul li.active a,
+nav.vcCheckout-menu ul li a:hover {
+    color: #1426de;
+}
+.vcBill-ship {
+    padding: 20px 20px 50px 20px;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+.vcBilling-details {
+    padding-left: 20%;
+}
+.vcShipping-details,
+.vcBilling-details {
+    font-size: 20px;
+    line-height: 35px;
+    color: #ccc;
+}
+.vcShipping-details span,
+.vcBilling-details span {
+    color: #111;
+    font-weight: bold;
+}
+.vcCheckout-cat {
+    text-transform: uppercase;
+    color: #1426de;
+}
+.vcCheckout-content {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 3px;
+}
+.vcSummary h2 {
+    text-align: center;
+}
+ul.vcCheckout-list {
+    flex-wrap: wrap;
+}
+ul.vcCheckout-list li {
+    padding: 30px;
+    position: relative;
+}
+.vcCheckout-content .vcItem img {
+    max-width: 100px;
+}
+.vcCheckout-totals {
+    border-top: 1px solid #ccc;
+    padding: 20px;
+    height: 150px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+}
+.vcCheckout-totals span {
+    font-weight: 400;
+}
+input.vcCheckout-btn {
+    padding: 30px 50px;
+    font-size: 15px;
+    text-align: center;
+    display: block;
+    margin: 20px auto;
+}
+select.vcCountry {
+    padding: 20px;
+    border: 0px;
+    background: #eee;
+    line-height: 40px;
+    font-size: 15px;
+    padding: 10px 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.vcPayment-choices input {
+    display: none;
+}
+.vcPayment-choices label {
+    font-size: 15px;
+}
+.vcPayment-ccInput {
+    padding: 20px;
+}
+.vcPayment-choices label:hover {
+    cursor: pointer;
+}
+.vcPayment-choices label span {
+    font-size: 20px;
+    display: block;
+}
+.vcPayment-choices input[type="radio"] + label {
+    border: 5px solid #eee;
+    border-radius: 3px;
+    padding: 20px 10px;
+    font-weight: bold;
+    text-align: center;
+    height: 100px;
+    width: 200px;
+}
+.vcPayment-choices input[type="radio"]:checked + label {
+    border: 5px solid #1426de;
+}
+.vcPayment-choices {
+    padding: 20px 10px;
+}
+.vcPayment-ccInput input {
+    padding: 10px 20px;
+}
+.vcPayment-ccInput {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+.vcPayment-ccInput label {
+    font-weight: bold;
+}
+.vcPayment-ccInput input {
+    width: 100%;
+    background: #eee;
+    border: 0px;
+    padding: 20px;
+    font-size: 15px;
+    line-height: 15px;
+    margin-bottom: 20px;
+}
+.vcCardinfo {
+    width: 100%;
+}
+.vcPayment-method h2 {
+    text-align: center;
+    padding: 20px 20px 0px 20px;
+}
+label.vcCashMoney {
+    background-image: url("../static/img/assets/payment/cash-icon.jpg");
+}
+label.vcCrypto {
+    background-image: url("../static/img/assets/payment/crypto-icons.jpg");
+}
+label.vcMoneyTransfer {
+    background-image: url("../static/img/assets/payment/interac-transfer.jpg");
+}
+label.vcCreditCard {
+    background-image: url("../static/img/assets/payment/visaMastercard-logo.jpg");
+}
+label.vcCashMoney,
+label.vcCrypto,
+label.vcMoneyTransfer,
+label.vcCreditCard {
+    background-repeat: no-repeat;
+    background-position: bottom 10px center;
+    background-size: 100px;
+}
+.vcThank-you {
+    padding: 20px 20px 100px 20px;
+}
+.vcThank-you h2 {
+    padding: 20px;
+}
+.vcThank-you h2,
+.vcThank-you h3 {
+    font-size: 30px;
+    text-align: center;
+}
+.vcThank-you p {
+    font-size: 30px;
+    color: #999;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.vcThank-you h3 span {
+    color: #1426de;
+}
+/** Mobile Styles **/
+@media screen and (min-width: 1368px) {
+}
+@media screen and (max-width: 1367px) {
+}
+.vcCardExpiry,
+.vcCardCCV {
+    width: 40%;
+}
+@media screen and (min-width: 991px) {
+}
+@media screen and (max-width: 991px) {
+    .vcPage-content.vcCheckout header h1 {
+        font-size: 35px;
+        line-height: 35px;
+    }
+    nav.vcCheckout-menu ul li a,
+    nav.vcCheckout-menu ul li::after {
+        font-size: 25px;
+    }
+    .vcPayment-choices input[type="radio"] + label {
+        margin-bottom: 20px;
+    }
+}
+@media screen and (max-width: 767px) {
+    nav.vcCheckout-menu ul {
+        width: 100%;
+    }
+    nav.vcCheckout-menu ul li {
+        width: 100%;
+    }
+    nav.vcCheckout-menu ul li::after {
+        display: none;
+    }
+    .vcCheckout-list h2 {
+        font-size: 20px;
+    }
+    .vcBill-ship {
+    }
+    .vcBilling-details {
+        padding-left: 0px;
+        padding-top: 50px;
+    }
+    .vcCardinfo,
+    .vcCardExpiry,
+    .vcCardCCV {
+        width: 100%;
+    }
+}
+@media screen and (min-width: 479px) {
+}
+@media screen and (max-width: 479px) {
+    .vcProgressbar ul li a {
+        font-size: 10px;
+    }
+}

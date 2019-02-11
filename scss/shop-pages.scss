@@ -1,0 +1,320 @@
+@tailwind preflight;
+@tailwind utilities;
+
+/****SCROLLBAR*****/
+
+/******MIXINS*******/
+@mixin element($element) {
+    &__#{$element} {
+        @content;
+    }
+}
+
+// Block Element
+// @access public
+// @param {String} $element - Element's name
+@mixin element($element) {
+    &__#{$element} {
+        @content;
+    }
+}
+// Block Modifier
+// @access public
+// @param {String} $modifier - Modifier's name
+@mixin modifier($modifier) {
+    &--#{$modifier} {
+        @content;
+    }
+}
+
+.vcBrand-hero,
+.vcWholesale-hero {
+    height: 800px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.vcBrand-hero img {
+    max-width: 400px;
+    width: 100%;
+}
+.vcWholesale-hero {
+    background-image: url("../static/img/page-bg/wholesale-bg.jpg");
+}
+.vcBrand-hero.sonoma {
+    background-image: url("../static/img/page-bg/sonoma-co-bg.jpg");
+}
+.vcBrand-hero.sunwest {
+    background-image: url("../static/img/page-bg/sunwest-co-bg.jpg");
+}
+.vcBrand-hero.cks {
+    background-image: url("../static/img/page-bg/cks-co-bg.jpg");
+}
+.vcWholesale-header h1 {
+    font-size: 55px;
+    line-height: 70px;
+    text-transform: uppercase;
+}
+.vcWholesale-header h1 {
+    font-size: 100px;
+    line-height: 70px;
+}
+.vcWholesale-header h1 span {
+    font-size: 55px;
+}
+.vcWholesale-header h3 {
+    color: #727272;
+    text-transform: uppercase;
+    font-size: 30px;
+    line-height: 50px;
+}
+p.wholesale-intro {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.vcProduct-list {
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+}
+.vcProduct-item {
+    padding: 30px;
+    position: relative;
+}
+.vcProduct-item a {
+    color: #000;
+    text-decoration: none;
+}
+.vcProduct-item a:hover {
+    color: #283fe5;
+}
+.vcProduct-wrap {
+    padding: 20px;
+}
+.vcProduct-item img {
+    width: 100%;
+    -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.3));
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.vcProduct-item img:hover {
+    -webkit-filter: none;
+    filter: none;
+}
+.vcProduct-item a img.quick-view {
+    opacity: 0;
+    -webkit-filter: none;
+    filter: none;
+}
+.vcProduct-item:hover > a img.quick-view {
+    opacity: 9;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.vcProduct-info h2 {
+    font-size: 23px;
+    text-transform: uppercase;
+    line-height: 60px;
+    font-weight: 700;
+}
+.vcProduct-info h3.vcProduct-cat {
+    text-transform: uppercase;
+    color: #1426de;
+    font-weight: 400;
+}
+.vcProduct-price {
+    color: #777;
+}
+.vcBrand-board {
+    max-height: 300px;
+    padding: 20px 50px;
+    margin-bottom: 50px;
+}
+.vcBrand-board img {
+    max-width: 200px;
+}
+.vcBrand-board p {
+    color: #fff;
+    max-width: 600px;
+    padding: 20px;
+}
+.vcBrand-board button {
+    background: #fff;
+    color: #777;
+    border: none;
+    padding: 20px 40px;
+    font-size: 13px;
+}
+.vcBrand-board-cks {
+    background-image: url("../static/img/page-bg/cks-banner-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.vcBrand-board-sonoma {
+    background-image: url("../static/img/page-bg/sonoma-banner-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.vcBrand-board-sunwest {
+    background-image: url("../static/img/page-bg/sunwest-banner-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.vcWholesale-page {
+    position: relative;
+}
+#vcProduct-filters {
+    float: left;
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    top: 200px;
+    width: 349px;
+    z-index: 1;
+    transform: translateX(-254px);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+#vcProduct-filters.showFilters {
+    transform: translateX(0px);
+}
+.vcFilter-list {
+    background: #e2e2e2;
+    padding: 20px 40px;
+    position: absolute;
+}
+.vcFilter-list h3 {
+    font-size: 35px;
+    padding-bottom: 20px;
+}
+.vcFilter-list label {
+    font-size: 20px;
+    padding-left: 35px;
+    padding-bottom: 30px;
+}
+.vcFilter-label {
+    display: block;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+.vcFilter-label input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+.vcFilter-list .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #fff;
+}
+.vcFilter-label input:checked ~ .checkmark {
+    background: #1426de;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.vcFilter-label input:checked ~ .checkmark:after {
+    display: block;
+}
+.vcFilter-label .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.vcFilters-tab {
+    position: absolute;
+    right: 0;
+    background: #1426de;
+    color: #fff;
+    font-weight: 700;
+    padding: 20px;
+    font-size: 15px;
+    text-transform: uppercase;
+    height: 250px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.vcFilters-tab img {
+    max-width: 50px;
+    width: 50px;
+}
+.vcFilters-tab:hover {
+    cursor: pointer;
+}
+.vcWholesale-content {
+    position: relative;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+/** Mobile Styles **/
+@media screen and (min-width: 1368px) {
+}
+@media screen and (max-width: 1367px) {
+}
+@media screen and (min-width: 991px) {
+}
+@media screen and (max-width: 991px) {
+    .vc-hero-shop {
+        max-height: 300px;
+    }
+    .vcBrand-board {
+        padding: 50px;
+        text-align: center;
+        max-height: inherit;
+    }
+    .vcFilters-tab {
+        height: 100px;
+    }
+    .vcBrand-hero img {
+        max-width: 100px;
+        padding-top: 70px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .vcWholesale-content h1 {
+        font-size: 70px;
+        line-height: 70px;
+        text-align: center;
+    }
+    .vcWholesale-content h1 span {
+        font-size: 40px;
+        line-height: 40px;
+    }
+}
+@media screen and (min-width: 479px) {
+}
+@media screen and (max-width: 479px) {
+    .vcWholesale-content h1 {
+        font-size: 40px;
+        line-height: 40px;
+    }
+    .vcWholesale-content h1 span {
+        font-size: 25px;
+        line-height: 30px;
+        text-align: center;
+    }
+}

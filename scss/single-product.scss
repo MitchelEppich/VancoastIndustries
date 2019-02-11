@@ -1,0 +1,200 @@
+@tailwind preflight;
+@tailwind utilities;
+
+/****SCROLLBAR*****/
+
+/******MIXINS*******/
+@mixin element($element) {
+    &__#{$element} {
+        @content;
+    }
+}
+
+// Block Element
+// @access public
+// @param {String} $element - Element's name
+@mixin element($element) {
+    &__#{$element} {
+        @content;
+    }
+}
+// Block Modifier
+// @access public
+// @param {String} $modifier - Modifier's name
+@mixin modifier($modifier) {
+    &--#{$modifier} {
+        @content;
+    }
+}
+.vcBrand-hero.vcSonoma {
+    background-image: url("../static/img/page-bg/sonoma-co-bg.jpg");
+}
+.vcBrand-hero.vcSunwest {
+    background-image: url("../static/img/page-bg/sunwest-co-bg.jpg");
+}
+.vcBrand-hero.vcCKS {
+    background-image: url("../static/img/page-bg/cks-co-bg.jpg");
+}
+.vcSingle .vcSingle-sectionThree {
+    background: #fff;
+}
+.vcSingle-choices,
+.vcSingle-input {
+    width: 100%;
+}
+h3.vcCompany-similar {
+    text-align: center;
+    font-size: 30px;
+    padding: 20px 10px 0px 10px;
+}
+article .vcSingle {
+    margin-top: -650px;
+}
+.vcSingle .vcSingle-sectionOne {
+    width: 20%;
+}
+.vcSingle-sectionOne img {
+    margin: 0 auto;
+}
+.vcSingle-sectionTwo img {
+    margin: 20px 20px;
+}
+.vcSingle .vcSingle-sectionTwo,
+.vcSingle .vcSingle-sectionThree {
+    width: 40%;
+}
+.vcSingle .vcSingle-sectionThree,
+.vcSingle .vcSingle-sectionTwo img {
+    -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.65));
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.65));
+}
+.vcBrand-logo {
+    max-width: 250px;
+}
+.vcSingle-image {
+    max-width: 400px;
+    width: 100%;
+}
+.vcCompany-page {
+    padding: 20px;
+}
+.vcCompany-page h2 {
+    font-size: 35px;
+}
+.vcCompany-page p {
+    padding: 15px 0;
+}
+.vcCompany-page img {
+    float: left;
+    padding: 20px 20px 20px 0px;
+}
+.vcSingle-intro {
+    padding: 20px;
+}
+.vcSingle-intro h1,
+.vcSingle-intro h3 {
+    text-transform: uppercase;
+}
+header.vcSingle-intro h1 {
+    font-size: 50px;
+}
+.vcSingle-intro h3 {
+    color: #1426de;
+    font-size: 25px;
+    font-weight: 400;
+    text-align: center;
+}
+.vcSingle-choices input {
+    display: none;
+}
+.vcSingle-choices label {
+    font-size: 15px;
+}
+.vcSingle-choices label:hover {
+    cursor: pointer;
+}
+.vcSingle-choices label span {
+    font-size: 20px;
+    display: block;
+}
+input[type="radio"] + label {
+    border: 5px solid #fff;
+    border-radius: 3px;
+    padding: 20px 10px;
+    font-weight: bold;
+    text-align: center;
+}
+.vcSingle-choices input[type="radio"] + label {
+    border: 5px solid #eee;
+}
+input[type="radio"]:checked + label {
+    border: 5px solid #1426de;
+}
+.vcSingle-choices {
+    padding: 20px 10px;
+}
+.vcSingle-input {
+    height: 200px;
+    padding: 0px 10px;
+}
+.vcSingle-input input {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #777;
+    font-size: 20px;
+    max-width: 350px;
+    width: 100%;
+}
+input.vcSingle-submit {
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.vcShop-buttons {
+    width: 100%;
+    padding-top: 30px;
+}
+.vcShop-buttons button {
+    background: #1426de;
+    border: 0px;
+    border-radius: 0px;
+    color: #fff;
+    width: 49.9%;
+    padding: 30px;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+.vcShop-buttons button:hover {
+    background: #283fe5;
+}
+/** Mobile Styles **/
+@media screen and (min-width: 1368px) {
+}
+@media screen and (max-width: 1367px) {
+}
+@media screen and (min-width: 991px) {
+}
+@media screen and (max-width: 991px) {
+    .vcBrand-logo {
+        max-width: 100px;
+    }
+    header.vcSingle-intro h1 {
+        font-size: 30px;
+        line-height: 30px;
+    }
+    .vcCompany-page h2 {
+        font-size: 20px;
+    }
+    .vcSingle .vcSingle-sectionOne,
+    .vcSingle .vcSingle-sectionTwo,
+    .vcSingle .vcSingle-sectionThree {
+        width: 95%;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width: 767px) {
+}
+@media screen and (min-width: 479px) {
+}
+@media screen and (max-width: 479px) {
+}

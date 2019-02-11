@@ -1,0 +1,149 @@
+@tailwind preflight;
+@tailwind utilities;
+
+/****SCROLLBAR*****/
+
+/******MIXINS*******/
+@mixin element($element) {
+    &__#{$element} {
+        @content;
+    }
+}
+
+// Block Element
+// @access public
+// @param {String} $element - Element's name
+@mixin element($element) {
+    &__#{$element} {
+        @content;
+    }
+}
+// Block Modifier
+// @access public
+// @param {String} $modifier - Modifier's name
+@mixin modifier($modifier) {
+    &--#{$modifier} {
+        @content;
+    }
+}
+
+.vcPage-hero {
+    height: 800px;
+}
+.vcPage-hero.vcWholesale {
+    background: url("../static/img/page-bg/wholesale-page-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.vcPage-hero.vcContact {
+    background: url("../static/img/page-bg/contact-page-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.vcPage-hero.vcFaq {
+    background: url("../static/img/page-bg/faq-page-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.vcPage-hero.vcPayment {
+    background: url("../static/img/page-bg/payment-page-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.vcPage-hero.vcAbout {
+    background: url("../static/img/page-bg/about-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.vcPage-hero.vcPrivacy {
+    background: url("../static/img/page-bg/privacy-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+article {
+    padding: 15px;
+}
+article.vcFaq p,
+article.vcPayment p {
+    padding-bottom: 20px;
+}
+article.vcAbout p {
+    padding: 20px;
+}
+.vcPage-content {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+}
+.vcPage-content.vcAccount {
+    max-width: 1500px;
+}
+.vcPage-content h3,
+.vcPage-content h2 {
+    text-align: center;
+}
+article.vcPrivacy h3 {
+    padding: 20px 0;
+}
+.vcPage-content header p {
+    text-align: center;
+    padding: 20px;
+}
+.vcPage-content header h1 {
+    font-size: 100px;
+    line-height: 110px;
+    text-align: center;
+}
+.vcWholesale-application {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.vcWholesale-application label {
+    font-size: 20px;
+    line-height: 25px;
+}
+.vcWholesale-application input,
+.vcWholesale-application select,
+.vcWholesale-application textarea {
+    background: #eee;
+    border: 0px;
+    padding: 20px;
+    font-size: 15px;
+    line-height: 15px;
+    margin-bottom: 20px;
+}
+article iframe {
+    float: right;
+    padding: 20px;
+}
+/** Mobile Styles **/
+@media screen and (min-width: 1368px) {
+}
+@media screen and (max-width: 1367px) {
+}
+@media screen and (min-width: 991px) {
+}
+@media screen and (max-width: 991px) {
+    .vcPage-content header h1 {
+        font-size: 40px;
+        line-height: 40px;
+    }
+}
+@media screen and (max-width: 767px) {
+}
+@media screen and (min-width: 479px) {
+}
+@media screen and (max-width: 479px) {
+    .vcPage-content header h1 {
+        font-size: 30px;
+        line-height: 30px;
+    }
+}
