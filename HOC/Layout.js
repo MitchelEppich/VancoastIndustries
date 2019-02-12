@@ -39,7 +39,9 @@ class Layout extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-    return {};
+    return {
+        toggleCart: bool => dispatch(actions.toggleCart(bool))
+    };
 };
 
 export default connect(

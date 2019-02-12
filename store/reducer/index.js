@@ -9,17 +9,19 @@ import actionTypes from "../actions";
 import { combineReducers } from "redux";
 import { updateObject } from "../utility";
 
+import ShopReducer from "./shop";
+
 const initialState = {
+    showCart: false
 };
 
 const indexReducer = (state = initialState, action) => {
-  switch (action.type) {
-   
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case actionTypes.TOGGLE_CART:
+            return updateObject(state, { showCart: action.bool });
+        default:
+            return state;
+    }
 };
 
-export default indexReducer
-// export default combineReducers({
-// });
+export default combineReducers({ misc: indexReducer, shop: ShopReducer });

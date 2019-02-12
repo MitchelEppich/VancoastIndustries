@@ -34,7 +34,7 @@ class Index extends Component {
                     </div>
 
                     <div className="vcWholesale-page">
-                        <div id="vcProduct-filters">
+                        <div id="vcProduct-filters" className={this.props.shop.showFilters ? "showFilters" : ""}>
                             <div className="vcFilter-list flex flex-col">
                                 <h3>Brands</h3>
                                 <label className="vcFilter-label">
@@ -124,7 +124,9 @@ class Index extends Component {
                                 </label>
                             </div>
 
-                            <div className="vcFilters-tab flex flex-col justify-center items-center">
+                            <div
+                                onClick={() => this.props.toggleFilters(!this.props.shop.showFilters)}
+                                className="vcFilters-tab flex flex-col justify-center items-center">
                                 Filters
                                 <img src="../static/img/assets/icons/sort-icon.svg" alt="" />
                             </div>
@@ -302,7 +304,9 @@ class Index extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-    return {};
+    return {
+        toggleFilters: bool => dispatch(actions.toggleFilters(bool))
+    };
 };
 
 export default connect(

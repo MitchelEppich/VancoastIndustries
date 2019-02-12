@@ -9,24 +9,36 @@ import gql from "graphql-tag";
 import { makePromise, execute } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
+import Shop from "./shop";
 
 const uri = "http://localhost:3000/graphql";
 
-const imports = {};
+const imports = {
+    ...Shop(uri)
+};
 
-const actionTypes = {};
+const actionTypes = {
+    TOGGLE_CART: "TOGGLE_CART"
+};
 
-const actions = {};
+const actions = {
+    toggleCart: bool => {
+        return {
+            type: actionTypes.TOGGLE_CART,
+            bool: bool
+        };
+    }
+};
 
 const query = {};
 
 const mutation = {};
 
 export default {
-  // TYPES
-  ...actionTypes,
-  // IMPORTS
-  ...imports,
-  // ACTIONS
-  ...actions
+    // TYPES
+    ...actionTypes,
+    // IMPORTS
+    ...imports,
+    // ACTIONS
+    ...actions
 };

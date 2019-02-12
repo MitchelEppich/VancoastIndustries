@@ -3,6 +3,7 @@ import withData from "../lib/withData";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
+import Link from "next/link";
 
 class Index extends Component {
     render() {
@@ -84,7 +85,10 @@ class Index extends Component {
 
                         <p>
                             If you have any questions regarding our privacy policy you can contact us through our{" "}
-                            <a href="./contact.html">Contact</a> page and we will repsond as soon as possible.
+                            <Link prefetch href="/contact">
+                                <a>">Contact</a>
+                            </Link>{" "}
+                            page and we will repsond as soon as possible.
                         </p>
 
                         <h3>Changes to our Privacy Policy</h3>
