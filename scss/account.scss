@@ -56,6 +56,9 @@ button.tablink {
     text-align: left;
     border-radius: 0px;
     text-transform: none;
+    @include modifier("active") {
+        background-color: darkblue;
+    }
 }
 .tablink:hover {
     background-color: #283fe5;

@@ -5,18 +5,17 @@ component has the navigation bar and the
 login form.*/
 /**************************************/
 
-import "../scss/account.scss";
-import "../scss/checkout.scss";
-import "../scss/footer.scss";
+import "../scss/style.scss";
 import "../scss/home.scss";
+import "../scss/checkout.scss";
+import "../scss/account.scss";
+import "../scss/footer.scss";
 import "../scss/login.scss";
 import "../scss/pages.scss";
 import "../scss/shop-pages.scss";
 import "../scss/single-product.scss";
-import "../scss/style.scss";
 
 import React, { Component } from "react";
-import DevTools from "../store/DevTools";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 import Header from "../components/header";

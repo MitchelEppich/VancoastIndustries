@@ -21,28 +21,28 @@ class Index extends Component {
                     </header>
 
                     <form className="vcWholesale-application flex flex-col justify-center">
-                        <label for="vcName">Your Name*</label>
+                        <label htmlFor="vcName">Your Name*</label>
                         <input type="text" id="vcName" placeholder="First and Last Name" />
 
-                        <label for="vcCompany">Company Name*</label>
+                        <label htmlFor="vcCompany">Company Name*</label>
                         <input type="text" id="vcCompany" placeholder="Company Name" />
 
-                        <label for="vcEmail">Company Email*</label>
+                        <label htmlFor="vcEmail">Company Email*</label>
                         <input type="text" id="vcEmail" placeholder="you@companyname.com" />
 
-                        <label for="vcPhone">Company Phone*</label>
+                        <label htmlFor="vcPhone">Company Phone*</label>
                         <input type="text" id="vcPhone" placeholder="555-555-5555" />
 
-                        <label for="vcWebsite">Company Website*</label>
+                        <label htmlFor="vcWebsite">Company Website*</label>
                         <input type="text" id="vcWebsite" placeholder="www.yoursite.com" />
 
-                        <label for="vcLicense">Business License*</label>
+                        <label htmlFor="vcLicense">Business License*</label>
                         <input type="text" id="vcLicense" placeholder="#License" />
 
-                        <label for="vcMessageTitle">Message Title</label>
+                        <label htmlFor="vcMessageTitle">Message Title</label>
                         <input type="text" id="vcMessageTitle" placeholder="Requesting Wholesale Account" />
 
-                        <label for="vcMessage">Tell Us About Your Company*</label>
+                        <label htmlFor="vcMessage">Tell Us About Your Company*</label>
                         <textarea
                             type="textarea"
                             id="vcMessage"

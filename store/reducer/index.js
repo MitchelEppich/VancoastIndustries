@@ -10,6 +10,8 @@ import { combineReducers } from "redux";
 import { updateObject } from "../utility";
 
 import ShopReducer from "./shop";
+import CheckoutReducer from "./checkout";
+import AccountReducer from "./account";
 
 const initialState = {
     showCart: false
@@ -24,4 +26,9 @@ const indexReducer = (state = initialState, action) => {
     }
 };
 
-export default combineReducers({ misc: indexReducer, shop: ShopReducer });
+export default combineReducers({
+    misc: indexReducer,
+    shop: ShopReducer,
+    checkout: CheckoutReducer,
+    account: AccountReducer
+});
