@@ -86,7 +86,7 @@ class Index extends Component {
                         <p>
                             If you have any questions regarding our privacy policy you can contact us through our{" "}
                             <Link prefetch href="/contact">
-                                <a>">Contact</a>
+                                <a>"Contact</a>
                             </Link>{" "}
                             page and we will repsond as soon as possible.
                         </p>

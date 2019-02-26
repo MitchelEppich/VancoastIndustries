@@ -51,7 +51,7 @@ const header = props => {
                                         </ul>
                                     </li>
                                     <li className="vcShop-brands">
-                                        <Link prefetch href="/brands">
+                                        <Link prefetch href="/shop">
                                             <a>Brands</a>
                                         </Link>
                                         <ul>

@@ -3,7 +3,7 @@ import withData from "../lib/withData";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
-
+import Heading from "../components/brands/heading";
 class Index extends Component {
     render() {
         return (
@@ -12,125 +12,9 @@ class Index extends Component {
                     <div className="vcBrand-hero cks vcBg flex justify-center items-center">
                         <img src="../static/img/assets/cks-logo.png" alt="sunwest genetics" />
                     </div>
-
-                    <div className="vcWholesale-content vcCompany-page">
-                        <div className="vcWholesale-header flex flex-col justify-center items-center">
-                            <h1 className="flex">Crop King Seeds</h1>
-                            <h3 className="flex">World className Cannabis Seeds</h3>
-                        </div>
-
-                        <p className="wholesale-intro">
-                            Crop King Seeds is one of the original seed companies dating back nearly a decade. While
-                            helping make cannabis legal in Canada they help serve the cannabis community by providing
-                            seeds to the world. From mixed bags, to high THC strains, to heavy indicas and CBD strains
-                            Crop King Seeds carries strains of every genre.
-                        </p>
-                        <p className="wholesale-intro">
-                            Based in Vancouver British Columbia, Crop King Seeds has over 35+ strains and is always
-                            adding more. They continue to be a leader in supplying cannabis seeds in North America and
-                            across the globe. Crop King Seeds is a recognizable brand that customers love.
-                        </p>
-                    </div>
+                    <Heading {...this.props} />
 
                     <div className="vcWholesale-page">
-                        <div id="vcProduct-filters">
-                            <div className="vcFilter-list flex flex-col">
-                                <h3>Brands</h3>
-                                <label className="vcFilter-label">
-                                    All
-                                    <input type="checkbox" defaultChecked />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Crop King
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Sonoma
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Sunwest
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <h3>Type</h3>
-                                <label className="vcFilter-label">
-                                    All
-                                    <input type="checkbox" defaultChecked />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Hybrid
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Indica
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Sativa
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <h3>Strain Kind</h3>
-                                <label className="vcFilter-label">
-                                    All
-                                    <input type="checkbox" defaultChecked />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Autoflower
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Feminized
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    CBD
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Regular
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Mixes
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-                            </div>
-
-                            <div
-                                className="vcFilters-tab flex flex-col justify-center items-center"
-                                onclick="vancoastFilter()">
-                                Filters
-                                <img src="../static/img/assets/icons/sort-icon.svg" alt="" />
-                            </div>
-                        </div>
-
                         <div className="vcWholesale-content">
                             <ul className="vcProduct-list flex flex-row justify-center items-baseline">
                                 <li className="vcProduct-item flex">
@@ -262,7 +146,6 @@ class Index extends Component {
                             </ul>
                         </div>
                     </div>
-
                     <div className="vcWholesale-content">
                         <div className="vcBrand-boards flex flex-col">
                             <div className="vcBrand-board vcBrand-board-sonoma flex flex-col lg:flex-row justify-between items-center">

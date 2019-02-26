@@ -3,7 +3,9 @@ import withData from "../lib/withData";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
+import Filters from "../components/shop/filters";
 
+import Heading from "../components/brands/heading";
 class Index extends Component {
     render() {
         return (
@@ -11,126 +13,10 @@ class Index extends Component {
                 <div>
                     <div className="vcWholesale-hero vcBg flex justify-center items-center" />
 
-                    <div className="vcWholesale-content">
-                        <div className="vcWholesale-header flex flex-col justify-center items-center">
-                            <h1 className="flex flex-col">
-                                Wholesale <span>Cannabis Seed Shop</span>
-                            </h1>
-                            <h3 className="flex">Load Up Your Box</h3>
-                        </div>
-
-                        <p className="wholesale-intro">
-                            Welcome to the world's number one source for wholesale cannabis seeds. Vancoast Industries
-                            carries only the best seed brands ensuring you get the best quality cannabis genetics. From
-                            fresh, modern brands like Sonoma Seeds and global industry leaders like Crop King Seeds your
-                            bound to find dozens of strains that your customers have been looking for.
-                        </p>
-                        <p className="wholesale-intro">
-                            By partnering with Vancoast Indutries, you'll be able to buy wholesale cannabis seeds from a
-                            variety of brands all in the same order and ready to stock on your store shelves. With our
-                            simple re-ordering system and account dashboard, you'll have access to all the tools your
-                            need to always keep your store stocked.
-                        </p>
-                    </div>
+                    <Heading {...this.props} />
 
                     <div className="vcWholesale-page">
-                        <div id="vcProduct-filters" className={this.props.shop.showFilters ? "showFilters" : ""}>
-                            <div className="vcFilter-list flex flex-col">
-                                <h3>Brands</h3>
-                                <label className="vcFilter-label">
-                                    All
-                                    <input type="checkbox" defaultChecked />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Crop King
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Sonoma
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Sunwest
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <h3>Type</h3>
-                                <label className="vcFilter-label">
-                                    All
-                                    <input type="checkbox" defaultChecked />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Hybrid
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Indica
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Sativa
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <h3>Strain Kind</h3>
-                                <label className="vcFilter-label">
-                                    All
-                                    <input type="checkbox" defaultChecked />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Autoflower
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Feminized
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    CBD
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Regular
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-
-                                <label className="vcFilter-label">
-                                    Mixes
-                                    <input type="checkbox" />
-                                    <span className="checkmark" />
-                                </label>
-                            </div>
-
-                            <div
-                                onClick={() => this.props.toggleFilters(!this.props.shop.showFilters)}
-                                className="vcFilters-tab flex flex-col justify-center items-center">
-                                Filters
-                                <img src="../static/img/assets/icons/sort-icon.svg" alt="" />
-                            </div>
-                        </div>
+                        <Filters {...this.props} />
 
                         <div className="vcWholesale-content">
                             <ul className="vcProduct-list flex flex-row justify-center items-baseline">
