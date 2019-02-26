@@ -5,7 +5,14 @@ const heading = props => {
         <div
             className={props.shop.activeBrandIndex == 0 ? "vcWholesale-content" : "vcWholesale-content vcCompany-page"}>
             <div className="vcWholesale-header flex flex-col justify-center items-center">
-                <h1 className={props.shop.activeBrandIndex == 0 ? "flex flex-col" : "flex"}>{brand.name}</h1>
+                {props.shop.activeBrandIndex == 0 ? (
+                    <h1 className="flex flex-col">
+                        {brand.name.slice(0, brand.name.indexOf(" "))}
+                        <span>{brand.name.slice(brand.name.indexOf(" "))}</span>
+                    </h1>
+                ) : (
+                    <h1 className="flex flex-col">{brand.name}</h1>
+                )}
                 <h3 className="flex">{brand.motto}</h3>
             </div>
 

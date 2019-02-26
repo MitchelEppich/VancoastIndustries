@@ -4,7 +4,9 @@ import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 
 const actionTypes = {
-    TOGGLE_FILTERS: "TOGGLE_FILTERS"
+    TOGGLE_FILTERS: "TOGGLE_FILTERS",
+    SET_BRAND_INDEX: "SET_BRAND_INDEX",
+    TOGGLE_MOBILE_MENU: "TOGGLE_MOBILE_MENU"
 };
 
 const getActions = uri => {
@@ -14,6 +16,18 @@ const getActions = uri => {
                 type: actionTypes.TOGGLE_FILTERS,
                 bool: bool
             };
+        },
+        setBrandIndex: index => {
+            return {
+                type: actionTypes.SET_BRAND_INDEX,
+                index: index
+            };
+        },
+        toggleMobileMenu: bool => {
+            return {
+                type: actionTypes.TOGGLE_MOBILE_MENU,
+                bool:bool
+            }
         }
     };
 

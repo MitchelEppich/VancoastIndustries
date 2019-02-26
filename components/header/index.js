@@ -1,6 +1,13 @@
 import Link from "next/link";
 
 const header = props => {
+    let showMobileMenu = props.shop.showMobileMenu ? {
+        transform: "translateX(0)"
+    }:{
+        transform: "translateX(-500px)"
+    }
+    // if(props.shop.showMobileMenu)
+
     return (
         <div className="vcNav-primary">
             <div className="vcNav-bg">
@@ -18,19 +25,24 @@ const header = props => {
                         </Link>
                     </div>
 
-                    <div id="vcNavSection-two" className="flex justify-center items-center">
-                        <div id="vcNav-icon">
+                    <div id="vcNavSection-two" className={"flex justify-center items-center " + (props.shop.showMobileMenu ? "reveal" : "")}>
+                        <div onClick={()=>props.toggleMobileMenu(!props.shop.showMobileMenu)} id="vcNav-icon">
                             <div className="bar1" />
                             <div className="bar2" />
                             <div className="bar3" />
                         </div>
 
-                        <div className="vancoastMenu flex flex-col lg:flex-row items-start lg:items-center">
+                        <div style={showMobileMenu} className="vancoastMenu flex flex-col lg:flex-row items-start lg:items-center">
                             <nav>
                                 <ul className="flex">
                                     <li className="vcShop-cats">
                                         <Link prefetch href="/shop">
-                                            <a>Shop</a>
+                                            <a
+                                                onClick={() => {
+                                                    props.setBrandIndex(0);
+                                                }}>
+                                                Shop
+                                            </a>
                                         </Link>
                                         <ul className="flex">
                                             <li>
@@ -52,24 +64,44 @@ const header = props => {
                                     </li>
                                     <li className="vcShop-brands">
                                         <Link prefetch href="/shop">
-                                            <a>Brands</a>
+                                            <a
+                                                onClick={() => {
+                                                    props.setBrandIndex(1);
+                                                }}>
+                                                Brands
+                                            </a>
                                         </Link>
                                         <ul>
                                             <li>
                                                 <Link prefetch href="/shop">
-                                                    <a>Crop King Seeds</a>
+                                                    <a
+                                                        onClick={() => {
+                                                            props.setBrandIndex(1);
+                                                        }}>
+                                                        Crop King Seeds
+                                                    </a>
                                                 </Link>
                                             </li>
                                             <li>
                                                 {" "}
                                                 <Link prefetch href="/shop">
-                                                    <a>Sunwest Genetics</a>
+                                                    <a
+                                                        onClick={() => {
+                                                            props.setBrandIndex(2);
+                                                        }}>
+                                                        Sunwest Genetics
+                                                    </a>
                                                 </Link>
                                             </li>
                                             <li>
                                                 {" "}
                                                 <Link prefetch href="/shop">
-                                                    <a>Sonoma Seeds</a>
+                                                    <a
+                                                        onClick={() => {
+                                                            props.setBrandIndex(3);
+                                                        }}>
+                                                        Sonoma Seeds
+                                                    </a>
                                                 </Link>
                                             </li>
                                         </ul>

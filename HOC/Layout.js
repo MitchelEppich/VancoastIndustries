@@ -5,6 +5,7 @@ component has the navigation bar and the
 login form.*/
 /**************************************/
 
+import "../scss/shop-pages.scss";
 import "../scss/style.scss";
 import "../scss/home.scss";
 import "../scss/checkout.scss";
@@ -12,7 +13,6 @@ import "../scss/account.scss";
 import "../scss/footer.scss";
 import "../scss/login.scss";
 import "../scss/pages.scss";
-import "../scss/shop-pages.scss";
 import "../scss/single-product.scss";
 
 import React, { Component } from "react";
@@ -28,18 +28,20 @@ class Layout extends Component {
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <Header {...this.props} />
                 {this.props.children}
                 <Footer {...this.props} />
-            </div>
+            </React.Fragment>
         );
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        toggleCart: bool => dispatch(actions.toggleCart(bool))
+        toggleCart: bool => dispatch(actions.toggleCart(bool)),
+        setBrandIndex: index => dispatch(actions.setBrandIndex(index)),
+        toggleMobileMenu: bool => dispatch(actions.toggleMobileMenu(bool))
     };
 };
 
