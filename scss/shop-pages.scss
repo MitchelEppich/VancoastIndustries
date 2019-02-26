@@ -317,4 +317,28 @@ p.wholesale-intro {
         line-height: 30px;
         text-align: center;
     }
+    #vcProduct-filters {
+    float: left;
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    top: 100px;
+    width: 349px;
+    z-index: 1;
+    transform: translateX(-254px);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    }
+//     .vcFilter-list label {
+//     font-size: 15px;
+//     padding-left: 35px;
+//     padding-bottom: 15px;
+// }
+// .vcFilter-list h3 {
+//     font-size: 20px;
+//     padding-bottom: 10px;
+// }
 }
