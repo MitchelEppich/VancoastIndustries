@@ -52,11 +52,11 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.TOGGLE_FILTERS:
-            return updateObject(state, { showFilters: action.bool });
+            return updateObject(state, { showFilters: action.isFilterVisible });
         case actionTypes.SET_BRAND_INDEX:
             return updateObject(state, { activeBrandIndex: action.index });
         case actionTypes.TOGGLE_MOBILE_MENU:
-            return updateObject(state, { showMobileMenu: action.bool });
+            return updateObject(state, { showMobileMenu: action.isMobileMenuVisible });
         default:
             return state;
     }

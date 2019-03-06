@@ -11,10 +11,10 @@ const actionTypes = {
 
 const getActions = uri => {
     const objects = {
-        toggleFilters: bool => {
+        toggleFilters: isFilterVisible => {
             return {
                 type: actionTypes.TOGGLE_FILTERS,
-                bool: bool
+                isFilterVisible: isFilterVisible
             };
         },
         setBrandIndex: index => {
@@ -23,11 +23,11 @@ const getActions = uri => {
                 index: index
             };
         },
-        toggleMobileMenu: bool => {
+        toggleMobileMenu: isMobileMenuVisible => {
             return {
                 type: actionTypes.TOGGLE_MOBILE_MENU,
-                bool:bool
-            }
+                isMobileMenuVisible: isMobileMenuVisible
+            };
         }
     };
 

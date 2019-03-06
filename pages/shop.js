@@ -10,9 +10,20 @@ class Index extends Component {
     render() {
         return (
             <Layout>
-                <div className={this.props.shop.activeBrandIndex == 0 ? "vcWholesale-hero vcBg flex justify-center items-center" :"vcBrand-hero vcBg flex justify-center items-center " + this.props.shop.brands[this.props.shop.activeBrandIndex].bgImageClass } >
-                {this.props.shop.activeBrandIndex != 0 ?<img src={this.props.shop.brands[this.props.shop.activeBrandIndex].logo} alt={this.props.shop.brands[this.props.shop.activeBrandIndex].name} />
-                :null}</div>
+                <div
+                    className={
+                        this.props.shop.activeBrandIndex == 0
+                            ? "vcWholesale-hero vcBg flex justify-center items-center"
+                            : "vcBrand-hero vcBg flex justify-center items-center " +
+                              this.props.shop.brands[this.props.shop.activeBrandIndex].bgImageClass
+                    }>
+                    {this.props.shop.activeBrandIndex != 0 ? (
+                        <img
+                            src={this.props.shop.brands[this.props.shop.activeBrandIndex].logo}
+                            alt={this.props.shop.brands[this.props.shop.activeBrandIndex].name}
+                        />
+                    ) : null}
+                </div>
 
                 <Heading {...this.props} />
 
@@ -160,9 +171,14 @@ class Index extends Component {
                                 and counting. Check out their large selection of seeds all made available for wholesale
                                 sized orders through Vancoast Industries.
                             </p>
-                            <button onClick={()=>{this.props.setBrandIndex(1);window.scrollTo(0,0)}}>Crop King Seeds</button>
+                            <button
+                                onClick={() => {
+                                    this.props.setBrandIndex(1);
+                                    window.scrollTo(0, 0);
+                                }}>
+                                Crop King Seeds
+                            </button>
                         </div>
-
 
                         <div className="vcBrand-board vcBrand-board-sunwest flex flex-col lg:flex-row justify-between items-center">
                             <img src="../static/img/assets/sunwest-logo.png" alt="sunwest genetics" />
@@ -171,7 +187,13 @@ class Index extends Component {
                                 Ranging from potent sativas to heavy indicas, Sunwest carries a variety of quality
                                 cannabis strains.
                             </p>
-                            <button onClick={()=>{this.props.setBrandIndex(2);window.scrollTo(0,0)}}>Sunwest Genetics</button>
+                            <button
+                                onClick={() => {
+                                    this.props.setBrandIndex(2);
+                                    window.scrollTo(0, 0);
+                                }}>
+                                Sunwest Genetics
+                            </button>
                         </div>
                         <div className="vcBrand-board vcBrand-board-sonoma flex flex-col lg:flex-row justify-between items-center">
                             <img src="../static/img/assets/sonoma-logo.png" alt="sonoma seeds" />
@@ -180,7 +202,13 @@ class Index extends Component {
                                 some of the best packaging in the industry, hard to find cannabis strains and roots on
                                 the West Coast.
                             </p>
-                            <button onClick={()=>{this.props.setBrandIndex(3);window.scrollTo(0,0)}}>Sonoma Seeds</button>
+                            <button
+                                onClick={() => {
+                                    this.props.setBrandIndex(3);
+                                    window.scrollTo(0, 0);
+                                }}>
+                                Sonoma Seeds
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -191,7 +219,7 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        toggleFilters: bool => dispatch(actions.toggleFilters(bool)), 
+        toggleFilters: isFilterVisible => dispatch(actions.toggleFilters(isFilterVisible)),
         setBrandIndex: index => dispatch(actions.setBrandIndex(index))
     };
 };

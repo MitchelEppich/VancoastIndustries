@@ -5,46 +5,46 @@
 
 /******MIXINS*******/
 @mixin element($element) {
-    &__#{$element} {
-        @content;
-    }
+  &__#{$element} {
+    @content;
+  }
 }
 
 // Block Element
 // @access public
 // @param {String} $element - Element's name
 @mixin element($element) {
-    &__#{$element} {
-        @content;
-    }
+  &__#{$element} {
+    @content;
+  }
 }
 // Block Modifier
 // @access public
 // @param {String} $modifier - Modifier's name
 @mixin modifier($modifier) {
-    &--#{$modifier} {
-        @content;
-    }
+  &--#{$modifier} {
+    @content;
+  }
 }
 
 html,
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Lato", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
 }
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 body {
-    background: #fff;
+  background: #fff;
 }
 .vcWrap {
-    max-width: 1500px;
-    margin: 0 auto;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 h1,
 h2,
@@ -53,390 +53,398 @@ h4,
 h5,
 ul,
 p {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 a {
-    color: #000;
-    text-decoration: none;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+  color: #000;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 a {
-    color: #1426de;
+  color: #1426de;
 }
 a:hover {
-    color: #283fe5;
+  color: #283fe5;
 }
 button,
 button.vcNewsletter-btn,
 input[type="submit"],
 form input[type="submit"] {
-    background: #1426de;
-    color: #fff;
-    border: 0px;
-    border-radius: 3px;
-    font-weight: 700;
-    margin: 0px;
-    text-transform: uppercase;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+  background: #1426de;
+  color: #fff;
+  border: 0px;
+  border-radius: 3px;
+  font-weight: 700;
+  margin: 0px;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 button.vcNewsletter-btn {
-    padding: 20px;
-    font-size: 20px;
+  padding: 20px;
+  font-size: 20px;
 }
 .formkit-field,
 button.vcNewsletter-btn {
-    display: inline-flex;
+  display: inline-flex;
 }
 button:hover,
 input[type="submit"]:hover,
 #vcNav-cartList button:hover {
-    cursor: pointer;
-    background: #283fe5;
-    color: #fff;
+  cursor: pointer;
+  background: #283fe5;
+  color: #fff;
 }
 .vcLogin {
-    background: #fff;
+  background: #fff;
 }
 .vcNavSection-one,
 #vcNavSection-two,
 .vcNavSection-three {
-    width: 33%;
+  width: 33%;
 }
 /** mobile menu CSS **/
 #vcNav-icon {
-    display: none;
-    padding: 0px 10px;
+  display: none;
+  padding: 0px 10px;
 }
 .bar1,
 .bar2,
 .bar3 {
-    width: 35px;
-    height: 5px;
-    background-color: #333;
-    margin: 6px 0;
-    transition: 0.4s;
-    border-radius: 5px;
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+  border-radius: 5px;
 }
 .reveal .bar1 {
-    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-    transform: rotate(-45deg) translate(-9px, 6px);
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
 }
 .reveal .bar2 {
-    opacity: 0;
+  opacity: 0;
 }
 .reveal .bar3 {
-    -webkit-transform: rotate(45deg) translate(-8px, -8px);
-    transform: rotate(45deg) translate(-8px, -8px);
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
 }
 #vcNav-cartList {
-    -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.75));
-    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.75));
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.75));
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.75));
 }
 .vcWelcome:hover,
 .vcNav-cart:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 .vancoastMenu nav ul li a {
-    text-decoration: none;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .vancoastMenu nav ul li a:hover {
-    font-weight: 700;
-    color: #1426de;
+  font-weight: 700;
+  color: #1426de;
 }
 li.vcShop-cats a,
 li.vcShop-brands a {
-    font-size: 40px;
-    font-weight: 700;
-    letter-spacing: -1px;
-    color: #000;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #000;
+}
+.vcShop-cats ul,
+.vcShop-brands ul {
+  transform: translateY(-20px);
+  -webkit-transform: translateY(-20px);
+  -moz-transform: translateY(-20px);
+  -ms-transform: translateY(-20px);
+  -o-transform: translateY(-20px);
 }
 .vcShop-cats ul li a,
 .vcShop-brands ul li a {
-    font-size: 25px;
-    font-weight: 400;
-    letter-spacing: -1px;
-    line-height: 45px;
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: -1px;
+  line-height: 45px;
 }
 #vcNav-cartList {
-    margin-right: 0;
-    top: 0;
+  margin-right: 0;
+  top: 0;
 }
 .vcItem {
-    padding-bottom: 40px;
+  padding-bottom: 40px;
 }
 .vcItem img {
-    max-height: 150px;
-    -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.25));
-    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.25));
+  max-height: 150px;
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.25));
 }
 .vcItem-info {
-    padding-left: 20px;
+  padding-left: 20px;
 }
 .vcItem-details {
-    width: 100%;
+  width: 100%;
 }
 .vcItem-brand {
-    font-weight: 700;
+  font-weight: 700;
 }
 .vcItem-qty {
-    padding-right: 20px;
+  padding-right: 20px;
 }
 span.vcPrefix {
-    text-transform: uppercase;
-    color: #a5a5a5;
-    font-size: 13px;
+  text-transform: uppercase;
+  color: #a5a5a5;
+  font-size: 13px;
 }
 .vcItem-brand span {
-    color: #a5a5a5;
+  color: #a5a5a5;
 }
 .vcCart-summary {
-    padding: 20px 0px 0px 120px;
-    border-top: 1px solid #eee;
+  padding: 20px 0px 0px 120px;
+  border-top: 1px solid #eee;
 }
 .vcTotal-qty,
 .vcTotal-price {
-    padding-right: 30px;
+  padding-right: 30px;
 }
 #vcNav-cartList {
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 /** end mobile menu CSS **/
 ul li {
-    list-style-type: none;
+  list-style-type: none;
 }
 /** Vancoast Nav **/
 #vancoastSearch,
 #vancoastSearch img {
-    height: 25px;
-    width: 25px;
+  height: 25px;
+  width: 25px;
 }
 .vcNav-primary {
-    position: fixed;
-    width: 100%;
-    max-height: 140px;
-    height: 100%;
-    z-index: 3;
+  position: fixed;
+  width: 100%;
+  max-height: 140px;
+  height: 100%;
+  z-index: 3;
 }
 .vcNav-bg {
-    position: relative;
-    z-index: 9;
-    width: 100%;
-    max-height: 140px;
-    height: 100%;
-    background-color: transparent;
-    background-image: url("../static/img/assets/vcmenu-bg.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center bottom;
+  position: relative;
+  z-index: 9;
+  width: 100%;
+  max-height: 140px;
+  height: 100%;
+  background-color: transparent;
+  background-image: url("../static/img/assets/vcmenu-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
 }
 .vcNav-wrap {
-    max-height: 90px;
-    height: 100%;
+  max-height: 90px;
+  height: 100%;
 }
 #vcSearch-wrap {
-    z-index: 1;
-    padding: 10px;
-    background: #fff;
-    position: absolute;
-    top: 0px;
-    max-width: 3000px;
-    width: 100%;
-    border-radius: 0px;
-    font-size: 35px;
-    letter-spacing: -0.5px;
-    margin: 0 auto;
-    height: 300px;
-    -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.65));
-    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.65));
-    transform: translateY(-310px);
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+  z-index: 1;
+  padding: 10px;
+  background: #fff;
+  position: absolute;
+  top: 0px;
+  max-width: 3000px;
+  width: 100%;
+  border-radius: 0px;
+  font-size: 35px;
+  letter-spacing: -0.5px;
+  margin: 0 auto;
+  height: 300px;
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.65));
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.65));
+  transform: translateY(-310px);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 #vcSearch-wrap.open {
-    transform: translateY(0px);
+  transform: translateY(0px);
 }
 input.vcNav-search {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 5px;
-    padding: 40px;
-    letter-spacing: -0.5px;
-    width: 70%;
-    margin-bottom: 70px;
-    margin: 50px auto;
-    font-size: 30px;
-    font-weight: 400;
-    text-align: center;
-    color: #333;
-    background: #eee;
-    border: 0;
-    -webkit-box-shadow: inset 0 0 5px #ccc;
-    -moz-box-shadow: inset 0 0 5px #ccc;
-    box-shadow: inset 0 0 5px #ccc;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 5px;
+  padding: 40px;
+  letter-spacing: -0.5px;
+  width: 70%;
+  margin-bottom: 70px;
+  margin: 50px auto;
+  font-size: 30px;
+  font-weight: 400;
+  text-align: center;
+  color: #333;
+  background: #eee;
+  border: 0;
+  -webkit-box-shadow: inset 0 0 5px #ccc;
+  -moz-box-shadow: inset 0 0 5px #ccc;
+  box-shadow: inset 0 0 5px #ccc;
 }
 .vcNav-vLogo img {
-    max-width: 60px;
+  max-width: 60px;
 }
 .vcNav-logo img {
-    max-width: 200px;
+  max-width: 200px;
 }
 #vcNav-cartList {
-    position: absolute;
-    right: 0;
-    top: 0;
-    transform: translateX(350px);
-    background: #fff;
-    margin-top: 150px;
-    max-width: 350px;
-    width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(350px);
+  background: #fff;
+  margin-top: 150px;
+  max-width: 350px;
+  width: 100%;
 }
 #vcNav-cartList.show {
-    transform: translateX(0px);
+  transform: translateX(0px);
 }
 .vcNav-cartWrap {
-    padding: 20px;
+  padding: 20px;
 }
 #vcNav-cartList button {
-    background: #1426de;
-    color: #fff;
-    width: 100%;
-    border: 0px;
-    font-size: 20px;
-    padding: 20px 30px;
-    border-radius: 0px;
+  background: #1426de;
+  color: #fff;
+  width: 100%;
+  border: 0px;
+  font-size: 20px;
+  padding: 20px 30px;
+  border-radius: 0px;
 }
 .vcCart-title {
-    text-align: center;
-    font-size: 40px;
-    font-weight: 700;
-    letter-spacing: -1px;
-    color: #000;
-    padding-bottom: 20px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #000;
+  padding-bottom: 20px;
 }
 .vcNavSection-one {
-    order: 2;
+  order: 2;
 }
 #vcNavSection-two {
-    order: 1;
+  order: 1;
 }
 .vcNavSection-three {
-    order: 3;
+  order: 3;
 }
 img.vcNav-logo {
-    max-width: 200px;
-    padding: 5px 20px;
+  max-width: 200px;
+  padding: 5px 20px;
 }
 .vcNav-cart {
-    text-decoration: none;
-    line-height: 15px;
-    display: block;
-    position: relative;
+  text-decoration: none;
+  line-height: 15px;
+  display: block;
+  position: relative;
 }
 .vcNav-cartCount {
-    background: #1426de;
-    color: #fff;
-    padding: 10px 10px;
-    border-radius: 100%;
-    font-weight: bold;
-    position: absolute;
-    right: 0px;
-    top: -20px;
-    font-size: 25px;
+  background: #1426de;
+  color: #fff;
+  padding: 10px 10px;
+  border-radius: 100%;
+  font-weight: bold;
+  position: absolute;
+  right: 0px;
+  top: -20px;
+  font-size: 25px;
 }
 .vcNav-your,
 .vcNav-box {
-    display: block;
-    text-transform: uppercase;
-    color: #000;
-    font-weight: bold;
-    text-align: center;
+  display: block;
+  text-transform: uppercase;
+  color: #000;
+  font-weight: bold;
+  text-align: center;
 }
 .vcNav-box {
-    font-size: 20px;
+  font-size: 20px;
 }
 button.vcNav-login {
-    /** for pre-production display purposes */
-    display: none;
-    /** end for pre-production display purposes */
-    background: #1426de;
-    color: #fff;
-    text-transform: uppercase;
-    padding: 15px 30px;
-    font-size: 15px;
-    max-width: 200px;
-    margin-right: 50px;
+  /** for pre-production display purposes */
+  display: none;
+  /** end for pre-production display purposes */
+  background: #1426de;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 15px 30px;
+  font-size: 15px;
+  max-width: 200px;
+  margin-right: 50px;
 }
 .vcWelcome img {
-    max-width: 50px;
+  max-width: 50px;
 }
 .vcWelcome span {
-    font-size: 15px;
-    font-weight: 600;
-    color: #1426de;
-    text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1426de;
+  text-align: center;
 }
 .vcNav-cart img {
-    width: 70px;
+  width: 70px;
 }
 /** end Vancoast Nav **/
 img.quick-view {
-    max-width: 70px;
-    position: absolute;
-    top: 0;
-    right: 0;
+  max-width: 70px;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .vcIframe-wrap {
-    position: relative;
-    max-height: 300px;
-    height: 100%;
-    max-width: 500px;
-    width: 100%;
-    float: right;
+  position: relative;
+  max-height: 300px;
+  height: 100%;
+  max-width: 500px;
+  width: 100%;
+  float: right;
 }
 .vcIframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0px;
 }
 /** Quickview Specific Styles **/
 .vcSingle.vcQuick {
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
 }
 .vcSingle.vcQuick .vcSingle-sectionThree {
-    max-width: 700px;
+  max-width: 700px;
 }
 .vcSingle.vcQuick img.quick-view {
-    top: -25px;
-    right: -25px;
-    transform: rotate(45deg);
+  top: -25px;
+  right: -25px;
+  transform: rotate(45deg);
 }
 /** Sitewide Mobile Styles **/
 @media screen and (min-width: 1368px) {
@@ -444,179 +452,179 @@ img.quick-view {
 @media screen and (max-width: 1367px) {
 }
 @media screen and (min-width: 991px) {
-    /** fix for safari **/
-    .vancoastMenu {
-        height: 0px;
-    }
-    /** end fix for safari **/
-    .vcWelcome {
-        padding-right: 50px;
-    }
-    .vancoastMenu nav ul li ul {
-        position: absolute;
-        align-items: baseline;
-        background: #fff;
-        top: 70px;
-    }
-    .vancoastMenu nav ul li {
-        padding: 20px 30px 20px 0px;
-    }
-    .vancoastMenu nav ul li a {
-        line-height: 50px;
-    }
-    .vancoastMenu nav ul li ul {
-        padding: 20px;
-        width: 300px;
-        -webkit-box-shadow: 0px 15px 20px -15px rgba(0, 0, 0, 0.65);
-        -moz-box-shadow: 0px 15px 20px -15px rgba(0, 0, 0, 0.65);
-        box-shadow: 0px 15px 20px -15px rgba(0, 0, 0, 0.65);
-    }
-    .vancoastMenu nav ul li ul li {
-        padding: 0px;
-    }
-    .vancoastMenu nav ul li > ul {
-        visibility: collapse;
-        display: none;
-    }
-    .vancoastMenu nav ul li:hover > ul {
-        visibility: visible;
-        display: block;
-    }
-    .vcFooter-menu-wrap {
-        margin-top: 150px;
-    }
+  /** fix for safari **/
+  .vancoastMenu {
+    height: 0px;
+  }
+  /** end fix for safari **/
+  .vcWelcome {
+    padding-right: 50px;
+  }
+  .vancoastMenu nav ul li ul {
+    position: absolute;
+    align-items: baseline;
+    background: #fff;
+    top: 70px;
+  }
+  .vancoastMenu nav ul li {
+    padding: 20px 30px 20px 0px;
+  }
+  .vancoastMenu nav ul li a {
+    line-height: 50px;
+  }
+  .vancoastMenu nav ul li ul {
+    padding: 20px;
+    width: 300px;
+    -webkit-box-shadow: 0px 15px 20px -15px rgba(0, 0, 0, 0.65);
+    -moz-box-shadow: 0px 15px 20px -15px rgba(0, 0, 0, 0.65);
+    box-shadow: 0px 15px 20px -15px rgba(0, 0, 0, 0.65);
+  }
+  .vancoastMenu nav ul li ul li {
+    padding: 0px;
+  }
+  // .vancoastMenu nav ul li > ul {
+  //   visibility: collapse;
+  //   display: none;
+  // }
+  .vancoastMenu nav ul li:hover > ul {
+    visibility: visible;
+    display: block;
+  }
+  .vcFooter-menu-wrap {
+    margin-top: 150px;
+  }
 }
 @media screen and (max-width: 991px) {
-    #vcNav-icon {
-        display: block;
-    }
-    .vancoastMenu {
-        position: absolute;
-        align-items: flex-start;
-        top: 0;
-        left: 0;
-        background: #fff;
-        max-width: 300px;
-        width: 100%;
-        padding: 50px 30px 150px 50px;
-        margin-top: 150px;
-        background-image: url("../static/img/assets/vancoast-watermark.svg");
-        background-repeat: no-repeat;
-        background-position: bottom;
-        background-size: cover;
-        transform: translateX(-500px);
-    }
-    div.vcBg {
-        height: 300px;
-    }
-    div.vc-hero.vcBg {
-        height: 500px;
-    }
-    div.vc-hero img {
-        max-width: 200px;
-        padding-top: 150px;
-    }
-    div.vc-hero h1 {
-        font-size: 30px;
-    }
-    .reveal .vancoastMenu {
-        top: 0;
-        transform: translateX(0px);
-    }
-    .vancoastMenu nav ul,
-    .vancoastMenu nav ul li ul li {
-        display: block;
-    }
-    li.vcShop-brands {
-        padding-top: 30px;
-    }
-    #vancoastSearch {
-        position: relative;
-        margin-left: 20px;
-    }
-    #vancoastSearch input {
-        display: none;
-        position: absolute;
-        top: 20px;
-        left: 0;
-        right: 0;
-        border-radius: 5px;
-        padding: 40px;
-        font-size: 35px;
-        width: 100%;
-    }
-    .vancoastMenu {
-        -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.65);
-        -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.65);
-        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.65);
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -ms-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
-    }
-    .vc-hero h1 {
-        text-align: center;
-    }
-    footer {
-        padding: 20px;
-    }
-    .vcFooter-logo img {
-        max-width: 100%;
-    }
-    .vcfooter-menu ul {
-        align-items: center;
-    }
-    .vcfooter-menu ul li {
-        text-align: center;
-        line-height: 50px;
-    }
+  #vcNav-icon {
+    display: block;
+  }
+  .vancoastMenu {
+    position: absolute;
+    align-items: flex-start;
+    top: 0;
+    left: 0;
+    background: #fff;
+    max-width: 300px;
+    width: 100%;
+    padding: 50px 30px 150px 50px;
+    margin-top: 150px;
+    background-image: url("../static/img/assets/vancoast-watermark.svg");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    transform: translateX(-500px);
+  }
+  div.vcBg {
+    height: 300px;
+  }
+  div.vc-hero.vcBg {
+    height: 500px;
+  }
+  div.vc-hero img {
+    max-width: 200px;
+    padding-top: 150px;
+  }
+  div.vc-hero h1 {
+    font-size: 30px;
+  }
+  .reveal .vancoastMenu {
+    top: 0;
+    transform: translateX(0px);
+  }
+  .vancoastMenu nav ul,
+  .vancoastMenu nav ul li ul li {
+    display: block;
+  }
+  li.vcShop-brands {
+    padding-top: 30px;
+  }
+  #vancoastSearch {
+    position: relative;
+    margin-left: 20px;
+  }
+  #vancoastSearch input {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    border-radius: 5px;
+    padding: 40px;
+    font-size: 35px;
+    width: 100%;
+  }
+  .vancoastMenu {
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.65);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.65);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.65);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  .vc-hero h1 {
+    text-align: center;
+  }
+  footer {
+    padding: 20px;
+  }
+  .vcFooter-logo img {
+    max-width: 100%;
+  }
+  .vcfooter-menu ul {
+    align-items: center;
+  }
+  .vcfooter-menu ul li {
+    text-align: center;
+    line-height: 50px;
+  }
 }
 @media screen and (max-width: 767px) {
-    .vcSubscribe-box form {
-        padding: 20px;
-    }
-    .vcNav-logo {
-        display: none;
-    }
+  .vcSubscribe-box form {
+    padding: 20px;
+  }
+  .vcNav-logo {
+    display: none;
+  }
 }
 @media screen and (min-width: 767px) {
-    .vcNav-vLogo {
-        display: none;
-    }
+  .vcNav-vLogo {
+    display: none;
+  }
 }
 @media screen and (min-width: 479px) {
 }
 @media screen and (max-width: 479px) {
-    .vcNavSection-one {
-        width: 20%;
-    }
-    #vcNavSection-two {
-        width: 40%;
-    }
-    .vcNavSection-three {
-        width: 40%;
-    }
-    .vcWelcome img {
-        max-width: 40px;
-    }
-    .vcNav-cart img {
-        max-width: 50px;
-    }
+  .vcNavSection-one {
+    width: 20%;
+  }
+  #vcNavSection-two {
+    width: 40%;
+  }
+  .vcNavSection-three {
+    width: 40%;
+  }
+  .vcWelcome img {
+    max-width: 40px;
+  }
+  .vcNav-cart img {
+    max-width: 50px;
+  }
 }
 @media screen and (max-width: 330px) {
-    li.vcShop-cats a,
-    li.vcShop-brands a {
-        font-size: 30px;
-        font-weight: 700;
-        letter-spacing: -1px;
-        color: #000;
-    }
-    .vcShop-cats ul li a,
-    .vcShop-brands ul li a {
-        font-size: 20px;
-        font-weight: 400;
-        letter-spacing: -1px;
-        line-height: 37px;
-    }
+  li.vcShop-cats a,
+  li.vcShop-brands a {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #000;
+  }
+  .vcShop-cats ul li a,
+  .vcShop-brands ul li a {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -1px;
+    line-height: 37px;
+  }
 }

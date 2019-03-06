@@ -14,21 +14,24 @@ import CheckoutReducer from "./checkout";
 import AccountReducer from "./account";
 
 const initialState = {
-    showCart: false
+  showCart: false,
+  menuDropdownVisible: null
 };
 
 const indexReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case actionTypes.TOGGLE_CART:
-            return updateObject(state, { showCart: action.bool });
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case actionTypes.TOGGLE_CART:
+      return updateObject(state, { showCart: action.isCartVisible });
+    case actionTypes.TOGGLE_MENU_DROPDOWN:
+      return updateObject(state, { menuDropdownVisible: action.value });
+    default:
+      return state;
+  }
 };
 
 export default combineReducers({
-    misc: indexReducer,
-    shop: ShopReducer,
-    checkout: CheckoutReducer,
-    account: AccountReducer
+  misc: indexReducer,
+  shop: ShopReducer,
+  checkout: CheckoutReducer,
+  account: AccountReducer
 });

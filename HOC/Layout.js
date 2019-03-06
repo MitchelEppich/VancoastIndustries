@@ -22,30 +22,32 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 
 class Layout extends Component {
-    componentDidMount() {}
+  componentDidMount() {}
 
-    componentDidUpdate() {}
+  componentDidUpdate() {}
 
-    render() {
-        return (
-            <React.Fragment>
-                <Header {...this.props} />
-                {this.props.children}
-                <Footer {...this.props} />
-            </React.Fragment>
-        );
-    }
+  render() {
+    return (
+      <React.Fragment>
+        <Header {...this.props} />
+        {this.props.children}
+        <Footer {...this.props} />
+      </React.Fragment>
+    );
+  }
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-        toggleCart: bool => dispatch(actions.toggleCart(bool)),
-        setBrandIndex: index => dispatch(actions.setBrandIndex(index)),
-        toggleMobileMenu: bool => dispatch(actions.toggleMobileMenu(bool))
-    };
+  return {
+    toggleCart: isCartVisible => dispatch(actions.toggleCart(isCartVisible)),
+    setBrandIndex: index => dispatch(actions.setBrandIndex(index)),
+    toggleMobileMenu: isMobileMenuVisible =>
+      dispatch(actions.toggleMobileMenu(isMobileMenuVisible)),
+    toggleMenuDropdown: options => dispatch(actions.toggleMenuDropdown(options))
+  };
 };
 
 export default connect(
-    state => state,
-    mapDispatchToProps
+  state => state,
+  mapDispatchToProps
 )(Layout);
