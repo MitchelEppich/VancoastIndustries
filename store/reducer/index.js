@@ -15,7 +15,8 @@ import AccountReducer from "./account";
 
 const initialState = {
   showCart: false,
-  menuDropdownVisible: null
+  menuDropdownVisible: null,
+  mediaSize: "xl"
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -24,6 +25,8 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, { showCart: action.isCartVisible });
     case actionTypes.TOGGLE_MENU_DROPDOWN:
       return updateObject(state, { menuDropdownVisible: action.value });
+    case actionTypes.SET_MEDIA_SIZE:
+      return updateObject(state, { mediaSize: action.input });
     default:
       return state;
   }

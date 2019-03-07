@@ -35,7 +35,7 @@ class Index extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return { setBrandIndex: index => dispatch(actions.setBrandIndex(index)) };
 };
 
 export default connect(

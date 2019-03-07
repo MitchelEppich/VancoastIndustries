@@ -23,7 +23,8 @@ const imports = {
 
 const actionTypes = {
   TOGGLE_CART: "TOGGLE_CART",
-  TOGGLE_MENU_DROPDOWN: "TOGGLE_MENU_DROPDOWN"
+  TOGGLE_MENU_DROPDOWN: "TOGGLE_MENU_DROPDOWN",
+  SET_MEDIA_SIZE: "SET_MEDIA_SIZE"
 };
 
 const actions = {
@@ -43,6 +44,12 @@ const actions = {
     return {
       type: actionTypes.TOGGLE_MENU_DROPDOWN,
       value: value
+    };
+  },
+  setMediaSize: input => {
+    return {
+      type: actionTypes.SET_MEDIA_SIZE,
+      input: input.mediaSize
     };
   }
 };

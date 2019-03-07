@@ -9,6 +9,12 @@ const header = props => {
     : {
         transform: "translateX(-500px) translateY(-10px)"
       };
+  if (!["sm", "md", "lg"].includes(props.misc.mediaSize)) {
+    showMobileMenu = {
+      transform: "translateX(0) translateY(-10px)",
+      paddingTop: "15px"
+    };
+  }
 
   return (
     <div onMouseEnter={() => console.log(props)} className="vcNav-primary">
@@ -70,7 +76,6 @@ const header = props => {
                       <a
                         onClick={() => {
                           props.setBrandIndex(0);
-                          props.toggleMobileMenu(false);
                         }}
                       >
                         Shop
@@ -98,15 +103,17 @@ const header = props => {
                   </li>
                   <li
                     onMouseEnter={() => {
-                      props.toggleMenuDropdown({ value: "brands", show: true });
+                      props.toggleMenuDropdown({
+                        value: "brands",
+                        show: true
+                      });
                     }}
                     className="vcShop-brands"
                   >
-                    <Link prefetch href="/shop">
+                    <Link prefetch href="/shop" as={"/shop/cropkingseeds"}>
                       <a
                         onClick={() => {
                           props.setBrandIndex(1);
-                          props.toggleMobileMenu(false);
                         }}
                       >
                         Brands
@@ -115,11 +122,14 @@ const header = props => {
                     {props.misc.menuDropdownVisible == "brands" ? (
                       <ul>
                         <li>
-                          <Link prefetch href="/shop">
+                          <Link
+                            prefetch
+                            href="/shop"
+                            as={"/shop/cropkingseeds"}
+                          >
                             <a
                               onClick={() => {
                                 props.setBrandIndex(1);
-                                props.toggleMobileMenu(false);
                               }}
                             >
                               Crop King Seeds
@@ -128,11 +138,14 @@ const header = props => {
                         </li>
                         <li>
                           {" "}
-                          <Link prefetch href="/shop">
+                          <Link
+                            prefetch
+                            href="/shop"
+                            as={"/shop/cropkingseeds"}
+                          >
                             <a
                               onClick={() => {
                                 props.setBrandIndex(2);
-                                props.toggleMobileMenu(false);
                               }}
                             >
                               Sunwest Genetics
@@ -141,11 +154,14 @@ const header = props => {
                         </li>
                         <li>
                           {" "}
-                          <Link prefetch href="/shop">
+                          <Link
+                            prefetch
+                            href="/shop"
+                            as={"/shop/cropkingseeds"}
+                          >
                             <a
                               onClick={() => {
                                 props.setBrandIndex(3);
-                                props.toggleMobileMenu(false);
                               }}
                             >
                               Sonoma Seeds

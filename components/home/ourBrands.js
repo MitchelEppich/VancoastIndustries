@@ -12,7 +12,11 @@ const ourBrands = props => {
       <div className="vcBrand-slider flex flex-row justify-around items-center">
         <div className="vcSlide-one flex">
           <Link prefetch href="/shop">
-            <a>
+            <a
+              onClick={() => {
+                props.setBrandIndex(3);
+              }}
+            >
               <img
                 src="../static/img/assets/sonoma-logo.png"
                 alt="sonoma seeds brand"
@@ -22,7 +26,11 @@ const ourBrands = props => {
         </div>
         <div className="vcSlide-two flex">
           <Link prefetch href="/shop">
-            <a>
+            <a
+              onClick={() => {
+                props.setBrandIndex(2);
+              }}
+            >
               <img
                 src="../static/img/assets/sunwest-logo.png"
                 alt="sunwest brand card"
@@ -32,7 +40,11 @@ const ourBrands = props => {
         </div>
         <div className="vcSlide-three flex">
           <Link prefetch href="/shop">
-            <a>
+            <a
+              onClick={() => {
+                props.setBrandIndex(1);
+              }}
+            >
               <img
                 src="../static/img/assets/cks-logo.png"
                 alt="cks brand card"

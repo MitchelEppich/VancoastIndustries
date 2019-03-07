@@ -489,13 +489,23 @@ module.exports = {
     "3/8": "37.5%",
     "7/8": "87.5%",
     "1/16": "6.25%",
-    "full": "100%",
-    "screen": "100vw",
-    "bars": "100px",
-    "searchBar": "250px",
-    "sideMenu": "300px",
-    "uploadButton": "320px",
-    "sButton": "634px",
+    "100": "100px",
+    "200": "200px",
+    "300": "300px",
+    "400": "400px",
+    "500": "500px",
+    "600": "600px",
+    "700": "700px",
+    "800": "800px",
+    "900": "900px",
+    "1000": "1000px",
+    full: "100%",
+    screen: "100vw",
+    bars: "100px",
+    searchBar: "250px",
+    sideMenu: "300px",
+    uploadButton: "320px",
+    sButton: "634px",
     "10000": "10000px",
     "500": "calc(100vh - 3rem)"
   },
@@ -535,11 +545,21 @@ module.exports = {
     "64": "16rem",
     "300": "270px",
     "350": "356px",
+    "100": "100px",
+    "200": "200px",
+    "300": "300px",
+    "400": "400px",
+    "500": "500px",
+    "600": "600px",
+    "700": "700px",
+    "800": "800px",
+    "900": "900px",
+    "1000": "1000px",
     full: "100%",
     screen: "100vh",
     uploader: "400px",
     "500": "calc(100vh - 3rem)",
-    "navbar": "56px"
+    navbar: "56px"
   },
 
   /*
@@ -559,7 +579,7 @@ module.exports = {
   minWidth: {
     "0": "0",
     "3": "33.33%",
-    "full": "100%"
+    full: "100%"
   },
 
   /*
@@ -608,8 +628,8 @@ module.exports = {
     "4xl": "90rem",
     "5xl": "100rem",
     full: "100%",
-    "sButton": "634px",
-    "uploadButton": "320px",
+    sButton: "634px",
+    uploadButton: "320px"
   },
 
   /*
@@ -662,7 +682,7 @@ module.exports = {
     "20": "5rem",
     "24": "6rem",
     "32": "8rem",
-    "videoPlayerPadding": "27rem"
+    videoPlayerPadding: "27rem"
   },
 
   /*

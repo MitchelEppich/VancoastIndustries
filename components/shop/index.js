@@ -1,11 +1,5 @@
-import Filters from "./filters";
-
 const index = props => {
-    return (
-        <div>
-            <Filters />
-        </div>
-    );
+  return <div />;
 };
 
 export default index;
