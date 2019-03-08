@@ -5,7 +5,11 @@ const items = props => {
   items = items.map((item, index) => {
     return <Item key={index} {...props} item={item} />;
   });
-  return <div className="h-600 overflow-y-scroll w-full">{items}</div>;
+  return (
+    <div className="h-full mb-24 overflow-y-scroll w-full px-6 shadow-inner">
+      {items}
+    </div>
+  );
 };
 
 export default items;

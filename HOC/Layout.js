@@ -20,6 +20,7 @@ import { connect } from "react-redux";
 // custom
 import actions from "../store/actions";
 import Menu from "../components/menu";
+import Cart from "../components/cart";
 import Footer from "../components/footer";
 import shuffle from "../scripts/shuffle";
 
@@ -39,6 +40,7 @@ class Layout extends Component {
     return (
       <React.Fragment>
         <Menu {...this.props} />
+        <Cart {...this.props} />
         {this.props.shop.strains != null ? this.props.children : null}
         <Footer {...this.props} />
       </React.Fragment>

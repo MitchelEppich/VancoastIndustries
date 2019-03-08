@@ -60,7 +60,6 @@ const filters = props => {
       className={props.shop.showFilters ? "showFilters" : ""}
     >
       <div className="vcFilter-list flex flex-col">{filters}</div>
-
       <div
         onClick={() => props.toggleFilterVisibility(!props.shop.showFilters)}
         className="vcFilters-tab flex flex-col justify-center items-center"

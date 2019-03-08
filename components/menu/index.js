@@ -2,7 +2,7 @@ import Link from "next/link";
 import MenuFilterLinks from "./menuFilterLinks";
 import BrandLinks from "./brandLinks";
 import VancoastLogo from "./vancoastLogo";
-import Cart from "../cart";
+// import Cart from "../cart";
 
 const header = props => {
   let showMobileMenu = props.shop.showMobileMenu
@@ -95,7 +95,6 @@ const header = props => {
                 {Object.keys(props.checkout.cart.items).length}
               </span>
             </div>
-            <Cart {...props} />
           </div>
         </div>
       </div>

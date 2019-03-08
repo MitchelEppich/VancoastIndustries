@@ -4,7 +4,11 @@ const item = props => {
 
   return (
     <div className="vcItem vcItem-one flex flex-row">
-      <img src={item.product.packagePath} alt={item.product.name} />
+      <img
+        src={item.product.packagePath}
+        className="h-24"
+        alt={item.product.name}
+      />
 
       <div className="vcItem-info flex flex-col justify-around items-start">
         <h3>

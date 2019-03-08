@@ -1,280 +1,277 @@
-@tailwind preflight;
-@tailwind utilities;
-
 /****SCROLLBAR*****/
 
 /******MIXINS*******/
 @mixin element($element) {
-    &__#{$element} {
-        @content;
-    }
+  &__#{$element} {
+    @content;
+  }
 }
 
 // Block Element
 // @access public
 // @param {String} $element - Element's name
 @mixin element($element) {
-    &__#{$element} {
-        @content;
-    }
+  &__#{$element} {
+    @content;
+  }
 }
 // Block Modifier
 // @access public
 // @param {String} $modifier - Modifier's name
 @mixin modifier($modifier) {
-    &--#{$modifier} {
-        @content;
-    }
+  &--#{$modifier} {
+    @content;
+  }
 }
 
 .vc-hero {
-    height: 1200px;
-    background-image: url("../static/img/page-bg/vc-hero-bg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+  height: 1200px;
+  background-image: url("../static/img/page-bg/vc-hero-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .vc-hero img {
-    max-width: 600px;
-    width: 100%;
+  max-width: 600px;
+  width: 100%;
 }
 .vc-hero h1 {
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 40px;
-    font-weight: normal;
-    padding: 30px 0px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 40px;
+  font-weight: normal;
+  padding: 30px 0px;
 }
 .vcBrand-section h2,
 .vcBrand-section h3 {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 .vcBrand-section h3 {
-    text-align: right;
-    font-size: 30px;
+  text-align: right;
+  font-size: 30px;
 }
 .vcBrand-section h2 {
-    font-size: 80px;
-    line-height: 80px;
+  font-size: 80px;
+  line-height: 80px;
 }
 .vcBrand-section p {
-    font-size: 25px;
-    color: #727272;
-    text-align: center;
+  font-size: 25px;
+  color: #727272;
+  text-align: center;
 }
 .vcBrand-text {
-    padding-bottom: 50px;
+  padding-bottom: 50px;
 }
 .vcBrand-slider {
-    background-image: url("../static/img/page-bg/vc-co-bg-test.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    height: 800px;
+  background-image: url("../static/img/page-bg/vc-co-bg-test.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 800px;
 }
 .vcBrand-slider img {
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .vcBrand-slider img:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 .vcShop-section {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 .vcShop-section h2 {
-    text-align: center;
+  text-align: center;
 }
 .vcShop-bg {
-    background-image: url("../static/img/page-bg/shop-section-bg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 150px 20px;
+  background-image: url("../static/img/page-bg/shop-section-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 150px 20px;
 }
 .vcShop-wrap {
-    flex-wrap: wrap;
-    align-content: space-between;
+  flex-wrap: wrap;
+  align-content: space-between;
 }
 .vcShop-box {
-    width: 33%;
-    margin: 30px 0;
+  width: 33%;
+  margin: 30px 0;
 }
 .vcShop-box img {
-    max-width: 300px;
-    -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.75));
-    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.75));
+  max-width: 300px;
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.75));
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.75));
 }
 .vcShop-section h2 span {
-    display: block;
-    text-transform: uppercase;
+  display: block;
+  text-transform: uppercase;
 }
 .vcShop-shop {
-    font-size: 100px;
-    line-height: 80px;
+  font-size: 100px;
+  line-height: 80px;
 }
 .vcShop-strains {
-    font-size: 30px;
+  font-size: 30px;
 }
 .vcShop-btns button {
-    padding: 10px 20px;
-    font-size: 25px;
-    font-weight: 300;
-    text-transform: uppercase;
-    margin: 0px 10px;
-    background: #fff;
-    color: #555;
+  padding: 10px 20px;
+  font-size: 25px;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin: 0px 10px;
+  background: #fff;
+  color: #555;
 }
 .vcShop-btns button:hover {
-    background: #283fe5;
-    color: #fff;
+  background: #283fe5;
+  color: #fff;
 }
 .vcFilters {
-    display: none;
+  display: none;
 }
 .vcAbout-section {
-    background-image: url("../static/img/page-bg/vc-about-bg.jpg");
-    background-size: cover;
-    background-position: center top;
+  background-image: url("../static/img/page-bg/vc-about-bg.jpg");
+  background-size: cover;
+  background-position: center top;
 }
 .vcAbout-section h2 {
-    text-align: center;
-    text-transform: uppercase;
+  text-align: center;
+  text-transform: uppercase;
 }
 .vcAbout-section h2 span {
-    display: block;
+  display: block;
 }
 .vcAbout-text {
-    font-size: 40px;
-    text-align: right;
+  font-size: 40px;
+  text-align: right;
 }
 .vcAbout-van {
-    font-size: 100px;
-    line-height: 80px;
-    font-weight: bold;
+  font-size: 100px;
+  line-height: 80px;
+  font-weight: bold;
 }
 .vcAbout-ind {
-    font-size: 93px;
-    line-height: 80px;
-    font-weight: lighter;
+  font-size: 93px;
+  line-height: 80px;
+  font-weight: lighter;
 }
 .vcAbout-slogan {
-    color: #727272;
-    font-size: 30px;
-    font-weight: lighter;
-    text-align: center;
+  color: #727272;
+  font-size: 30px;
+  font-weight: lighter;
+  text-align: center;
 }
 .vcAbout-images {
-    width: 100%;
-    margin-top: 70px;
-    position: relative;
+  width: 100%;
+  margin-top: 70px;
+  position: relative;
 }
 .vcAbout-images img {
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.65);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.65);
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.65);
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.65);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.65);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.65);
 }
 .vcAbout-imgTwo {
-    position: absolute;
-    top: 90px;
+  position: absolute;
+  top: 90px;
 }
 .vcAbout-excerpt {
-    padding: 120px 20px 20px 20px;
-    color: #555;
-    font-size: 30px;
-    line-height: 40px;
-    max-width: 60%;
-    text-align: center;
+  padding: 120px 20px 20px 20px;
+  color: #555;
+  font-size: 30px;
+  line-height: 40px;
+  max-width: 60%;
+  text-align: center;
 }
 .vcAbout-section button {
-    background: #1426de;
-    color: #fff;
-    font-size: 15px;
-    padding: 20px 30px;
+  background: #1426de;
+  color: #fff;
+  font-size: 15px;
+  padding: 20px 30px;
 }
 .vcSpecials-section {
-    position: relative;
-    margin-top: 90px;
-    background-image: url("../static/img/assets/vc-special-section.jpg");
-    background-position: center bottom;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 1700px;
+  position: relative;
+  margin-top: 90px;
+  background-image: url("../static/img/assets/vc-special-section.jpg");
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 1700px;
 }
 .vcSpecials-product {
-    padding-bottom: 50px;
+  padding-bottom: 50px;
 }
 .vcSpecials-section img,
 .vcSpecials-info {
-    -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.65));
-    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.65));
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.65));
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.65));
 }
 .vcSpecials-section h2 {
-    text-align: center;
-    text-transform: uppercase;
-    line-height: 55px;
-    color: #fff;
-    font-size: 100px;
-    text-shadow: 1px 1px 3px #555;
-    padding-bottom: 90px;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 55px;
+  color: #fff;
+  font-size: 100px;
+  text-shadow: 1px 1px 3px #555;
+  padding-bottom: 90px;
 }
 .vcSpecials-section h2 span {
-    font-size: 30px;
-    text-align: right;
-    display: block;
+  font-size: 30px;
+  text-align: right;
+  display: block;
 }
 .vcSpecials-wrap {
-    width: 100%;
+  width: 100%;
 }
 .vcSpecials-info {
-    background: #fff;
-    text-align: center;
-    max-width: 300px;
-    margin-top: -10px;
+  background: #fff;
+  text-align: center;
+  max-width: 300px;
+  margin-top: -10px;
 }
 .vcSpecials-info h3 {
-    padding-top: 10px;
-    font-size: 21px;
-    text-transform: uppercase;
+  padding-top: 10px;
+  font-size: 21px;
+  text-transform: uppercase;
 }
 .vcSpecials-price {
-    font-size: 30px;
-    font-weight: 700;
+  font-size: 30px;
+  font-weight: 700;
 }
 .vcSpecials-price span {
-    font-size: 50px;
+  font-size: 50px;
 }
 .vcSpecials-cat {
-    text-transform: uppercase;
-    color: #1426de;
-    font-size: 20px;
-    padding: 5px 0px 10px 0px;
+  text-transform: uppercase;
+  color: #1426de;
+  font-size: 20px;
+  padding: 5px 0px 10px 0px;
 }
 .vcSomething-section {
-    width: 100%;
-    text-align: center;
-    position: relative;
-    padding: 20px 20px 50px 20px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  padding: 20px 20px 50px 20px;
 }
 .vcSomething-section h2 {
-    display: block;
-    font-size: 90px;
-    font-weight: 700;
-    letter-spacing: -5px;
+  display: block;
+  font-size: 90px;
+  font-weight: 700;
+  letter-spacing: -5px;
 }
 .vcSomething-section p {
-    max-width: 700px;
-    width: 100%;
-    font-weight: 500;
-    font-size: 20px;
+  max-width: 700px;
+  width: 100%;
+  font-weight: 500;
+  font-size: 20px;
 }
 .vcSomething-section p a {
-    font-weight: bold;
+  font-weight: bold;
 }
 .vcSpecials-img {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 /** Mobile Styles **/
 @media screen and (min-width: 1368px) {
@@ -282,122 +279,122 @@
 @media screen and (max-width: 1367px) {
 }
 @media screen and (min-width: 991px) {
-    .vcSlide-one,
-    .vcSlide-two,
-    .vcSlide-three,
-    .vcSlide-four,
-    .vcSlide-five {
-        padding: 20px;
-    }
+  .vcSlide-one,
+  .vcSlide-two,
+  .vcSlide-three,
+  .vcSlide-four,
+  .vcSlide-five {
+    padding: 20px;
+  }
 }
 @media screen and (max-width: 991px) {
-    .vcSpecials-img img {
-        max-width: 250px;
-    }
-    .vcAbout-images img {
-        max-width: 300px;
-    }
-    .vcSomething-section p {
-        max-width: 90%;
-    }
-    .vcShop-box {
-        width: 50%;
-    }
-    .vcSlide-one,
-    .vcSlide-two,
-    .vcSlide-three,
-    .vcSlide-four,
-    .vcSlide-five {
-        padding: 5px;
-    }
-    .vcBrand-section p,
-    .vcBrand-section h3 {
-        font-size: 18px;
-    }
+  .vcSpecials-img img {
+    max-width: 250px;
+  }
+  .vcAbout-images img {
+    max-width: 300px;
+  }
+  .vcSomething-section p {
+    max-width: 90%;
+  }
+  .vcShop-box {
+    width: 50%;
+  }
+  .vcSlide-one,
+  .vcSlide-two,
+  .vcSlide-three,
+  .vcSlide-four,
+  .vcSlide-five {
+    padding: 5px;
+  }
+  .vcBrand-section p,
+  .vcBrand-section h3 {
+    font-size: 18px;
+  }
 }
 @media screen and (max-width: 767px) {
-    .vcBrand-slider {
-        height: 500px;
-    }
-    .vcBrand-text {
-        padding: 20px;
-    }
-    .vcBrand-section h3 {
-        text-align: center;
-    }
-    .vcBrand-text h2 {
-        font-size: 30px;
-        line-height: 30px;
-        text-align: center;
-    }
-    span.vcAbout-van,
-    span.vcAbout-ind {
-        font-size: 55px;
-        line-height: 55px;
-    }
-    .vcAbout-excerpt {
-        background: #fff;
+  .vcBrand-slider {
+    height: 500px;
+  }
+  .vcBrand-text {
+    padding: 20px;
+  }
+  .vcBrand-section h3 {
+    text-align: center;
+  }
+  .vcBrand-text h2 {
+    font-size: 30px;
+    line-height: 30px;
+    text-align: center;
+  }
+  span.vcAbout-van,
+  span.vcAbout-ind {
+    font-size: 55px;
+    line-height: 55px;
+  }
+  .vcAbout-excerpt {
+    background: #fff;
 
-        opacity: 7;
-    }
-    .vcShop-box {
-        width: 100%;
-    }
-    .vcSpecials-wrap {
-        align-items: center;
-    }
-    .vcSpecials-info {
-        margin-bottom: 50px;
-    }
-    .vcSpecials-img img {
-        max-width: 200px;
-        width: 100%;
-    }
-    .vcAbout-images img {
-        max-width: 200px;
-        width: 100%;
-    }
-    .vcAbout-images {
-        margin: 20px 0 80px 0;
-    }
-    .vcAbout-excerpt {
-        font-size: 20px;
-        line-height: 30px;
-        max-width: 90%;
-        padding: 70px 20px 20px 20px;
-        text-align: center;
-    }
+    opacity: 7;
+  }
+  .vcShop-box {
+    width: 100%;
+  }
+  .vcSpecials-wrap {
+    align-items: center;
+  }
+  .vcSpecials-info {
+    margin-bottom: 50px;
+  }
+  .vcSpecials-img img {
+    max-width: 200px;
+    width: 100%;
+  }
+  .vcAbout-images img {
+    max-width: 200px;
+    width: 100%;
+  }
+  .vcAbout-images {
+    margin: 20px 0 80px 0;
+  }
+  .vcAbout-excerpt {
+    font-size: 20px;
+    line-height: 30px;
+    max-width: 90%;
+    padding: 70px 20px 20px 20px;
+    text-align: center;
+  }
 }
 @media screen and (min-width: 479px) {
 }
 @media screen and (max-width: 479px) {
-    .vcBrand-slider {
-        height: 300px;
-    }
-    .vcShop-bg {
-        padding: 0px 0px 200px 0px;
-    }
-    .vcShop-btns button {
-        font-size: 20px;
-    }
-    .vcAbout-van {
-        font-size: 60px;
-        line-height: 60px;
-    }
-    .vcAbout-ind {
-        font-size: 57px;
-        line-height: 57px;
-    }
-    .vcSpecials-section {
-        height: auto;
-        padding-bottom: 100px;
-    }
-    .vcSpecials-section h2 {
-        font-size: 60px;
-        letter-spacing: -1px;
-    }
-    .vcSomething-section h2 {
-        font-size: 50px;
-        letter-spacing: -3px;
-    }
+  .vcBrand-slider {
+    height: 300px;
+  }
+  .vcShop-bg {
+    padding: 0px 0px 200px 0px;
+  }
+  .vcShop-btns button {
+    font-size: 20px;
+  }
+  .vcAbout-van {
+    font-size: 60px;
+    line-height: 60px;
+  }
+  .vcAbout-ind {
+    font-size: 57px;
+    line-height: 57px;
+  }
+  .vcSpecials-section {
+    height: auto;
+    padding-bottom: 100px;
+  }
+  .vcSpecials-section h2 {
+    font-size: 60px;
+    letter-spacing: -1px;
+  }
+  .vcSomething-section h2 {
+    font-size: 50px;
+    letter-spacing: -3px;
+  }
 }

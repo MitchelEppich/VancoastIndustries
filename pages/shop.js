@@ -9,7 +9,7 @@ import Layout from "../HOC/Layout";
 import {
   Filters,
   Heading,
-  GeneralSeeds,
+  GeneralStrains,
   BrandBoards
 } from "../components/shop";
 
@@ -41,8 +41,11 @@ class Index extends Component {
         <Heading {...this.props} />
 
         <div className="vcWholesale-page">
-          <Filters path={Router.asPath} {...this.props} />
-          <GeneralSeeds {...this.props} />
+          <Filters
+            path={typeof document !== "undefined" ? Router.asPath : ""}
+            {...this.props}
+          />
+          <GeneralStrains {...this.props} />
         </div>
 
         <div className="vcWholesale-content">
