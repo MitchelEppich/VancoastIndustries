@@ -4,17 +4,19 @@ import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 
 const actionTypes = {
-  TOGGLE_FILTERS: "TOGGLE_FILTERS",
+  TOGGLE_FILTER_VISIBILITY: "TOGGLE_FILTER_VISIBILITY",
   SET_BRAND_INDEX: "SET_BRAND_INDEX",
   TOGGLE_MOBILE_MENU: "TOGGLE_MOBILE_MENU",
-  SET_STRAINS: "SET_STRAINS"
+  SET_STRAINS: "SET_STRAINS",
+  TOGGLE_FILTER: "TOGGLE_FILTER",
+  PURGE_ACTIVE_FILTERS: "PURGE_ACTIVE_FILTERS"
 };
 
 const getActions = uri => {
   const objects = {
-    toggleFilters: isFilterVisible => {
+    toggleFilterVisibility: isFilterVisible => {
       return {
-        type: actionTypes.TOGGLE_FILTERS,
+        type: actionTypes.TOGGLE_FILTER_VISIBILITY,
         isFilterVisible: isFilterVisible
       };
     },
@@ -34,6 +36,23 @@ const getActions = uri => {
       return {
         type: actionTypes.SET_STRAINS,
         strains: strains
+      };
+    },
+    toggleFilter: options => {
+      let activeFilters = options.activeFilters;
+      if (activeFilters.includes(options.newFilter)) {
+        activeFilters.splice(activeFilters.indexOf(options.newFilter), 1);
+      } else {
+        activeFilters.push(options.newFilter);
+      }
+      return {
+        type: actionTypes.TOGGLE_FILTER,
+        activeFilters: activeFilters
+      };
+    },
+    purgeActiveFilters: () => {
+      return {
+        type: actionTypes.PURGE_ACTIVE_FILTERS
       };
     }
   };

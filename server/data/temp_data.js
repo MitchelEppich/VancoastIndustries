@@ -1,4 +1,6 @@
-module.exports = [
+import { inferStrainData } from "../../store/utilities/strain";
+
+let strains = [
   {
     company: ["sunwest genetics"],
     price: [-1, 100, 200],
@@ -253,7 +255,7 @@ module.exports = [
     pCbd: [0.1, 0.9],
     pCbn: [0.3, 4.2],
     country: [2, 3],
-    name: "Blue Berry",
+    name: "Blue Berry Feminized Cannabis Seeds",
     description:
       "This mixed pack of autoflowering feminized seeds is perfect for the indecisive grower. Not sure what autoflowering strain is right for you? Why not try them all? We’ve included all of our nine autoflowering strains all in one convenient mixed pack of 10 or 25 seeds. Autoflowers are great for novice growers because they are low maintenance and quick to harvest. Now you can try them all, indoor or out. The height of the plants will vary from Dwarf 18 inches to around 3ft or slightly taller. These strains all finish around the same time 7-8 weeks, so it’s great to grow the mix together or a few at a time. The levels of THC and CBD will cover the spectrum, from low to moderate to high. The resultant effects will vary but is mostly mellow indica. It’s the perfect opportunity for you to try all of Crop King Seeds autoflowering feminized strains in one order. We hope you enjoy watching your garden grow.",
     genetic: 5,
@@ -264,7 +266,7 @@ module.exports = [
     type: 1,
     environment: 0,
     sotiId: "AFM",
-    sttId: "54",
+    sttId: 54,
     releaseDate: "2018-06-01T07:00:00.000Z",
     isFeatured: false,
     packagePath: "../static/img/products/sonoma/so-blueberry.jpg"
@@ -280,7 +282,7 @@ module.exports = [
     pCbd: [0.1, 0.9],
     pCbn: [0.3, 4.2],
     country: [2, 3],
-    name: "Bruce Banner",
+    name: "Bruce Banner Feminized Cannabis Seeds",
     description:
       "This mixed pack of autoflowering feminized seeds is perfect for the indecisive grower. Not sure what autoflowering strain is right for you? Why not try them all? We’ve included all of our nine autoflowering strains all in one convenient mixed pack of 10 or 25 seeds. Autoflowers are great for novice growers because they are low maintenance and quick to harvest. Now you can try them all, indoor or out. The height of the plants will vary from Dwarf 18 inches to around 3ft or slightly taller. These strains all finish around the same time 7-8 weeks, so it’s great to grow the mix together or a few at a time. The levels of THC and CBD will cover the spectrum, from low to moderate to high. The resultant effects will vary but is mostly mellow indica. It’s the perfect opportunity for you to try all of Crop King Seeds autoflowering feminized strains in one order. We hope you enjoy watching your garden grow.",
     genetic: 5,
@@ -291,7 +293,7 @@ module.exports = [
     type: 1,
     environment: 0,
     sotiId: "AFM",
-    sttId: "54",
+    sttId: 54,
     releaseDate: "2018-06-01T07:00:00.000Z",
     isFeatured: false,
     packagePath: "../static/img/products/sonoma/so-bruce-banner.jpg"
@@ -307,7 +309,7 @@ module.exports = [
     pCbd: [0.1, 0.9],
     pCbn: [0.3, 4.2],
     country: [2, 3],
-    name: "Chocolope",
+    name: "Chocolope Feminized Cannabis Seeds",
     description:
       "This mixed pack of autoflowering feminized seeds is perfect for the indecisive grower. Not sure what autoflowering strain is right for you? Why not try them all? We’ve included all of our nine autoflowering strains all in one convenient mixed pack of 10 or 25 seeds. Autoflowers are great for novice growers because they are low maintenance and quick to harvest. Now you can try them all, indoor or out. The height of the plants will vary from Dwarf 18 inches to around 3ft or slightly taller. These strains all finish around the same time 7-8 weeks, so it’s great to grow the mix together or a few at a time. The levels of THC and CBD will cover the spectrum, from low to moderate to high. The resultant effects will vary but is mostly mellow indica. It’s the perfect opportunity for you to try all of Crop King Seeds autoflowering feminized strains in one order. We hope you enjoy watching your garden grow.",
     genetic: 5,
@@ -318,7 +320,7 @@ module.exports = [
     type: 1,
     environment: 0,
     sotiId: "AFM",
-    sttId: "54",
+    sttId: 54,
     releaseDate: "2018-06-01T07:00:00.000Z",
     isFeatured: false,
     packagePath: "../static/img/products/sonoma/so-chocolope.jpg"
@@ -334,7 +336,7 @@ module.exports = [
     pCbd: [0.1, 0.9],
     pCbn: [0.3, 4.2],
     country: [2, 3],
-    name: "Juicy Fruit",
+    name: "Juicy Fruit Feminized Cannabis Seeds",
     description:
       "This mixed pack of autoflowering feminized seeds is perfect for the indecisive grower. Not sure what autoflowering strain is right for you? Why not try them all? We’ve included all of our nine autoflowering strains all in one convenient mixed pack of 10 or 25 seeds. Autoflowers are great for novice growers because they are low maintenance and quick to harvest. Now you can try them all, indoor or out. The height of the plants will vary from Dwarf 18 inches to around 3ft or slightly taller. These strains all finish around the same time 7-8 weeks, so it’s great to grow the mix together or a few at a time. The levels of THC and CBD will cover the spectrum, from low to moderate to high. The resultant effects will vary but is mostly mellow indica. It’s the perfect opportunity for you to try all of Crop King Seeds autoflowering feminized strains in one order. We hope you enjoy watching your garden grow.",
     genetic: 5,
@@ -345,7 +347,7 @@ module.exports = [
     type: 1,
     environment: 0,
     sotiId: "AFM",
-    sttId: "54",
+    sttId: 54,
     releaseDate: "2018-06-01T07:00:00.000Z",
     isFeatured: false,
     packagePath: "../static/img/products/sonoma/so-juicy-fruit.jpg"
@@ -361,7 +363,7 @@ module.exports = [
     pCbd: [0.1, 0.9],
     pCbn: [0.3, 4.2],
     country: [2, 3],
-    name: "Strawberry Cough",
+    name: "Strawberry Cough Autoflower Cannabis Seeds",
     description:
       "This mixed pack of autoflowering feminized seeds is perfect for the indecisive grower. Not sure what autoflowering strain is right for you? Why not try them all? We’ve included all of our nine autoflowering strains all in one convenient mixed pack of 10 or 25 seeds. Autoflowers are great for novice growers because they are low maintenance and quick to harvest. Now you can try them all, indoor or out. The height of the plants will vary from Dwarf 18 inches to around 3ft or slightly taller. These strains all finish around the same time 7-8 weeks, so it’s great to grow the mix together or a few at a time. The levels of THC and CBD will cover the spectrum, from low to moderate to high. The resultant effects will vary but is mostly mellow indica. It’s the perfect opportunity for you to try all of Crop King Seeds autoflowering feminized strains in one order. We hope you enjoy watching your garden grow.",
     genetic: 5,
@@ -388,7 +390,7 @@ module.exports = [
     pCbd: [0.1, 0.9],
     pCbn: [0.3, 4.2],
     country: [2, 3],
-    name: "Black Indica",
+    name: "Black Indica Feminized Cannabis Seeds",
     description:
       "This mixed pack of autoflowering feminized seeds is perfect for the indecisive grower. Not sure what autoflowering strain is right for you? Why not try them all? We’ve included all of our nine autoflowering strains all in one convenient mixed pack of 10 or 25 seeds. Autoflowers are great for novice growers because they are low maintenance and quick to harvest. Now you can try them all, indoor or out. The height of the plants will vary from Dwarf 18 inches to around 3ft or slightly taller. These strains all finish around the same time 7-8 weeks, so it’s great to grow the mix together or a few at a time. The levels of THC and CBD will cover the spectrum, from low to moderate to high. The resultant effects will vary but is mostly mellow indica. It’s the perfect opportunity for you to try all of Crop King Seeds autoflowering feminized strains in one order. We hope you enjoy watching your garden grow.",
     genetic: 5,
@@ -399,7 +401,7 @@ module.exports = [
     type: 1,
     environment: 0,
     sotiId: "AFM",
-    sttId: "54",
+    sttId: 54,
     releaseDate: "2018-06-01T07:00:00.000Z",
     isFeatured: false,
     packagePath: "../static/img/products/cks/cks-black-indica.png"
@@ -415,7 +417,7 @@ module.exports = [
     pCbd: [0.1, 0.9],
     pCbn: [0.3, 4.2],
     country: [2, 3],
-    name: "Cali OG Kush",
+    name: "Cali OG Kush Feminized Cannabis Seeds",
     description:
       "This mixed pack of autoflowering feminized seeds is perfect for the indecisive grower. Not sure what autoflowering strain is right for you? Why not try them all? We’ve included all of our nine autoflowering strains all in one convenient mixed pack of 10 or 25 seeds. Autoflowers are great for novice growers because they are low maintenance and quick to harvest. Now you can try them all, indoor or out. The height of the plants will vary from Dwarf 18 inches to around 3ft or slightly taller. These strains all finish around the same time 7-8 weeks, so it’s great to grow the mix together or a few at a time. The levels of THC and CBD will cover the spectrum, from low to moderate to high. The resultant effects will vary but is mostly mellow indica. It’s the perfect opportunity for you to try all of Crop King Seeds autoflowering feminized strains in one order. We hope you enjoy watching your garden grow.",
     genetic: 5,
@@ -442,7 +444,7 @@ module.exports = [
     pCbd: [0.1, 0.9],
     pCbn: [0.3, 4.2],
     country: [2, 3],
-    name: "Early Miss",
+    name: "Early Miss Feminized Cannabis Seeds",
     description:
       "This mixed pack of autoflowering feminized seeds is perfect for the indecisive grower. Not sure what autoflowering strain is right for you? Why not try them all? We’ve included all of our nine autoflowering strains all in one convenient mixed pack of 10 or 25 seeds. Autoflowers are great for novice growers because they are low maintenance and quick to harvest. Now you can try them all, indoor or out. The height of the plants will vary from Dwarf 18 inches to around 3ft or slightly taller. These strains all finish around the same time 7-8 weeks, so it’s great to grow the mix together or a few at a time. The levels of THC and CBD will cover the spectrum, from low to moderate to high. The resultant effects will vary but is mostly mellow indica. It’s the perfect opportunity for you to try all of Crop King Seeds autoflowering feminized strains in one order. We hope you enjoy watching your garden grow.",
     genetic: 5,
@@ -453,7 +455,7 @@ module.exports = [
     type: 1,
     environment: 0,
     sotiId: "AFM",
-    sttId: "54",
+    sttId: 54,
     releaseDate: "2018-06-01T07:00:00.000Z",
     isFeatured: false,
     packagePath: "../static/img/products/cks/cks-early-miss.png"
@@ -469,7 +471,7 @@ module.exports = [
     pCbd: [0.1, 0.9],
     pCbn: [0.3, 4.2],
     country: [2, 3],
-    name: "White Banner",
+    name: "White Banner Feminized Cannabis Seeds",
     description:
       "This mixed pack of autoflowering feminized seeds is perfect for the indecisive grower. Not sure what autoflowering strain is right for you? Why not try them all? We’ve included all of our nine autoflowering strains all in one convenient mixed pack of 10 or 25 seeds. Autoflowers are great for novice growers because they are low maintenance and quick to harvest. Now you can try them all, indoor or out. The height of the plants will vary from Dwarf 18 inches to around 3ft or slightly taller. These strains all finish around the same time 7-8 weeks, so it’s great to grow the mix together or a few at a time. The levels of THC and CBD will cover the spectrum, from low to moderate to high. The resultant effects will vary but is mostly mellow indica. It’s the perfect opportunity for you to try all of Crop King Seeds autoflowering feminized strains in one order. We hope you enjoy watching your garden grow.",
     genetic: 5,
@@ -480,7 +482,7 @@ module.exports = [
     type: 1,
     environment: 0,
     sotiId: "AFM",
-    sttId: "54",
+    sttId: 54,
     releaseDate: "2018-06-01T07:00:00.000Z",
     isFeatured: false,
     packagePath: "../static/img/products/cks/cks-white-banner.png"
@@ -496,7 +498,7 @@ module.exports = [
     pCbd: [0.1, 0.9],
     pCbn: [0.3, 4.2],
     country: [2, 3],
-    name: "Train Wreck",
+    name: "Train Wreck Feminized Cannabis Seeds",
     description:
       "This mixed pack of autoflowering feminized seeds is perfect for the indecisive grower. Not sure what autoflowering strain is right for you? Why not try them all? We’ve included all of our nine autoflowering strains all in one convenient mixed pack of 10 or 25 seeds. Autoflowers are great for novice growers because they are low maintenance and quick to harvest. Now you can try them all, indoor or out. The height of the plants will vary from Dwarf 18 inches to around 3ft or slightly taller. These strains all finish around the same time 7-8 weeks, so it’s great to grow the mix together or a few at a time. The levels of THC and CBD will cover the spectrum, from low to moderate to high. The resultant effects will vary but is mostly mellow indica. It’s the perfect opportunity for you to try all of Crop King Seeds autoflowering feminized strains in one order. We hope you enjoy watching your garden grow.",
     genetic: 5,
@@ -507,7 +509,7 @@ module.exports = [
     type: 1,
     environment: 0,
     sotiId: "AFM",
-    sttId: "54",
+    sttId: 54,
     releaseDate: "2018-06-01T07:00:00.000Z",
     isFeatured: false,
     packagePath: "../static/img/products/cks/cks-train-wreck.png"
@@ -523,7 +525,7 @@ module.exports = [
     pCbd: [0.1, 0.9],
     pCbn: [0.3, 4.2],
     country: [2, 3],
-    name: "CB Dutch Treat",
+    name: "CB Dutch Treat Feminized Cannabis Seeds",
     description:
       "This mixed pack of autoflowering feminized seeds is perfect for the indecisive grower. Not sure what autoflowering strain is right for you? Why not try them all? We’ve included all of our nine autoflowering strains all in one convenient mixed pack of 10 or 25 seeds. Autoflowers are great for novice growers because they are low maintenance and quick to harvest. Now you can try them all, indoor or out. The height of the plants will vary from Dwarf 18 inches to around 3ft or slightly taller. These strains all finish around the same time 7-8 weeks, so it’s great to grow the mix together or a few at a time. The levels of THC and CBD will cover the spectrum, from low to moderate to high. The resultant effects will vary but is mostly mellow indica. It’s the perfect opportunity for you to try all of Crop King Seeds autoflowering feminized strains in one order. We hope you enjoy watching your garden grow.",
     genetic: 5,
@@ -534,7 +536,7 @@ module.exports = [
     type: 1,
     environment: 0,
     sotiId: "AFM",
-    sttId: "54",
+    sttId: 54,
     releaseDate: "2018-06-01T07:00:00.000Z",
     isFeatured: false,
     packagePath: "../static/img/products/cks/cks-cbdutch-treat.png"
@@ -550,7 +552,7 @@ module.exports = [
     pCbd: [0.1, 0.9],
     pCbn: [0.3, 4.2],
     country: [2, 3],
-    name: "Revolver",
+    name: "Revolver Feminized Cannabis Seeds",
     description:
       "This mixed pack of autoflowering feminized seeds is perfect for the indecisive grower. Not sure what autoflowering strain is right for you? Why not try them all? We’ve included all of our nine autoflowering strains all in one convenient mixed pack of 10 or 25 seeds. Autoflowers are great for novice growers because they are low maintenance and quick to harvest. Now you can try them all, indoor or out. The height of the plants will vary from Dwarf 18 inches to around 3ft or slightly taller. These strains all finish around the same time 7-8 weeks, so it’s great to grow the mix together or a few at a time. The levels of THC and CBD will cover the spectrum, from low to moderate to high. The resultant effects will vary but is mostly mellow indica. It’s the perfect opportunity for you to try all of Crop King Seeds autoflowering feminized strains in one order. We hope you enjoy watching your garden grow.",
     genetic: 5,
@@ -561,9 +563,73 @@ module.exports = [
     type: 1,
     environment: 0,
     sotiId: "AFM",
-    sttId: "54",
+    sttId: 54,
     releaseDate: "2018-06-01T07:00:00.000Z",
     isFeatured: false,
     packagePath: "../static/img/products/cks/cks-revolver.png"
   }
 ];
+
+let filters = {
+  Brands: ["Crop King", "Sonoma", "Sunwest"],
+  Type: ["Hybrid", "Indica", "Sativa"],
+  "Strain Kind": ["Autoflower", "Feminized", "CBD", "Regular", "Mix"]
+};
+
+let brands = [
+  {
+    name: "Wholesale cannabis seed shop",
+    motto: "Load up your box",
+    logo: "",
+    bgImageClass: "",
+    introOne:
+      "Welcome to the world's number one source for wholesale cannabis seeds. Vancoast Industries carries only the best seed brands ensuring you get the best quality cannabis genetics. From fresh, modern brands like sonoma seeds Seeds and global industry leaders like Crop King Seeds your bound to find dozens of strains that your customers have been looking for.",
+    introTwo:
+      "By partnering with Vancoast Indutries, you'll be able to buy wholesale cannabis seeds from a variety of brands all in the same order and ready to stock on your store shelves. With our simple re-ordering system and account dashboard, you'll have access to all the tools your need to always keep your store stocked."
+  },
+  {
+    name: "Crop King Seeds",
+    motto: "World class Cannabis Seeds",
+    logo: "../static/img/assets/cks-logo.png",
+    description:
+      "Crop King Seeds is one of the oldest cannabis seed suppliers and now has over 35 strains and counting. Check out their large selection of seeds all made available for wholesale sized orders through Vancoast Industries.",
+    bgImageClass: "cks",
+    boardClass: "vcBrand-board-cks",
+    introOne:
+      "Crop King Seeds is one of the original seed companies dating back nearly a decade. While helping make cannabis legal in Canada they help serve the cannabis community by providing seeds to the world.From mixed bags, to high THC strains, to heavy indicas and CBD strains Crop King Seeds carries strains of every genre.",
+    introTwo:
+      "Based in Vancouver British Columbia, Crop King Seeds has over 35+ strains and is always adding more.They continue to be a leader in supplying cannabis seeds in North America and across the globe.Crop King Seeds is a recognizable brand that customers love."
+  },
+  {
+    name: "Sunwest Genetics",
+    motto: "From Our Garden to Yours",
+    logo: "../static/img/assets/sunwest-logo.png",
+    description:
+      "Sunwest Genetics is a premium cannabis seed supplier with carefully selected genetics. Ranging from potent sativas to heavy indicas, Sunwest carries a variety of quality cannabis strains.",
+    bgImageClass: "sunwest",
+    boardClass: "vcBrand-board-sunwest",
+    introOne:
+      "Sunwest Genetics specializes in preserving carefully selected genetics of particular cannabis seed strains. All seeds they carry have been feminized to ensure you grow plants producing flower. Sunwest also carries a few autoflower strains which makes the growing process even easier.",
+    introTwo:
+      "While they dont carry CBD strains like Sonoma and Crop King, Sunwest does have high THC strains, heavy indicas and strong sativas."
+  },
+  {
+    name: "Sonoma Seeds",
+    motto: "Grow Organically",
+    logo: "../static/img/assets/sonoma-logo.png",
+    description:
+      "Sonoma Seeds is one of the newest cannabis seed companies to come out of the gate with some of the best packaging in the industry, hard to find cannabis strains and roots on the West Coast.",
+    bgImageClass: "sonoma",
+    boardClass: "vcBrand-board-sonoma",
+    introOne:
+      "Sonoma Seeds is a west coast cannabis seed company specializing in premium quality, hard to find seeds. Some of the most popular strains include OG Kush, Strawberry Cough, Super Silver Haze, Acapulco Gold and LA Confidential. Sonoma also carries CBD seeds. One in particular 'Cali Kush' is one of the most potent CBD strains on the market at a massive 20% CBD while retaining low levels of THC at 1%.",
+    introTwo:
+      "Other strains like OG Kush or Acapulco Gold are popular strains from decades ago that contain genetics from landrace strains that are very difficult to find in bud form let alone seeds. Be one of the first to offer the freshest designs and cannabis seeds in the industry."
+  }
+];
+let _new = [];
+for (let strain of strains) {
+  _new.push(inferStrainData(strain));
+}
+strains = _new;
+export { strains, brands, filters };

@@ -6,12 +6,14 @@ import Link from "next/link";
 import withData from "../lib/withData";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
-import Banner from "../components/home/banner";
-import OurBrands from "../components/home/ourBrands";
-import PreviewStrains from "../components/home/previewStrains";
-import About from "../components/home/about";
-import Specials from "../components/home/specials";
-import GetStarted from "../components/home/getStarted";
+import {
+  Banner,
+  OurBrands,
+  PreviewStrains,
+  About,
+  Specials,
+  GetStarted
+} from "../components/home";
 
 class Index extends Component {
   render() {

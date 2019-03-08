@@ -14,11 +14,12 @@ import "../scss/footer.scss";
 import "../scss/login.scss";
 import "../scss/pages.scss";
 import "../scss/single-product.scss";
-
+// lib
 import React, { Component } from "react";
 import { connect } from "react-redux";
+// custom
 import actions from "../store/actions";
-import Header from "../components/header";
+import Menu from "../components/menu";
 import Footer from "../components/footer";
 import shuffle from "../scripts/shuffle";
 
@@ -37,7 +38,7 @@ class Layout extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header {...this.props} />
+        <Menu {...this.props} />
         {this.props.shop.strains != null ? this.props.children : null}
         <Footer {...this.props} />
       </React.Fragment>
@@ -81,7 +82,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.toggleMobileMenu(isMobileMenuVisible)),
     toggleMenuDropdown: options =>
       dispatch(actions.toggleMenuDropdown(options)),
-    setStrains: strains => dispatch(actions.setStrains(strains))
+    setStrains: strains => dispatch(actions.setStrains(strains)),
+    toggleFilter: options => dispatch(actions.toggleFilter(options)),
+    purgeActiveFilters: () => dispatch(actions.purgeActiveFilters())
   };
 };
 

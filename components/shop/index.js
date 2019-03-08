@@ -1,5 +1,6 @@
-const index = props => {
-  return <div />;
-};
+import Heading from "./heading";
+import GeneralSeeds from "./generalSeeds";
+import Filters from "./filters";
+import BrandBoards from "./brandBoards";
 
-export default index;
+export { Heading, GeneralSeeds, Filters, BrandBoards };
