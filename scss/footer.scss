@@ -30,10 +30,10 @@ footer {
   margin: 0 auto;
   background-image: url("../static/img/page-bg/vcFooter-bg.jpg");
   background-size: cover;
-  background-position: right;
+  background-position: 0 -150px;
   padding: 100px 20px 50px 20px;
   color: #fff;
-  height: 900px;
+  height: 450px;
   position: relative;
 }
 .vcSubscribe-box h3 span {
@@ -52,8 +52,8 @@ span.vcSubscribe-van {
 }
 span.vcSubscribe-news {
   font-size: 40px;
-  letter-spacing: -2px;
-  line-height: 30px;
+  // letter-spacing: 0px;
+  // line-height: 35px;
   text-align: right;
 }
 input.vcNewsletter-input {
@@ -109,7 +109,7 @@ input.vcNewsletter-btn {
 }
 @media screen and (min-width: 479px) {
   .vcSubscribe-box {
-    padding-right: 10%;
+    padding-right: ;
   }
 }
 @media screen and (max-width: 479px) {
