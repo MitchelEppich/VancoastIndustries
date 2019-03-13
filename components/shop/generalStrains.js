@@ -4,7 +4,14 @@ import ProductThumbnail from "./productThumbnail";
 const generalStrains = props => {
   let strains = filterStrains(props);
   strains = strains.map((product, index) => {
-    return <ProductThumbnail key={index} product={product} {...props} />;
+    return (
+      <ProductThumbnail
+        key={index}
+        priceColor=""
+        product={product}
+        {...props}
+      />
+    );
   });
   return (
     <div className="vcWholesale-content">

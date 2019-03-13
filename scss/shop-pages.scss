@@ -79,6 +79,8 @@ p.wholesale-intro {
 .vcProduct-item {
   padding: 20px;
   position: relative;
+  width: 275px;
+  text-align: center;
 }
 .vcProduct-item a {
   color: #000;
@@ -120,7 +122,6 @@ p.wholesale-intro {
 .vcProduct-info h2 {
   font-size: 23px;
   text-transform: uppercase;
-  line-height: 60px;
   font-weight: 700;
 }
 .vcProduct-info h3.vcProduct-cat {

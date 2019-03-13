@@ -12,13 +12,15 @@ import fetch from "node-fetch";
 import Shop from "./shop";
 import Checkout from "./checkout";
 import Account from "./account";
+import Product from "./product";
 
 const uri = "http://localhost:3000/graphql";
 
 const imports = {
   ...Shop(uri),
   ...Checkout(uri),
-  ...Account(uri)
+  ...Account(uri),
+  ...Product(uri)
 };
 
 const actionTypes = {

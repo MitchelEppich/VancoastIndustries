@@ -1,10 +1,18 @@
 import Link from "next/link";
+import ProductThumbnail from "../shop/productThumbnail";
+
 const previewStrains = props => {
   let strains = props.shop.strains.map((strain, index) => {
     return (
-      <div key={index} className="vcShop-box flex justify-center items-center">
-        <img className="h-300" src={strain.packagePath} alt={strain.name} />
-      </div>
+      <ProductThumbnail
+        priceColor="black"
+        product={strain}
+        {...props}
+        key={index}
+      />
+      // <div key={index} className="vcShop-box flex justify-center items-center">
+      //   <img className="h-200" src={strain.packagePath} alt={strain.name} />
+      // </div>
     );
   });
 
@@ -15,7 +23,9 @@ const previewStrains = props => {
         <span className="vcShop-strains">Cannabis Strains</span>
       </h2>
       <div className="vcShop-bg">
-        <div className="vcShop-wrap flex justify-center">{strains.slice(0,10)}</div>
+        <div className="vcShop-wrap flex justify-center">
+          {strains.slice(0, 10)}
+        </div>
 
         <div className="vcShop-btns flex flex-row justify-center">
           <Link prefetch href="/shop">

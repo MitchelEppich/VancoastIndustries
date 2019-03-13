@@ -86,7 +86,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.toggleMenuDropdown(options)),
     setStrains: strains => dispatch(actions.setStrains(strains)),
     toggleFilter: options => dispatch(actions.toggleFilter(options)),
-    purgeActiveFilters: () => dispatch(actions.purgeActiveFilters())
+    purgeActiveFilters: () => dispatch(actions.purgeActiveFilters()),
+    setCurrentProduct: product => dispatch(actions.setCurrentProduct(product))
   };
 };
 

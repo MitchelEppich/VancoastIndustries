@@ -1,19 +1,46 @@
+import Link from "next/link";
+import Router from "next/router";
+
 const productThumbnail = props => {
   return (
     <div className="vcProduct-item p-2 flex">
-      <article>
+      <article className="w-full">
         <img
           className="h-200 mx-auto"
           src={props.product.packagePath}
           alt={props.product.name}
         />
         <header className="vcProduct-info flex flex-col">
-          <h2>
+          {/* <Link
+            href="/product"
+            as={
+              
+            }
+          > */}
+          <h2
+            onClick={() => {
+              props.setCurrentProduct({ product: props.product });
+              props.setBrandIndex(
+                props.shop.brands.findIndex((brand, index) => {
+                  return brand.name.toLowerCase() === props.product.company[0];
+                })
+              );
+              Router.push(
+                "/product",
+                "/product/" +
+                  props.product.name.toLowerCase().replace(/ /g, "-")
+              );
+            }}
+            className="my-4"
+          >
             <a href="">{props.product.name}</a>
           </h2>
+          {/* </Link> */}
           <div className="vcProduct-info flex flex-row justify-between">
             <h3 className="vcProduct-cat">{props.product.type}</h3>
-            <p className="vcProduct-price">from ${props.product.price[1]}</p>
+            <p className={"vcProduct-price " + props.priceColor}>
+              from ${props.product.price[1]}
+            </p>
           </div>
         </header>
       </article>
