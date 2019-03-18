@@ -7,7 +7,7 @@ import Layout from "../HOC/Layout";
 class Index extends Component {
   render() {
     return (
-      <Layout>
+      <Layout {...this.props}>
         <div>
           <div className="vcBrand-hero cks vcBg flex justify-center items-center">
             <img

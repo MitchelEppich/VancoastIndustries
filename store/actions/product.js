@@ -9,10 +9,10 @@ const actionTypes = {
 
 const getActions = uri => {
   const objects = {
-    setCurrentProduct: product => {
+    setCurrentProduct: newProduct => {
       return {
         type: actionTypes.SET_CURRENT_PRODUCT,
-        product: product
+        currentProduct: newProduct
       };
     }
   };

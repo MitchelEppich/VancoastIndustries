@@ -3,14 +3,9 @@ import ProductThumbnail from "./productThumbnail";
 
 const generalStrains = props => {
   let strains = filterStrains(props);
-  strains = strains.map((product, index) => {
+  strains = strains.map((strain, index) => {
     return (
-      <ProductThumbnail
-        key={index}
-        priceColor=""
-        product={product}
-        {...props}
-      />
+      <ProductThumbnail key={index} priceColor="" strain={strain} {...props} />
     );
   });
   return (

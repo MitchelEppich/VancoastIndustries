@@ -18,7 +18,7 @@ import {
 class Index extends Component {
   render() {
     return (
-      <Layout>
+      <Layout {...this.props}>
         <div>
           <Banner {...this.props} />
           <div className="vcWrap">

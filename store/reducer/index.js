@@ -17,7 +17,8 @@ import ProductReducer from "./product";
 const initialState = {
   showCart: false,
   menuDropdownVisible: null,
-  mediaSize: "xl"
+  mediaSize: "xl",
+  pageReady: false
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -28,6 +29,8 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, { menuDropdownVisible: action.value });
     case actionTypes.SET_MEDIA_SIZE:
       return updateObject(state, { mediaSize: action.input });
+    case actionTypes.TOGGLE_PAGE_READY:
+      return updateObject(state, { pageReady: action.pageReady });
     default:
       return state;
   }

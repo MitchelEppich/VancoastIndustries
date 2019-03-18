@@ -7,20 +7,19 @@ const filters = props => {
         disabled = false,
         readOnly = false;
       if (filter[0] == "Brands") {
-        if (path.includes("shop") && path.length > 6) {
-          if (path.includes(value.replace(/ /g, "").toLowerCase())) {
-            checked = true;
-            readOnly = true;
-          } else {
-            disabled = true;
-            readOnly = true;
-          }
-        }
+        // if (path.includes("shop") && path.length > 6) {
+        //   if (path.includes(value.replace(/ /g, "").toLowerCase())) {
+        //     checked = true;
+        //     readOnly = true;
+        //   } else {
+        //     disabled = true;
+        //     readOnly = true;
+        //   }
+        // }
       }
       if (props.shop.activeFilters.includes(value.toLowerCase())) {
         checked = true;
       }
-
       return (
         <label
           key={index}
@@ -35,12 +34,21 @@ const filters = props => {
             checked={checked}
             disabled={disabled}
             readOnly={readOnly}
-            onChange={() =>
+            onChange={() => {
+              let isBrandFilterIndex = [
+                "",
+                "Crop King",
+                "Sunwest",
+                "Sonoma"
+              ].indexOf(value);
+              if (isBrandFilterIndex) {
+                props.setBrandIndex(isBrandFilterIndex);
+              }
               props.toggleFilter({
                 activeFilters: props.shop.activeFilters,
                 newFilter: value.toLowerCase()
-              })
-            }
+              });
+            }}
           />
           <span className="checkmark" />
         </label>

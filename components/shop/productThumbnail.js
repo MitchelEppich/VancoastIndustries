@@ -7,8 +7,8 @@ const productThumbnail = props => {
       <article className="w-full">
         <img
           className="h-200 mx-auto"
-          src={props.product.packagePath}
-          alt={props.product.name}
+          src={props.strain.packagePath}
+          alt={props.strain.name}
         />
         <header className="vcProduct-info flex flex-col">
           {/* <Link
@@ -19,27 +19,27 @@ const productThumbnail = props => {
           > */}
           <h2
             onClick={() => {
-              props.setCurrentProduct({ product: props.product });
+              props.setCurrentProduct({ product: props.strain });
               props.setBrandIndex(
                 props.shop.brands.findIndex((brand, index) => {
-                  return brand.name.toLowerCase() === props.product.company[0];
+                  return brand.name.toLowerCase() === props.strain.company[0];
                 })
               );
               Router.push(
                 "/product",
-                "/product/" +
-                  props.product.name.toLowerCase().replace(/ /g, "-")
+                "/product#" + props.strain.name.toLowerCase().replace(/ /g, "")
               );
+              window.scrollTo(0, 0);
             }}
-            className="my-4"
+            className="my-4 cursor-pointer"
           >
-            <a href="">{props.product.name}</a>
+            {props.strain.name}
           </h2>
           {/* </Link> */}
           <div className="vcProduct-info flex flex-row justify-between">
-            <h3 className="vcProduct-cat">{props.product.type}</h3>
+            <h3 className="vcProduct-cat">{props.strain.type}</h3>
             <p className={"vcProduct-price " + props.priceColor}>
-              from ${props.product.price[1]}
+              from ${props.strain.price[1]}
             </p>
           </div>
         </header>

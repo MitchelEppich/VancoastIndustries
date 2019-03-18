@@ -12,8 +12,10 @@ let inferStrainData = strain => {
   let _difficulties = ["Easy", "Moderate", "Experienced", "Master"];
   let _environments = ["Indoors or Outdoors", "Indoors", "Outdoors"];
   let _types = ["Sativa", "Indica", "Hybrid"];
+  let _brands = ["crop king seeds", "sonoma seeds", "sunwest genetics"];
 
   let {
+    company,
     country,
     difficulty,
     genetic,
@@ -27,7 +29,7 @@ let inferStrainData = strain => {
     flowerTime
   } = strain;
 
-  // Infer Country
+  //  Country
   if (country != null)
     (() => {
       let str = "";
@@ -43,16 +45,16 @@ let inferStrainData = strain => {
       ret.country = str;
     })();
 
-  // Infer difficulty
+  //  Difficulty
   if (difficulty != null) {
     ret.difficulty = _difficulties[difficulty];
     ret.ndifficulty = difficulty;
   }
 
-  // Infer Genetics
+  //  Genetics
   if (genetic != null) ret.genetic = _genetics[genetic];
 
-  // Infer Names
+  //  Names
   if (name != null)
     (() => {
       let _name = name;
@@ -67,13 +69,13 @@ let inferStrainData = strain => {
       ret.name = _name.replace(/\s+/g, " ").trim();
     })();
 
-  // Infer types
+  //  Types
   if (type != null) ret.type = _types[type];
 
-  // Infer environment
+  //  Environment
   if (environment != null) ret.environment = _environments[environment];
 
-  // Infer cbd
+  //  cbd
   if (pcbd != null)
     (() => {
       let _max = pcbd[pcbd.length - 1];
@@ -81,7 +83,7 @@ let inferStrainData = strain => {
       else ret.cbd = "low";
     })();
 
-  // Infer thc
+  //  thc
   if (pthc != null)
     (() => {
       let _max = pthc[pthc.length - 1];
@@ -93,7 +95,7 @@ let inferStrainData = strain => {
   //   pcbn = pcbn.map(a => `${a.toFixed(2)}%`).join("-");
   //   pthc = pthc.map(a => `${a.toFixed(2)}%`).join("-");
 
-  // Infer yield
+  //  Yield
   if (_yield != null) {
     (() => {
       let arr = [];
@@ -131,6 +133,27 @@ let inferStrainData = strain => {
     })();
   }
 
+  // BrandLogoPath
+  if (company[0]) {
+    let brandLogoPath;
+    switch (_brands.indexOf(company[0])) {
+      case 0:
+        brandLogoPath = "../static/img/assets/cks-logo.png";
+        break;
+      case 1:
+        brandLogoPath = "../static/img/assets/sonoma-logo.png";
+        break;
+      case 2:
+        brandLogoPath = "../static/img/assets/sunwest-logo.png";
+        break;
+      default:
+        brandLogoPath = "../static/img/assets/vancoast-watermark.png";
+        break;
+    }
+    ret.brandLogoPath = brandLogoPath;
+  }
+  console.log(ret);
+  console.log(strain);
   // if (flowerTime != null) {
   //   let _upper = (flowerTime.includes(" to ")
   //     ? flowerTime.split(" to ")[1]

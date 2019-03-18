@@ -7,7 +7,7 @@ const brandLinks = props => {
         <Link
           prefetch
           href="/shop"
-          as={"/shop/" + brand.name.replace(/ /g, "").toLowerCase()}
+          as={"/shop#" + brand.name.replace(/ /g, "").toLowerCase()}
         >
           <a
             onClick={() => {
@@ -32,7 +32,7 @@ const brandLinks = props => {
       className="vcShop-brands"
       onClick={() => props.purgeActiveFilters()}
     >
-      <Link prefetch href="/shop" as={"/shop/cropkingseeds"}>
+      <Link prefetch href="/shop" as={"/shop#cropkingseeds"}>
         <a
           onClick={() => {
             props.setBrandIndex(1);

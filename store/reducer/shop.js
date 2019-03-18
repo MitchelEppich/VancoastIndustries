@@ -1,7 +1,6 @@
 import actionTypes from "../actions";
 import { updateObject } from "../utility";
 import { strains, brands, filters } from "../../server/data/temp_data";
-// import { inferStrainData } from "../utilities/strain";
 
 const initialState = {
   showFilters: false,

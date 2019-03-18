@@ -26,7 +26,8 @@ const imports = {
 const actionTypes = {
   TOGGLE_CART: "TOGGLE_CART",
   TOGGLE_MENU_DROPDOWN: "TOGGLE_MENU_DROPDOWN",
-  SET_MEDIA_SIZE: "SET_MEDIA_SIZE"
+  SET_MEDIA_SIZE: "SET_MEDIA_SIZE",
+  TOGGLE_PAGE_READY: "TOGGLE_PAGE_READY"
 };
 
 const actions = {
@@ -52,6 +53,12 @@ const actions = {
     return {
       type: actionTypes.SET_MEDIA_SIZE,
       input: input.mediaSize
+    };
+  },
+  togglePageReady: isPageReady => {
+    return {
+      type: actionTypes.TOGGLE_PAGE_READY,
+      pageReady: isPageReady
     };
   }
 };

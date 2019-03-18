@@ -1,7 +1,6 @@
 //lib
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Router from "next/router";
 //custom
 import withData from "../lib/withData";
 import actions from "../store/actions";
@@ -16,7 +15,7 @@ import {
 class Index extends Component {
   render() {
     return (
-      <Layout>
+      <Layout {...this.props}>
         <div
           className={
             this.props.shop.activeBrandIndex == 0
@@ -41,10 +40,7 @@ class Index extends Component {
         <Heading {...this.props} />
 
         <div className="vcWholesale-page">
-          <Filters
-            path={typeof document !== "undefined" ? Router.asPath : ""}
-            {...this.props}
-          />
+          <Filters path={this.props.router} {...this.props} />
           <GeneralStrains {...this.props} />
         </div>
 
@@ -63,6 +59,7 @@ const mapDispatchToProps = dispatch => {
     toggleFilterVisibility: isFilterVisible =>
       dispatch(actions.toggleFilterVisibility(isFilterVisible)),
     setBrandIndex: index => dispatch(actions.setBrandIndex(index)),
+    setCurrentProduct: product => dispatch(actions.setCurrentProduct(product)),
     toggleFilter: options => dispatch(actions.toggleFilter(options))
   };
 };
