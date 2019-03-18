@@ -100,7 +100,7 @@ class Layout extends Component {
       let currentProduct = this.props.shop.strains.filter((strain, index) => {
         return strain.name.toLowerCase().replace(/ /g, "") === productName;
       });
-      this.props.setCurrentProduct(currentProduct[0]);
+      this.props.setCurrentProduct({ newProduct: currentProduct[0] });
       indexOfBrand = brands.indexOf(
         currentProduct[0].company[0].toLowerCase().replace(/ /g, "")
       );
@@ -114,6 +114,7 @@ const mapDispatchToProps = dispatch => {
     setMediaSize: input => dispatch(actions.setMediaSize(input)),
     toggleCart: isCartVisible => dispatch(actions.toggleCart(isCartVisible)),
     toggleSearchBar: input => dispatch(actions.toggleSearchBar(input)),
+    setSearchValue: value => dispatch(actions.setSearchValue(value)),
     setBrandIndex: index => dispatch(actions.setBrandIndex(index)),
     toggleMobileMenu: isMobileMenuVisible =>
       dispatch(actions.toggleMobileMenu(isMobileMenuVisible)),
@@ -122,7 +123,7 @@ const mapDispatchToProps = dispatch => {
     setStrains: strains => dispatch(actions.setStrains(strains)),
     toggleFilter: options => dispatch(actions.toggleFilter(options)),
     purgeActiveFilters: () => dispatch(actions.purgeActiveFilters()),
-    setCurrentProduct: product => dispatch(actions.setCurrentProduct(product)),
+    setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
     togglePageReady: isPageReady =>
       dispatch(actions.togglePageReady(isPageReady))
   };

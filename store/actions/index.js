@@ -28,7 +28,8 @@ const actionTypes = {
   TOGGLE_MENU_DROPDOWN: "TOGGLE_MENU_DROPDOWN",
   SET_MEDIA_SIZE: "SET_MEDIA_SIZE",
   TOGGLE_PAGE_READY: "TOGGLE_PAGE_READY",
-  TOGGLE_SEARCH_BAR: "TOGGLE_SEARCH_BAR"
+  TOGGLE_SEARCH_BAR: "TOGGLE_SEARCH_BAR",
+  SET_SEARCH_VALUE: "SET_SEARCH_VALUE"
 };
 
 const actions = {
@@ -66,6 +67,12 @@ const actions = {
     return {
       type: actionTypes.TOGGLE_PAGE_READY,
       pageReady: isPageReady
+    };
+  },
+  setSearchValue: value => {
+    return {
+      type: actionTypes.SET_SEARCH_VALUE,
+      searchValue: value
     };
   }
 };

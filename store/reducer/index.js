@@ -19,7 +19,8 @@ const initialState = {
   menuDropdownVisible: null,
   mediaSize: "xl",
   pageReady: false,
-  showSearchBar: false
+  showSearchBar: false,
+  searchValue: ""
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -28,6 +29,8 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, { showCart: action.isCartVisible });
     case actionTypes.TOGGLE_SEARCH_BAR:
       return updateObject(state, { showSearchBar: !state.showSearchBar });
+    case actionTypes.SET_SEARCH_VALUE:
+      return updateObject(state, { searchValue: action.searchValue });
     case actionTypes.TOGGLE_MENU_DROPDOWN:
       return updateObject(state, { menuDropdownVisible: action.value });
     case actionTypes.SET_MEDIA_SIZE:

@@ -72,6 +72,12 @@ app
     server.get("*", (req, res) => {
       return handle(req, res);
     });
+    // server.get("/product/:_id", (req, res) => {
+    //   app.render(req, res, "/product", {});
+    // });
+    // server.get("/shop/:_id", (req, res) => {
+    //   app.render(req, res, "/shop", {});
+    // });
 
     const ws = createServer(server);
     ws.listen(port, url, () => {

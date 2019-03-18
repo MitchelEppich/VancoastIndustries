@@ -116,17 +116,17 @@ header.vcSingle-intro h1 {
   display: block;
 }
 input[type="radio"] + label {
-  border: 5px solid #fff;
+  // border: 5px solid #fff;
   border-radius: 3px;
   padding: 20px 10px;
   font-weight: bold;
   text-align: center;
 }
 .vcSingle-choices input[type="radio"] + label {
-  border: 5px solid #eee;
+  // border: 5px solid #eee;
 }
 input[type="radio"]:checked + label {
-  border: 5px solid #1426de;
+  border: 4px solid #1426de;
 }
 .vcSingle-choices {
   padding: 20px 10px;

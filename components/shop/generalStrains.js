@@ -3,6 +3,13 @@ import ProductThumbnail from "./productThumbnail";
 
 const generalStrains = props => {
   let strains = filterStrains(props);
+  if (props.misc.searchValue.length > 1) {
+    strains = strains.filter((strain, index) => {
+      return JSON.stringify(strain)
+        .toLowerCase()
+        .includes(props.misc.searchValue.toLowerCase());
+    });
+  }
   strains = strains.map((strain, index) => {
     return (
       <ProductThumbnail key={index} priceColor="" strain={strain} {...props} />

@@ -3,7 +3,17 @@ import Router from "next/router";
 
 const productThumbnail = props => {
   return (
-    <div className="vcProduct-item p-2 flex">
+    <div
+      onMouseEnter={() => {
+        props.setCurrentProduct({ newProduct: props.strain });
+        props.setBrandIndex(
+          props.shop.brands.findIndex((brand, index) => {
+            return brand.name.toLowerCase() === props.strain.company[0];
+          })
+        );
+      }}
+      className="vcProduct-item p-2 flex"
+    >
       <article className="w-full">
         <img
           className="h-200 mx-auto"
@@ -19,12 +29,6 @@ const productThumbnail = props => {
           > */}
           <h2
             onClick={() => {
-              props.setCurrentProduct({ product: props.strain });
-              props.setBrandIndex(
-                props.shop.brands.findIndex((brand, index) => {
-                  return brand.name.toLowerCase() === props.strain.company[0];
-                })
-              );
               Router.push(
                 "/product",
                 "/product#" + props.strain.name.toLowerCase().replace(/ /g, "")

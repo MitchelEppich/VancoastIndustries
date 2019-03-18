@@ -23,7 +23,6 @@ class Index extends Component {
               .bgImageClass
           }
         />
-        {console.log(this.props.shop.brands[this.props.shop.activeBrandIndex])}
         <article>
           <div className="vcSingle vcWholesale-content flex flex-col lg:flex-row justify-center items-center">
             <BrandLogo
@@ -42,10 +41,7 @@ class Index extends Component {
                 {...this.props}
               />
 
-              <SeedSelect
-                currentProduct={this.props.product.currentProduct}
-                {...this.props}
-              />
+              <SeedSelect {...this.props} />
               <CartOptions
                 currentProduct={this.props.product.currentProduct}
                 {...this.props}
@@ -57,7 +53,7 @@ class Index extends Component {
         <div className="vcWholesale-page">
           <SimilarSeeds
             currentProduct={this.props.product.currentProduct}
-            {...this.prop}
+            {...this.props}
           />
         </div>
       </Layout>
@@ -66,7 +62,12 @@ class Index extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
+    modifyPotentialQuantity: input =>
+      dispatch(actions.modifyPotentialQuantity(input)),
+    modifyCart: input => dispatch(actions.modifyCart(input))
+  };
 };
 
 export default connect(

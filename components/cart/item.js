@@ -1,7 +1,5 @@
 const item = props => {
   let item = props.item;
-  let types = ["Sativa", "Indica", "Hybrid"];
-
   return (
     <div className="vcItem vcItem-one flex flex-row">
       <div className="vcItemDiv">
@@ -14,7 +12,7 @@ const item = props => {
 
       <div className="vcItem-info flex flex-col justify-around items-start">
         <h3>
-          {item.product.name} ({types[item.product.type]})
+          {item.product.name} ({item.product.type})
         </h3>
 
         <div className="vcItem-brand">

@@ -46,6 +46,7 @@ let colors = {
   "semi-transparent": "rgba(250, 250, 250, 0.2)",
   "almost-white": "rgba(255, 255, 255, 0.7)",
   "almost-black": "rgba(0,0,0,0.9)",
+  offWhite: "#eee",
 
   black: "#000",
   "grey-darkest": "#3d4852",
@@ -101,7 +102,7 @@ let colors = {
   "blue-darker": "#1c3d5a",
   "blue-dark": "#2779bd",
   "blue-new": "#1426de",
-  blue: "#3490dc",
+  blue: "#1426de",
   "blue-light": "#6cb2eb",
   "blue-lighter": "#bcdefa",
   "blue-lightest": "#eff8ff",
