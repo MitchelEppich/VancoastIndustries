@@ -152,8 +152,6 @@ let inferStrainData = strain => {
     }
     ret.brandLogoPath = brandLogoPath;
   }
-  console.log(ret);
-  console.log(strain);
   // if (flowerTime != null) {
   //   let _upper = (flowerTime.includes(" to ")
   //     ? flowerTime.split(" to ")[1]
