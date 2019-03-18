@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const vancoastLogo = props => {
   return (
-    <div className="vcNavSection-one flex justify-center items-center">
+    <div className="vcNavSection-one flex justify-center items-center scale-item">
       <Link href="/">
         <a className="vcNav-logo">
           <img

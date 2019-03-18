@@ -20,6 +20,12 @@ const header = props => {
     };
   }
 
+  let searchBarStyle = {
+    transform: !props.misc.showSearchBar
+      ? "translateY(-250px)"
+      : "translateY(140px)"
+  };
+
   return (
     <div onMouseEnter={() => console.log(props)} className="vcNav-primary">
       <div className="vcNav-bg">
@@ -62,7 +68,13 @@ const header = props => {
               </nav>
             </div>
 
-            <div id="vancoastSearch" className="flex">
+            <div
+              onClick={() => {
+                props.toggleSearchBar();
+              }}
+              id="vancoastSearch"
+              className="flex cursor-pointer scale-item"
+            >
               <img
                 src="../static/img/assets/icons/vancoast-search.svg"
                 alt=""
@@ -73,7 +85,7 @@ const header = props => {
           <div className="vcNavSection-three flex justify-center items-center">
             <button className="vcNav-login">Login</button>
 
-            <div className="vcWelcome flex flex-col justify-center items-center">
+            <div className="vcWelcome flex flex-col justify-center items-center scale-item">
               <Link href="/account">
                 <a className="flex flex-col items-center justify-center">
                   <img
@@ -88,7 +100,7 @@ const header = props => {
 
             <div
               onClick={() => props.toggleCart(!props.misc.showCart)}
-              className="vcNav-cart"
+              className="vcNav-cart scale-item"
             >
               <img src="../static/img/assets/icons/box-icon.svg" alt="" />
               <span className="vcNav-cartCount">
@@ -98,8 +110,24 @@ const header = props => {
           </div>
         </div>
       </div>
-      <div id="vcSearch-wrap">
-        <input className="vcNav-search" type="text" placeholder="Search" />
+
+      <div
+        style={searchBarStyle}
+        id="vcSearch-wrap"
+        className="inline-flex w-full"
+      >
+        <div className="w-4/5">
+          <input
+            className="vcNav-search"
+            type="text"
+            placeholder="What are you looking for?"
+          />
+        </div>
+        <div className="w-1/5">
+          <div className="px-4 cursor-pointer hover:bg-grey p-3 bg-blue-new text-white rounded mx-4 text-center text-xl">
+            Search
+          </div>
+        </div>
       </div>
     </div>
   );

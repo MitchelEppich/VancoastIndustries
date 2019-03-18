@@ -13,9 +13,9 @@ const productThumbnail = props => {
         <header className="vcProduct-info flex flex-col">
           {/* <Link
             href="/product"
-            as={
-              
-            }
+            // as={
+
+            // }
           > */}
           <h2
             onClick={() => {

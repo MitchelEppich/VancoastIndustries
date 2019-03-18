@@ -23,7 +23,7 @@ class Index extends Component {
               .bgImageClass
           }
         />
-
+        {console.log(this.props.shop.brands[this.props.shop.activeBrandIndex])}
         <article>
           <div className="vcSingle vcWholesale-content flex flex-col lg:flex-row justify-center items-center">
             <BrandLogo

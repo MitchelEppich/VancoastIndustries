@@ -29,7 +29,8 @@
 
 .vcBrand-hero,
 .vcWholesale-hero {
-  height: 800px;
+  // height: 800px;
+  height: 600px;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -176,9 +177,9 @@ p.wholesale-intro {
   position: sticky;
   left: 0;
   top: 150px;
-  width: 349px;
+  width: 290px;
   z-index: 1;
-  transform: translateX(-254px);
+  transform: translateX(-215px);
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -189,9 +190,13 @@ p.wholesale-intro {
   transform: translateX(0px);
 }
 .vcFilter-list {
+  // background: #e2e2e2;
+  // padding: 20px 40px;
+  // position: absolute;
   background: #e2e2e2;
-  padding: 20px 40px;
+  padding: 15px 15px;
   position: absolute;
+  width: 215px;
 }
 .vcFilter-list h3 {
   font-size: 35px;
@@ -247,15 +252,26 @@ p.wholesale-intro {
   transform: rotate(45deg);
 }
 .vcFilters-tab {
+  // position: absolute;
+  // right: 0;
+  // background: #1426de;
+  // color: #fff;
+  // font-weight: 700;
+  // padding: 20px;
+  // font-size: 15px;
+  // text-transform: uppercase;
+  // height: 250px;
+  // border-top-right-radius: 15px;
+  // border-bottom-right-radius: 15px;
   position: absolute;
   right: 0;
   background: #1426de;
   color: #fff;
   font-weight: 700;
-  padding: 20px;
+  padding: 10px;
   font-size: 15px;
   text-transform: uppercase;
-  height: 250px;
+  height: 160px;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
