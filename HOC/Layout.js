@@ -79,6 +79,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setMediaSize: input => dispatch(actions.setMediaSize(input)),
     toggleCart: isCartVisible => dispatch(actions.toggleCart(isCartVisible)),
+    toggleSearchBar: input => dispatch(actions.toggleSearchBar(input)),
     setBrandIndex: index => dispatch(actions.setBrandIndex(index)),
     toggleMobileMenu: isMobileMenuVisible =>
       dispatch(actions.toggleMobileMenu(isMobileMenuVisible)),

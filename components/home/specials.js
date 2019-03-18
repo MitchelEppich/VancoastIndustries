@@ -6,7 +6,7 @@ const specials = props => {
       </h2>
 
       <div className="vcSpecials-wrap flex flex-col lg:flex-row justify-around items-center">
-        <div className="vcSpecials-product">
+        <div className="vcSpecials-product scale-item">
           <div className="vcSpecials-img">
             <a href="">
               <img
@@ -24,7 +24,7 @@ const specials = props => {
           </div>
         </div>
 
-        <div className="vcSpecials-product">
+        <div className="vcSpecials-product scale-item">
           <div className="vcSpecials-img">
             <a href="">
               <img
@@ -42,7 +42,7 @@ const specials = props => {
           </div>
         </div>
 
-        <div className="vcSpecials-product">
+        <div className="vcSpecials-product scale-item">
           <div className="vcSpecials-img">
             <a href="">
               <img

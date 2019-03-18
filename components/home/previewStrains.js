@@ -6,7 +6,7 @@ const previewStrains = props => {
     return (
       <ProductThumbnail
         priceColor="black"
-        product={strain}
+        strain={strain}
         {...props}
         key={index}
       />

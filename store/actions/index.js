@@ -26,6 +26,7 @@ const imports = {
 const actionTypes = {
   TOGGLE_CART: "TOGGLE_CART",
   TOGGLE_MENU_DROPDOWN: "TOGGLE_MENU_DROPDOWN",
+  TOGGLE_SEARCH_BAR: "TOGGLE_SEARCH_BAR",
   SET_MEDIA_SIZE: "SET_MEDIA_SIZE"
 };
 
@@ -34,6 +35,12 @@ const actions = {
     return {
       type: actionTypes.TOGGLE_CART,
       isCartVisible: isCartVisible
+    };
+  },
+  toggleSearchBar: input => {
+    return {
+      type: actionTypes.TOGGLE_SEARCH_BAR,
+      input: input
     };
   },
   toggleMenuDropdown: options => {

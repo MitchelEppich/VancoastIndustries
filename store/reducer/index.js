@@ -17,6 +17,7 @@ import ProductReducer from "./product";
 const initialState = {
   showCart: false,
   menuDropdownVisible: null,
+  showSearchBar: false,
   mediaSize: "xl"
 };
 
@@ -24,6 +25,8 @@ const indexReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.TOGGLE_CART:
       return updateObject(state, { showCart: action.isCartVisible });
+    case actionTypes.TOGGLE_SEARCH_BAR:
+      return updateObject(state, { showSearchBar: !state.showSearchBar });
     case actionTypes.TOGGLE_MENU_DROPDOWN:
       return updateObject(state, { menuDropdownVisible: action.value });
     case actionTypes.SET_MEDIA_SIZE:

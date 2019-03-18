@@ -37,7 +37,7 @@ body {
   background: #fff;
 }
 .vcWrap {
-  max-width: 1500px;
+  // max-width: 1500px;
   margin: 0 auto;
 }
 img {
@@ -68,6 +68,15 @@ a {
 a:hover {
   color: #283fe5;
 }
+.scale-item {
+  transform: scale(1);
+  transition: transform 0.4s ease-in-out;
+}
+.scale-item:hover {
+  transform: scale(1.09);
+  transition: transform 0.4s ease-in-out;
+}
+
 button,
 button.vcNewsletter-btn,
 input[type="submit"],
@@ -175,6 +184,11 @@ li.vcShop-brands a {
 .vcItem {
   padding-bottom: 40px;
 }
+.vcItemDiv {
+  min-width: 93px;
+  display: flex;
+  justify-content: center;
+}
 .vcItem img {
   max-height: 150px;
   -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.25));
@@ -246,13 +260,12 @@ ul li {
   max-width: 3000px;
   width: 100%;
   border-radius: 0px;
-  font-size: 35px;
+  font-size: 20px;
   letter-spacing: -0.5px;
   margin: 0 auto;
-  height: 300px;
+  height: 65px;
   -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.65));
   filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.65));
-  transform: translateY(-310px);
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -263,25 +276,26 @@ ul li {
   transform: translateY(0px);
 }
 input.vcNav-search {
-  position: absolute;
+  // position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   border-radius: 5px;
-  padding: 40px;
+  padding: 5px;
   letter-spacing: -0.5px;
-  width: 70%;
-  margin-bottom: 70px;
-  margin: 50px auto;
-  font-size: 30px;
+  width: 100%;
+  margin-bottom: 11px;
+  height: 47px;
+  /* margin: 10px auto; */
+  font-size: 21px;
   font-weight: 400;
   text-align: center;
   color: #333;
   background: #eee;
   border: 0;
+  box-shadow: inset 0 0 5px #ccc;
   -webkit-box-shadow: inset 0 0 5px #ccc;
   -moz-box-shadow: inset 0 0 5px #ccc;
-  box-shadow: inset 0 0 5px #ccc;
 }
 .vcNav-vLogo img {
   max-width: 60px;
@@ -349,6 +363,7 @@ img.vcNav-logo {
   line-height: 15px;
   display: block;
   position: relative;
+  margin-top: 8px;
 }
 .vcNav-cartCount {
   background: #1426de;
