@@ -12,7 +12,7 @@ const vancoastLogo = props => {
         </a>
       </Link>
       <Link href="/">
-        <a className="vcNav-vLogo">
+        <a className="vcNav-vLogo xl:hidden xxl:hidden">
           <img src="../static/img/assets/vancoast-v-logo.png" alt="" />
         </a>
       </Link>

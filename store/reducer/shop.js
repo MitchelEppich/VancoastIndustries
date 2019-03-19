@@ -7,7 +7,7 @@ const initialState = {
   brands: brands,
   strains: strains,
   activeBrandIndex: 0,
-  showMobileMenu: true,
+  showMobileMenu: false,
   filters: filters,
   activeFilters: []
 };

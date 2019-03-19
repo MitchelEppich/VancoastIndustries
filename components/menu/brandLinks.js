@@ -42,7 +42,8 @@ const brandLinks = props => {
           Brands
         </a>
       </Link>
-      {props.misc.menuDropdownVisible == "brands" ? (
+      {props.misc.menuDropdownVisible == "brands" ||
+      props.shop.showMobileMenu ? (
         <ul>{brandLinks.slice(1)}</ul>
       ) : null}
     </li>

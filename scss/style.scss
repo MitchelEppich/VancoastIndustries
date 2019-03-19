@@ -510,7 +510,7 @@ img.quick-view {
     width: 100%;
     padding: 50px 30px 150px 50px;
     margin-top: 150px;
-    background-image: url("../static/img/assets/vancoast-watermark.svg");
+    // background-image: url("../static/img/assets/vancoast-watermark.svg");
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: cover;
@@ -580,6 +580,14 @@ img.quick-view {
   .vcfooter-menu ul li {
     text-align: center;
     line-height: 50px;
+  }
+  .vcShop-cats ul,
+  .vcShop-brands ul {
+    transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
   }
 }
 @media screen and (max-width: 767px) {

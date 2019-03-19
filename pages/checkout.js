@@ -15,7 +15,7 @@ import {
 class Index extends Component {
   render() {
     let stepComponents = [
-      <Cart {...this.props} />,
+      <Cart page="cart" {...this.props} />,
       <Shipping {...this.props} />,
       <Billing {...this.props} />,
       <Payment {...this.props} />,

@@ -12,7 +12,9 @@ const header = props => {
         paddingTop: "15px"
       }
     : {
-        transform: "translateX(-500px) translateY(-10px)"
+        transform: "translateX(-500px) translateY(-10px)",
+        opacity: "0",
+        backgroundColor: "rgba(0,0,0,0)"
       };
   if (!["sm", "md", "lg"].includes(props.misc.mediaSize)) {
     showMobileMenu = {

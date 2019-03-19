@@ -42,7 +42,7 @@ const menuFilterLinks = props => {
           Shop
         </a>
       </Link>
-      {props.misc.menuDropdownVisible == "shop" ? (
+      {props.misc.menuDropdownVisible == "shop" || props.shop.showMobileMenu ? (
         <ul className="">{links}</ul>
       ) : null}
     </li>

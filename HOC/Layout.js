@@ -8,8 +8,8 @@ login form.*/
 import "../scss/shop-pages.scss";
 import "../scss/style.scss";
 import "../scss/home.scss";
-import "../scss/checkout.scss";
 import "../scss/account.scss";
+import "../scss/checkout.scss";
 import "../scss/footer.scss";
 import "../scss/login.scss";
 import "../scss/pages.scss";
@@ -40,6 +40,9 @@ class Layout extends Component {
   componentDidMount() {
     window.addEventListener("resize", () => {
       this.setMediaSize();
+      if (this.props.shop.showMobileMenu) {
+        this.props.toggleMobileMenu(false);
+      }
     });
   }
 
