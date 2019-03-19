@@ -7,7 +7,6 @@ const initialState = {
   brands: brands,
   strains: strains,
   activeBrandIndex: 0,
-  showMobileMenu: false,
   filters: filters,
   activeFilters: []
 };
@@ -20,10 +19,6 @@ export default (state = initialState, action) => {
       return updateObject(state, { activeBrandIndex: action.index });
     case actionTypes.SET_STRAINS:
       return updateObject(state, { strains: action.strains });
-    case actionTypes.TOGGLE_MOBILE_MENU:
-      return updateObject(state, {
-        showMobileMenu: action.isMobileMenuVisible
-      });
     case actionTypes.TOGGLE_FILTER:
       return updateObject(state, { activeFilters: action.activeFilters });
     case actionTypes.PURGE_ACTIVE_FILTERS:

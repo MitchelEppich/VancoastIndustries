@@ -9,7 +9,8 @@ import {
   Header,
   SeedSelect,
   CartOptions,
-  SimilarSeeds
+  SimilarSeeds,
+  MoreInfo
 } from "../components/product";
 
 class Index extends Component {
@@ -23,6 +24,7 @@ class Index extends Component {
               .bgImageClass
           }
         />
+
         <article>
           <div className="vcSingle vcWholesale-content flex flex-col lg:flex-row justify-center items-center">
             <BrandLogo
@@ -49,12 +51,12 @@ class Index extends Component {
             </div>
           </div>
         </article>
+        <div className="mt-10">
+          <MoreInfo {...this.props} />
+        </div>
 
         <div className="vcWholesale-page">
-          <SimilarSeeds
-            currentProduct={this.props.product.currentProduct}
-            {...this.props}
-          />
+          <SimilarSeeds {...this.props} />
         </div>
       </Layout>
     );
@@ -66,7 +68,9 @@ const mapDispatchToProps = dispatch => {
     quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
     modifyPotentialQuantity: input =>
       dispatch(actions.modifyPotentialQuantity(input)),
-    modifyCart: input => dispatch(actions.modifyCart(input))
+    modifyCart: input => dispatch(actions.modifyCart(input)),
+    setBrandIndex: index => dispatch(actions.setBrandIndex(index)),
+    setCurrentProduct: product => dispatch(actions.setCurrentProduct(product))
   };
 };
 

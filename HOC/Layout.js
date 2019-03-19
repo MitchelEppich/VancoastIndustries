@@ -40,7 +40,7 @@ class Layout extends Component {
   componentDidMount() {
     window.addEventListener("resize", () => {
       this.setMediaSize();
-      if (this.props.shop.showMobileMenu) {
+      if (this.props.misc.showMobileMenu) {
         this.props.toggleMobileMenu(false);
       }
     });

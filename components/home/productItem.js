@@ -1,25 +1,32 @@
 import Link from "next/link";
 import Router from "next/router";
 
-const productThumbnail = props => {
+const productItem = props => {
   return (
     <div
-      onMouseEnter={() => {
-        props.setCurrentProduct({ newProduct: props.strain });
+      onClick={() => {
+        props.setCurrentProduct({ product: props.strain });
         props.setBrandIndex(
           props.shop.brands.findIndex((brand, index) => {
             return brand.name.toLowerCase() === props.strain.company[0];
           })
         );
+        Router.push(
+          "/product",
+          "/product#" + props.strain.name.toLowerCase().replace(/ /g, "")
+        );
+        window.scrollTo(0, 0);
       }}
-      className="vcProduct-item p-2 flex"
+      className="vcProduct-item p-2 flex rotate-item cursor-pointer"
     >
-      <article className="w-full">
-        <img
-          className="h-200 mx-auto"
-          src={props.strain.packagePath}
-          alt={props.strain.name}
-        />
+      <article className="w-full hover:text-white">
+        <div className="min-h-350 flex items-end">
+          <img
+            className="mx-auto"
+            src={props.strain.packagePath}
+            alt={props.strain.name}
+          />
+        </div>
         <header className="vcProduct-info flex flex-col">
           {/* <Link
             href="/product"
@@ -27,25 +34,16 @@ const productThumbnail = props => {
 
             // }
           > */}
-          <h2
-            onClick={() => {
-              Router.push(
-                "/product",
-                "/product#" + props.strain.name.toLowerCase().replace(/ /g, "")
-              );
-              window.scrollTo(0, 0);
-            }}
-            className="my-4 cursor-pointer text-left"
-          >
+          <h2 className="my-2 cursor-pointer text-shadow text-white">
             {props.strain.name}
           </h2>
           {/* </Link> */}
-          <div className="vcProduct-info flex flex-row justify-between">
-            <h3 className="vcProduct-cat font-bold">{props.strain.type}</h3>
+          {/* <div className="vcProduct-info flex flex-row justify-between">
+            <h3 className="vcProduct-cat">{props.strain.type}</h3>
             <p className={"vcProduct-price " + props.priceColor}>
               from ${props.strain.price[1]}
             </p>
-          </div>
+          </div> */}
         </header>
       </article>
       {/* <a href="">
@@ -59,4 +57,4 @@ const productThumbnail = props => {
     </div>
   );
 };
-export default productThumbnail;
+export default productItem;

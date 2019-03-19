@@ -20,7 +20,8 @@ const initialState = {
   mediaSize: "xl",
   pageReady: false,
   showSearchBar: false,
-  searchValue: ""
+  searchValue: "",
+  showMobileMenu: false
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -31,6 +32,10 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, { showSearchBar: !state.showSearchBar });
     case actionTypes.SET_SEARCH_VALUE:
       return updateObject(state, { searchValue: action.searchValue });
+    case actionTypes.TOGGLE_MOBILE_MENU:
+      return updateObject(state, {
+        showMobileMenu: !state.showMobileMenu
+      });
     case actionTypes.TOGGLE_MENU_DROPDOWN:
       return updateObject(state, { menuDropdownVisible: action.value });
     case actionTypes.SET_MEDIA_SIZE:
