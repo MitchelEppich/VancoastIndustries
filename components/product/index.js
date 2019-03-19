@@ -4,5 +4,14 @@ import Header from "./header";
 import MainImage from "./mainImage";
 import SeedSelect from "./seedSelect";
 import SimilarSeeds from "./similarSeeds";
+import MoreInfo from "./moreInfo";
 
-export { BrandLogo, CartOptions, Header, MainImage, SeedSelect, SimilarSeeds };
+export {
+  BrandLogo,
+  CartOptions,
+  Header,
+  MainImage,
+  SeedSelect,
+  MoreInfo,
+  SimilarSeeds
+};

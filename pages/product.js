@@ -9,7 +9,8 @@ import {
   Header,
   SeedSelect,
   CartOptions,
-  SimilarSeeds
+  SimilarSeeds,
+  MoreInfo
 } from "../components/product";
 
 class Index extends Component {
@@ -53,10 +54,13 @@ class Index extends Component {
             </div>
           </div>
         </article>
+        <div className="mt-10">
+          <MoreInfo {...this.props} />
+        </div>
 
         <div className="vcWholesale-page">
           <SimilarSeeds
-            currentProduct={this.props.product.currentProduct}
+            // currentProduct={this.props.product.currentProduct}
             {...this.props}
           />
         </div>
