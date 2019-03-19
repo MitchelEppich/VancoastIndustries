@@ -5,13 +5,14 @@ import VancoastLogo from "./vancoastLogo";
 // import Cart from "../cart";
 
 const header = props => {
-  let showMobileMenu = props.shop.showMobileMenu
+  let showMobileMenu = props.misc.showMobileMenu
     ? {
         transform: "translateX(0) translateY(-10px)",
         paddingTop: "15px"
       }
     : {
-        transform: "translateX(-500px) translateY(-10px)"
+        transform: "translateX(0px) translateY(-510px)"
+        //  transform: "translateX(-500px) translateY(-10px)"
       };
   if (!["sm", "md", "lg"].includes(props.misc.mediaSize)) {
     showMobileMenu = {
@@ -35,12 +36,12 @@ const header = props => {
           <div
             id="vcNavSection-two"
             className={
-              "flex justify-center items-center " +
+              "flex justify-center items-center cursor-pointer" +
               (props.shop.showMobileMenu ? "reveal" : "")
             }
           >
             <div
-              onClick={() => props.toggleMobileMenu(!props.shop.showMobileMenu)}
+              onClick={() => props.toggleMobileMenu(!props.misc.showMobileMenu)}
               id="vcNav-icon"
             >
               <div className="bar1" />

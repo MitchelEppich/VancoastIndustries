@@ -31,10 +31,14 @@ footer {
   background-image: url("../static/img/page-bg/vcFooter-bg.jpg");
   background-size: cover;
   background-position: 0 -150px;
-  padding: 100px 20px 50px 20px;
+  // padding: 100px 20px 50px 20px;
   color: #fff;
   height: 550px;
   position: relative;
+}
+.footer-overlay {
+  height: 100%;
+  background-color: rgba(19, 19, 19, 0.83);
 }
 .vcSubscribe-box h3 span {
   display: block;
@@ -60,7 +64,7 @@ input.vcNewsletter-input {
   font-size: 20px;
   font-weight: 800;
   color: #555;
-  padding: 20px;
+  padding: 13px;
   margin-right: -3px;
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
@@ -75,17 +79,23 @@ input.vcNewsletter-btn {
   border: 0;
   font-size: 20px;
   font-weight: 700;
-  padding: 20px;
+  padding: 13px;
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
   margin-left: -3px;
 }
 .vcFooter-menu {
-  width: 100%;
+  width: 64%;
+  // width: 100%;
+}
+.vcFooter-menu ul li {
+  padding: 5px 20px;
+  background: rgba(26, 26, 26, 0.51);
+  transition: all 0.2s ease-in-out;
 }
 .vcFooter-menu ul li a {
   text-transform: uppercase;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 400;
   color: #fff;
   text-decoration: none;

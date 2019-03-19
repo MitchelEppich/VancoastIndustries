@@ -20,7 +20,7 @@ const ourBrands = props => {
               <img
                 src="../static/img/assets/sonoma-logo.png"
                 alt="sonoma seeds brand"
-                className="h-400"
+                className="xl:h-350"
               />
             </a>
           </Link>
@@ -35,7 +35,7 @@ const ourBrands = props => {
               <img
                 src="../static/img/assets/sunwest-logo.png"
                 alt="sunwest brand card"
-                className="h-400"
+                className="xl:h-350"
               />
             </a>
           </Link>
@@ -50,7 +50,7 @@ const ourBrands = props => {
               <img
                 src="../static/img/assets/cks-logo.png"
                 alt="cks brand card"
-                className="h-400"
+                className="xl:h-350"
               />
             </a>
           </Link>

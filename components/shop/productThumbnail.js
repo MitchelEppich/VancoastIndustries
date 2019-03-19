@@ -31,13 +31,13 @@ const productThumbnail = props => {
               );
               window.scrollTo(0, 0);
             }}
-            className="my-4 cursor-pointer"
+            className="my-4 cursor-pointer text-left"
           >
             {props.strain.name}
           </h2>
           {/* </Link> */}
           <div className="vcProduct-info flex flex-row justify-between">
-            <h3 className="vcProduct-cat">{props.strain.type}</h3>
+            <h3 className="vcProduct-cat font-bold">{props.strain.type}</h3>
             <p className={"vcProduct-price " + props.priceColor}>
               from ${props.strain.price[1]}
             </p>

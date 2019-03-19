@@ -23,7 +23,7 @@ class Index extends Component {
               .bgImageClass
           }
         />
-        {console.log(this.props.shop.brands[this.props.shop.activeBrandIndex])}
+
         <article>
           <div className="vcSingle vcWholesale-content flex flex-col lg:flex-row justify-center items-center">
             <BrandLogo
@@ -57,7 +57,7 @@ class Index extends Component {
         <div className="vcWholesale-page">
           <SimilarSeeds
             currentProduct={this.props.product.currentProduct}
-            {...this.prop}
+            {...this.props}
           />
         </div>
       </Layout>
@@ -66,7 +66,10 @@ class Index extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    setBrandIndex: index => dispatch(actions.setBrandIndex(index)),
+    setCurrentProduct: product => dispatch(actions.setCurrentProduct(product))
+  };
 };
 
 export default connect(

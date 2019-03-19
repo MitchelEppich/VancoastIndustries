@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const about = props => {
   return (
-    <div className="vcAbout-section flex flex-col items-center">
+    <div className="vcAbout-section flex flex-col items-center pb-24 pt-10">
       <h2 className="flex flex-col">
         <span className="vcAbout-text">About</span>
         <span className="vcAbout-van">Vancoast</span>
@@ -12,13 +12,13 @@ const about = props => {
       <p className="vcAbout-slogan">"Company Slogan Goes Here"</p>
 
       <div className="vcAbout-images flex justify-around items-center flex-row">
-        <div className="vcAbout-imgOne">
+        <div className="vcAbout-imgOne scale-item">
           <img src="../static/img/assets/vc-about-fire.jpg" alt="" />
         </div>
-        <div className="vcAbout-imgTwo">
+        <div className="vcAbout-imgTwo scale-item">
           <img src="../static/img/assets/vc-about-cannabis.jpg" alt="" />
         </div>
-        <div className="vcAbout-imgThree">
+        <div className="vcAbout-imgThree scale-item">
           <img src="../static/img/assets/vc-about-forest.jpg" alt="" />
         </div>
       </div>

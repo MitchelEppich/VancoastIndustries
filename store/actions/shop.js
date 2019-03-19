@@ -6,7 +6,6 @@ import fetch from "node-fetch";
 const actionTypes = {
   TOGGLE_FILTER_VISIBILITY: "TOGGLE_FILTER_VISIBILITY",
   SET_BRAND_INDEX: "SET_BRAND_INDEX",
-  TOGGLE_MOBILE_MENU: "TOGGLE_MOBILE_MENU",
   SET_STRAINS: "SET_STRAINS",
   TOGGLE_FILTER: "TOGGLE_FILTER",
   PURGE_ACTIVE_FILTERS: "PURGE_ACTIVE_FILTERS"
@@ -24,12 +23,6 @@ const getActions = uri => {
       return {
         type: actionTypes.SET_BRAND_INDEX,
         index: index
-      };
-    },
-    toggleMobileMenu: isMobileMenuVisible => {
-      return {
-        type: actionTypes.TOGGLE_MOBILE_MENU,
-        isMobileMenuVisible: isMobileMenuVisible
       };
     },
     setStrains: strains => {

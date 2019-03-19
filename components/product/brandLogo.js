@@ -1,5 +1,5 @@
 const brandLogo = props => {
-  console.log(props.currentProduct);
+  // console.log(props.currentProduct);
   return (
     <div className="vcSingle-sectionOne flex items-start">
       <img

@@ -29,8 +29,8 @@
 
 .vcBrand-hero,
 .vcWholesale-hero {
-  // height: 800px;
-  height: 600px;
+  height: 800px;
+  // height: 600px;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -75,7 +75,7 @@ p.wholesale-intro {
 }
 .vcProduct-list {
   flex-wrap: wrap;
-  padding-bottom: 50px;
+  // padding-bottom: 50px;
 }
 .vcProduct-item {
   padding: 20px;
@@ -157,6 +157,7 @@ p.wholesale-intro {
   background-image: url("../static/img/page-bg/cks-banner-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  height: 310px;
 }
 .vcBrand-board-sonoma {
   background-image: url("../static/img/page-bg/sonoma-banner-bg.jpg");
