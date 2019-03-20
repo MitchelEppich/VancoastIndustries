@@ -1,6 +1,7 @@
 //lib
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Router from "next/router";
 //custom
 import withData from "../lib/withData";
 import actions from "../store/actions";
@@ -13,13 +14,17 @@ import {
 } from "../components/shop";
 
 class Index extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isClient: typeof document != undefined
+    };
+  }
+
+  componentDidMount() {}
   render() {
     return (
-      <Layout {...this.props}>
-        {console.log(
-          this.props.shop.activeBrandIndex,
-          this.props.shop.activeFilters
-        )}
+      <Layout {...this.props} isClient={this.state.isClient}>
         <div
           className={
             this.props.shop.activeBrandIndex == 0
@@ -46,7 +51,7 @@ class Index extends Component {
         <Heading {...this.props} />
 
         <div className="vcWholesale-page">
-          <Filters path={this.props.router} {...this.props} />
+          <Filters {...this.props} />
           <GeneralStrains {...this.props} />
         </div>
 

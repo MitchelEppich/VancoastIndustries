@@ -66,7 +66,7 @@ const footer = props => {
         </div>
 
         <div className="vcFooter-copy-wrap pt-10 flex justify-center">
-          <p className="vcFooter-copy">&copy; 2019 VanCoast Industries</p>
+          <p className="vcFooter-copy">&copy; 2019 Vancoast Industries</p>
         </div>
       </div>
     </footer>

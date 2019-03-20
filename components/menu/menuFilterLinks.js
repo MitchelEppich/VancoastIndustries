@@ -8,13 +8,12 @@ const menuFilterLinks = props => {
           <li>
             <a
               onClick={() => {
-                console.log(props.shop.activeFilters);
+                props.purgeActiveFilters(props.shop.activeFilters);
                 props.toggleFilter({
                   activeFilters: props.shop.activeFilters,
                   newFilter: filter.toLowerCase()
                 });
                 window.scrollTo(0, 1000);
-                // props.purgeActiveFilters();
               }}
               className="cursor-pointer"
             >
@@ -37,7 +36,7 @@ const menuFilterLinks = props => {
       <Link prefetch href="/shop">
         <a
           onClick={() => {
-            props.purgeActiveFilters();
+            props.purgeActiveFilters(props.shop.activeFilters);
             props.setBrandIndex(0);
           }}
           className="cursor-pointer"

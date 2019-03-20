@@ -22,7 +22,9 @@ export default (state = initialState, action) => {
     case actionTypes.TOGGLE_FILTER:
       return updateObject(state, { activeFilters: action.activeFilters });
     case actionTypes.PURGE_ACTIVE_FILTERS:
-      return updateObject(state, { activeFilters: [] });
+      return updateObject(state, {
+        activeFilters: action.activeFilters
+      });
     default:
       return state;
   }

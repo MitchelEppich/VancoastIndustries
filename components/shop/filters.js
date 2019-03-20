@@ -1,23 +1,24 @@
+import Router from "next/router";
+
 const filters = props => {
   let filters = props.shop.filters;
-  let path = props.path;
+  let path = Router.asPath;
   filters = Object.entries(filters).map((filter, index) => {
-    // console.log("filter", filter);
     let options = filter[1].map((value, index) => {
-      // console.log("value", value);
       let checked = false,
         disabled = false,
         readOnly = false;
+      if (value === "Wholesale") return null;
       if (filter[0] == "Brands") {
-        // if (path.includes("shop") && path.length > 6) {
-        //   if (path.includes(value.replace(/ /g, "").toLowerCase())) {
-        //     checked = true;
-        //     readOnly = true;
-        //   } else {
-        //     disabled = true;
-        //     readOnly = true;
-        //   }
-        // }
+        if (path !== null && path.includes("shop") && path.length > 6) {
+          if (path.includes(value.replace(/ /g, "").toLowerCase())) {
+            checked = true;
+            readOnly = true;
+          } else {
+            disabled = true;
+            readOnly = true;
+          }
+        }
       }
       if (props.shop.activeFilters.includes(value.toLowerCase())) {
         checked = true;
@@ -38,19 +39,24 @@ const filters = props => {
             disabled={disabled}
             readOnly={readOnly}
             onChange={() => {
-              let isBrandFilterIndex = [
-                "Wholesale",
-                "Crop King Seeds",
-                "Sunwest",
-                "Sonoma"
-              ].indexOf(value);
-              if (isBrandFilterIndex) {
-                props.setBrandIndex(isBrandFilterIndex);
+              let isBrandFilterIndex = props.shop.filters.Brands.indexOf(value);
+              if (isBrandFilterIndex > -1) {
+                if (checked) {
+                  props.setBrandIndex(0);
+                  Router.push("/shop");
+                } else {
+                  props.setBrandIndex(isBrandFilterIndex);
+                  Router.push(
+                    "/shop",
+                    "/shop/" + value.replace(/ /g, "").toLowerCase()
+                  );
+                }
+              } else {
+                props.toggleFilter({
+                  activeFilters: props.shop.activeFilters,
+                  newFilter: value.toLowerCase()
+                });
               }
-              props.toggleFilter({
-                activeFilters: props.shop.activeFilters,
-                newFilter: value.toLowerCase()
-              });
             }}
           />
           <span className="checkmark" />

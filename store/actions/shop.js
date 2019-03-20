@@ -43,9 +43,13 @@ const getActions = uri => {
         activeFilters: activeFilters
       };
     },
-    purgeActiveFilters: () => {
+    purgeActiveFilters: activeFilters => {
+      while (activeFilters.length > 0) {
+        activeFilters.pop();
+      }
       return {
-        type: actionTypes.PURGE_ACTIVE_FILTERS
+        type: actionTypes.PURGE_ACTIVE_FILTERS,
+        activeFilters: activeFilters
       };
     }
   };
