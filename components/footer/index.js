@@ -4,7 +4,7 @@ const footer = props => {
   return (
     <footer className="flex flex-col justify-around">
       <div className="footer-overlay">
-        <div className="vcSubscribe-box-wrap flex justify-end pr-12 pt-24">
+        <div className="vcSubscribe-box-wrap flex justify-end xl:pr-12 md:pr-12 lg:pr-12 pt-16 pb-10">
           <div className="vcSubscribe-box">
             <h3>
               <span className="vcSubscribe-van">Vancoast</span>{" "}
@@ -33,30 +33,30 @@ const footer = props => {
           </Link>
         </div>
 
-        <div className="vcFooter-menu-wrap flex justify-center">
+        <div className="vcFooter-menu-wrap flex justify-center pt-8">
           <nav className="vcFooter-menu">
             <ul className="flex flex-col lg:flex-row justify-around items-center">
-              <li className="flex hover:bg-blue-new">
+              <li className="flex hover:bg-blue-new text-center">
                 <Link prefetch href="/contact">
                   <a>Contact</a>
                 </Link>
               </li>
-              <li className="flex hover:bg-blue-new">
+              <li className="flex hover:bg-blue-new text-center">
                 <Link prefetch href="/about">
                   <a>About</a>
                 </Link>
               </li>
-              <li className="flex hover:bg-blue-new">
+              <li className="flex hover:bg-blue-new text-center">
                 <Link prefetch href="/privacy-policy">
                   <a>Privacy Policy</a>
                 </Link>
               </li>
-              <li className="flex hover:bg-blue-new">
+              <li className="flex hover:bg-blue-new text-center">
                 <Link prefetch href="/faq">
                   <a>FAQ</a>
                 </Link>
               </li>
-              <li className="flex hover:bg-blue-new">
+              <li className="flex hover:bg-blue-new text-center">
                 <Link prefetch href="/wholesale-application">
                   <a>Wholesale Application</a>
                 </Link>

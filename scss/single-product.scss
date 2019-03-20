@@ -45,8 +45,8 @@ h3.vcCompany-similar {
   padding: 20px 10px 0px 10px;
 }
 article .vcSingle {
-  // margin-top: -400px;
-  margin-top: -650px;
+  margin-top: -400px;
+  // margin-top: -650px;
 }
 .vcSingle .vcSingle-sectionOne {
   width: 20%;
@@ -70,7 +70,8 @@ article .vcSingle {
   max-width: 250px;
 }
 .vcSingle-image {
-  max-width: 400px;
+  max-width: 375px;
+  // max-width: 400px;
   width: 100%;
 }
 .vcCompany-page {
@@ -129,19 +130,39 @@ input[type="radio"]:checked + label {
   border: 4px solid #1426de;
 }
 .vcSingle-choices {
-  padding: 20px 10px;
+  padding: 10px;
+  // padding: 20px 10px;
 }
 .vcSingle-input {
-  height: 200px;
+  height: 140px;
   padding: 0px 10px;
 }
+.vcSaveItem-btn {
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+  max-width: 325px;
+  background: #d2d2d2;
+  width: 100%;
+}
+
+.vcSaveItem-btn:hover {
+  background: #adadad;
+}
+
 .vcSingle-input input {
-  padding: 15px;
+  padding: 10px;
   text-align: center;
   border: 1px solid #777;
-  font-size: 20px;
-  max-width: 350px;
+  font-size: 18px;
+  max-width: 325px;
   width: 100%;
+  // padding: 15px;
+  // text-align: center;
+  // border: 1px solid #777;
+  // font-size: 20px;
+  // max-width: 325px;
+  // width: 100%;
 }
 input.vcSingle-submit {
   border-radius: 3px;
@@ -158,7 +179,7 @@ input.vcSingle-submit {
   border-radius: 0px;
   color: #fff;
   width: 49.9%;
-  padding: 30px;
+  padding: 15px;
   font-size: 15px;
   text-transform: uppercase;
 }

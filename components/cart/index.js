@@ -5,7 +5,12 @@ import Items from "./items";
 const index = props => {
   return (
     <div id="vcNav-cartList" className={props.misc.showCart ? "show" : ""}>
-      <div className="vcCart-title">Cart</div>
+      <div
+        onClick={() => props.toggleCart(!props.misc.showCart)}
+        className="vcCart-title uppercase opacity-50"
+      >
+        My Box
+      </div>
       <Items {...props} />
       <div className="absolute pin-b w-full shadow-lg">
         <Summary

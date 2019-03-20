@@ -1,7 +1,10 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+
 const item = props => {
   let item = props.item;
   return (
-    <div className="vcItem vcItem-one flex flex-row">
+    <div className="vcItem vcItem-one flex flex-row relative">
       <div className="vcItemDiv">
         <img
           src={item.product.packagePath}
@@ -16,7 +19,7 @@ const item = props => {
         </h3>
 
         <div className="vcItem-brand">
-          <span>Brand -</span>
+          <span>Brand - </span>
           <span className="capitalize">{item.product.company[0]}</span>
         </div>
 
@@ -31,6 +34,20 @@ const item = props => {
             <span>${item.price}</span>
           </div>
         </div>
+      </div>
+      <div
+        onClick={() => {
+          console.log(item);
+          //   props.modifyCart({
+          //     items: items,
+          //     action: "REMOVE",
+          //     // max: props.cart.maxPerPackage,
+          //     productIdentifier: item
+          //   });
+        }}
+        className="absolute pin-r hover:bg-blue-new hover:text-white cursor-pointer pin-t w-8 h-8 text-center flex justify-center items-center"
+      >
+        <FontAwesomeIcon icon={faTimes} className="" />
       </div>
     </div>
   );

@@ -26,7 +26,7 @@ class Index extends Component {
         />
 
         <article>
-          <div className="vcSingle vcWholesale-content flex flex-col lg:flex-row justify-center items-center">
+          <div className="vcSingle w-4/5 mx-auto flex flex-col lg:flex-row justify-center items-center">
             <BrandLogo
               currentProduct={this.props.product.currentProduct}
               {...this.props}
@@ -39,10 +39,9 @@ class Index extends Component {
 
             <div className="vcSingle-sectionThree flex flex-col justify-center items-start">
               <Header
-                currentProduct={this.props.product.currentProduct}
+                // currentProduct={this.props.product.currentProduct}
                 {...this.props}
               />
-
               <SeedSelect {...this.props} />
               <CartOptions
                 currentProduct={this.props.product.currentProduct}

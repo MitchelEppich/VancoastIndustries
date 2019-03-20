@@ -16,10 +16,16 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
+        {console.log(
+          this.props.shop.activeBrandIndex,
+          this.props.shop.activeFilters
+        )}
         <div
           className={
             this.props.shop.activeBrandIndex == 0
-              ? "vcWholesale-hero vcBg flex justify-center items-center"
+              ? "vcWholesale-hero vcBg flex justify-center items-center" +
+                this.props.shop.brands[this.props.shop.activeBrandIndex]
+                  .bgImageClass
               : "vcBrand-hero vcBg flex justify-center items-center " +
                 this.props.shop.brands[this.props.shop.activeBrandIndex]
                   .bgImageClass
@@ -58,7 +64,7 @@ const mapDispatchToProps = dispatch => {
   return {
     toggleFilterVisibility: isFilterVisible =>
       dispatch(actions.toggleFilterVisibility(isFilterVisible)),
-    setBrandIndex: index => dispatch(actions.setBrandIndex(index)),
+    setBrandIndex: input => dispatch(actions.setBrandIndex(input)),
     setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
     toggleFilter: options => dispatch(actions.toggleFilter(options))
   };

@@ -8,9 +8,9 @@ const initialState = {
   cart: {
     discount: 0,
     items: {},
-    maxPerPackage: 500,
+    maxPerPackage: 0,
     potentialQuantity: 1,
-    price: 965
+    price: 0
   }
 };
 

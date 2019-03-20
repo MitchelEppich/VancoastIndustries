@@ -4,19 +4,24 @@ import Router from "next/router";
 const productThumbnail = props => {
   return (
     <div
-      onMouseEnter={() => {
+      onClick={() => {
         props.setCurrentProduct({ newProduct: props.strain });
         props.setBrandIndex(
           props.shop.brands.findIndex((brand, index) => {
             return brand.name.toLowerCase() === props.strain.company[0];
           })
         );
+        Router.push(
+          "/product",
+          "/product#" + props.strain.name.toLowerCase().replace(/ /g, "")
+        );
+        window.scrollTo(0, 0);
       }}
-      className="vcProduct-item p-2 flex"
+      className="vcProduct-item p-2 flex cursor-pointer scale-item"
     >
       <article className="w-full">
         <img
-          className="h-200 mx-auto"
+          className="h-auto w-250 mx-auto"
           src={props.strain.packagePath}
           alt={props.strain.name}
         />
@@ -27,21 +32,10 @@ const productThumbnail = props => {
 
             // }
           > */}
-          <h2
-            onClick={() => {
-              Router.push(
-                "/product",
-                "/product#" + props.strain.name.toLowerCase().replace(/ /g, "")
-              );
-              window.scrollTo(0, 0);
-            }}
-            className="my-4 cursor-pointer text-left"
-          >
-            {props.strain.name}
-          </h2>
+          <h2 className="my-3 cursor-pointer text-left">{props.strain.name}</h2>
           {/* </Link> */}
           <div className="vcProduct-info flex flex-row justify-between">
-            <h3 className="vcProduct-cat font-bold">{props.strain.type}</h3>
+            <h3 className="vcProduct-cat">{props.strain.type}</h3>
             <p className={"vcProduct-price " + props.priceColor}>
               from ${props.strain.price[1]}
             </p>

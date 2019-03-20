@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
     case actionTypes.TOGGLE_FILTER_VISIBILITY:
       return updateObject(state, { showFilters: action.isFilterVisible });
     case actionTypes.SET_BRAND_INDEX:
-      return updateObject(state, { activeBrandIndex: action.index });
+      return updateObject(state, { activeBrandIndex: action.input });
     case actionTypes.SET_STRAINS:
       return updateObject(state, { strains: action.strains });
     case actionTypes.TOGGLE_FILTER:

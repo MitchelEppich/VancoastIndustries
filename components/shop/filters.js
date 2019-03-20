@@ -2,7 +2,9 @@ const filters = props => {
   let filters = props.shop.filters;
   let path = props.path;
   filters = Object.entries(filters).map((filter, index) => {
+    // console.log("filter", filter);
     let options = filter[1].map((value, index) => {
+      // console.log("value", value);
       let checked = false,
         disabled = false,
         readOnly = false;
@@ -20,6 +22,7 @@ const filters = props => {
       if (props.shop.activeFilters.includes(value.toLowerCase())) {
         checked = true;
       }
+
       return (
         <label
           key={index}
@@ -36,8 +39,8 @@ const filters = props => {
             readOnly={readOnly}
             onChange={() => {
               let isBrandFilterIndex = [
-                "",
-                "Crop King",
+                "Wholesale",
+                "Crop King Seeds",
                 "Sunwest",
                 "Sonoma"
               ].indexOf(value);

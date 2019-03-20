@@ -17,7 +17,7 @@ const generalStrains = props => {
   });
   return (
     <div className="vcWholesale-content">
-      <ul className="vcProduct-list mx-auto w-1000 flex flex-row justify-center items-baseline">
+      <ul className="vcProduct-list mx-auto w-4/5 flex flex-row justify-center items-baseline">
         {strains}
       </ul>
     </div>

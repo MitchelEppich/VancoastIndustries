@@ -8,12 +8,13 @@ const menuFilterLinks = props => {
           <li>
             <a
               onClick={() => {
-                props.purgeActiveFilters();
+                console.log(props.shop.activeFilters);
                 props.toggleFilter({
                   activeFilters: props.shop.activeFilters,
                   newFilter: filter.toLowerCase()
                 });
                 window.scrollTo(0, 1000);
+                // props.purgeActiveFilters();
               }}
               className="cursor-pointer"
             >
@@ -29,7 +30,9 @@ const menuFilterLinks = props => {
       onMouseEnter={() => {
         props.toggleMenuDropdown({ value: "shop", show: true });
       }}
-      className="vcShop-cats"
+      className={`${
+        ["sm", "md", "lg"].includes(props.misc.mediaSize) ? "mt-6" : ""
+      } vcShop-cats`}
     >
       <Link prefetch href="/shop">
         <a
@@ -42,7 +45,8 @@ const menuFilterLinks = props => {
           Shop
         </a>
       </Link>
-      {props.misc.menuDropdownVisible == "shop" || props.shop.showMobileMenu ? (
+      {props.misc.menuDropdownVisible == "shop" ||
+      props.misc.showMobileMenu != null ? (
         <ul className="">{links}</ul>
       ) : null}
     </li>

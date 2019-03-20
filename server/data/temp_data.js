@@ -571,24 +571,23 @@ let strains = [
 ];
 
 let filters = {
-  Brands: ["Crop King", "Sonoma", "Sunwest"],
+  Brands: ["Wholesale", "Crop King Seeds", "Sonoma", "Sunwest"],
   Type: ["Hybrid", "Indica", "Sativa"],
-  "Strain Kind": ["Autoflower", "Feminized", "CBD", "Regular", "Mix"]
+  StrainKind: ["Autoflower", "Feminized", "CBD", "Regular", "Mix"]
 };
 
 let brands = [
-  // {
-  //   name: "Wholesale cannabis seed shop",
-  //   motto: "Load up your box",
-  //   logo: "",
-  //   // bgImageClass: "",
-  //   bgImageClass: "cks",
-  //   boardClass: "vcBrand-board-cks",
-  //   introOne:
-  //     "Welcome to the world's number one source for wholesale cannabis seeds. Vancoast Industries carries only the best seed brands ensuring you get the best quality cannabis genetics. From fresh, modern brands like sonoma seeds Seeds and global industry leaders like Crop King Seeds your bound to find dozens of strains that your customers have been looking for.",
-  //   introTwo:
-  //     "By partnering with Vancoast Indutries, you'll be able to buy wholesale cannabis seeds from a variety of brands all in the same order and ready to stock on your store shelves. With our simple re-ordering system and account dashboard, you'll have access to all the tools your need to always keep your store stocked."
-  // },
+  {
+    name: "Wholesale",
+    motto: "Load up your box",
+    logo: "",
+    bgImageClass: "wholesale",
+    boardClass: "vcBrand-board-wholesale",
+    introOne:
+      "Welcome to the world's number one source for wholesale cannabis seeds. Vancoast Industries carries only the best seed brands ensuring you get the best quality cannabis genetics. From fresh, modern brands like sonoma seeds Seeds and global industry leaders like Crop King Seeds your bound to find dozens of strains that your customers have been looking for.",
+    introTwo:
+      "By partnering with Vancoast Indutries, you'll be able to buy wholesale cannabis seeds from a variety of brands all in the same order and ready to stock on your store shelves. With our simple re-ordering system and account dashboard, you'll have access to all the tools your need to always keep your store stocked."
+  },
   {
     name: "Crop King Seeds",
     motto: "World class Cannabis Seeds",

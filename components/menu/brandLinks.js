@@ -2,6 +2,7 @@ import Link from "next/link";
 
 const brandLinks = props => {
   let brandLinks = props.shop.brands.map((brand, index) => {
+    // console.log(brand, index);
     return (
       <li key={index}>
         <Link
@@ -29,13 +30,15 @@ const brandLinks = props => {
           show: true
         });
       }}
-      className="vcShop-brands"
+      className={`${
+        ["sm", "md", "lg"].includes(props.misc.mediaSize) ? "mt-4" : ""
+      } vcShop-brands z-50`}
       onClick={() => props.purgeActiveFilters()}
     >
-      <Link prefetch href="/shop" as={"/shop#cropkingseeds"}>
+      <Link prefetch href="/shop" as={"/shop#wholesale"}>
         <a
           onClick={() => {
-            props.setBrandIndex(1);
+            props.setBrandIndex(0);
           }}
           className="cursor-pointer"
         >
@@ -43,8 +46,8 @@ const brandLinks = props => {
         </a>
       </Link>
       {props.misc.menuDropdownVisible == "brands" ||
-      props.shop.showMobileMenu ? (
-        <ul>{brandLinks.slice(1)}</ul>
+      props.misc.showMobileMenu != null ? (
+        <ul className="">{brandLinks.slice(1)}</ul>
       ) : null}
     </li>
   );

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const cartOptions = props => {
   let currentProduct = props.currentProduct,
@@ -55,6 +57,17 @@ const cartOptions = props => {
             });
           }}
         />
+      </div>
+      <div className="w-full text-center">
+        <button className="vcSaveItem-btn">
+          {/* <FontAwesomeIcon
+            icon={faStar}
+            className="text-grey opacity-50 mr-2"
+          />{" "} */}
+          <span className="font-bold text-grey text-lg opacity-50">
+            Add to Wish List
+          </span>
+        </button>
       </div>
 
       <div className="vcShop-buttons flex flex-row justify-between">

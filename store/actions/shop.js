@@ -19,10 +19,10 @@ const getActions = uri => {
         isFilterVisible: isFilterVisible
       };
     },
-    setBrandIndex: index => {
+    setBrandIndex: input => {
       return {
         type: actionTypes.SET_BRAND_INDEX,
-        index: index
+        input: input
       };
     },
     setStrains: strains => {

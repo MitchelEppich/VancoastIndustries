@@ -6,21 +6,12 @@ import SearchBarToggle from "./searchBarToggle";
 import SessionDetails from "./sessionDetails";
 
 const header = props => {
-  let showMobileMenu = props.misc.showMobileMenu
-    ? {
-        transform: "translateX(0) translateY(-10px)",
-        paddingTop: "15px"
-      }
-    : {
-        transform: "translateX(-500px) translateY(-10px)",
-        //  transform: "translateX(-500px) translateY(-10px)"
-      };
-  if (!["sm", "md", "lg"].includes(props.misc.mediaSize)) {
-    showMobileMenu = {
-      transform: "translateX(0) translateY(-10px)",
-      paddingTop: "15px"
-    };
-  }
+  let showMobileMenu = {
+    transform: props.misc.showMobileMenu
+      ? "translateX(0) translateY(-10px)"
+      : "translateX(-550px) translateY(-10px)",
+    paddingTop: "15px"
+  };
 
   return (
     <div onMouseEnter={() => console.log(props)} className="vcNav-primary">
@@ -29,38 +20,60 @@ const header = props => {
           <VancoastLogo {...props} />
           <div
             id="vcNavSection-two"
-            className={
-              "flex justify-center items-center cursor-pointer" +
-              (props.shop.showMobileMenu ? "reveal" : "")
-            }
+            className="flex justify-center items-center cursor-pointer"
           >
-            <div
-              onClick={() => props.toggleMobileMenu(!props.misc.showMobileMenu)}
-              id="vcNav-icon"
-            >
-              <div className="bar1" />
-              <div className="bar2" />
-              <div className="bar3" />
-            </div>
-            <div
-              style={showMobileMenu}
-              className="vancoastMenu flex flex-col lg:flex-row items-start lg:items-center"
-            >
-              <nav>
-                <ul
-                  onMouseLeave={() => {
-                    props.toggleMenuDropdown({
-                      value: "",
-                      show: false
-                    });
-                  }}
-                  className="flex"
+            {!["sm", "md", "lg"].includes(props.misc.mediaSize) ? (
+              <div className="vancoastMenu flex flex-col lg:flex-row items-start lg:items-center">
+                <nav>
+                  <ul
+                    onMouseLeave={() => {
+                      props.toggleMenuDropdown({
+                        value: "",
+                        show: true
+                      });
+                    }}
+                    className="flex"
+                  >
+                    <MenuFilterLinks {...props} />
+                    <BrandLinks {...props} />
+                  </ul>
+                </nav>
+              </div>
+            ) : (
+              <div
+                onClick={() =>
+                  props.toggleMobileMenu(!props.misc.showMobileMenu)
+                }
+                id="vcNav-icon"
+              >
+                <div className="bar1" />
+                <div className="bar2" />
+                <div className="bar3" />
+              </div>
+            )}
+            {["sm", "md", "lg"].includes(props.misc.mediaSize) ? (
+              <div className="">
+                <div
+                  style={showMobileMenu}
+                  className="vancoastMenu flex flex-col lg:flex-row items-start lg:items-center"
                 >
-                  <MenuFilterLinks {...props} />
-                  <BrandLinks {...props} />
-                </ul>
-              </nav>
-            </div>
+                  <nav>
+                    <ul
+                      onMouseLeave={() => {
+                        props.toggleMenuDropdown({
+                          value: "",
+                          show: true
+                        });
+                      }}
+                      className="flex"
+                    >
+                      <BrandLinks {...props} />
+                      <MenuFilterLinks {...props} />
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            ) : null}
             <SearchBarToggle {...props} />
           </div>
           <SessionDetails {...props} />

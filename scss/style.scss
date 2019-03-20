@@ -161,15 +161,17 @@ input[type="submit"]:hover,
 }
 .vancoastMenu nav ul li a {
   text-decoration: none;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  color: #111111;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .vancoastMenu nav ul li a:hover {
-  font-weight: 700;
   color: #1426de;
+  font-weight: 700;
+  transition: all 0.1s ease-in-out;
 }
 li.vcShop-cats a,
 li.vcShop-brands a {
@@ -467,9 +469,9 @@ img.quick-view {
 }
 @media screen and (min-width: 991px) {
   /** fix for safari **/
-  .vancoastMenu {
-    height: 0px;
-  }
+  // .vancoastMenu {
+  //   height: 0px;
+  // }
   /** end fix for safari **/
   .vcWelcome {
     padding-right: 50px;
@@ -478,7 +480,7 @@ img.quick-view {
     position: absolute;
     align-items: baseline;
     background: #fff;
-    top: 70px;
+    top: 90px;
   }
   .vancoastMenu nav ul li {
     padding: 20px 30px 20px 0px;
@@ -487,8 +489,8 @@ img.quick-view {
     line-height: 50px;
   }
   .vancoastMenu nav ul li ul {
-    padding: 20px;
-    width: 300px;
+    padding: 10px 30px;
+    width: 270px;
     -webkit-box-shadow: 0px 15px 20px -15px rgba(0, 0, 0, 0.65);
     -moz-box-shadow: 0px 15px 20px -15px rgba(0, 0, 0, 0.65);
     box-shadow: 0px 15px 20px -15px rgba(0, 0, 0, 0.65);
@@ -496,10 +498,10 @@ img.quick-view {
   .vancoastMenu nav ul li ul li {
     padding: 0px;
   }
-  // .vancoastMenu nav ul li > ul {
-  //   visibility: collapse;
-  //   display: none;
-  // }
+  .vancoastMenu nav ul li > ul {
+    visibility: collapse;
+    display: none;
+  }
   .vancoastMenu nav ul li:hover > ul {
     visibility: visible;
     display: block;
@@ -521,14 +523,14 @@ img.quick-view {
     background: #fff;
     max-width: 300px;
     width: 100%;
-    padding: 50px 30px 150px 50px;
+    padding: 50px 30px 50px 30px;
     margin-top: 150px;
     // background-image: url("../static/img/assets/vancoast-watermark.svg");
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: cover;
-    transform: translateX(-360px) translateY(0);
-    // transform: translateX(-500px);
+    // transform: translateX(-360px) translateY(0);
+    transform: translateX(-500px);
   }
   div.vcBg {
     height: 300px;
@@ -583,8 +585,14 @@ img.quick-view {
     text-align: center;
   }
   footer {
-    padding: 20px;
+    padding: 0px;
+    height: 700px !important;
+    // padding: 20px;
   }
+  .vcFooter-menu {
+    width: 80% !important;
+  }
+
   .vcFooter-logo img {
     max-width: 100%;
   }

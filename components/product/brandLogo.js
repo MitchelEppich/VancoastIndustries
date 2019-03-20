@@ -4,7 +4,7 @@ const brandLogo = props => {
       <img
         className="vcBrand-logo"
         src={props.product.currentProduct.brandLogoPath}
-        alt="sonoma seeds"
+        alt={props.product.currentProduct.company}
       />
     </div>
   );
