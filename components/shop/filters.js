@@ -10,7 +10,12 @@ const filters = props => {
         readOnly = false;
       if (value === "Wholesale") return null;
       if (filter[0] == "Brands") {
-        if (path !== null && path.includes("shop") && path.length > 6) {
+        if (
+          path !== null &&
+          path.includes("shop") &&
+          path.length > 6 &&
+          !path.includes("?")
+        ) {
           if (path.includes(value.replace(/ /g, "").toLowerCase())) {
             checked = true;
             readOnly = true;

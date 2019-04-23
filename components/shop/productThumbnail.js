@@ -13,7 +13,7 @@ const productThumbnail = props => {
         );
         Router.push(
           "/product",
-          "/product#" + props.strain.name.toLowerCase().replace(/ /g, "")
+          "/product/" + props.strain.name.toLowerCase().replace(/ /g, "")
         );
         window.scrollTo(0, 0);
       }}

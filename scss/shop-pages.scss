@@ -160,25 +160,25 @@ p.wholesale-intro {
   background-image: url("../static/img/page-bg/cks-banner-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 325px;
+  // height: 325px;
 }
 .vcBrand-board-cks {
   background-image: url("../static/img/page-bg/cks-banner-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 325px;
+  // height: 325px;
 }
 .vcBrand-board-sonoma {
   background-image: url("../static/img/page-bg/sonoma-banner-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 325px;
+  // height: 325px;
 }
 .vcBrand-board-sunwest {
   background-image: url("../static/img/page-bg/sunwest-banner-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 325px;
+  // height: 325px;
 }
 .vcWholesale-page {
   position: relative;
@@ -267,17 +267,6 @@ p.wholesale-intro {
   transform: rotate(45deg);
 }
 .vcFilters-tab {
-  // position: absolute;
-  // right: 0;
-  // background: #1426de;
-  // color: #fff;
-  // font-weight: 700;
-  // padding: 20px;
-  // font-size: 15px;
-  // text-transform: uppercase;
-  // height: 250px;
-  // border-top-right-radius: 15px;
-  // border-bottom-right-radius: 15px;
   position: absolute;
   right: 0;
   background: #1426de;
@@ -355,28 +344,10 @@ p.wholesale-intro {
     line-height: 30px;
     text-align: center;
   }
-  #vcProduct-filters {
-    float: left;
-    position: -webkit-sticky;
-    position: sticky;
-    left: 0;
-    top: 100px;
-    width: 349px;
-    z-index: 1;
-    transform: translateX(-225px);
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-  }
-  //     .vcFilter-list label {
-  //     font-size: 15px;
-  //     padding-left: 35px;
-  //     padding-bottom: 15px;
+  // #vcProduct-filters {
+  //   transform: translateX(-285px);
   // }
-  // .vcFilter-list h3 {
-  //     font-size: 20px;
-  //     padding-bottom: 10px;
+  // .vcFilter-list {
+  //   width: 285px;
   // }
 }

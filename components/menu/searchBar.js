@@ -8,13 +8,20 @@ const searchBar = props => {
       : "translateY(140px)"
   };
   return (
-    <div
+    <form
       style={searchBarStyle}
       id="vcSearch-wrap"
       className="inline-flex w-full"
+      onSubmit={e => {
+        e.preventDefault();
+        props.setBrandIndex(0);
+        window.scrollTo(0, window.innerHeight * 0.7);
+        Router.push("/shop", "/shop?" + searchValue);
+      }}
     >
       <div className="w-4/5">
         <input
+          aria-label="search"
           className="vcNav-search"
           type="text"
           placeholder="What are you looking for?"
@@ -24,18 +31,13 @@ const searchBar = props => {
         />
       </div>
       <div className="w-1/5">
-        <div
-          onClick={() => {
-            props.setBrandIndex(0);
-            window.scrollTo(0, window.innerHeight * 0.7);
-            Router.push("/shop", "/shop?" + searchValue);
-          }}
+        <input
+          value="Search"
+          type="submit"
           className="px-4 cursor-pointer hover:bg-grey p-3 bg-blue-new text-white rounded mx-4 text-center text-xl"
-        >
-          Search
-        </div>
+        />
       </div>
-    </div>
+    </form>
   );
 };
 

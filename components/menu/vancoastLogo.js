@@ -4,7 +4,7 @@ const vancoastLogo = props => {
   return (
     <div className="vcNavSection-one flex justify-center items-center scale-item">
       <Link href="/">
-        <a className="vcNav-logo">
+        <a aria-label="nav-logo" className="vcNav-logo">
           <img
             src="../static/img/assets/vancoast-bar-logo.png"
             alt="vancoast industries"
@@ -12,7 +12,10 @@ const vancoastLogo = props => {
         </a>
       </Link>
       <Link href="/">
-        <a className="vcNav-vLogo xl:hidden xxl:hidden">
+        <a
+          aria-label="nav-logo-mobile"
+          className="vcNav-vLogo xl:hidden xxl:hidden"
+        >
           <img src="../static/img/assets/vancoast-v-logo.png" alt="" />
         </a>
       </Link>

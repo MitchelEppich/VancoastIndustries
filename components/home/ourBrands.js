@@ -13,6 +13,7 @@ const ourBrands = props => {
         <div className="vcSlide-one flex">
           <Link prefetch href="/shop">
             <a
+              aria-label="home-logo-sonoma"
               onClick={() => {
                 props.setBrandIndex(3);
               }}
@@ -28,6 +29,7 @@ const ourBrands = props => {
         <div className="vcSlide-two flex">
           <Link prefetch href="/shop">
             <a
+              aria-label="home-logo-sunwest"
               onClick={() => {
                 props.setBrandIndex(2);
               }}
@@ -43,6 +45,7 @@ const ourBrands = props => {
         <div className="vcSlide-three flex">
           <Link prefetch href="/shop">
             <a
+              aria-label="home-logo-cks"
               onClick={() => {
                 props.setBrandIndex(1);
               }}

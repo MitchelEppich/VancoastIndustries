@@ -21,27 +21,27 @@ class Index extends Component {
           </header>
 
           <form className="vcWholesale-application flex flex-col justify-center">
-            <label for="vcName">Your Name*</label>
+            <label htmlFor="vcName">Your Name*</label>
             <input type="text" id="vcName" placeholder="First and Last Name" />
 
-            <label for="vcEmail">Your Email*</label>
+            <label htmlFor="vcEmail">Your Email*</label>
             <input
               type="text"
               id="vcEmail"
               placeholder="you@emailaddress.com"
             />
 
-            <label for="vcPhone">Company Phone</label>
+            <label htmlFor="vcPhone">Company Phone</label>
             <input type="text" id="vcPhone" placeholder="555-555-5555" />
 
-            <label for="vcMessageTitle">Message Title*</label>
+            <label htmlFor="vcMessageTitle">Message Title*</label>
             <input
               type="text"
               id="vcMessageTitle"
               placeholder="Reason for Contacting"
             />
 
-            <label for="vcMessage">Your Message*</label>
+            <label htmlFor="vcMessage">Your Message*</label>
             <textarea
               type="textarea"
               id="vcMessage"

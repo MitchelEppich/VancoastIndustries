@@ -131,7 +131,7 @@ const MoreInfo = props => {
           </div>
           <div className="inline-flex w-full border-2 bg-grey-light border-white">
             <div className="w-1/2 px-2 p-1">
-              <p>CNB %:</p>
+              <p>CBN %:</p>
             </div>
             <div className="w-1/2 text-left p-1 border-l-4 border-white px-2">
               <p>{pCbn}</p>
