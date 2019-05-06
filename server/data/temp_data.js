@@ -633,4 +633,5 @@ for (let strain of strains) {
   _new.push(inferStrainData(strain));
 }
 strains = _new;
+
 export { strains, brands, filters };

@@ -14,7 +14,7 @@ import Checkout from "./checkout";
 import Account from "./account";
 import Product from "./product";
 
-const uri = "http://localhost:3000/graphql";
+const uri = "http://127.0.0.1:3000/graphql";
 
 const imports = {
   ...Shop(uri),

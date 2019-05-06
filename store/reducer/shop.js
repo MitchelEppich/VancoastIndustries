@@ -5,7 +5,7 @@ import { strains, brands, filters } from "../../server/data/temp_data";
 const initialState = {
   showFilters: false,
   brands: brands,
-  strains: strains,
+  // strains: strains,
   activeBrandIndex: 0,
   filters: filters,
   activeFilters: []

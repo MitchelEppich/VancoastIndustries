@@ -9,7 +9,7 @@ const similarSeeds = props => {
       let allStrains = props.shop.strains;
 
       for (let strain of allStrains) {
-        if (strain.company.includes(company.name.toLowerCase())) {
+        if (strain.company.name.includes(company.name.toLowerCase())) {
           arr.push(
             <ProductThumbnail
               key={strain.name}

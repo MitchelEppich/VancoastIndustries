@@ -2,7 +2,7 @@ const seedSelect = props => {
   let _product = props.product.currentProduct;
   let _arr = _product.price;
   _arr = _arr.map((price, index) => {
-    let numberOfSeeds = [10, 20, 50][index];
+    let numberOfSeeds = _product[index];
     if (price < 0) return null;
     return (
       <React.Fragment key={index}>

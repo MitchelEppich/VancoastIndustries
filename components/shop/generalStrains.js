@@ -2,7 +2,8 @@ import { filterStrains } from "../../store/utilities/filterVancoast";
 import ProductThumbnail from "./productThumbnail";
 
 const generalStrains = props => {
-  let strains = filterStrains(props);
+  let strains = props.shop.strains || [];
+  strains = filterStrains(props);
   if (props.misc.searchValue.length > 1) {
     strains = strains.filter((strain, index) => {
       return JSON.stringify(strain)

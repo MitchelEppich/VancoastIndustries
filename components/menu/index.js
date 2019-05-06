@@ -14,7 +14,7 @@ const header = props => {
   };
 
   return (
-    <div onMouseEnter={() => console.log(props)} className="vcNav-primary">
+    <div className="vcNav-primary">
       <div className="vcNav-bg">
         <div className="vcNav-wrap flex row justify-around items-center">
           <VancoastLogo {...props} />

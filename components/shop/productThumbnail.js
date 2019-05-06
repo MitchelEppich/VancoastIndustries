@@ -8,12 +8,12 @@ const productThumbnail = props => {
         props.setCurrentProduct({ newProduct: props.strain });
         props.setBrandIndex(
           props.shop.brands.findIndex((brand, index) => {
-            return brand.name.toLowerCase() === props.strain.company[0];
+            return brand.name.toLowerCase() === props.strain.company.name;
           })
         );
         Router.push(
           "/product",
-          "/product/" + props.strain.name.toLowerCase().replace(/ /g, "")
+          "/product/" + props.strain.alias.toLowerCase().replace(/ /g, "")
         );
         window.scrollTo(0, 0);
       }}
@@ -23,7 +23,7 @@ const productThumbnail = props => {
         <img
           className="h-auto w-250 mx-auto"
           src={props.strain.packagePath}
-          alt={props.strain.name}
+          alt={props.strain.alias}
         />
         <header className="vcProduct-info flex flex-col">
           {/* <Link
@@ -32,12 +32,14 @@ const productThumbnail = props => {
 
             // }
           > */}
-          <h2 className="my-3 cursor-pointer text-left">{props.strain.name}</h2>
+          <h2 className="my-3 cursor-pointer text-left">
+            {props.strain.alias}
+          </h2>
           {/* </Link> */}
           <div className="vcProduct-info flex flex-row justify-between">
             <h3 className="vcProduct-cat">{props.strain.type}</h3>
             <p className={"vcProduct-price " + props.priceColor}>
-              from ${props.strain.price[1]}
+              from ${props.strain.price[0]}
             </p>
           </div>
         </header>

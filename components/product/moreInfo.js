@@ -1,24 +1,24 @@
 const MoreInfo = props => {
   let _product = props.product.currentProduct;
-  let pThc =
-    _product.pThc[1] != null
-      ? _product.pThc[0] + "% - " + _product.pThc[1] + "%"
-      : _product.pThc + "%";
-  let pCbd =
-    _product.pCbd[1] != null
-      ? _product.pCbd[0] + "% - " + _product.pCbd[1] + "%"
-      : _product.pCbd + "%";
-  let pCbn =
-    _product.pCbn[1] != null
-      ? _product.pCbn[0] + "% - " + _product.pCbn[1] + "%"
-      : _product.pCbn + "%";
+  let thc =
+    _product.thc[1] != null
+      ? _product.thc[0] + "% - " + _product.thc[1] + "%"
+      : _product.thc + "%";
+  let cbd =
+    _product.cbd[1] != null
+      ? _product.cbd[0] + "% - " + _product.cbd[1] + "%"
+      : _product.cbd + "%";
+  let cbn =
+    _product.cbn[1] != null
+      ? _product.cbn[0] + "% - " + _product.cbn[1] + "%"
+      : _product.cbn + "%";
   let cbdRatioWeighting, thcRatioWeighting;
-  if (_product.pCbd[0] < _product.pThc[0]) {
-    cbdRatioWeighting = _product.pCbd[0] / _product.pCbd[0];
-    thcRatioWeighting = _product.pThc[0] / _product.pCbd[0];
+  if (_product.cbd[0] < _product.thc[0]) {
+    cbdRatioWeighting = _product.cbd[0] / _product.cbd[0];
+    thcRatioWeighting = _product.thc[0] / _product.cbd[0];
   } else {
-    cbdRatioWeighting = _product.pCbd[0] / _product.pThc[0];
-    thcRatioWeighting = _product.pThc[0] / _product.pThc[0];
+    cbdRatioWeighting = _product.cbd[0] / _product.thc[0];
+    thcRatioWeighting = _product.thc[0] / _product.thc[0];
   }
   let cbdToThc =
     Math.round(cbdRatioWeighting) + ":" + Math.round(thcRatioWeighting);
@@ -26,7 +26,7 @@ const MoreInfo = props => {
     <div className="w-full">
       <div className="text-center">
         <h3 className="vcCompany-similar text-xl font-bold">
-          More Information about {_product.name}
+          More Information about {_product.alias}
         </h3>
       </div>
       <div className="w-full mx-auto mt-8">
@@ -126,7 +126,7 @@ const MoreInfo = props => {
               <p>CBD %:</p>
             </div>
             <div className="w-1/2 text-left p-1 border-l-4 border-white px-2">
-              <p>{pCbd}</p>
+              <p>{cbd}</p>
             </div>
           </div>
           <div className="inline-flex w-full border-2 bg-grey-light border-white">
@@ -134,7 +134,7 @@ const MoreInfo = props => {
               <p>CBN %:</p>
             </div>
             <div className="w-1/2 text-left p-1 border-l-4 border-white px-2">
-              <p>{pCbn}</p>
+              <p>{cbn}</p>
             </div>
           </div>
           <div className="inline-flex w-full border-2 bg-grey-light border-white">
@@ -142,7 +142,7 @@ const MoreInfo = props => {
               <p>THC %:</p>
             </div>
             <div className="w-1/2 text-left p-1 border-l-4 border-white px-2">
-              <p>{pThc}</p>
+              <p>{thc}</p>
             </div>
           </div>
         </div>
