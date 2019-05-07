@@ -27,6 +27,7 @@ const cartOptions = props => {
           }}
           onChange={e => {
             let _value = e.target.value;
+            console.log(parseInt(_value));
             props.modifyPotentialQuantity({
               potentialQuantity: potentialQuantity,
               action: "SET",
@@ -45,7 +46,8 @@ const cartOptions = props => {
           onClick={() => {
             let _identifier =
               currentProduct.sotiId +
-              [20, 50, 100][props.product.quickAddToCartQty];
+              currentProduct.size[props.product.quickAddToCartQty];
+            console.log(currentProduct.size[props.product.quickAddToCartQty]);
             props.modifyCart({
               cart: cart,
               action: "APPEND",

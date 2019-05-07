@@ -29,13 +29,12 @@ import shuffle from "../scripts/shuffle";
 class Layout extends Component {
   constructor(props) {
     super(props);
-    props.getStrains();
+    if (!props.router.asPath.includes("product")) props.getStrains();
   }
-  componentDidMount() {
+  async componentDidMount() {
     let pageReady = false;
-
     try {
-      // this.props.setStrains(shuffle(thisS.props.shop.strains));
+      let strains = (await this.props.getStrains()) || {};
       this.prePageLoad(this.props.router);
       pageReady = true;
     } catch (err) {
@@ -65,7 +64,7 @@ class Layout extends Component {
         {this.props.misc.pageReady ? (
           this.props.children
         ) : (
-          <div className="w-full h-screen" />
+          <div className="w-full h-screen bg-black" />
         )}
         <Footer {...this.props} />
       </React.Fragment>
@@ -112,7 +111,7 @@ class Layout extends Component {
     if (path.includes("/product/") && path.length > 9) {
       let productName = path.slice(9).toLowerCase();
       let currentProduct = this.props.shop.strains.find((strain, index) => {
-        return strain.alias.toLowerCase().replace(/ /g, "") === productName;
+        return strain.alias.toLowerCase().replace(/ /g, "") == productName;
       });
       this.props.setCurrentProduct({ newProduct: currentProduct });
       indexOfBrand = brands.indexOf(

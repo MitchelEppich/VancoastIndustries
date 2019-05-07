@@ -2,6 +2,12 @@ import Link from "next/link";
 import Router from "next/router";
 
 const productThumbnail = props => {
+  let img =
+    props.strain.company.name == "sonoma seeds"
+      ? "../static/img/products/sonoma/so-blue-diesel.jpg"
+      : props.strain.company.name == "crop king seeds"
+      ? "../static/img/products/cks/cks-white-widow-auto.png"
+      : "../static/img/products/sunwest/sw-cheese.png";
   return (
     <div
       onClick={() => {
@@ -22,7 +28,7 @@ const productThumbnail = props => {
       <article className="w-full">
         <img
           className="h-auto w-250 mx-auto"
-          src="../static/img/products/sonoma/so-blue-diesel.jpg"
+          src={img}
           alt={props.strain.alias}
         />
         <header className="vcProduct-info flex flex-col">

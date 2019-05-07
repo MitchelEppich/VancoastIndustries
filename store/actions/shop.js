@@ -55,24 +55,27 @@ const getActions = uri => {
       };
     },
     getStrains: () => {
-      return async dispatch => {
-        axios
-          .get("http://127.0.0.1:3001/inventory", {
-            crossdomain: true,
-            params: {
-              query:
-                '{variant(input:{website:["cropkingseeds.com", "sonomaseeds.com", "sunwestgenetics.com"]}){sotiId, sttId,alias, summary, description, releaseDate, company { assetsUrl, name }, attributes {price, size, stock { amount, distributor }}, strain { cbd, thc, cbn, effect, yield, genetic, flowerTime, origin, difficulty, indica, sativa, ruderalis, environment }}}'
-            }
-          })
-          .then(function(response) {
-            let _strains = response.data.map((strain, index) => {
-              return inferStrainData(strain);
+      return dispatch => {
+        return new Promise((resolve, reject) => {
+          axios
+            .get("http://127.0.0.1:3001/inventory", {
+              crossdomain: true,
+              params: {
+                query:
+                  '{variant(input:{website:["cropkingseeds.com", "sonomaseeds.com", "sunwestgenetics.com"]}){sotiId, sttId,alias, summary, description, releaseDate, company { assetsUrl, name }, attributes {price, size, stock { amount, distributor }}, strain { cbd, thc, cbn, effect, yield, genetic, flowerTime, origin, difficulty, indica, sativa, ruderalis, environment }}}'
+              }
+            })
+            .then(function(response) {
+              let _strains = response.data.map((strain, index) => {
+                return inferStrainData(strain);
+              });
+              resolve(_strains);
+              dispatch(objects.setStrains(_strains));
+            })
+            .catch(function(error) {
+              console.log(error);
             });
-            dispatch(objects.setStrains(_strains));
-          })
-          .catch(function(error) {
-            console.log(error);
-          });
+        });
       };
     }
   };

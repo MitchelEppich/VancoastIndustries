@@ -67,7 +67,7 @@ let inferStrainData = strain => {
         .replace("seeds", "")
         .replace("feminized", "")
         .replace("autoflower", "");
-      if (genetic != "Mix") _alias = _alias.replace(genetic, "");
+      if (genetic != 4) _alias = _alias.replace(genetic, "");
       else _alias = _alias.replace("mix", "mixed");
       // if (genetic == "CBD") _alias = _alias.replace("CB", "");
       ret.alias = _alias.replace(/\s+/g, " ").trim();
