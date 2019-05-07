@@ -12,6 +12,7 @@ const footer = props => {
             </h3>
             <form action="/action_page.php">
               <input
+                aria-label="newsletter-subscription"
                 className="vcNewsletter-input"
                 type="text"
                 placeholder="Insert your email..."
@@ -27,7 +28,7 @@ const footer = props => {
 
         <div className="vcFooter-logo-wrap flex justify-center">
           <Link prefetch href="/">
-            <a className="vcFooter-logo scale-item">
+            <a aria-label="logo-footer" className="vcFooter-logo scale-item">
               <img src="../static/img/assets/vcText-logo.png" alt="" />
             </a>
           </Link>
@@ -36,37 +37,39 @@ const footer = props => {
         <div className="vcFooter-menu-wrap flex justify-center pt-8">
           <nav className="vcFooter-menu">
             <ul className="flex flex-col lg:flex-row justify-around items-center">
-              <li className="flex hover:bg-blue-new text-center">
+              <li className="flex scale-item text-center">
                 <Link prefetch href="/contact">
-                  <a>Contact</a>
+                  <a aria-label="contact">Contact</a>
                 </Link>
               </li>
-              <li className="flex hover:bg-blue-new text-center">
+              <li className="flex scale-item text-center">
                 <Link prefetch href="/about">
-                  <a>About</a>
+                  <a aria-label="about">About</a>
                 </Link>
               </li>
-              <li className="flex hover:bg-blue-new text-center">
+              <li className="flex scale-item text-center">
                 <Link prefetch href="/privacy-policy">
-                  <a>Privacy Policy</a>
+                  <a aria-label="privacy-policy">Privacy Policy</a>
                 </Link>
               </li>
-              <li className="flex hover:bg-blue-new text-center">
+              <li className="flex scale-item text-center">
                 <Link prefetch href="/faq">
-                  <a>FAQ</a>
+                  <a aria-label="faq">FAQ</a>
                 </Link>
               </li>
-              <li className="flex hover:bg-blue-new text-center">
+              <li className="flex scale-item text-center">
                 <Link prefetch href="/wholesale-application">
-                  <a>Wholesale Application</a>
+                  <a aria-label="wholesale-application">
+                    Wholesale Application
+                  </a>
                 </Link>
               </li>
             </ul>
           </nav>
         </div>
 
-        <div className="vcFooter-copy-wrap pt-10 flex justify-center">
-          <p className="vcFooter-copy">&copy; 2019 VanCoast Industries</p>
+        <div className="vcFooter-copy-wrap pt-8 pb-2 flex justify-center">
+          <p className="vcFooter-copy">&copy; 2019 Vancoast Industries</p>
         </div>
       </div>
     </footer>

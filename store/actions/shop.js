@@ -2,6 +2,8 @@ import gql from "graphql-tag";
 import { makePromise, execute } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
+import axios from "axios";
+import { inferStrainData } from "../utilities/strain";
 
 const actionTypes = {
   TOGGLE_FILTER_VISIBILITY: "TOGGLE_FILTER_VISIBILITY",
@@ -43,9 +45,34 @@ const getActions = uri => {
         activeFilters: activeFilters
       };
     },
-    purgeActiveFilters: () => {
+    purgeActiveFilters: activeFilters => {
+      while (activeFilters.length > 0) {
+        activeFilters.pop();
+      }
       return {
-        type: actionTypes.PURGE_ACTIVE_FILTERS
+        type: actionTypes.PURGE_ACTIVE_FILTERS,
+        activeFilters: activeFilters
+      };
+    },
+    getStrains: () => {
+      return async dispatch => {
+        axios
+          .get("http://127.0.0.1:3001/inventory", {
+            crossdomain: true,
+            params: {
+              query:
+                '{variant(input:{website:["cropkingseeds.com", "sonomaseeds.com", "sunwestgenetics.com"]}){sotiId, sttId,alias, summary, description, releaseDate, company { assetsUrl, name }, attributes {price, size, stock { amount, distributor }}, strain { cbd, thc, cbn, effect, yield, genetic, flowerTime, origin, difficulty, indica, sativa, ruderalis, environment }}}'
+            }
+          })
+          .then(function(response) {
+            let _strains = response.data.map((strain, index) => {
+              return inferStrainData(strain);
+            });
+            dispatch(objects.setStrains(_strains));
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
       };
     }
   };

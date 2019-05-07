@@ -60,22 +60,34 @@ const cartOptions = props => {
       </div>
       <div className="w-full text-center">
         <button className="vcSaveItem-btn">
-          {/* <FontAwesomeIcon
-            icon={faStar}
-            className="text-grey opacity-50 mr-2"
-          />{" "} */}
           <span className="font-bold text-grey text-lg opacity-50">
             Add to Wish List
           </span>
+          <FontAwesomeIcon
+            icon={faStar}
+            className="text-grey opacity-50 ml-2"
+          />{" "}
         </button>
       </div>
 
       <div className="vcShop-buttons flex flex-row justify-between">
         <Link prefetch href="/shop">
-          <button>Continue Shopping</button>
+          <button
+            onClick={() => {
+              props.setBrandIndex(0);
+            }}
+          >
+            Continue Shopping
+          </button>
         </Link>
         <Link prefetch href="/checkout">
-          <button>Checkout</button>
+          <button
+            onClick={() => {
+              props.setBrandIndex(0);
+            }}
+          >
+            Checkout
+          </button>
         </Link>
       </div>
     </React.Fragment>

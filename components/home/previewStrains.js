@@ -3,7 +3,9 @@ import ProductThumbnail from "../shop/productThumbnail";
 import ProductItem from "./productItem";
 
 const previewStrains = props => {
-  let strains = props.shop.strains.map((strain, index) => {
+  let strains = props.shop.strains || [];
+
+  strains = strains.map((strain, index) => {
     return (
       <ProductItem priceColor="black" strain={strain} {...props} key={index} />
       // <div key={index} className="vcShop-box flex justify-center items-center">

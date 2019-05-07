@@ -21,12 +21,15 @@ let inferStrainData = strain => {
     genetic,
     type,
     environment,
-    pcbd,
-    pcbn,
-    pthc,
-    name,
+    cbd,
+    cbn,
+    thc,
+    alias,
     yield: _yield,
-    flowerTime
+    flowerTime,
+    sativa,
+    indica,
+    ruderalis
   } = strain;
 
   //  Country
@@ -55,40 +58,42 @@ let inferStrainData = strain => {
   if (genetic != null) ret.genetic = _genetics[genetic];
 
   //  Names
-  if (name != null)
+  if (alias != null)
     (() => {
-      let _name = name;
-      _name = _name
-        .replace("Cannabis", "")
-        .replace("Seeds", "")
-        .replace("Feminized", "")
-        .replace("Autoflower", "");
-      if (genetic != "Mix") _name = _name.replace(genetic, "");
-      else _name = _name.replace("Mix", "Mixed");
-      // if (genetic == "CBD") _name = _name.replace("CB", "");
-      ret.name = _name.replace(/\s+/g, " ").trim();
+      let _alias = alias;
+      _alias = _alias
+        .toLowerCase()
+        .replace("cannabis", "")
+        .replace("seeds", "")
+        .replace("feminized", "")
+        .replace("autoflower", "");
+      if (genetic != "Mix") _alias = _alias.replace(genetic, "");
+      else _alias = _alias.replace("mix", "mixed");
+      // if (genetic == "CBD") _alias = _alias.replace("CB", "");
+      ret.alias = _alias.replace(/\s+/g, " ").trim();
     })();
 
   //  Types
   if (type != null) ret.type = _types[type];
+  else ret.type = sativa > 0.6 ? "sativa" : indica > 0.6 ? "indica" : "hybrid";
 
   //  Environment
   if (environment != null) ret.environment = _environments[environment];
 
   //  cbd
-  if (pcbd != null)
+  if (cbd != null)
     (() => {
-      let _max = pcbd[pcbd.length - 1];
-      if (_max >= 0.7) ret.cbd = "high";
-      else ret.cbd = "low";
+      let _max = cbd[cbd.length - 1];
+      if (_max >= 0.7) ret.cbdQ = "high";
+      else ret.cbdQ = "low";
     })();
 
   //  thc
-  if (pthc != null)
+  if (thc != null)
     (() => {
-      let _max = pthc[pthc.length - 1];
-      if (_max >= 18.49) ret.thc = "high";
-      else ret.thc = "low";
+      let _max = thc[thc.length - 1];
+      if (_max >= 18.49) ret.thcQ = "high";
+      else ret.thcQ = "low";
     })();
 
   //   pcbd = pcbd.map(a => `${a.toFixed(2)}%`).join("-");
@@ -134,9 +139,9 @@ let inferStrainData = strain => {
   }
 
   // BrandLogoPath
-  if (company[0]) {
+  if (company.alias) {
     let brandLogoPath;
-    switch (_brands.indexOf(company[0])) {
+    switch (_brands.indexOf(company.alias)) {
       case 0:
         brandLogoPath = "../static/img/assets/cks-logo.png";
         break;
@@ -159,7 +164,6 @@ let inferStrainData = strain => {
   //   ).replace(/\D/g, "");
   //   ret.nFlowerTime = parseInt(_upper);
   // }
-
   return {
     ...strain,
     ...ret

@@ -571,7 +571,7 @@ let strains = [
 ];
 
 let filters = {
-  Brands: ["Wholesale", "Crop King Seeds", "Sonoma", "Sunwest"],
+  Brands: ["Wholesale", "Crop King Seeds", "Sunwest Genetics", "Sonoma Seeds"],
   Type: ["Hybrid", "Indica", "Sativa"],
   StrainKind: ["Autoflower", "Feminized", "CBD", "Regular", "Mix"]
 };
@@ -633,4 +633,5 @@ for (let strain of strains) {
   _new.push(inferStrainData(strain));
 }
 strains = _new;
+
 export { strains, brands, filters };

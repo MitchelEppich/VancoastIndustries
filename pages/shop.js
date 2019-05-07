@@ -1,6 +1,7 @@
 //lib
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Router from "next/router";
 //custom
 import withData from "../lib/withData";
 import actions from "../store/actions";
@@ -13,13 +14,22 @@ import {
 } from "../components/shop";
 
 class Index extends Component {
+  // static async getInitialProps({ store, req }) {
+  //   store.dispatch(actions.getStrains());
+  //   return {};
+  // }
+
+  constructor(props) {
+    super(props);
+    // props.getStrains();
+    this.state = {
+      isClient: typeof document != undefined
+    };
+  }
+
   render() {
     return (
-      <Layout {...this.props}>
-        {console.log(
-          this.props.shop.activeBrandIndex,
-          this.props.shop.activeFilters
-        )}
+      <Layout {...this.props} isClient={this.state.isClient}>
         <div
           className={
             this.props.shop.activeBrandIndex == 0
@@ -46,7 +56,7 @@ class Index extends Component {
         <Heading {...this.props} />
 
         <div className="vcWholesale-page">
-          <Filters path={this.props.router} {...this.props} />
+          <Filters {...this.props} />
           <GeneralStrains {...this.props} />
         </div>
 
@@ -66,7 +76,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.toggleFilterVisibility(isFilterVisible)),
     setBrandIndex: input => dispatch(actions.setBrandIndex(input)),
     setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
-    toggleFilter: options => dispatch(actions.toggleFilter(options))
+    toggleFilter: options => dispatch(actions.toggleFilter(options)),
+    getStrains: () => dispatch(actions.getStrains())
   };
 };
 

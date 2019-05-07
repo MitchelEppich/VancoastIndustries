@@ -1,5 +1,9 @@
 let filterStrains = props => {
-  let strains = props.shop.strains.filter((strain, index) => {
+  let strains = props.shop.strains;
+  if (strains == null) {
+    return [];
+  }
+  strains = strains.filter((strain, index) => {
     let show = true;
     if (props.shop.activeFilters.length > 0) {
       let showStrain = !props.shop.activeFilters.some((filter, index) => {
@@ -10,7 +14,7 @@ let filterStrains = props => {
         filter = filterWords.join(" ");
         if (props.shop.filters.Brands.includes(filter)) {
           if (
-            strain.company[0]
+            strain.company.name
               .toLowerCase()
               .replace("seeds", "")
               .includes(filter.toLowerCase())
@@ -33,7 +37,7 @@ let filterStrains = props => {
     }
     if (props.shop.activeBrandIndex > 0) {
       if (
-        !strain.company.includes(
+        !strain.company.name.includes(
           props.shop.brands[props.shop.activeBrandIndex].name.toLowerCase()
         )
       ) {

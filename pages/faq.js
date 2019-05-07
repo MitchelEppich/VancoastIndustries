@@ -8,9 +8,9 @@ class Index extends Component {
   render() {
     return (
       <Layout {...this.props}>
-        <div class="vcPage-hero flex justify-center vcBg vcFaq items-center" />
+        <div className="vcPage-hero flex justify-center vcBg vcFaq items-center" />
 
-        <article class="vcPage-content vcFaq">
+        <article className="vcPage-content vcFaq">
           <header>
             <h1>FAQ</h1>
             <p>

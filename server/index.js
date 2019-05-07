@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
+const compression = require("compression");
 const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
 const { execute, subscribe } = require("graphql");
 const { createServer } = require("http");
@@ -37,12 +38,17 @@ app
   .then(() => {
     const server = express();
 
+    server.use(compression());
     server.use(
       cors({
         origin: "*"
       })
     );
-
+    server.use(
+      express.static(__dirname + "/static/", {
+        maxAge: "365d"
+      })
+    );
     // server.get("/watch/:_id", (req, res) => {
     //   app.render(req, res, "/", {});
     // });
@@ -69,15 +75,15 @@ app
       })
     );
 
+    server.get("/shop/:_id", (req, res) => {
+      app.render(req, res, "/shop", {});
+    });
+    server.get("/product/:_id", (req, res) => {
+      app.render(req, res, "/product", {});
+    });
     server.get("*", (req, res) => {
       return handle(req, res);
     });
-    // server.get("/product/:_id", (req, res) => {
-    //   app.render(req, res, "/product", {});
-    // });
-    // server.get("/shop/:_id", (req, res) => {
-    //   app.render(req, res, "/shop", {});
-    // });
 
     const ws = createServer(server);
     ws.listen(port, url, () => {

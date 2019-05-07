@@ -19,6 +19,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Router from "next/router";
 // custom
+const dev = process.env.NODE_ENV !== "production";
 import actions from "../store/actions";
 import Menu from "../components/menu";
 import Cart from "../components/cart";
@@ -26,24 +27,34 @@ import Footer from "../components/footer";
 import shuffle from "../scripts/shuffle";
 
 class Layout extends Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
+    props.getStrains();
+  }
+  componentDidMount() {
     let pageReady = false;
+
     try {
-      this.props.setStrains(shuffle(this.props.shop.strains));
-      this.prePageLoad(Router);
+      // this.props.setStrains(shuffle(thisS.props.shop.strains));
+      this.prePageLoad(this.props.router);
       pageReady = true;
     } catch (err) {
       console.log(err);
     }
     this.props.togglePageReady(pageReady);
-  }
-  componentDidMount() {
     window.addEventListener("resize", () => {
       this.setMediaSize();
       if (this.props.misc.showMobileMenu) {
         this.props.toggleMobileMenu(false);
       }
     });
+    if (dev) {
+      window.addEventListener("keypress", e => {
+        if (e.shiftKey && e.code === "KeyP") {
+          console.log(this.props);
+        }
+      });
+    }
   }
 
   render() {
@@ -77,10 +88,8 @@ class Layout extends Component {
         this.props.misc.mediaSize != mediaSize
       ) {
         if (["sm", "md"].includes(mediaSize)) {
-          // this.props.toggleShowFilters(false);
           this.props.setMediaSize({ mediaSize: mediaSize });
         } else {
-          // this.props.toggleShowFilters(true);
           this.props.setMediaSize({ mediaSize: mediaSize });
         }
         return mediaSize;
@@ -90,25 +99,28 @@ class Layout extends Component {
 
   prePageLoad = router => {
     let path = router.asPath,
-      indexOfBrand;
+      indexOfBrand = -1;
     let brands = this.props.shop.brands.map((brand, index) => {
       return brand.name.replace(/ /g, "").toLowerCase();
     });
-    if (path.includes("/shop#") && path.length > 6) {
+    if (path.includes("/shop/") && path.length > 6) {
       let brand = path.slice(6);
       indexOfBrand = brands.indexOf(brand);
+      if (indexOfBrand > 0) this.props.setBrandIndex(indexOfBrand);
+      Router.push("/shop", path);
     }
-    if (path.includes("/product#") && path.length > 9) {
+    if (path.includes("/product/") && path.length > 9) {
       let productName = path.slice(9).toLowerCase();
-      let currentProduct = this.props.shop.strains.filter((strain, index) => {
-        return strain.name.toLowerCase().replace(/ /g, "") === productName;
+      let currentProduct = this.props.shop.strains.find((strain, index) => {
+        return strain.alias.toLowerCase().replace(/ /g, "") === productName;
       });
-      this.props.setCurrentProduct({ newProduct: currentProduct[0] });
+      this.props.setCurrentProduct({ newProduct: currentProduct });
       indexOfBrand = brands.indexOf(
-        currentProduct[0].company[0].toLowerCase().replace(/ /g, "")
+        currentProduct.company.name.toLowerCase().replace(/ /g, "")
       );
+      if (indexOfBrand > 0) this.props.setBrandIndex(indexOfBrand);
+      Router.push("/product", path);
     }
-    if (indexOfBrand) this.props.setBrandIndex(indexOfBrand);
   };
 }
 
@@ -125,10 +137,12 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.toggleMenuDropdown(options)),
     setStrains: strains => dispatch(actions.setStrains(strains)),
     toggleFilter: options => dispatch(actions.toggleFilter(options)),
-    purgeActiveFilters: () => dispatch(actions.purgeActiveFilters()),
+    purgeActiveFilters: activeFilters =>
+      dispatch(actions.purgeActiveFilters(activeFilters)),
     setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
     togglePageReady: isPageReady =>
-      dispatch(actions.togglePageReady(isPageReady))
+      dispatch(actions.togglePageReady(isPageReady)),
+    getStrains: () => dispatch(actions.getStrains())
   };
 };
 
