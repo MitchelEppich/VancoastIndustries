@@ -37,27 +37,27 @@ const footer = props => {
         <div className="vcFooter-menu-wrap flex justify-center pt-8">
           <nav className="vcFooter-menu">
             <ul className="flex flex-col lg:flex-row justify-around items-center">
-              <li className="flex hover:bg-blue-new text-center">
+              <li className="flex scale-item text-center">
                 <Link prefetch href="/contact">
                   <a aria-label="contact">Contact</a>
                 </Link>
               </li>
-              <li className="flex hover:bg-blue-new text-center">
+              <li className="flex scale-item text-center">
                 <Link prefetch href="/about">
                   <a aria-label="about">About</a>
                 </Link>
               </li>
-              <li className="flex hover:bg-blue-new text-center">
+              <li className="flex scale-item text-center">
                 <Link prefetch href="/privacy-policy">
                   <a aria-label="privacy-policy">Privacy Policy</a>
                 </Link>
               </li>
-              <li className="flex hover:bg-blue-new text-center">
+              <li className="flex scale-item text-center">
                 <Link prefetch href="/faq">
                   <a aria-label="faq">FAQ</a>
                 </Link>
               </li>
-              <li className="flex hover:bg-blue-new text-center">
+              <li className="flex scale-item text-center">
                 <Link prefetch href="/wholesale-application">
                   <a aria-label="wholesale-application">
                     Wholesale Application
@@ -68,7 +68,7 @@ const footer = props => {
           </nav>
         </div>
 
-        <div className="vcFooter-copy-wrap pt-10 flex justify-center">
+        <div className="vcFooter-copy-wrap pt-8 pb-2 flex justify-center">
           <p className="vcFooter-copy">&copy; 2019 Vancoast Industries</p>
         </div>
       </div>

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const about = props => {
   return (
-    <div className="vcAbout-section flex flex-col items-center pb-24 pt-10">
+    <div className="vcAbout-section flex flex-col items-center pb-12 pt-10">
       <h2 className="flex flex-col">
         <span className="vcAbout-text">About</span>
         <span className="vcAbout-van">Vancoast</span>

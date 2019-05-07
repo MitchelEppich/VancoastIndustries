@@ -53,6 +53,9 @@ p {
   padding: 0;
   margin: 0;
 }
+// small {
+//   font-size: 70%;
+// }
 a {
   color: #000;
   text-decoration: none;
@@ -73,7 +76,7 @@ a:hover {
   transition: transform 0.3s ease-in-out;
 }
 .scale-item:hover {
-  transform: scale(1.06);
+  transform: scale(1.03);
   transition: transform 0.3s ease-in-out;
 }
 .rotate-item {
@@ -524,7 +527,7 @@ img.quick-view {
     max-width: 300px;
     width: 100%;
     padding: 50px 30px 50px 30px;
-    margin-top: 150px;
+    margin-top: 110px;
     // background-image: url("../static/img/assets/vancoast-watermark.svg");
     background-repeat: no-repeat;
     background-position: bottom;
@@ -554,7 +557,7 @@ img.quick-view {
     display: block;
   }
   li.vcShop-brands {
-    padding-top: 30px;
+    padding-top: 10px;
   }
   #vancoastSearch {
     position: relative;

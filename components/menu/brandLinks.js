@@ -47,7 +47,7 @@ const brandLinks = props => {
       </Link>
       {props.misc.menuDropdownVisible == "brands" ||
       props.misc.showMobileMenu != null ? (
-        <ul className="">{brandLinks.slice(1)}</ul>
+        <ul className="ml-2">{brandLinks.slice(1)}</ul>
       ) : null}
     </li>
   );
