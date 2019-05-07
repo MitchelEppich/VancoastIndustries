@@ -25,6 +25,7 @@ import Menu from "../components/menu";
 import Cart from "../components/cart";
 import Footer from "../components/footer";
 import shuffle from "../scripts/shuffle";
+import Loader from "../components/loader";
 
 class Layout extends Component {
   constructor(props) {
@@ -64,7 +65,9 @@ class Layout extends Component {
         {this.props.misc.pageReady ? (
           this.props.children
         ) : (
-          <div className="w-full h-screen bg-black" />
+          <div className="w-full h-screen bg-white">
+            <Loader {...this.props} />
+          </div>
         )}
         <Footer {...this.props} />
       </React.Fragment>

@@ -7,7 +7,6 @@ const MoreInfo = props => {
     _product.thc[1] != null
       ? _product.thc[0] + "% - " + _product.thc[1] + "%"
       : _product.thc + "%";
-  console.log(thc);
   let cbd =
     _product.cbd[1] != null
       ? _product.cbd[0] + "% - " + _product.cbd[1] + "%"
