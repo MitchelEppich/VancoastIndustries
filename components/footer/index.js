@@ -15,7 +15,7 @@ const footer = props => {
                 aria-label="newsletter-subscription"
                 className="vcNewsletter-input"
                 type="text"
-                placeholder="Insert your email..."
+                placeholder="Enter your email..."
               />
               <input
                 className="vcNewsletter-btn"

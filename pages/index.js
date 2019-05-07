@@ -45,7 +45,10 @@ class Index extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     setBrandIndex: index => dispatch(actions.setBrandIndex(index)),
-    setCurrentProduct: product => dispatch(actions.setCurrentProduct(product)),
+    setCurrentProduct: product => {
+      dispatch(actions.quickAddToCartQty(0));
+      dispatch(actions.setCurrentProduct(product));
+    },
     getStrains: () => dispatch(actions.getStrains())
   };
 };

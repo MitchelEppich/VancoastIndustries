@@ -62,13 +62,11 @@ const getActions = uri => {
               crossdomain: true,
               params: {
                 query:
-                  '{variant(input:{website:["cropkingseeds.com", "sonomaseeds.com", "sunwestgenetics.com"]}){sotiId, sttId,alias, summary, description, releaseDate, company { assetsUrl, name }, attributes {price, size, stock { amount, distributor }}, strain { cbd, thc, cbn, effect, yield, genetic, flowerTime, origin, difficulty, indica, sativa, ruderalis, environment }}}'
+                  '{variant(input:{website:["cropkingseeds.com", "sonomaseeds.com", "sunwestgenetics.com"]}){sotiId, sttId,alias, summary, description, releaseDate, company { assetsUrl, name }, attributes {price, size, stock { amount, distributor }}, strain { cbd, thc, cbn, effect, type, yield, genetic, flowerTime, origin, difficulty, indica, sativa, ruderalis, environment }}}'
               }
             })
             .then(function(response) {
-              let _strains = response.data.map((strain, index) => {
-                return inferStrainData(strain);
-              });
+              let _strains = response.data;
               resolve(_strains);
               dispatch(objects.setStrains(_strains));
             })

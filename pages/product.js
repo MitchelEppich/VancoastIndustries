@@ -69,7 +69,10 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.modifyPotentialQuantity(input)),
     modifyCart: input => dispatch(actions.modifyCart(input)),
     setBrandIndex: index => dispatch(actions.setBrandIndex(index)),
-    setCurrentProduct: product => dispatch(actions.setCurrentProduct(product))
+    setCurrentProduct: product => {
+      dispatch(actions.quickAddToCartQty(0));
+      dispatch(actions.setCurrentProduct(product));
+    }
   };
 };
 

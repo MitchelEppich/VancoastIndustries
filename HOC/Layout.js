@@ -141,10 +141,14 @@ const mapDispatchToProps = dispatch => {
     toggleFilter: options => dispatch(actions.toggleFilter(options)),
     purgeActiveFilters: activeFilters =>
       dispatch(actions.purgeActiveFilters(activeFilters)),
-    setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
+    setCurrentProduct: product => {
+      dispatch(actions.quickAddToCartQty(0));
+      dispatch(actions.setCurrentProduct(product));
+    },
     togglePageReady: isPageReady =>
       dispatch(actions.togglePageReady(isPageReady)),
-    getStrains: () => dispatch(actions.getStrains())
+    getStrains: () => dispatch(actions.getStrains()),
+    modifyCart: input => dispatch(actions.modifyCart(input))
   };
 };
 

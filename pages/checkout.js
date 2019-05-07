@@ -37,7 +37,11 @@ class Index extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return { changeStep: step => dispatch(actions.changeStep(step)) };
+  return {
+    changeStep: step => dispatch(actions.changeStep(step)),
+    modifyOrderDetails: orderDetails =>
+      dispatch(actions.modifyOrderDetails(orderDetails))
+  };
 };
 
 export default connect(

@@ -92,7 +92,7 @@ const MoreInfo = props => {
       };
       if (_product.sativa * 10 < i) {
         arr.push(
-          <div style={bulletSativa} className="relative">
+          <div key={i} style={bulletSativa} className="relative">
             <div className="text-white text-xs absolute mt-3 ml-2 opacity-50 font-bold">
               <small>{i * 10}%</small>
             </div>
@@ -100,7 +100,7 @@ const MoreInfo = props => {
         );
       } else if (_product.ruderalis * 10 < i && _product.ruderalis != 0) {
         arr.push(
-          <div style={bulletIndica} className="relative">
+          <div key={i} style={bulletIndica} className="relative">
             <div className="text-white text-xs absolute mt-3 ml-2 opacity-50 font-bold">
               <small>{i * 10}%</small>
             </div>
@@ -108,7 +108,7 @@ const MoreInfo = props => {
         );
       } else {
         arr.push(
-          <div style={bulletRuderalis} className="relative">
+          <div key={i} style={bulletRuderalis} className="relative">
             <div className="text-white text-xs absolute mt-3 ml-2 opacity-50 font-bold">
               <small>{i * 10}%</small>
             </div>
@@ -172,7 +172,7 @@ const MoreInfo = props => {
                 </div>
 
                 <div className="bg-white w-1/2 text-sm text-grey p-1 px-2">
-                  <p>{_product.country}</p>
+                  <p>{_product.country || "N/A"}</p>
                 </div>
               </div>
               <div className="w-300 inline-flex shadow-md mt-4">
@@ -197,11 +197,10 @@ const MoreInfo = props => {
                   <p className="text-sm font-bold">Effects</p>
                 </div>
                 <div className="bg-white w-1/2 text-sm text-grey p-1 px-2">
-                  {console.log(_product)}
                   <p>
                     {_product.effect != null && _product.effect.length != 0
                       ? _product.effect
-                      : "Not Informed"}
+                      : "N/A"}
                   </p>
                 </div>
               </div>
@@ -410,7 +409,7 @@ const MoreInfo = props => {
               </div>
             </div>
             <div className="w-full text-sm p-1 text-center text-xs bg-grey-light opacity-50">
-              <p className="text-xs font-bold">* Aprox values</p>
+              <p className="text-xs font-bold">* Approx values</p>
             </div>
           </div>
           {/* <div className="inline-flex w-full border-2 bg-grey-light border-white">
