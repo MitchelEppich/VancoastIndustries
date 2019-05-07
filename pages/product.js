@@ -50,7 +50,8 @@ class Index extends Component {
             </div>
           </div>
         </article>
-        <div className="mt-10">
+
+        <div className="mt-1">
           <MoreInfo {...this.props} />
         </div>
 

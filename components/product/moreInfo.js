@@ -121,11 +121,12 @@ const MoreInfo = props => {
 
   return (
     <div className="w-full">
-      {/* <div className="text-center">
-        <h3 className="vcCompany-similar text-xl font-bold">
-          More Information about {_product.alias}
+      <div className="text-center">
+        <h3 className="vcCompany-similar capitalize text-xl font-bold">
+          About {_product.alias}
         </h3>
-      </div> */}
+        <p className="mt-6 w-2/3 mx-auto">{_product.summary}</p>
+      </div>
       <div className="w-full mx-auto mt-8 bg-blue-new p-10 pb-12 mb-64 moreInfoBackground">
         <div className="text-center h-300 pt-4 relative">
           <div className="moreInformation h-300 w-full absolute pin-t" />
@@ -144,7 +145,7 @@ const MoreInfo = props => {
                   <p className="text-sm font-bold">Type</p>
                 </div>
 
-                <div className="bg-white w-1/2 text-sm text-grey p-1 px-2">
+                <div className="bg-white w-1/2 text-sm capitalize text-grey p-1 px-2">
                   <p>{_product.type}</p>
                 </div>
               </div>
@@ -172,7 +173,11 @@ const MoreInfo = props => {
                 </div>
 
                 <div className="bg-white w-1/2 text-sm text-grey p-1 px-2">
-                  <p>{_product.country}</p>
+                  <p>
+                    {_product.country != null
+                      ? _product.country
+                      : "Not Informed"}
+                  </p>
                 </div>
               </div>
               <div className="w-300 inline-flex shadow-md mt-4">
@@ -234,8 +239,8 @@ const MoreInfo = props => {
             </div>
           </div>
         </div>
-        <div className="w-500 mx-auto absolute bg-white pin-x mt-2 flex flex-wrap justify-between">
-          <div className="w-500 shadow-md">
+        <div className="w-700 mx-auto absolute bg-white pin-x mt-2 flex flex-wrap justify-between">
+          <div className="w-700 shadow-md">
             <div className="w-full p-2 bg-grey-light text-grey uppercase text-center">
               <p className="text-lg font-bold p-1">Strain Characteristics</p>
             </div>
