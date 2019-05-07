@@ -26,7 +26,10 @@ let inferStrainData = strain => {
     thc,
     alias,
     yield: _yield,
-    flowerTime
+    flowerTime,
+    sativa,
+    indica,
+    ruderalis
   } = strain;
 
   //  Country
@@ -60,18 +63,19 @@ let inferStrainData = strain => {
       let _alias = alias;
       _alias = _alias
         .toLowerCase()
-        .replace("Cannabis", "")
-        .replace("Seeds", "")
-        .replace("Feminized", "")
-        .replace("Autoflower", "");
+        .replace("cannabis", "")
+        .replace("seeds", "")
+        .replace("feminized", "")
+        .replace("autoflower", "");
       if (genetic != "Mix") _alias = _alias.replace(genetic, "");
-      else _alias = _alias.replace("Mix", "Mixed");
+      else _alias = _alias.replace("mix", "mixed");
       // if (genetic == "CBD") _alias = _alias.replace("CB", "");
       ret.alias = _alias.replace(/\s+/g, " ").trim();
     })();
 
   //  Types
   if (type != null) ret.type = _types[type];
+  else ret.type = sativa > 0.6 ? "sativa" : indica > 0.6 ? "indica" : "hybrid";
 
   //  Environment
   if (environment != null) ret.environment = _environments[environment];

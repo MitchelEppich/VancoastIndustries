@@ -22,7 +22,7 @@ const productThumbnail = props => {
       <article className="w-full">
         <img
           className="h-auto w-250 mx-auto"
-          src={props.strain.packagePath}
+          src="../static/img/products/sonoma/so-blue-diesel.jpg"
           alt={props.strain.alias}
         />
         <header className="vcProduct-info flex flex-col">

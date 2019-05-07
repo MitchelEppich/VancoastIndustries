@@ -21,7 +21,7 @@ export default class MyDocument extends Document {
       <html lang="en">
         <Head>
           {/* <meta name="theme-color" content="#79B83E" /> */}
-          <title>Base Project</title>
+          <title>Vancoast</title>
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta charSet="UTF-8" />
           <meta

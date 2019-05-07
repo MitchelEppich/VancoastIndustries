@@ -66,7 +66,6 @@ const getActions = uri => {
           })
           .then(function(response) {
             let _strains = response.data.map((strain, index) => {
-              console.log(strain);
               return inferStrainData(strain);
             });
             dispatch(objects.setStrains(_strains));
