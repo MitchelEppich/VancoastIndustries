@@ -9,19 +9,46 @@ class Index extends Component {
     return (
       <div className="vcLogin flex flex-col justify-center items-center">
         <a href="#">
-          <img src="img/assets/vc-full-logo.png" alt="vancoast industries" />
+          <img
+            src="../static/img/assets/vc-full-logo.png"
+            alt="vancoast industries"
+          />
         </a>
         <div className="vcLogin-panel flex flex-col items-center justify-around">
           <h1>Sign In</h1>
 
-          <form className="vcLogin-form flex flex-col justify-center">
-            <label for="vcName">UserName or Email*</label>
-            <input type="text" id="vcLogin-user" placeholder="" />
+          <form
+            className="vcLogin-form flex flex-col justify-center"
+            onSubmit={e => {
+              e.preventDefault();
+              const form = e.target;
+              const formData = new window.FormData(form);
 
-            <label for="vcName">Password*</label>
-            <input type="text" id="vcLogin-pass" placeholder="" />
+              let username = formData.get("user");
+              let password = formData.get("pass");
 
-            <label for="vcLogin-remember" className="vcLogin-checkbox">
+              this.props.verifyLogin({ username, password });
+            }}
+          >
+            <label htmlFor="vcName">UserName or Email*</label>
+            <input
+              type="text"
+              id="vcLogin-user"
+              name="user"
+              placeholder=""
+              autoComplete="username"
+            />
+
+            <label htmlFor="vcName">Password*</label>
+            <input
+              type="password"
+              id="vcLogin-pass"
+              name="pass"
+              placeholder=""
+              autoComplete="current-password"
+            />
+
+            <label htmlFor="vcLogin-remember" className="vcLogin-checkbox">
               <input type="checkbox" id="vcLogin-remember" checked="checked" />
               Remember Me
             </label>
@@ -41,7 +68,9 @@ class Index extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    verifyLogin: credentials => dispatch(actions.verifyLogin(credentials))
+  };
 };
 
 export default connect(
