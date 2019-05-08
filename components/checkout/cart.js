@@ -36,7 +36,7 @@ const cart = props => {
   });
   return (
     <React.Fragment>
-      <div className="vcCheckout-content">
+      <div className={props.page == "payment" ? "" : "vcCheckout-content"}>
         <ul className="vcCheckout-list flex flex-row justify-center lg:justify-start items-baseline">
           {items}
         </ul>
@@ -77,7 +77,7 @@ const cart = props => {
             props.changeStep("Shipping");
             window.scrollTo(0, 0);
           }}
-          type="submit"
+          type="button"
           className="vcCheckout-btn"
           value="Shipping"
         />

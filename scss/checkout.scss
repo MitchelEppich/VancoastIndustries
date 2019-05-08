@@ -154,6 +154,7 @@ nav.vcCheckout-menu ul li a:hover {
   font-size: 20px;
   line-height: 35px;
   color: #ccc;
+  width: 50%;
 }
 .vcShipping-details span,
 .vcBilling-details span {
@@ -199,6 +200,18 @@ input.vcCheckout-btn {
   text-align: center;
   display: block;
   margin: 20px auto;
+  background: #1426de;
+  color: #fff;
+  border: 0px;
+  border-radius: 3px;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 select.vcCountry {
   padding: 20px;

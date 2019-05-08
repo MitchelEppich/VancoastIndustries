@@ -51,13 +51,13 @@ const billing = props => {
           </div>
           <label htmlFor="vcName">Name*</label>
           <input
-            value={sameAsShipping ? shipping.name : billing.name}
+            value={sameAsShipping ? shipping.firstName : billing.firstName}
             onChange={e =>
               props.modifyOrderDetails({
                 ...props.checkout.orderDetails,
                 billing: {
                   ...props.checkout.orderDetails.billing,
-                  name: e.target.value
+                  firstName: e.target.value
                 }
               })
             }
@@ -65,6 +65,22 @@ const billing = props => {
             id="vcName"
             required
             placeholder="First Name"
+          />
+          <input
+            value={sameAsShipping ? shipping.lastName : billing.lastName}
+            onChange={e =>
+              props.modifyOrderDetails({
+                ...props.checkout.orderDetails,
+                billing: {
+                  ...props.checkout.orderDetails.billing,
+                  lastName: e.target.value
+                }
+              })
+            }
+            type="text"
+            id="vcName"
+            required
+            placeholder="Last Name"
           />
 
           <label htmlFor="vcCompany">Company Name*</label>
@@ -214,7 +230,7 @@ const billing = props => {
           props.changeStep("Payment");
           window.scrollTo(0, 0);
         }}
-        type="submit"
+        type="button"
         className="vcCheckout-btn"
         value="Payment"
       />

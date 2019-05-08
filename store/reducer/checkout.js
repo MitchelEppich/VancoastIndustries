@@ -25,6 +25,9 @@ const initialState = {
       postalZip: "",
       provinceState: "",
       streetAddress: ""
+    },
+    payment: {
+      selectedOption: ""
     }
   },
   cart: {

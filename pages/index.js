@@ -18,10 +18,6 @@ import {
 import axios from "axios";
 
 class Index extends Component {
-  static async getInitialProps({ store, req }) {
-    store.dispatch(actions.getStrains());
-    return {};
-  }
   render() {
     return (
       <Layout {...this.props}>

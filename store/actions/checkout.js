@@ -18,6 +18,7 @@ const getActions = uri => {
         step: step
       };
     },
+
     modifyOrderDetails: orderDetails => {
       return {
         type: actionTypes.MODIFY_ORDER_DETAILS,

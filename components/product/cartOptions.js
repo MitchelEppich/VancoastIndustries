@@ -84,9 +84,21 @@ const cartOptions = props => {
           <button
             onClick={() => {
               props.setBrandIndex(0);
+              let _identifier =
+                currentProduct.sotiId +
+                currentProduct.size[props.product.quickAddToCartQty];
+              props.modifyCart({
+                cart: cart,
+                action: "APPEND",
+                max: maxPerPackage,
+                productIdentifier: _identifier,
+                product: currentProduct,
+                quantity: potentialQuantity,
+                coupon: coupon
+              });
             }}
           >
-            Checkout
+            Buy Now
           </button>
         </Link>
       </div>
