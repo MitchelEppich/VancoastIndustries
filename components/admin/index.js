@@ -1,33 +1,28 @@
+import Accounts from "./accounts";
+import Search from "./search";
+import Filters from "./filters";
+
 const index = props => {
   return (
-    <div className="vcLogin flex flex-col justify-center items-center">
-      <a href="#">
-        <img src="img/assets/vc-full-logo.png" alt="vancoast industries" />
-      </a>
-      <div className="vcLogin-panel flex flex-col items-center justify-around">
-        <h1>Sign In</h1>
-
-        <form className="vcLogin-form flex flex-col justify-center">
-          <label for="vcName">UserName or Email*</label>
-          <input type="text" id="vcLogin-user" placeholder="" />
-
-          <label for="vcName">Password*</label>
-          <input type="text" id="vcLogin-pass" placeholder="" />
-
-          <label for="vcLogin-remember" className="vcLogin-checkbox">
-            <input type="checkbox" id="vcLogin-remember" checked="checked" />
-            Remember Me
-          </label>
-
-          <input type="submit" className="vcLogin-btn" value="Login" />
-        </form>
-
-        <p className="">
-          <a href="">Apply for Wholesale Account</a>
-        </p>
+    <div className="vcAdminAccount flex flex-wrap justify-between content-start py-4 px-24">
+      <div className="w-full flex justify-between items-center">
+        <h2 className="w-48 text-white font-thin">
+          Hi {props.account.currentUser.name}
+        </h2>
+        <img
+          src="../static/img/assets/vc-full-logo.png"
+          alt="vancoast industries"
+          className="w-24 h-16"
+        />
+        <div className="w-48 text-right">
+          <button className="bg-white text-blue px-4 py-2">Logout</button>
+        </div>
       </div>
-
-      <button className="vcForgot">Forgot my Password</button>
+      <div className="w-full flex my-2">
+        <Search {...props} />
+        <Filters {...props} />
+      </div>
+      <Accounts {...props} />
     </div>
   );
 };
