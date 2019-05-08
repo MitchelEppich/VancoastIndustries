@@ -28,14 +28,20 @@ class Index extends Component {
               const form = e.target;
               const formData = new window.FormData(form);
 
-              let name = formData.get("name");
-              let company = formData.get("company");
-              let email = formData.get("email");
+              let name = (
+                formData.get("firstName") +
+                " " +
+                formData.get("lastName")
+              ).toLowerCase();
+              let company = formData.get("company").toLowerCase();
+              let email = formData.get("email").toLowerCase();
               let phone = formData.get("phone");
-              let website = formData.get("website");
+              let website = formData.get("website").toLowerCase();
               let license = formData.get("license");
-              let title = formData.get("title");
-              let message = formData.get("message");
+              let address = formData.get("address").toLowerCase();
+              let description = formData.get("description");
+              let password = formData.get("password");
+              let passwordConfirm = formData.get("passwordConfirm");
 
               this.props.createAccount({
                 name,
@@ -43,20 +49,34 @@ class Index extends Component {
                 email,
                 phone,
                 website,
-                license
+                license,
+                address,
+                description,
+                password
               });
             }}
           >
-            <label htmlFor="vcName">Your Name*</label>
+            <label htmlFor="vcName">Your First Name*</label>
             <input
+              required
               type="text"
               id="vcName"
-              name="name"
-              placeholder="First and Last Name"
+              name="firstName"
+              placeholder="First Name"
+            />
+
+            <label htmlFor="vcName">Your Last Name*</label>
+            <input
+              required
+              type="text"
+              id="vcName"
+              name="lastName"
+              placeholder="Last Name"
             />
 
             <label htmlFor="vcCompany">Company Name*</label>
             <input
+              required
               type="text"
               id="vcCompany"
               name="company"
@@ -65,14 +85,43 @@ class Index extends Component {
 
             <label htmlFor="vcEmail">Company Email*</label>
             <input
+              required
               type="text"
               id="vcEmail"
               name="email"
               placeholder="you@companyname.com"
             />
 
+            <label htmlFor="vcPassword">Account Password*</label>
+            <input
+              required
+              type="password"
+              id="vcPassword"
+              name="password"
+              placeholder="Password"
+            />
+
+            <label htmlFor="vcPassword">Confirm Account Password*</label>
+            <input
+              required
+              type="password"
+              id="vcPasswordConfirm"
+              name="passwordConfirm"
+              placeholder="Retype Password"
+              onChange={e => {
+                let value = e.target.value;
+                let other = document.querySelector("#vcPassword").value;
+                if (value != other)
+                  e.target.setCustomValidity(
+                    "Passwords do not match each other"
+                  );
+                else e.target.setCustomValidity("");
+              }}
+            />
+
             <label htmlFor="vcPhone">Company Phone*</label>
             <input
+              required
               type="text"
               id="vcPhone"
               name="phone"
@@ -81,6 +130,7 @@ class Index extends Component {
 
             <label htmlFor="vcWebsite">Company Website*</label>
             <input
+              required
               type="text"
               id="vcWebsite"
               name="website"
@@ -89,25 +139,28 @@ class Index extends Component {
 
             <label htmlFor="vcLicense">Business License*</label>
             <input
+              required
               type="text"
               id="vcLicense"
               name="license"
               placeholder="#License"
             />
 
-            <label htmlFor="vcMessageTitle">Message Title</label>
+            <label htmlFor="vcAddress">Business Address*</label>
             <input
+              required
               type="text"
-              id="vcMessageTitle"
-              name="title"
-              placeholder="Requesting Wholesale Account"
+              id="vcAddress"
+              name="address"
+              placeholder="Street Address"
             />
 
             <label htmlFor="vcMessage">Tell Us About Your Company*</label>
             <textarea
+              required
               type="textarea"
               id="vcMessage"
-              name="message"
+              name="description"
               rows="10"
               placeholder="Any information that would be useful like how you heard about our wholesale program."
             />

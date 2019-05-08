@@ -1,10 +1,10 @@
 let Query = `
-    account(input: AccountInput!): [Account]
-    verifyCredentials(input: CredentialsInput): Account
+    account(input: GetAccountInput): [Account]
 `;
 
 let Mutation = `
     createAccount(input: AccountInput): Account
+    verifyCredentials(input: CredentialsInput): Account
 `;
 
 let Subscription = ``;
@@ -12,7 +12,6 @@ let Subscription = ``;
 let Type = `
     type Account {
         _id: String
-        username: String
         email: String
         password: String
         name: String
@@ -22,14 +21,20 @@ let Type = `
         license: String
         approved: Int
         admin: Boolean
+        address: String
+        description: String
         jwt: String
         createdAt: String
     }
 `;
 
 let Input = `
+    input GetAccountInput {
+        jwt: String
+        all: Boolean
+    }
+
     input AccountInput {
-        username: String
         email: String
         password: String
         name: String
@@ -37,11 +42,12 @@ let Input = `
         phone: String
         website: String
         license: String
+        address: String
+        description: String
         approved: Int
     }
 
     input CredentialsInput {
-        username: String
         email: String
         password: String
     }

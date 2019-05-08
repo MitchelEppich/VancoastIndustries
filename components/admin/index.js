@@ -8,7 +8,7 @@ const index = props => {
         <h1>Sign In</h1>
 
         <form className="vcLogin-form flex flex-col justify-center">
-          <label for="vcName">UserName or Email*</label>
+          <label for="vcName">Email*</label>
           <input type="text" id="vcLogin-user" placeholder="" />
 
           <label for="vcName">Password*</label>

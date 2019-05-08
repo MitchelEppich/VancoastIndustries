@@ -2,11 +2,52 @@ const { Account } = require("../../models");
 
 const resolvers = {
   Query: {
-    account: (_, { input }) => {
-      return Account.find(input);
+    account: async (_, { input }) => {
+      let accounts;
+      let $ = { ...input };
+      let { all } = $;
+      delete $.all;
+      if (all) {
+        let account = await Account.find($);
+        if (account == null) return [];
+        account = account[0];
+        if (account.admin != true) return [];
+        accounts = await Account.find({});
+      } else {
+        accounts = await Account.find($);
+      }
+
+      return accounts.map(a => {
+        a.password = null;
+        a.jwt = null;
+        return a;
+      });
     }
   },
   Mutation: {
+    verifyCredentials: async (_, { input }) => {
+      let $ = { ...input };
+      let account = await Account.findOne({
+        email: input.email.toLowerCase()
+      });
+
+      if (!account) {
+        throw new Error("Email not found");
+      }
+
+      const validPassword = account.validPassword($.password);
+      if (!validPassword) {
+        throw new Error("Password is incorrect");
+      }
+      account.jwt = account.createToken();
+
+      await account.save();
+
+      account = account.toObject();
+      delete account.password;
+
+      return account;
+    },
     createAccount: async (_, { input }) => {
       let $ = { ...input };
 

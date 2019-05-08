@@ -24,19 +24,19 @@ class Index extends Component {
               const form = e.target;
               const formData = new window.FormData(form);
 
-              let username = formData.get("user");
+              let email = formData.get("email");
               let password = formData.get("pass");
 
-              this.props.verifyLogin({ username, password });
+              this.props.verifyCredentials({ email, password });
             }}
           >
-            <label htmlFor="vcName">UserName or Email*</label>
+            <label htmlFor="vcName">Email*</label>
             <input
               type="text"
               id="vcLogin-user"
-              name="user"
+              name="email"
               placeholder=""
-              autoComplete="username"
+              autoComplete="email"
             />
 
             <label htmlFor="vcName">Password*</label>
@@ -69,7 +69,8 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    verifyLogin: credentials => dispatch(actions.verifyLogin(credentials))
+    verifyCredentials: credentials =>
+      dispatch(actions.verifyCredentials(credentials))
   };
 };
 
