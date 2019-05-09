@@ -4,31 +4,109 @@ import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 
 const actionTypes = {
-    CHANGE_OPTION: "CHANGE_OPTION"
+  CHANGE_OPTION: "CHANGE_OPTION",
+  VERIFY_LOGIN: "VERIFY_LOGIN",
+  CREATE_ACCOUNT: "CREATE_ACCOUNT"
 };
 
 const getActions = uri => {
-    const objects = {
-        changeOption: option => {
-            return {
-                type: actionTypes.CHANGE_OPTION,
-                option: option
-            };
-        }
-    };
+  const objects = {
+    changeOption: option => {
+      return {
+        type: actionTypes.CHANGE_OPTION,
+        option: option
+      };
+    },
+    verifyLogin: credentials => {
+      return dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
 
-    return { ...objects };
+        const operation = {
+          query: query.getUsers
+        };
+
+        return makePromise(execute(link, operation))
+          .then(data => {
+            let users = data.data.allUsers;
+            dispatch({
+              type: actionTypes.VERIFY_LOGIN
+            });
+            return Promise.resolve(users);
+          })
+          .catch(error => console.log(error));
+      };
+    },
+    createAccount: input => {
+      return dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+
+        const operation = {
+          query: mutation.createAccount,
+          variables: { ...input }
+        };
+
+        return makePromise(execute(link, operation))
+          .then(data => {
+            let account = data.data.createAccount;
+            console.log(account);
+            dispatch({
+              type: actionTypes.CREATE_ACCOUNT
+            });
+            return Promise.resolve(users);
+          })
+          .catch(error => console.log(error));
+      };
+    }
+  };
+
+  return { ...objects };
 };
 const query = {};
 
-const mutation = {};
+const mutation = {
+  createAccount: gql`
+    mutation(
+      $password: String
+      $email: String
+      $company: String
+      $name: String
+      $phone: String
+      $website: String
+      $license: String
+    ) {
+      createAccount(
+        input: {
+          password: $password
+          email: $email
+          company: $company
+          name: $name
+          phone: $phone
+          website: $website
+          license: $license
+        }
+      ) {
+        _id
+        username
+        email
+        name
+        company
+        phone
+        website
+        license
+        approved
+        jwt
+        createdAt
+      }
+    }
+  `
+};
 
 export default uri => {
-    const actions = getActions(uri);
-    return {
-        // TYPES
-        ...actionTypes,
-        // ACTIONS
-        ...actions
-    };
+  const actions = getActions(uri);
+  return {
+    // TYPES
+    ...actionTypes,
+    // ACTIONS
+    ...actions
+  };
 };

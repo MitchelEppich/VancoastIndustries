@@ -29,7 +29,15 @@ class Index extends Component {
       <Layout {...this.props}>
         <article className="vcPage-content vcCheckout">
           <Header title={this.props.checkout.currentStep} {...this.props} />
+          {/* <form
+            onSubmit={e => {
+              e.preventDefault();
+              this.props.changeStep("Confirmation");
+              window.scrollTo(0, 0);
+            }}
+          > */}
           {currentStep}
+          {/* </form> */}
         </article>
       </Layout>
     );
@@ -37,7 +45,11 @@ class Index extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return { changeStep: step => dispatch(actions.changeStep(step)) };
+  return {
+    changeStep: step => dispatch(actions.changeStep(step)),
+    modifyOrderDetails: orderDetails =>
+      dispatch(actions.modifyOrderDetails(orderDetails))
+  };
 };
 
 export default connect(

@@ -3,24 +3,27 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const item = props => {
   let item = props.item;
+  let img =
+    item.product.company.name == "sonoma seeds"
+      ? "../static/img/products/sonoma/so-blue-diesel.jpg"
+      : item.product.company.name == "crop king seeds"
+      ? "../static/img/products/cks/cks-white-widow-auto.png"
+      : "../static/img/products/sunwest/sw-cheese.png";
+
   return (
     <div className="vcItem vcItem-one flex flex-row relative">
       <div className="vcItemDiv">
-        <img
-          src={item.product.packagePath}
-          className="h-24"
-          alt={item.product.name}
-        />
+        <img src={img} className="h-24" alt={item.product.alias} />
       </div>
 
       <div className="vcItem-info flex flex-col justify-around items-start">
         <h3>
-          {item.product.name} ({item.product.type})
+          {item.product.alias} {item.product.type}
         </h3>
 
         <div className="vcItem-brand">
           <span>Brand - </span>
-          <span className="capitalize">{item.product.company[0]}</span>
+          <span className="capitalize">{item.product.company.name}</span>
         </div>
 
         <div className="vcItem-details flex flex-row justify-start">
@@ -37,13 +40,14 @@ const item = props => {
       </div>
       <div
         onClick={() => {
-          console.log(item);
-          //   props.modifyCart({
-          //     items: items,
-          //     action: "REMOVE",
-          //     // max: props.cart.maxPerPackage,
-          //     productIdentifier: item
-          //   });
+          let _identifier = item.product.sotiId + item.amount;
+          props.modifyCart({
+            items: props.checkout.cart.items,
+            action: "REMOVE",
+            max: props.checkout.cart.maxPerPackage,
+            productIdentifier: _identifier,
+            cart: props.checkout.cart
+          });
         }}
         className="absolute pin-r hover:bg-blue-new hover:text-white cursor-pointer pin-t w-8 h-8 text-center flex justify-center items-center"
       >

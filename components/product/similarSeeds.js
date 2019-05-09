@@ -12,7 +12,7 @@ const similarSeeds = props => {
         if (strain.company.name.includes(company.name.toLowerCase())) {
           arr.push(
             <ProductThumbnail
-              key={strain.name}
+              key={strain.sotiId}
               priceColor=""
               strain={strain}
               {...props}
@@ -24,7 +24,7 @@ const similarSeeds = props => {
     };
     return (
       <div
-        key={company.name}
+        key={index}
         className={` ${
           index % 2 === 0 ? "bg-grey-lightest" : "bg-white"
         } mt-12`}

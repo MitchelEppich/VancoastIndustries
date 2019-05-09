@@ -15,7 +15,7 @@ const footer = props => {
                 aria-label="newsletter-subscription"
                 className="vcNewsletter-input"
                 type="text"
-                placeholder="Insert your email..."
+                placeholder="Enter your email..."
               />
               <input
                 className="vcNewsletter-btn"
@@ -34,7 +34,7 @@ const footer = props => {
           </Link>
         </div>
 
-        <div className="vcFooter-menu-wrap flex justify-center pt-8">
+        <div className="vcFooter-menu-wrap flex justify-center py-8">
           <nav className="vcFooter-menu">
             <ul className="flex flex-col lg:flex-row justify-around items-center">
               <li className="flex scale-item text-center">
@@ -68,10 +68,7 @@ const footer = props => {
           </nav>
         </div>
 
-        <div
-          style={{ background: "#1b1f31" }}
-          className="vcFooter-copy-wrap mt-8 py-4 flex justify-center"
-        >
+        <div className="vcFooter-copy-wrap py-4 flex justify-center">
           <p className="vcFooter-copy">&copy; 2019 Vancoast Industries</p>
         </div>
       </div>

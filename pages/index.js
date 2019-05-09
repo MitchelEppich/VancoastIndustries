@@ -18,10 +18,6 @@ import {
 import axios from "axios";
 
 class Index extends Component {
-  static async getInitialProps({ store, req }) {
-    store.dispatch(actions.getStrains());
-    return {};
-  }
   render() {
     return (
       <Layout {...this.props}>
@@ -45,7 +41,10 @@ class Index extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     setBrandIndex: index => dispatch(actions.setBrandIndex(index)),
-    setCurrentProduct: product => dispatch(actions.setCurrentProduct(product)),
+    setCurrentProduct: product => {
+      dispatch(actions.quickAddToCartQty(0));
+      dispatch(actions.setCurrentProduct(product));
+    },
     getStrains: () => dispatch(actions.getStrains())
   };
 };

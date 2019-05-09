@@ -61,6 +61,7 @@ let inferStrainData = strain => {
   if (alias != null)
     (() => {
       let _alias = alias;
+      console.log("alias", _alias);
       _alias = _alias
         .toLowerCase()
         .replace("cannabis", "")

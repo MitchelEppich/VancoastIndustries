@@ -75,7 +75,10 @@ const mapDispatchToProps = dispatch => {
     toggleFilterVisibility: isFilterVisible =>
       dispatch(actions.toggleFilterVisibility(isFilterVisible)),
     setBrandIndex: input => dispatch(actions.setBrandIndex(input)),
-    setCurrentProduct: input => dispatch(actions.setCurrentProduct(input)),
+    setCurrentProduct: product => {
+      dispatch(actions.quickAddToCartQty(0));
+      dispatch(actions.setCurrentProduct(product));
+    },
     toggleFilter: options => dispatch(actions.toggleFilter(options)),
     getStrains: () => dispatch(actions.getStrains())
   };

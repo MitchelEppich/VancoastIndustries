@@ -19,7 +19,7 @@ const index = props => {
           {...props}
         />
         <Link prefetch href="/checkout">
-          <button>Checkout</button>
+          <button onClick={() => props.toggleCart(false)}>Checkout</button>
         </Link>
       </div>
     </div>

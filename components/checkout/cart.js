@@ -1,16 +1,22 @@
 const cart = props => {
   let items = Object.entries(props.checkout.cart.items).map((item, index) => {
     let product = item[1].product;
+    let img =
+      product.company.name == "sonoma seeds"
+        ? "../static/img/products/sonoma/so-blue-diesel.jpg"
+        : product.company.name == "crop king seeds"
+        ? "../static/img/products/cks/cks-white-widow-auto.png"
+        : "../static/img/products/sunwest/sw-cheese.png";
     return (
       <li className="vcItem vcItem-one flex items-end">
-        <img src={product.packagePath} alt="bruce banner" />
+        <img src={img} alt="bruce banner" />
 
         <div className="vcItem-info flex flex-col justify-around items-start">
           <h2>{product.name}</h2>
           <h3 className="vcCheckout-cat">{product.type}</h3>
           <div className="vcItem-brand capitalize">
             <span>Brand -</span>
-            {product.company[0]}
+            {product.company.name}
           </div>
 
           <div className="vcItem-details flex flex-row justify-start">
@@ -30,7 +36,7 @@ const cart = props => {
   });
   return (
     <React.Fragment>
-      <div className="vcCheckout-content">
+      <div className={props.page == "payment" ? "" : "vcCheckout-content"}>
         <ul className="vcCheckout-list flex flex-row justify-center lg:justify-start items-baseline">
           {items}
         </ul>
@@ -71,7 +77,7 @@ const cart = props => {
             props.changeStep("Shipping");
             window.scrollTo(0, 0);
           }}
-          type="submit"
+          type="button"
           className="vcCheckout-btn"
           value="Shipping"
         />

@@ -6,7 +6,8 @@ import fetch from "node-fetch";
 const actionTypes = {
   CHANGE_STEP: "CHANGE_STEP",
   MODIFY_POTENTIAL_QUANTITY: "MODIFY_POTENTIAL_QUANTITY",
-  MODIFY_CART: "MODIFY_CART"
+  MODIFY_CART: "MODIFY_CART",
+  MODIFY_ORDER_DETAILS: "MODIFY_ORDER_DETAILS"
 };
 
 const getActions = uri => {
@@ -17,12 +18,18 @@ const getActions = uri => {
         step: step
       };
     },
+
+    modifyOrderDetails: orderDetails => {
+      return {
+        type: actionTypes.MODIFY_ORDER_DETAILS,
+        orderDetails: orderDetails
+      };
+    },
     modifyPotentialQuantity: input => {
       let _tag = input.tag;
       let _potentialQuantity = input.potentialQuantity;
       let _action = input.action;
       let _max = input.max;
-
       let _quantity = Math.min(input.quantity, _max);
 
       if (_tag != null && typeof _potentialQuantity === "number")
@@ -69,13 +76,12 @@ const getActions = uri => {
 
       let { _per, _amount } = (() => {
         if (_product == null) return {};
-        let _amount = _productIdentifier.replace(/\D/g, "");
+        let _amount = parseInt(_productIdentifier.replace(/\D/g, ""));
         return {
-          _per: _product.price[["20", "50", "100"].indexOf(_amount)],
+          _per: _product.price[_product.size.indexOf(_amount)],
           _amount
         };
       })();
-
       let _coupon = input.coupon;
       let sale = (() => {
         if (_coupon == null) return undefined;
@@ -93,7 +99,6 @@ const getActions = uri => {
       let _quantity = Math.min(input.quantity, _max);
 
       let _item, price;
-
       switch (_action) {
         case "REMOVE":
           delete _items[_productIdentifier];

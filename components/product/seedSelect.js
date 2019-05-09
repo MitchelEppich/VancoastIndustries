@@ -13,7 +13,7 @@ const seedSelect = props => {
           className={
             props.product.quickAddToCartQty == index
               ? "border-4 border-blue scale-item"
-              : "border-4 border-offWhite scale-item text-sm"
+              : "border-4 border-offWhite scale-item"
           }
         >
           <span>{numberOfSeeds} Seeds</span>${price} ea.

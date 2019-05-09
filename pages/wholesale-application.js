@@ -21,29 +21,85 @@ class Index extends Component {
             </p>
           </header>
 
-          <form className="vcWholesale-application flex flex-col justify-center">
+          <form
+            className="vcWholesale-application flex flex-col justify-center"
+            onSubmit={e => {
+              e.preventDefault();
+              const form = e.target;
+              const formData = new window.FormData(form);
+
+              let name = formData.get("name");
+              let company = formData.get("company");
+              let email = formData.get("email");
+              let phone = formData.get("phone");
+              let website = formData.get("website");
+              let license = formData.get("license");
+              let title = formData.get("title");
+              let message = formData.get("message");
+
+              this.props.createAccount({
+                name,
+                company,
+                email,
+                phone,
+                website,
+                license
+              });
+            }}
+          >
             <label htmlFor="vcName">Your Name*</label>
-            <input type="text" id="vcName" placeholder="First and Last Name" />
+            <input
+              type="text"
+              id="vcName"
+              name="name"
+              placeholder="First and Last Name"
+            />
 
             <label htmlFor="vcCompany">Company Name*</label>
-            <input type="text" id="vcCompany" placeholder="Company Name" />
+            <input
+              type="text"
+              id="vcCompany"
+              name="company"
+              placeholder="Company Name"
+            />
 
             <label htmlFor="vcEmail">Company Email*</label>
-            <input type="text" id="vcEmail" placeholder="you@companyname.com" />
+            <input
+              type="text"
+              id="vcEmail"
+              name="email"
+              placeholder="you@companyname.com"
+            />
 
             <label htmlFor="vcPhone">Company Phone*</label>
-            <input type="text" id="vcPhone" placeholder="555-555-5555" />
+            <input
+              type="text"
+              id="vcPhone"
+              name="phone"
+              placeholder="555-555-5555"
+            />
 
             <label htmlFor="vcWebsite">Company Website*</label>
-            <input type="text" id="vcWebsite" placeholder="www.yoursite.com" />
+            <input
+              type="text"
+              id="vcWebsite"
+              name="website"
+              placeholder="www.yoursite.com"
+            />
 
             <label htmlFor="vcLicense">Business License*</label>
-            <input type="text" id="vcLicense" placeholder="#License" />
+            <input
+              type="text"
+              id="vcLicense"
+              name="license"
+              placeholder="#License"
+            />
 
             <label htmlFor="vcMessageTitle">Message Title</label>
             <input
               type="text"
               id="vcMessageTitle"
+              name="title"
               placeholder="Requesting Wholesale Account"
             />
 
@@ -51,6 +107,7 @@ class Index extends Component {
             <textarea
               type="textarea"
               id="vcMessage"
+              name="message"
               rows="10"
               placeholder="Any information that would be useful like how you heard about our wholesale program."
             />
@@ -64,7 +121,9 @@ class Index extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    createAccount: input => dispatch(actions.createAccount(input))
+  };
 };
 
 export default connect(
