@@ -120,7 +120,7 @@ input.vcNewsletter-btn {
 }
 @media screen and (min-width: 479px) {
   .vcSubscribe-box {
-    // padding-right: ;
+    padding-right: 19px;
   }
 }
 @media screen and (max-width: 479px) {
@@ -150,5 +150,11 @@ input.vcNewsletter-btn {
     margin: 10px 0 0 0;
     text-transform: uppercase;
     transition: all 0.3s ease-in-out;
+  }
+
+  .vcSubscribe-box h3 span {
+    display: block;
+    text-transform: uppercase;
+    padding-right: 19px;
   }
 }
