@@ -137,7 +137,8 @@ button.tablink {
 }
 .active,
 .vcAccordion:hover {
-  background-color: #ccc;
+  background-color: transparent;
+  // background-color: #ccc;
   color: #fff;
 }
 .vcPanel {

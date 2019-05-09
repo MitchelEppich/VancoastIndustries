@@ -524,7 +524,7 @@ img.quick-view {
     display: block;
   }
   .vcFooter-menu-wrap {
-    margin-top: 50px;
+    margin: 15px 0;
     // margin-top: 150px;
   }
 }
@@ -660,6 +660,17 @@ img.quick-view {
   .vcNav-cart img {
     max-width: 50px;
   }
+  .vcFooter-menu {
+    width: 90%;
+  }
+  .vcFooter-menu ul li {
+    padding: 5px 0px;
+    transition: all 0.2s ease-in-out;
+  }
+  div.vc-hero img {
+    max-width: 240px;
+    padding-top: 110px;
+  }
 }
 @media screen and (max-width: 330px) {
   li.vcShop-cats a,
@@ -675,5 +686,12 @@ img.quick-view {
     font-weight: 400;
     letter-spacing: -1px;
     line-height: 37px;
+  }
+  .vcFooter-menu {
+    width: 95%;
+  }
+  .vcFooter-menu ul li {
+    padding: 5px 0px;
+    transition: all 0.2s ease-in-out;
   }
 }

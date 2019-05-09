@@ -134,7 +134,9 @@
 .vcAbout-section {
   background-image: url("../static/img/page-bg/vc-about-bg.jpg");
   background-size: cover;
-  background-position: bottom;
+  background-position: top;
+  max-height: 1400px;
+  height: 100%;
 }
 .vcAbout-section h2 {
   text-align: center;
@@ -199,7 +201,8 @@
   background-position: center bottom;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 1700px;
+  // height: 1700px;
+  height: 1900px;
 }
 .vcSpecials-product {
   padding-bottom: 50px;
