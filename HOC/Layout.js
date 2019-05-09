@@ -62,13 +62,13 @@ class Layout extends Component {
       <React.Fragment>
         <Menu {...this.props} />
         <Cart {...this.props} />
-        {this.props.misc.pageReady ? (
+        {/* {this.props.misc.pageReady ? (
           this.props.children
-        ) : (
-          <div className="w-full h-screen bg-white">
-            <Loader {...this.props} />
-          </div>
-        )}
+        ) : ( */}
+        <div className="w-full h-screen bg-white">
+          <Loader {...this.props} />
+        </div>
+        {/* )} */}
         <Footer {...this.props} />
       </React.Fragment>
     );
