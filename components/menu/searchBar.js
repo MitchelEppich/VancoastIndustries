@@ -19,7 +19,7 @@ const searchBar = props => {
         Router.push("/shop", "/shop?" + searchValue);
       }}
     >
-      <div className="w-4/5">
+      <div className="w-full">
         <input
           aria-label="search"
           className="vcNav-search"
@@ -30,7 +30,7 @@ const searchBar = props => {
           }}
         />
       </div>
-      <div className="w-1/5">
+      <div className="">
         <input
           value="Search"
           type="submit"

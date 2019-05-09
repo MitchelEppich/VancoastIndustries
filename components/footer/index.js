@@ -6,7 +6,7 @@ const footer = props => {
       <div className="footer-overlay">
         <div className="vcSubscribe-box-wrap flex justify-end xl:pr-12 md:pr-12 lg:pr-12 pt-16 pb-10">
           <div className="vcSubscribe-box">
-            <h3>
+            <h3 className="mb-4">
               <span className="vcSubscribe-van">Vancoast</span>{" "}
               <span className="vcSubscribe-news">Newsletter</span>
             </h3>
@@ -34,7 +34,7 @@ const footer = props => {
           </Link>
         </div>
 
-        <div className="vcFooter-menu-wrap flex justify-center pt-8">
+        <div className="vcFooter-menu-wrap flex justify-center py-8">
           <nav className="vcFooter-menu">
             <ul className="flex flex-col lg:flex-row justify-around items-center">
               <li className="flex scale-item text-center">
@@ -68,7 +68,7 @@ const footer = props => {
           </nav>
         </div>
 
-        <div className="vcFooter-copy-wrap pt-8 pb-2 flex justify-center">
+        <div className="vcFooter-copy-wrap py-4 flex justify-center">
           <p className="vcFooter-copy">&copy; 2019 Vancoast Industries</p>
         </div>
       </div>

@@ -6,15 +6,11 @@ import Link from "next/link";
 import withData from "../lib/withData";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
-import Admin from "../components/admin"
+import Admin from "../components/admin";
 
 class Index extends Component {
   render() {
-    return (
-      <Layout {...this.props}>
-        <Admin />
-      </Layout>
-    );
+    return <Admin {...this.props} />;
   }
 }
 

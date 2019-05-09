@@ -76,7 +76,7 @@ a:hover {
   transition: transform 0.3s ease-in-out;
 }
 .scale-item:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
 }
 .rotate-item {
@@ -131,6 +131,19 @@ input[type="submit"]:hover,
 .vcNavSection-three {
   width: 33%;
 }
+
+.loader-img {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  animation: blinkingEffect 2s infinite linear;
+}
+@keyframes blinkingEffect {
+  50% {
+    filter: invert(80%);
+  }
+}
+
 /** mobile menu CSS **/
 #vcNav-icon {
   display: none;
@@ -273,15 +286,17 @@ ul li {
   background: #fff;
   position: absolute;
   top: 0px;
-  max-width: 3000px;
-  width: 100%;
+  left: 0;
+  right: 0;
+  // max-width: 3000px;
+  width: 50%;
   border-radius: 0px;
   font-size: 20px;
   letter-spacing: -0.5px;
   margin: 0 auto;
   height: 65px;
-  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.65));
-  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.65));
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.265));
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.265));
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -309,9 +324,9 @@ input.vcNav-search {
   color: #333;
   background: #eee;
   border: 0;
-  box-shadow: inset 0 0 5px #ccc;
-  -webkit-box-shadow: inset 0 0 5px #ccc;
-  -moz-box-shadow: inset 0 0 5px #ccc;
+  box-shadow: inset 0 0 10px rgba(204, 204, 204, 0.57);
+  -webkit-box-shadow: inset 0 0 10px rgba(204, 204, 204, 0.57);
+  -moz-box-shadow: inset 0 0 10px rgba(204, 204, 204, 0.57);
 }
 .vcNav-vLogo img {
   max-width: 60px;
@@ -323,8 +338,8 @@ input.vcNav-search {
   margin-right: 0;
   bottom: 0;
   margin-top: 130px;
-  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.75));
-  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.75));
+  -webkit-filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.275));
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.275));
   height: calc(100vh - 140px);
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -509,7 +524,7 @@ img.quick-view {
     display: block;
   }
   .vcFooter-menu-wrap {
-    margin-top: 50px;
+    margin: 15px 0;
     // margin-top: 150px;
   }
 }
@@ -645,6 +660,17 @@ img.quick-view {
   .vcNav-cart img {
     max-width: 50px;
   }
+  .vcFooter-menu {
+    width: 90%;
+  }
+  .vcFooter-menu ul li {
+    padding: 5px 0px;
+    transition: all 0.2s ease-in-out;
+  }
+  div.vc-hero img {
+    max-width: 240px;
+    padding-top: 110px;
+  }
 }
 @media screen and (max-width: 330px) {
   li.vcShop-cats a,
@@ -660,5 +686,12 @@ img.quick-view {
     font-weight: 400;
     letter-spacing: -1px;
     line-height: 37px;
+  }
+  .vcFooter-menu {
+    width: 95%;
+  }
+  .vcFooter-menu ul li {
+    padding: 5px 0px;
+    transition: all 0.2s ease-in-out;
   }
 }
