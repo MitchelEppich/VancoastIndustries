@@ -7,7 +7,7 @@ const index = props => {
   });
   return (
     <div className="w-full h-700 rounded-lg flex bg-white shadow-lg overflow-hidden">
-      <div className="w-1/4 overflow-auto">{accounts}</div>
+      <div className="w-500 overflow-auto">{accounts}</div>
       <AccountView {...props} />
     </div>
   );

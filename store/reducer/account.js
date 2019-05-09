@@ -4,7 +4,7 @@ import { updateObject } from "../utility";
 const initialState = {
   currentOptionIndex: 0,
   options: [
-    "Account Info",
+    "Shipping Info",
     "Billing Info",
     "Reset Password",
     "Recent Orders",
@@ -12,7 +12,6 @@ const initialState = {
   ],
   currentUser: {
     email: "vanessa@vancoastind.com",
-    username: "Vanessa",
     name: "Vanessa",
     company: "Vancoast Industries",
     phone: "16041231234",
@@ -22,10 +21,22 @@ const initialState = {
     admin: true,
     createdAt: { type: Date, default: Date.now }
   },
+  currentAccount: {
+    email: "ivan@seedsforsale.com",
+
+    name: "Ivan Johnson",
+    company: "seeds fo sale",
+    phone: "16041231234",
+    website: "seedsforsale.com",
+    license: "123456789",
+    approved: 0,
+    admin: false,
+    createdAt: { type: Date, default: Date.now }
+  },
   accounts: [
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -37,7 +48,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -49,7 +60,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -61,7 +72,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -73,7 +84,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -85,7 +96,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -97,7 +108,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -109,7 +120,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -121,7 +132,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -133,7 +144,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -145,7 +156,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -157,7 +168,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -169,7 +180,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -181,7 +192,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -193,7 +204,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -205,7 +216,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -217,7 +228,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -229,7 +240,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",
@@ -241,7 +252,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      username: "seedsforsale",
+
       name: "Ivan Johnson",
       company: "seeds fo sale",
       phone: "16041231234",

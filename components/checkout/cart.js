@@ -8,7 +8,7 @@ const cart = props => {
         ? "../static/img/products/cks/cks-white-widow-auto.png"
         : "../static/img/products/sunwest/sw-cheese.png";
     return (
-      <li className="vcItem vcItem-one flex items-end">
+      <li key={index} className="vcItem vcItem-one flex items-end">
         <img src={img} alt="bruce banner" />
 
         <div className="vcItem-info flex flex-col justify-around items-start">

@@ -6,16 +6,26 @@ const sessionDetails = props => {
       <button className="vcNav-login">Login</button>
 
       <div className="vcWelcome flex flex-col justify-center items-center scale-item">
-        <Link href="/account">
-          <a className="flex flex-col items-center justify-center">
-            <img
-              className="flex"
-              src="../static/img/assets/icons/user-icon.svg"
-              alt=""
-            />
-            <span className="flex">Welcome, Steve</span>
-          </a>
-        </Link>
+        {props.account.loggedIn ? (
+          <Link href="/account">
+            <a className="flex flex-col items-center justify-center">
+              <img
+                className="flex"
+                src="../static/img/assets/icons/user-icon.svg"
+                alt=""
+              />
+              <span className="flex">Welcome, Steve</span>
+            </a>
+          </Link>
+        ) : (
+          <Link href="/login">
+            <a className="flex flex-col items-center justify-center">
+              <span className="border border-blue rounded-lg p-2 px-4 uppercase">
+                Login
+              </span>
+            </a>
+          </Link>
+        )}
       </div>
 
       <div

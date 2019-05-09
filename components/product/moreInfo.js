@@ -173,15 +173,11 @@ const MoreInfo = props => {
                 </div>
 
                 <div className="bg-white w-1/2 text-sm text-grey p-1 px-2">
-<<<<<<< HEAD
-                  <p>{_product.country || "N/A"}</p>
-=======
                   <p>
                     {_product.country != null
                       ? _product.country
                       : "Not Informed"}
                   </p>
->>>>>>> da2c2e6329415de9b9475ffa9bf354bdf9df5bf0
                 </div>
               </div>
               <div className="w-300 inline-flex shadow-md mt-4">

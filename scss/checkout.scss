@@ -275,6 +275,14 @@ select.vcCountry {
   line-height: 15px;
   margin-bottom: 20px;
 }
+.vcPayment-ccInput select {
+  background: #eee;
+  border: 0px;
+  padding: 20px;
+  font-size: 15px;
+  line-height: 15px;
+  margin-bottom: 20px;
+}
 .vcCardinfo {
   width: 100%;
 }
@@ -329,9 +337,8 @@ label.vcCreditCard {
 }
 @media screen and (max-width: 1367px) {
 }
-.vcCardExpiry,
-.vcCardCCV {
-  width: 40%;
+.vcCardExpiry {
+  width: 70%;
 }
 @media screen and (min-width: 991px) {
 }
@@ -368,8 +375,7 @@ label.vcCreditCard {
     padding-top: 50px;
   }
   .vcCardinfo,
-  .vcCardExpiry,
-  .vcCardCCV {
+  .vcCardExpiry {
     width: 100%;
   }
 }
