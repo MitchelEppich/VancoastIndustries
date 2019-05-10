@@ -19,21 +19,25 @@ const getActions = uri => {
         option: option
       };
     },
-    verifyLogin: credentials => {
+    verifyCredentials: credentials => {
       return dispatch => {
         const link = new HttpLink({ uri, fetch: fetch });
 
         const operation = {
-          query: query.getUsers
+          query: mutation.verifyCredentials,
+          variables: { ...credentials }
         };
 
         return makePromise(execute(link, operation))
           .then(data => {
-            let users = data.data.allUsers;
+            let account = data.data.verifyCredentials;
+            if (account == null)
+              account = { error: "Invalid Email or Password" };
             dispatch({
-              type: actionTypes.VERIFY_LOGIN
+              type: actionTypes.VERIFY_CREDENTIALS,
+              account
             });
-            return Promise.resolve(users);
+            return Promise.resolve(account);
           })
           .catch(error => console.log(error));
       };
@@ -53,7 +57,7 @@ const getActions = uri => {
             dispatch({
               type: actionTypes.CREATE_ACCOUNT
             });
-            return Promise.resolve(users);
+            return Promise.resolve(account);
           })
           .catch(error => console.log(error));
       };
@@ -78,15 +82,48 @@ const getActions = uri => {
 const query = {};
 
 const mutation = {
+  verifyCredentials: gql`
+    mutation($email: String, $password: String) {
+      verifyCredentials(input: { email: $email, password: $password }) {
+        _id
+        email
+        password
+        name
+        surname
+        company
+        phone
+        website
+        license
+        approved
+        admin
+        address
+        country
+        city
+        postal
+        state
+        description
+        jwt
+        createdAt
+      }
+    }
+  `,
+
   createAccount: gql`
     mutation(
       $password: String
       $email: String
       $company: String
       $name: String
+      $surname: String
       $phone: String
       $website: String
       $license: String
+      $address: String
+      $state: String
+      $city: String
+      $country: String
+      $postal: String
+      $description: String
     ) {
       createAccount(
         input: {
@@ -94,20 +131,33 @@ const mutation = {
           email: $email
           company: $company
           name: $name
+          surname: $surname
           phone: $phone
           website: $website
           license: $license
+          address: $address
+          postal: $postal
+          city: $city
+          country: $country
+          state: $state
+          description: $description
         }
       ) {
         _id
-        username
         email
         name
+        surname
         company
         phone
         website
         license
         approved
+        description
+        address
+        city
+        postal
+        country
+        state
         jwt
         createdAt
       }

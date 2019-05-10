@@ -7,15 +7,20 @@ const Schema = mongoose.Schema;
 const AccountSchema = Schema({
   password: String,
   email: String,
-  username: String,
+  surname: String,
   name: String,
   company: String,
   phone: String,
   website: String,
   license: String,
+  postal: String,
+  country: String,
+  state: String,
+  address: String,
   jwt: String,
   approved: Number,
   admin: Boolean,
+  description: String,
   createdAt: { type: Date, default: Date.now }
 });
 
