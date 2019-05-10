@@ -33,6 +33,7 @@ import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 class Layout extends Component {
   constructor(props) {
     super(props);
+    this.state = { toTop: false };
     if (!props.router.asPath.includes("product")) props.getStrains();
   }
   async componentDidMount() {
@@ -49,6 +50,14 @@ class Layout extends Component {
       this.setMediaSize();
       if (this.props.misc.showMobileMenu) {
         this.props.toggleMobileMenu(false);
+      }
+    });
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > window.innerHeight) {
+        this.setState({ toTop: true });
+      }
+      if (window.scrollY < window.innerHeight) {
+        this.setState({ toTop: false });
       }
     });
     if (dev) {
@@ -81,10 +90,10 @@ class Layout extends Component {
           className="items-center flex"
           href="#top"
         >
-          {window.innerHeight > 800 ? (
+          {this.state.toTop ? (
             <div
               id="jumpToTop"
-              className="fixed z-999 w-12 pb-2 mb-12 mr-4 h-12 bg-blue pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-blue-dark scale-item items-center flex rounded shadow-md"
+              className="fixed z-999 w-12 pb-2 mb-12 mr-4 h-12 bg-blue pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-blue-dark scale-item items-center flex rounded-full shadow-md"
             >
               <FontAwesomeIcon
                 icon={faAngleUp}

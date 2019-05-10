@@ -6,7 +6,7 @@ const brandBoard = props => {
       className={
         "vcBrand-board  " +
         props.class +
-        " flex flex-col lg:flex-row justify-between items-center"
+        " flex flex-row sm:flex-col justify-between items-center"
       }
     >
       <img src={props.logo} alt={props.name} />

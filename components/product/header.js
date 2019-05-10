@@ -3,9 +3,35 @@ const header = props => {
     <header className="vcSingle-intro">
       <h3 className="vcProduct-cat">{props.product.currentProduct.type}</h3>
       <h1 className="flex items-center justify-center">
-        {props.product.currentProduct.name}
+        {props.product.currentProduct.alias}
       </h1>
-      <p className="pt-2">{props.product.currentProduct.description}</p>
+      {props.product.showFullSummary ? (
+        <p
+          className="pt-2"
+          onClick={() => {
+            props.toggleFullSummary();
+          }}
+        >
+          {props.product.currentProduct.summary}
+          <span className="font-bold ml-2 text-blue cursor-pointer">
+            {" "}
+            Read Less
+          </span>
+        </p>
+      ) : (
+        <p
+          className="pt-2"
+          onClick={() => {
+            props.toggleFullSummary();
+          }}
+        >
+          {props.product.currentProduct.summary.substring(0, 300) + "..."}{" "}
+          <span className="font-bold ml-2 text-blue cursor-pointer">
+            {" "}
+            Read More
+          </span>
+        </p>
+      )}
     </header>
   );
 };

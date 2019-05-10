@@ -26,7 +26,7 @@ class Index extends Component {
         />
 
         <article>
-          <div className="vcSingle w-4/5 mx-auto flex flex-col lg:flex-row justify-center items-center">
+          <div className="vcSingle w-4/5 mx-auto flex sm:flex-col flex-row lg:flex-row justify-center items-center">
             <BrandLogo
               currentProduct={this.props.product.currentProduct}
               {...this.props}
@@ -74,7 +74,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.quickAddToCartQty(0));
       dispatch(actions.setCurrentProduct(product));
     },
-    addToWishList: input => dispatch(actions.addToWishList(input))
+    addToWishList: input => dispatch(actions.addToWishList(input)),
+    toggleFullSummary: input => dispatch(actions.toggleFullSummary())
   };
 };
 
