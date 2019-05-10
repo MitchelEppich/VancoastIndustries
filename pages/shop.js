@@ -14,14 +14,8 @@ import {
 } from "../components/shop";
 
 class Index extends Component {
-  // static async getInitialProps({ store, req }) {
-  //   store.dispatch(actions.getStrains());
-  //   return {};
-  // }
-
   constructor(props) {
     super(props);
-    // props.getStrains();
     this.state = {
       isClient: typeof document != undefined
     };
@@ -80,7 +74,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.setCurrentProduct(product));
     },
     toggleFilter: options => dispatch(actions.toggleFilter(options)),
-    getStrains: () => dispatch(actions.getStrains())
+    getStrains: () => dispatch(actions.getStrains()),
+    toggleModal: product => dispatch(actions.toggleModal(product))
   };
 };
 

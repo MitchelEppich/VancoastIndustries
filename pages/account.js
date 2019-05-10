@@ -41,7 +41,7 @@ class Index extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return { changeOption: option => dispatch(actions.changeOption(option)) };
+  return { changeOption: option => dispatch(actions.changeOption(option)), };
 };
 
 export default connect(

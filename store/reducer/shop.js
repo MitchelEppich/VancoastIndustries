@@ -5,10 +5,10 @@ import { strains, brands, filters } from "../../server/data/temp_data";
 const initialState = {
   showFilters: false,
   brands: brands,
-  // strains: strains,
   activeBrandIndex: 0,
   filters: filters,
-  activeFilters: []
+  activeFilters: [],
+  quickViewModal: null
 };
 
 export default (state = initialState, action) => {
@@ -24,6 +24,10 @@ export default (state = initialState, action) => {
     case actionTypes.PURGE_ACTIVE_FILTERS:
       return updateObject(state, {
         activeFilters: action.activeFilters
+      });
+    case actionTypes.TOGGLE_MODAL:
+      return updateObject(state, {
+        quickViewModal: action.product
       });
     default:
       return state;

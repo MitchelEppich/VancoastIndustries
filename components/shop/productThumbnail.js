@@ -50,7 +50,12 @@ const productThumbnail = props => {
           </div>
         </header>
       </article>
-      <a href="">
+      <a
+        onClick={e => {
+          e.stopPropagation();
+          props.toggleModal(props.strain);
+        }}
+      >
         <img
           className="quick-view"
           title="quick view"

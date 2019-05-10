@@ -10,7 +10,8 @@ const actionTypes = {
   SET_BRAND_INDEX: "SET_BRAND_INDEX",
   SET_STRAINS: "SET_STRAINS",
   TOGGLE_FILTER: "TOGGLE_FILTER",
-  PURGE_ACTIVE_FILTERS: "PURGE_ACTIVE_FILTERS"
+  PURGE_ACTIVE_FILTERS: "PURGE_ACTIVE_FILTERS",
+  TOGGLE_MODAL: "TOGGLE_MODAL"
 };
 
 const getActions = uri => {
@@ -74,6 +75,12 @@ const getActions = uri => {
               console.log(error);
             });
         });
+      };
+    },
+    toggleModal: product => {
+      return {
+        type: actionTypes.TOGGLE_MODAL,
+        product: product
       };
     }
   };
