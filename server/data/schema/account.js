@@ -4,6 +4,7 @@ let Query = `
 
 let Mutation = `
     createAccount(input: AccountInput): Account
+    updateAccount(input: AccountInput): Account
     verifyCredentials(input: CredentialsInput): Account
 `;
 

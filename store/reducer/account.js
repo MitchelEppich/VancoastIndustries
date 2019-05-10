@@ -28,7 +28,11 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CHANGE_OPTION:
       return updateObject(state, { currentOptionIndex: action.option });
-    case actionTypes.VERIFY_LOGIN:
+    case actionTypes.VERIFY_CREDENTIALS:
+      return updateObject(state, { currentUser: action.currentUser });
+    case actionTypes.UPDATE_ACCOUNT:
+      return updateObject(state, { currentUser: action.currentUser });
+    case actionTypes.CREATE_ACCOUNT:
       return updateObject(state, {});
     case actionTypes.ADD_TO_WISH_LIST:
       return updateObject(state, { currentUser: action.currentUser });

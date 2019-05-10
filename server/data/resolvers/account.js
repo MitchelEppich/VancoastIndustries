@@ -60,6 +60,19 @@ const resolvers = {
       account.password = undefined;
 
       return account.toObject();
+    },
+    updateAccount: async (_, { input }) => {
+      let $ = { ...input };
+
+      let account = Account.findOneAndUpdate(
+        { _id: $._id },
+        { $set: { ...$ } },
+        { upsert: true, new: true }
+      );
+
+      account.password = undefined;
+
+      return account.toObject();
     }
   }
 };

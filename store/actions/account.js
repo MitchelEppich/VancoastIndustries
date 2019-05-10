@@ -6,9 +6,10 @@ import { stringBuilder } from "../../scripts/savedItems";
 
 const actionTypes = {
   CHANGE_OPTION: "CHANGE_OPTION",
-  VERIFY_LOGIN: "VERIFY_LOGIN",
+  VERIFY_CREDENTIALS: "VERIFY_CREDENTIALS",
   CREATE_ACCOUNT: "CREATE_ACCOUNT",
-  ADD_TO_WISH_LIST: "ADD_TO_WISH_LIST"
+  ADD_TO_WISH_LIST: "ADD_TO_WISH_LIST",
+  UPDATE_ACCOUNT: "UPDATE_ACCOUNT"
 };
 
 const getActions = uri => {
@@ -56,6 +57,26 @@ const getActions = uri => {
             let account = data.data.createAccount;
             dispatch({
               type: actionTypes.CREATE_ACCOUNT
+            });
+            return Promise.resolve(account);
+          })
+          .catch(error => console.log(error));
+      };
+    },
+    updateAccount: input => {
+      return dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+
+        const operation = {
+          query: mutation.updateAccount,
+          variables: { ...input }
+        };
+
+        return makePromise(execute(link, operation))
+          .then(data => {
+            let account = data.data.updateAccount;
+            dispatch({
+              type: actionTypes.UPDATE_ACCOUNT
             });
             return Promise.resolve(account);
           })
@@ -126,6 +147,61 @@ const mutation = {
       $description: String
     ) {
       createAccount(
+        input: {
+          password: $password
+          email: $email
+          company: $company
+          name: $name
+          surname: $surname
+          phone: $phone
+          website: $website
+          license: $license
+          address: $address
+          postal: $postal
+          city: $city
+          country: $country
+          state: $state
+          description: $description
+        }
+      ) {
+        _id
+        email
+        name
+        surname
+        company
+        phone
+        website
+        license
+        approved
+        description
+        address
+        city
+        postal
+        country
+        state
+        jwt
+        createdAt
+      }
+    }
+  `,
+  updateAccount: gql`
+    mutation(
+      $password: String
+      $email: String
+      $company: String
+      $name: String
+      $surname: String
+      $phone: String
+      $website: String
+      $license: String
+      $address: String
+      $state: String
+      $city: String
+      $country: String
+      $postal: String
+      $description: String
+    ) {
+      updateAccount(
         input: {
           password: $password
           email: $email
