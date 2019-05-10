@@ -294,13 +294,6 @@ const billing = props => {
         <label htmlFor="vcPhone">Phone Number*</label>
         <input type="text" id="vcPhone" placeholder="555-555-5555" />
 
-        <label htmlFor="vcMessage">Company Profile*</label>
-        <textarea
-          type="textarea"
-          id="vcMessage"
-          rows="10"
-          placeholder="Some stuff here about the company and what makes the co."
-        />
 
         <input type="submit" value="Save" />
       </form>

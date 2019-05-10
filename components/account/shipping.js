@@ -1,7 +1,7 @@
-const info = props => {
+const shipping = props => {
   return (
-    <div id="vcAccount-tab" className="tabcontent">
-      <h1>Account Info</h1>
+    <div id="" className="tabcontent">
+      <h1>Shipping Info</h1>
       <form
         className="vcAccount-details flex flex-col justify-center"
         onSubmit={e => {
@@ -9,46 +9,46 @@ const info = props => {
           const form = e.target;
           const formData = new window.FormData(form);
 
-          let name = (
-            formData.get("firstName") +
-            " " +
-            formData.get("lastName")
-          ).toLowerCase();
-          let company = formData.get("company").toLowerCase();
-          let email = formData.get("email").toLowerCase();
-          let phone = formData.get("phone");
-          let website = formData.get("website").toLowerCase();
-          let license = formData.get("license");
-          let address = formData.get("address").toLowerCase();
-          let city = formData.get("city").toLowerCase();
-          let postal = formData.get("postal").toLowerCase();
-          let country = formData.get("country").toLowerCase();
-          let state = formData.get("state").toLowerCase();
-          let description = formData.get("description");
-          let password = formData.get("password");
+          // let name = (
+          //   formData.get("firstName") +
+          //   " " +
+          //   formData.get("lastName")
+          // ).toLowerCase();
+          // let company = formData.get("company").toLowerCase();
+          // let email = formData.get("email").toLowerCase();
+          // let phone = formData.get("phone");
+          // let website = formData.get("website").toLowerCase();
+          // let license = formData.get("license");
+          // let address = formData.get("address").toLowerCase();
+          // let city = formData.get("city").toLowerCase();
+          // let postal = formData.get("postal").toLowerCase();
+          // let country = formData.get("country").toLowerCase();
+          // let state = formData.get("state").toLowerCase();
+          // let description = formData.get("description");
+          // let password = formData.get("password");
 
-          this.props.createAccount({
-            name,
-            company,
-            email,
-            phone,
-            website,
-            license,
-            address,
-            description,
-            password,
-            postal,
-            country,
-            state,
-            city
-          });
+          // this.props.createAccount({
+          //   name,
+          //   company,
+          //   email,
+          //   phone,
+          //   website,
+          //   license,
+          //   address,
+          //   description,
+          //   password,
+          //   postal,
+          //   country,
+          //   state,
+          //   city
+          // });
         }}
       >
         <label htmlFor="vcName">Your First Name*</label>
         <input
           required
           type="text"
-          id="vcName"
+          id=""
           name="firstName"
           placeholder="First Name"
         />
@@ -57,7 +57,7 @@ const info = props => {
         <input
           required
           type="text"
-          id="vcName"
+          id=""
           name="lastName"
           placeholder="Last Name"
         />
@@ -66,7 +66,7 @@ const info = props => {
         <input
           required
           type="text"
-          id="vcCompany"
+          id=""
           name="company"
           placeholder="Company Name"
         />
@@ -75,68 +75,25 @@ const info = props => {
         <input
           required
           type="text"
-          id="vcEmail"
+          id=""
           name="email"
           placeholder="you@companyname.com"
-        />
-
-        <label htmlFor="vcPassword">Account Password*</label>
-        <input
-          required
-          type="password"
-          id="vcPassword"
-          name="password"
-          placeholder="Password"
-        />
-
-        <label htmlFor="vcPassword">Confirm Account Password*</label>
-        <input
-          required
-          type="password"
-          id="vcPasswordConfirm"
-          name="passwordConfirm"
-          placeholder="Retype Password"
-          onChange={e => {
-            let value = e.target.value;
-            let other = document.querySelector("#vcPassword").value;
-            if (value != other)
-              e.target.setCustomValidity("Passwords do not match each other");
-            else e.target.setCustomValidity("");
-          }}
         />
 
         <label htmlFor="vcPhone">Company Phone*</label>
         <input
           required
           type="text"
-          id="vcPhone"
+          id=""
           name="phone"
           placeholder="555-555-5555"
-        />
-
-        <label htmlFor="vcWebsite">Company Website*</label>
-        <input
-          required
-          type="text"
-          id="vcWebsite"
-          name="website"
-          placeholder="www.yoursite.com"
-        />
-
-        <label htmlFor="vcLicense">Business License*</label>
-        <input
-          required
-          type="text"
-          id="vcLicense"
-          name="license"
-          placeholder="#License"
         />
 
         <label htmlFor="vcAddress">Street Address*</label>
         <input
           required
           type="text"
-          id="vcAddress"
+          id=""
           name="address"
           placeholder="291 E. Hans Street"
         />
@@ -145,7 +102,7 @@ const info = props => {
         <input
           required
           type="text"
-          id="vcCity"
+          id=""
           name="city"
           placeholder="Smith Ville"
         />
@@ -154,13 +111,13 @@ const info = props => {
         <input
           required
           type="text"
-          id="vcState"
+          id=""
           name="state"
           placeholder="British Columbia"
         />
 
         <label htmlFor="vcCountry">Country*</label>
-        <select className="vcCountry" name="country" id="vcCountry" value="">
+        <select className="vcCountry" name="country" id="" value="">
           <option key="default" disabled value="">
             Select...
           </option>
@@ -420,16 +377,7 @@ const info = props => {
         </select>
 
         <label htmlFor="vcPostal">Postal Code/Zip Code*</label>
-        <input type="text" id="vcPostal" name="postal" placeholder="V5T 1J9" />
-
-        <label htmlFor="vcMessage">Company Profile*</label>
-        <textarea
-          type="textarea"
-          id="vcMessage"
-          name="description"
-          rows="10"
-          placeholder="Some stuff here about the company and what makes the co."
-        />
+        <input type="text" id="" name="postal" placeholder="V5T 1J9" />
 
         <input type="submit" value="Save" />
       </form>
@@ -437,4 +385,4 @@ const info = props => {
   );
 };
 
-export default info;
+export default shipping;
