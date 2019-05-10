@@ -183,7 +183,8 @@ const mapDispatchToProps = dispatch => {
     togglePageReady: isPageReady =>
       dispatch(actions.togglePageReady(isPageReady)),
     getStrains: () => dispatch(actions.getStrains()),
-    modifyCart: input => dispatch(actions.modifyCart(input))
+    modifyCart: input => dispatch(actions.modifyCart(input)),
+    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj))
   };
 };
 

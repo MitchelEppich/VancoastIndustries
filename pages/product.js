@@ -75,7 +75,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.setCurrentProduct(product));
     },
     addToWishList: input => dispatch(actions.addToWishList(input)),
-    toggleFullSummary: input => dispatch(actions.toggleFullSummary())
+    toggleFullSummary: input => dispatch(actions.toggleFullSummary()),
+    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj))
   };
 };
 

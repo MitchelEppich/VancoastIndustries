@@ -43,31 +43,47 @@ const cartOptions = props => {
           type="submit"
           value="Add To Cart"
           onClick={() => {
-            let _identifier =
-              currentProduct.sotiId +
-              currentProduct.size[props.product.quickAddToCartQty];
-            props.modifyCart({
-              cart: cart,
-              action: "APPEND",
-              max: maxPerPackage,
-              productIdentifier: _identifier,
-              product: currentProduct,
-              quantity: potentialQuantity,
-              coupon: coupon
-            });
+            if (props.account.currentUser == null) {
+              props.toggleAlert({
+                message: "You have to be logged in to do that",
+                action: "login", //Router.push("/login"),
+                actionName: "Login"
+              });
+            } else {
+              let _identifier =
+                currentProduct.sotiId +
+                currentProduct.size[props.product.quickAddToCartQty];
+              props.modifyCart({
+                cart: cart,
+                action: "APPEND",
+                max: maxPerPackage,
+                productIdentifier: _identifier,
+                product: currentProduct,
+                quantity: potentialQuantity,
+                coupon: coupon
+              });
+            }
           }}
         />
       </div>
       <div className="w-full text-center">
         <button
-          onClick={() =>
-            props.addToWishList({
-              currentUser: props.account.currentUser,
-              product: currentProduct,
-              quantity: cart.potentialQuantity,
-              packSize: currentProduct.size[props.product.quickAddToCartQty]
-            })
-          }
+          onClick={() => {
+            if (props.account.currentUser == null) {
+              props.toggleAlert({
+                message: "You have to be logged in to do that",
+                action: "login", //Router.push("/login"),
+                actionName: "Login"
+              });
+            } else {
+              props.addToWishList({
+                currentUser: props.account.currentUser,
+                product: currentProduct,
+                quantity: cart.potentialQuantity,
+                packSize: currentProduct.size[props.product.quickAddToCartQty]
+              });
+            }
+          }}
           className="vcSaveItem-btn"
         >
           <span className="font-bold text-grey text-lg opacity-50">
@@ -93,19 +109,27 @@ const cartOptions = props => {
         <Link prefetch href="/checkout">
           <button
             onClick={() => {
-              props.setBrandIndex(0);
-              let _identifier =
-                currentProduct.sotiId +
-                currentProduct.size[props.product.quickAddToCartQty];
-              props.modifyCart({
-                cart: cart,
-                action: "APPEND",
-                max: maxPerPackage,
-                productIdentifier: _identifier,
-                product: currentProduct,
-                quantity: potentialQuantity,
-                coupon: coupon
-              });
+              if (props.account.currentUser == null) {
+                props.toggleAlert({
+                  message: "You have to be logged in to do that",
+                  action: "login", //Router.push("/login"),
+                  actionName: "Login"
+                });
+              } else {
+                props.setBrandIndex(0);
+                let _identifier =
+                  currentProduct.sotiId +
+                  currentProduct.size[props.product.quickAddToCartQty];
+                props.modifyCart({
+                  cart: cart,
+                  action: "APPEND",
+                  max: maxPerPackage,
+                  productIdentifier: _identifier,
+                  product: currentProduct,
+                  quantity: potentialQuantity,
+                  coupon: coupon
+                });
+              }
             }}
           >
             Buy Now

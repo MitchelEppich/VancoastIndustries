@@ -11,6 +11,7 @@ import {
   Confirmation,
   Header
 } from "../components/checkout";
+import Router from "next/router";
 
 class Index extends Component {
   render() {
@@ -48,7 +49,8 @@ const mapDispatchToProps = dispatch => {
   return {
     changeStep: step => dispatch(actions.changeStep(step)),
     modifyOrderDetails: orderDetails =>
-      dispatch(actions.modifyOrderDetails(orderDetails))
+      dispatch(actions.modifyOrderDetails(orderDetails)),
+    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj))
   };
 };
 

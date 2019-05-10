@@ -32,7 +32,8 @@ const actionTypes = {
   TOGGLE_PAGE_READY: "TOGGLE_PAGE_READY",
   TOGGLE_SEARCH_BAR: "TOGGLE_SEARCH_BAR",
   SET_SEARCH_VALUE: "SET_SEARCH_VALUE",
-  TOGGLE_MOBILE_MENU: "TOGGLE_MOBILE_MENU"
+  TOGGLE_MOBILE_MENU: "TOGGLE_MOBILE_MENU",
+  TOGGLE_ALERT: "TOGGLE_ALERT"
 };
 
 const actions = {
@@ -82,6 +83,12 @@ const actions = {
     return {
       type: actionTypes.SET_SEARCH_VALUE,
       searchValue: value
+    };
+  },
+  toggleAlert: alertObj => {
+    return {
+      type: actionTypes.TOGGLE_ALERT,
+      alertObj: alertObj
     };
   }
 };
