@@ -19,11 +19,11 @@ const previewStrains = props => {
     <React.Fragment>
       <h2>
         <span className="vcShop-shop">Shop</span>{" "}
-        <span className="vcShop-strains">Cannabis Strains</span>
+        <span className="vcShop-strains mt-2">Cannabis Strains</span>
       </h2>
       <div className="vcShop-bg">
         <div className="vcShop-wrap flex justify-center">
-          {shuffle(strains, 15)}
+          {shuffle(strains, 12)}
         </div>
 
         <div className="vcShop-btns flex flex-row justify-center mt-4">

@@ -22,10 +22,13 @@ import Router from "next/router";
 const dev = process.env.NODE_ENV !== "production";
 import actions from "../store/actions";
 import Menu from "../components/menu";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 import Cart from "../components/cart";
 import Footer from "../components/footer";
 import shuffle from "../scripts/shuffle";
 import Loader from "../components/loader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
 class Layout extends Component {
   constructor(props) {
@@ -60,16 +63,38 @@ class Layout extends Component {
   render() {
     return (
       <React.Fragment>
-        <Menu {...this.props} />
-        <Cart {...this.props} />
-        {this.props.misc.pageReady ? (
-          this.props.children
-        ) : (
-          <div className="w-full h-screen bg-white">
-            <Loader {...this.props} />
-          </div>
-        )}
+        <div id="top">
+          <Menu {...this.props} />
+          <Cart {...this.props} />
+          {this.props.misc.pageReady ? (
+            this.props.children
+          ) : (
+            <div className="w-full h-screen bg-white">
+              <Loader {...this.props} />
+            </div>
+          )}
+        </div>
+
         <Footer {...this.props} />
+        <AnchorLink
+          aria-label="toTop"
+          className="items-center flex"
+          href="#top"
+        >
+          {window.innerHeight > 800 ? (
+            <div
+              id="jumpToTop"
+              className="fixed z-999 w-12 pb-2 mb-12 mr-4 h-12 bg-blue pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-blue-dark scale-item items-center flex rounded shadow-md"
+            >
+              <FontAwesomeIcon
+                icon={faAngleUp}
+                className="fa-2x cursor-pointer flex justify-center mt-1 mx-auto"
+              />
+            </div>
+          ) : (
+            <div />
+          )}
+        </AnchorLink>
       </React.Fragment>
     );
   }

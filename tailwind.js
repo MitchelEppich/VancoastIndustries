@@ -168,9 +168,12 @@ module.exports = {
   */
 
   screens: {
-    sm: "576px",
-    md: "768px",
-    lg: "992px",
+    sm: { min: "222px", max: "576px" },
+    md: { min: "577px", max: "768px" },
+    lg: { min: "769px", max: "992px" },
+    // sm: "576px",
+    // md: "768px",
+    // lg: "992px",
     xl: "1200px"
   },
 
@@ -555,6 +558,7 @@ module.exports = {
     "350": "356px",
     "100": "100px",
     "200": "200px",
+    "250": "250px",
     "300": "300px",
     "350": "350px",
     "400": "400px",

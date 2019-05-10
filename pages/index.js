@@ -24,9 +24,9 @@ class Index extends Component {
         <div>
           <Banner {...this.props} />
           <div className="vcWrap">
-            <OurBrands {...this.props} />
             <div className="vcShop-section">
               <PreviewStrains {...this.props} />
+              <OurBrands {...this.props} />
               <About {...this.props} />
               <Specials {...this.props} />
             </div>
