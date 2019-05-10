@@ -11,9 +11,9 @@ const index = props => {
       />
 
       <div className="vcItem-info flex flex-col justify-around items-start">
-        <h2>{props.item.alias}</h2>
+        <h2 className="capitalize">{props.item.alias}</h2>
         <h3 className="vcSaved-cat">{props.item.type}</h3>
-        <div className="vcSaved-brand">
+        <div className="vcSaved-brand capitalize">
           <span>Brand -</span>
           {props.item.company.name}
         </div>

@@ -71,7 +71,7 @@ const shipping = props => {
           placeholder="Company Name"
         />
 
-        <label htmlFor="vcEmail">Company Email*</label>
+        <label htmlFor="vcEmail">Email*</label>
         <input
           required
           type="text"
@@ -80,7 +80,7 @@ const shipping = props => {
           placeholder="you@companyname.com"
         />
 
-        <label htmlFor="vcPhone">Company Phone*</label>
+        <label htmlFor="vcPhone">Phone*</label>
         <input
           required
           type="text"

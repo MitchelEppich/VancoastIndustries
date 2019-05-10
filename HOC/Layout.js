@@ -24,8 +24,8 @@ import actions from "../store/actions";
 import Menu from "../components/menu";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Cart from "../components/cart";
+import Alert from "../components/alert";
 import Footer from "../components/footer";
-import shuffle from "../scripts/shuffle";
 import Loader from "../components/loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
@@ -75,6 +75,7 @@ class Layout extends Component {
         <div id="top">
           <Menu {...this.props} />
           <Cart {...this.props} />
+          {this.props.misc.alert != null ? <Alert {...this.props} /> : null}
           {this.props.misc.pageReady ? (
             this.props.children
           ) : (

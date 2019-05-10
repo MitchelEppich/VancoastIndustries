@@ -48,7 +48,7 @@ const info = props => {
         <input
           required
           type="text"
-          id="vcName"
+          id=""
           name="firstName"
           placeholder="First Name"
         />
@@ -57,7 +57,7 @@ const info = props => {
         <input
           required
           type="text"
-          id="vcName"
+          id=""
           name="lastName"
           placeholder="Last Name"
         />

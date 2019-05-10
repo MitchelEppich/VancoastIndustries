@@ -3,7 +3,7 @@ const billing = props => {
     <div id="vcBilling-tab" className="tabcontent">
       <h1>Billing Info</h1>
 
-      <form className="vcBilling-details flex flex-col justify-center">
+      <form className="vcAccount-details flex flex-col justify-center">
         <div className="flex flex-wrap content-center pt-4">
           <input
             type="checkbox"
@@ -16,8 +16,23 @@ const billing = props => {
           </label>
         </div>
 
-        <label htmlFor="vcName">Name*</label>
-        <input type="text" id="vcName" placeholder="Adam Smith" />
+        <label htmlFor="vcFirstName">Your First Name*</label>
+        <input
+          required
+          type="text"
+          id="vcFirstName"
+          name="firstName"
+          placeholder="First Name"
+        />
+
+        <label htmlFor="vcLastName">Your Last Name*</label>
+        <input
+          required
+          type="text"
+          id="vcLastName"
+          name="lastName"
+          placeholder="Last Name"
+        />
 
         <label htmlFor="vcCompany">Company Name*</label>
         <input type="text" id="vcCompany" placeholder="Company Name Here" />
@@ -293,7 +308,6 @@ const billing = props => {
 
         <label htmlFor="vcPhone">Phone Number*</label>
         <input type="text" id="vcPhone" placeholder="555-555-5555" />
-
 
         <input type="submit" value="Save" />
       </form>

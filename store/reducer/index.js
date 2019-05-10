@@ -22,7 +22,12 @@ const initialState = {
   pageReady: false,
   showSearchBar: false,
   searchValue: "",
-  showMobileMenu: false
+  showMobileMenu: false,
+  alert: {
+    message: "You have to be logged in to do that",
+    fire: () => console.log("clicked"), //Router.push("/login"),
+    actionName: "Login"
+  }
 };
 
 const indexReducer = (state = initialState, action) => {
