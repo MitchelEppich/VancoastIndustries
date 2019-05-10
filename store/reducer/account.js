@@ -4,8 +4,9 @@ import { updateObject } from "../utility";
 const initialState = {
   currentOptionIndex: 0,
   options: [
-    "Shipping Info",
-    "Billing Info",
+    "Account Info",
+    "Shipping",
+    "Billing",
     "Reset Password",
     "Recent Orders",
     "Saved Items"

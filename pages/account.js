@@ -4,11 +4,12 @@ import { connect } from "react-redux";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
 import {
-  Billing,
-  Info,
   Menu,
-  Orders,
+  Info,
+  Shipping,
+  Billing,
   Password,
+  Orders,
   SavedItems
 } from "../components/account";
 
@@ -16,6 +17,7 @@ class Index extends Component {
   render() {
     let menuOptions = [
       <Info {...this.props} />,
+      <Shipping {...this.props} />,
       <Billing {...this.props} />,
       <Password {...this.props} />,
       <Orders {...this.props} />,
@@ -26,7 +28,7 @@ class Index extends Component {
     return (
       <Layout {...this.props}>
         <article className="vcPage-content vcAccount">
-          <div className="vcAccount-wrap flex flex-col lg:flex-row">
+          <div className="vcAccount-wrap flex lg:flex-row">
             <Menu currentOptionIndex={currentOptionIndex} {...this.props} />
             <div className="vcAccount-content">{currentOption} </div>
           </div>
