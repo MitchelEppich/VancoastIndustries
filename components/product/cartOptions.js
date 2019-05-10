@@ -59,7 +59,17 @@ const cartOptions = props => {
         />
       </div>
       <div className="w-full text-center">
-        <button className="vcSaveItem-btn">
+        <button
+          onClick={() =>
+            props.addToWishList({
+              currentUser: props.account.currentUser,
+              product: currentProduct,
+              quantity: cart.potentialQuantity,
+              packSize: currentProduct.size[props.product.quickAddToCartQty]
+            })
+          }
+          className="vcSaveItem-btn"
+        >
           <span className="font-bold text-grey text-lg opacity-50">
             Add to Wish List
           </span>

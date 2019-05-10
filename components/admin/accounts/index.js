@@ -2,7 +2,7 @@ import AccountListing from "./accountListing";
 import AccountView from "./accountView";
 
 const index = props => {
-  let accounts = props.account.accounts.map((account, index) => {
+  let accounts = props.admin.accounts.map((account, index) => {
     return <AccountListing key={index} {...props} account={account} />;
   });
   return (

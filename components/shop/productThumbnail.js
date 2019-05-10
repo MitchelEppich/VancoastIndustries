@@ -11,6 +11,7 @@ const productThumbnail = props => {
   return (
     <div
       onClick={() => {
+        window.scrollTo(0, 0);
         props.setCurrentProduct({ newProduct: props.strain });
         props.setBrandIndex(
           props.shop.brands.findIndex((brand, index) => {
@@ -21,7 +22,6 @@ const productThumbnail = props => {
           "/product",
           "/product/" + props.strain.alias.toLowerCase().replace(/ /g, "")
         );
-        window.scrollTo(0, 0);
       }}
       className="vcProduct-item p-2 flex cursor-pointer scale-item"
     >
@@ -50,14 +50,14 @@ const productThumbnail = props => {
           </div>
         </header>
       </article>
-      {/* <a href="">
+      <a href="">
         <img
           className="quick-view"
           title="quick view"
           src="../static/img/assets/icons/quick-view.svg"
           alt="quick view"
         />
-      </a> */}
+      </a>
     </div>
   );
 };

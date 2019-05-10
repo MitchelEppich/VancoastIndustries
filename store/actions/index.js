@@ -12,6 +12,7 @@ import fetch from "node-fetch";
 import Shop from "./shop";
 import Checkout from "./checkout";
 import Account from "./account";
+import Admin from "./admin";
 import Product from "./product";
 
 const uri = "http://127.0.0.1:3000/graphql";
@@ -20,6 +21,7 @@ const imports = {
   ...Shop(uri),
   ...Checkout(uri),
   ...Account(uri),
+  ...Admin(uri),
   ...Product(uri)
 };
 

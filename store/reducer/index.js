@@ -12,6 +12,7 @@ import { updateObject } from "../utility";
 import ShopReducer from "./shop";
 import CheckoutReducer from "./checkout";
 import AccountReducer from "./account";
+import AdminReducer from "./admin";
 import ProductReducer from "./product";
 
 const initialState = {
@@ -52,5 +53,6 @@ export default combineReducers({
   shop: ShopReducer,
   checkout: CheckoutReducer,
   account: AccountReducer,
-  product: ProductReducer
+  product: ProductReducer,
+  admin: AdminReducer
 });

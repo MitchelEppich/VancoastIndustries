@@ -1,5 +1,5 @@
 const index = props => {
-  let currentAccount = props.account.currentAccount;
+  let currentAccount = props.admin.currentAccount;
   return (
     <div className="flex flex-wrap content-start p-12">
       <p className="w-full text-xl my-3">

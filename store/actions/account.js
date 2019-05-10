@@ -2,11 +2,13 @@ import gql from "graphql-tag";
 import { makePromise, execute } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
+import { stringBuilder } from "../../scripts/savedItems";
 
 const actionTypes = {
   CHANGE_OPTION: "CHANGE_OPTION",
   VERIFY_LOGIN: "VERIFY_LOGIN",
-  CREATE_ACCOUNT: "CREATE_ACCOUNT"
+  CREATE_ACCOUNT: "CREATE_ACCOUNT",
+  ADD_TO_WISH_LIST: "ADD_TO_WISH_LIST"
 };
 
 const getActions = uri => {
@@ -48,13 +50,25 @@ const getActions = uri => {
         return makePromise(execute(link, operation))
           .then(data => {
             let account = data.data.createAccount;
-            console.log(account);
             dispatch({
               type: actionTypes.CREATE_ACCOUNT
             });
             return Promise.resolve(users);
           })
           .catch(error => console.log(error));
+      };
+    },
+    addToWishList: input => {
+      let savedItem = stringBuilder(input);
+
+      //send to db here
+
+      return {
+        type: actionTypes.ADD_TO_WISH_LIST,
+        currentUser: {
+          ...input.currentUser,
+          savedItems: [...input.currentUser.savedItems, savedItem]
+        }
       };
     }
   };
