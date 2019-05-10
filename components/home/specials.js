@@ -5,7 +5,7 @@ const specials = props => {
         <span>Limited Time</span> Specials
       </h2>
 
-      <div className="vcSpecials-wrap flex flex-col lg:flex-row justify-around items-center">
+      <div className="vcSpecials-wrap flex flex-row lg:flex-row justify-around items-center">
         <div className="vcSpecials-product scale-item">
           <div className="vcSpecials-img">
             <a href="">

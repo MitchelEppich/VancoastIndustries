@@ -30,7 +30,7 @@ const about = props => {
       </p>
 
       <Link prefetch href="/about">
-        <button>Read About</button>
+        <button className="hover:bg-blue-darkest">Read About</button>
       </Link>
     </div>
   );

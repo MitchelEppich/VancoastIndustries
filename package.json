@@ -37,6 +37,7 @@
         "postcss-easy-import": "^3.0.0",
         "postcss-loader": "^3.0.0",
         "react": "^16.4.2",
+        "react-anchor-link-smooth-scroll": "^1.0.12",
         "react-apollo": "^2.1.11",
         "react-dom": "^16.4.2",
         "react-redux": "^5.0.7",

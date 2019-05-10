@@ -260,7 +260,8 @@ ul li {
 .vcNav-primary {
   position: fixed;
   width: 100%;
-  max-height: 140px;
+  max-height: 125px;
+  // max-height: 140px;
   height: 100%;
   z-index: 3;
 }
@@ -348,7 +349,7 @@ input.vcNav-search {
   transition: all 0.3s ease-in-out;
   position: fixed;
   right: 0;
-  transform: translateX(350px);
+  transform: translateX(390px);
   background: #fff;
   max-width: 350px;
   width: 100%;
@@ -556,8 +557,8 @@ img.quick-view {
     height: 500px;
   }
   div.vc-hero img {
-    max-width: 200px;
-    padding-top: 150px;
+    max-width: 260px;
+    padding-top: 70px;
   }
   div.vc-hero h1 {
     font-size: 30px;
