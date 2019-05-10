@@ -75,7 +75,7 @@ class Layout extends Component {
         <div id="top">
           <Menu {...this.props} />
           <Cart {...this.props} />
-          {/* {this.props.misc.alert != null ? <Alert {...this.props} /> : null} */}
+          {this.props.misc.alert != null ? <Alert {...this.props} /> : null}
           {this.props.misc.pageReady ? (
             this.props.children
           ) : (

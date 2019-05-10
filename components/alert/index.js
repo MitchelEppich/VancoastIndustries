@@ -11,7 +11,10 @@ const index = props => {
       style={{ transform: "translateX(calc(50vw - 150px))" }}
       className="bg-white shadow-md w-400 sm:w-280 h-300 mt-64 sm:mt-32 mx-auto fixed z-50 rounded-lg shadow-lg text-blue "
     >
-      <div className="absolute pin-t pin-r mr-2 mt-2">
+      <div
+        onClick={() => props.toggleAlert(null)}
+        className="absolute pin-t pin-r mr-2 mt-2"
+      >
         <FontAwesomeIcon
           icon={faTimes}
           className="fa-2x hover:text-blue text-grey opacity-75 cursor-pointer"
@@ -24,15 +27,18 @@ const index = props => {
           className="fa-5x text-grey-light"
         />
         <p className="font-bold text-2xl uppercase text-blue py-4 text-center">
-          Please login to continue
+          {props.misc.alert.message}
         </p>
         <p className="w-full font-bold text-grey text-center">
-          {props.misc.alert.message}
+          {props.misc.alert.message2}
         </p>
         {/* </div> */}
         {Router.asPath != "/" + props.misc.alert.action ? (
           <button
-            onClick={() => actionFuncs(props.misc.alert.action)}
+            onClick={() => {
+              actionFuncs(props.misc.alert.action);
+              props.toggleAlert(null);
+            }}
             className="p-3 px-4 mt-12 sm:mt-6"
           >
             {props.misc.alert.actionName}

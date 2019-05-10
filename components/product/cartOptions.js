@@ -45,7 +45,8 @@ const cartOptions = props => {
           onClick={() => {
             if (props.account.currentUser == null) {
               props.toggleAlert({
-                message: "You have to be logged in to do that",
+                message: "Please log in to continue",
+                message2: "You have to be logged in to do that",
                 action: "login", //Router.push("/login"),
                 actionName: "Login"
               });
@@ -71,7 +72,8 @@ const cartOptions = props => {
           onClick={() => {
             if (props.account.currentUser == null) {
               props.toggleAlert({
-                message: "You have to be logged in to do that",
+                message: "Please log in to continue",
+                message2: "You have to be logged in to do that",
                 action: "login", //Router.push("/login"),
                 actionName: "Login"
               });
@@ -111,7 +113,8 @@ const cartOptions = props => {
             onClick={() => {
               if (props.account.currentUser == null) {
                 props.toggleAlert({
-                  message: "You have to be logged in to do that",
+                  message: "Please log in to continue",
+                  message2: "You have to be logged in to do that",
                   action: "login", //Router.push("/login"),
                   actionName: "Login"
                 });

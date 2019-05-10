@@ -24,7 +24,8 @@ const index = props => {
               if (props.account.currentUser == null) {
                 e.preventDefault();
                 props.toggleAlert({
-                  message: "You have to be logged in to do that",
+                  message: "Please log in to continue",
+                  message2: "You have to be logged in to do that",
                   action: "login", //Router.push("/login"),
                   actionName: "Login"
                 });
@@ -32,6 +33,7 @@ const index = props => {
                 e.preventDefault();
                 props.toggleAlert({
                   message: "Your cart is empty!",
+                  message2: "Please add to your cart",
                   action: "shop", //Router.push("/shop"),
                   actionName: "Shop"
                 });
