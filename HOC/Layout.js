@@ -94,7 +94,7 @@ class Layout extends Component {
           {this.state.toTop ? (
             <div
               id="jumpToTop"
-              className="fixed z-999 w-12 pb-2 mb-12 mr-4 h-12 bg-blue pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-blue-dark scale-item items-center flex rounded shadow-md"
+              className="fixed z-999 w-12 pb-2 mb-12 mr-4 h-12 bg-blue pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-blue-dark scale-item items-center flex rounded-full shadow-md"
             >
               <FontAwesomeIcon
                 icon={faAngleUp}

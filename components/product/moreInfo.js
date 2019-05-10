@@ -29,12 +29,6 @@ const MoreInfo = props => {
 
   return (
     <div className="w-full">
-      <div className="text-center">
-        <h3 className="vcCompany-similar capitalize text-xl font-bold">
-          About {_product.alias}
-        </h3>
-        <p className="mt-6 w-2/3 mx-auto">{_product.summary}</p>
-      </div>
       <div className="w-full mx-auto mt-8 bg-blue-new p-10 pb-12 mb-64 moreInfoBackground">
         <div className="text-center h-300 sm:h-500 pt-4 relative">
           <div className="moreInformation h-300 w-full absolute pin-t" />
