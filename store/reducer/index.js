@@ -24,7 +24,7 @@ const initialState = {
   searchValue: "",
   showMobileMenu: false,
   alert: {
-    message: "You have to be logged in to do that",
+    message: "Sorry, You have to be logged in to do that..",
     fire: () => console.log("clicked"), //Router.push("/login"),
     actionName: "Login"
   }

@@ -16,7 +16,7 @@ const item = props => {
         <img src={img} className="h-24" alt={item.product.alias} />
       </div>
 
-      <div className="vcItem-info flex flex-col justify-around items-start">
+      <div className="vcItem-info uppercase flex flex-col justify-around items-start">
         <h3>
           {item.product.alias} {item.product.type}
         </h3>
@@ -26,10 +26,14 @@ const item = props => {
           <span className="capitalize">{item.product.company.name}</span>
         </div>
 
-        <div className="vcItem-details flex flex-row justify-start">
+        <div className="vcItem-details flex flex-row justify-between">
           <div className="vcItem-qty flex flex-col">
             <span className="vcPrefix">QTY.</span>
             <span>x{item.quantity}</span>
+          </div>
+          <div className="vcItem-qty flex flex-col">
+            <span className="vcPrefix">Pack Size</span>
+            <span>{item.amount} Seeds</span>
           </div>
 
           <div className="vcItem-price flex flex-col">
