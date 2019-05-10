@@ -12,17 +12,21 @@ const cart = props => {
         <img src={img} alt="bruce banner" />
 
         <div className="vcItem-info flex flex-col justify-around items-start">
-          <h2>{product.name}</h2>
+          <h2 className="uppercase">{product.alias}</h2>
           <h3 className="vcCheckout-cat">{product.type}</h3>
-          <div className="vcItem-brand capitalize">
-            <span>Brand -</span>
+          <div className="vcItem-brand capitalize mt-2">
+            <span className="uppercase">Brand - </span>
             {product.company.name}
           </div>
 
-          <div className="vcItem-details flex flex-row justify-start">
+          <div className="vcItem-details flex flex-row justify-between mt-2">
             <div className="vcItem-qty flex flex-col">
               <span className="vcPrefix">QTY.</span>
               <span>x{item[1].quantity}</span>
+            </div>
+            <div className="vcItem-qty flex flex-col">
+              <span className="vcPrefix">Pack Size</span>
+              <span>{item[1].amount} Seeds</span>
             </div>
 
             <div className="vcItem-price flex flex-col">
