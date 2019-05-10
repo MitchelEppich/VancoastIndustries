@@ -6,7 +6,8 @@ const sessionDetails = props => {
       <button className="vcNav-login">Login</button>
 
       <div className="vcWelcome flex flex-col justify-center items-center scale-item">
-        {props.account.loggedIn ? (
+        {props.account.currentUser != null &&
+        props.account.currentUser.error == null ? (
           <Link href="/account">
             <a className="flex flex-col items-center justify-center">
               <img
@@ -14,7 +15,9 @@ const sessionDetails = props => {
                 src="../static/img/assets/icons/user-icon.svg"
                 alt=""
               />
-              <span className="flex">Welcome, Steve</span>
+              <span className="flex">
+                Welcome, {props.account.currentUser.name}
+              </span>
             </a>
           </Link>
         ) : (

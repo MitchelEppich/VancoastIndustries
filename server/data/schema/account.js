@@ -15,6 +15,7 @@ let Type = `
         email: String
         password: String
         name: String
+        surname: String
         company: String
         phone: String
         website: String
@@ -22,6 +23,10 @@ let Type = `
         approved: Int
         admin: Boolean
         address: String
+        postal: String
+        country: String
+        city: String
+        state: String
         description: String
         jwt: String
         createdAt: String
@@ -38,11 +43,16 @@ let Input = `
         email: String
         password: String
         name: String
+        surname: String
         company: String
         phone: String
         website: String
         license: String
         address: String
+        postal: String
+        city: String
+        country: String
+        state: String
         description: String
         approved: Int
     }

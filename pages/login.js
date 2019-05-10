@@ -27,7 +27,9 @@ class Index extends Component {
               let email = formData.get("email");
               let password = formData.get("pass");
 
-              this.props.verifyCredentials({ email, password });
+              this.props.verifyCredentials({ email, password }).then(res => {
+                if (res != null && res.error == null) window.history.back();
+              });
             }}
           >
             <label htmlFor="vcName">Email*</label>
@@ -47,6 +49,11 @@ class Index extends Component {
               placeholder=""
               autoComplete="current-password"
             />
+
+            {this.props.account.currentUser != null &&
+            this.props.account.currentUser.error != null ? (
+              <p className="text-red">{this.props.account.currentUser.error}</p>
+            ) : null}
 
             <label htmlFor="vcLogin-remember" className="vcLogin-checkbox">
               <input type="checkbox" id="vcLogin-remember" checked="checked" />

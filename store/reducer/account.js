@@ -10,17 +10,7 @@ const initialState = {
     "Recent Orders",
     "Saved Items"
   ],
-  currentUser: {
-    email: "vanessa@vancoastind.com",
-    name: "Vanessa",
-    company: "Vancoast Industries",
-    phone: "16041231234",
-    website: "vancoastindustries.com",
-    license: "",
-    approved: 0,
-    admin: true,
-    createdAt: { type: Date, default: Date.now }
-  },
+  currentUser: null,
   currentAccount: {
     email: "ivan@seedsforsale.com",
 
@@ -269,8 +259,9 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CHANGE_OPTION:
       return updateObject(state, { currentOptionIndex: action.option });
-    case actionTypes.VERIFY_LOGIN:
-      return updateObject(state, {});
+    case actionTypes.VERIFY_CREDENTIALS:
+      console.log(action);
+      return updateObject(state, { currentUser: action.account });
     default:
       return state;
   }

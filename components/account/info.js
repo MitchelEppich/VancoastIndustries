@@ -2,25 +2,168 @@ const info = props => {
   return (
     <div id="vcAccount-tab" className="tabcontent">
       <h1>Shipping Info</h1>
+      <form
+        className="vcAccount-details flex flex-col justify-center"
+        onSubmit={e => {
+          e.preventDefault();
+          const form = e.target;
+          const formData = new window.FormData(form);
 
-      <form className="vcAccount-details flex flex-col justify-center">
-        <label htmlFor="vcName">Name*</label>
-        <input type="text" id="vcName" placeholder="Adam Smith" />
+          let name = (
+            formData.get("firstName") +
+            " " +
+            formData.get("lastName")
+          ).toLowerCase();
+          let company = formData.get("company").toLowerCase();
+          let email = formData.get("email").toLowerCase();
+          let phone = formData.get("phone");
+          let website = formData.get("website").toLowerCase();
+          let license = formData.get("license");
+          let address = formData.get("address").toLowerCase();
+          let city = formData.get("city").toLowerCase();
+          let postal = formData.get("postal").toLowerCase();
+          let country = formData.get("country").toLowerCase();
+          let state = formData.get("state").toLowerCase();
+          let description = formData.get("description");
+          let password = formData.get("password");
+
+          this.props.createAccount({
+            name,
+            company,
+            email,
+            phone,
+            website,
+            license,
+            address,
+            description,
+            password,
+            postal,
+            country,
+            state,
+            city
+          });
+        }}
+      >
+        <label htmlFor="vcName">Your First Name*</label>
+        <input
+          required
+          type="text"
+          id="vcName"
+          name="firstName"
+          placeholder="First Name"
+        />
+
+        <label htmlFor="vcName">Your Last Name*</label>
+        <input
+          required
+          type="text"
+          id="vcName"
+          name="lastName"
+          placeholder="Last Name"
+        />
 
         <label htmlFor="vcCompany">Company Name*</label>
-        <input type="text" id="vcCompany" placeholder="Company Name Here" />
+        <input
+          required
+          type="text"
+          id="vcCompany"
+          name="company"
+          placeholder="Company Name"
+        />
 
-        <label htmlFor="vcEmail">Email Address*</label>
-        <input type="text" id="vcEmail" placeholder="adamsmith@gmail.com" />
+        <label htmlFor="vcEmail">Company Email*</label>
+        <input
+          required
+          type="text"
+          id="vcEmail"
+          name="email"
+          placeholder="you@companyname.com"
+        />
 
-        <label htmlFor="vcStreet">Street Address*</label>
-        <input type="text" id="vcStreet" placeholder="112 East 6th Avenue" />
+        <label htmlFor="vcPassword">Account Password*</label>
+        <input
+          required
+          type="password"
+          id="vcPassword"
+          name="password"
+          placeholder="Password"
+        />
 
-        <label htmlFor="vcProvince">Province/State*</label>
-        <input type="text" id="vcProvince" placeholder="British Columbia" />
+        <label htmlFor="vcPassword">Confirm Account Password*</label>
+        <input
+          required
+          type="password"
+          id="vcPasswordConfirm"
+          name="passwordConfirm"
+          placeholder="Retype Password"
+          onChange={e => {
+            let value = e.target.value;
+            let other = document.querySelector("#vcPassword").value;
+            if (value != other)
+              e.target.setCustomValidity("Passwords do not match each other");
+            else e.target.setCustomValidity("");
+          }}
+        />
+
+        <label htmlFor="vcPhone">Company Phone*</label>
+        <input
+          required
+          type="text"
+          id="vcPhone"
+          name="phone"
+          placeholder="555-555-5555"
+        />
+
+        <label htmlFor="vcWebsite">Company Website*</label>
+        <input
+          required
+          type="text"
+          id="vcWebsite"
+          name="website"
+          placeholder="www.yoursite.com"
+        />
+
+        <label htmlFor="vcLicense">Business License*</label>
+        <input
+          required
+          type="text"
+          id="vcLicense"
+          name="license"
+          placeholder="#License"
+        />
+
+        <label htmlFor="vcAddress">Street Address*</label>
+        <input
+          required
+          type="text"
+          id="vcAddress"
+          name="address"
+          placeholder="291 E. Hans Street"
+        />
+
+        <label htmlFor="vcCity">City*</label>
+        <input
+          required
+          type="text"
+          id="vcCity"
+          name="city"
+          placeholder="Smith Ville"
+        />
+
+        <label htmlFor="vcState">Province/State*</label>
+        <input
+          required
+          type="text"
+          id="vcState"
+          name="state"
+          placeholder="British Columbia"
+        />
 
         <label htmlFor="vcCountry">Country*</label>
-        <select className="vcCountry" name="vcCountry">
+        <select className="vcCountry" name="country" id="vcCountry" value="">
+          <option key="default" disabled value="">
+            Select...
+          </option>
           <option value="AF">Afghanistan</option>
           <option value="AX">Åland Islands</option>
           <option value="AL">Albania</option>
@@ -276,16 +419,14 @@ const info = props => {
           <option value="ZW">Zimbabwe</option>
         </select>
 
-        <label htmlFor="vcStreet">Postal Code/Zip Code*</label>
-        <input type="text" id="vcStreet" placeholder="V5T 1J9" />
-
-        <label htmlFor="vcPhone">Phone Number*</label>
-        <input type="text" id="vcPhone" placeholder="555-555-5555" />
+        <label htmlFor="vcPostal">Postal Code/Zip Code*</label>
+        <input type="text" id="vcPostal" name="postal" placeholder="V5T 1J9" />
 
         <label htmlFor="vcMessage">Company Profile*</label>
         <textarea
           type="textarea"
           id="vcMessage"
+          name="description"
           rows="10"
           placeholder="Some stuff here about the company and what makes the co."
         />

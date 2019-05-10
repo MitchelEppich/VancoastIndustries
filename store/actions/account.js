@@ -29,7 +29,8 @@ const getActions = uri => {
         return makePromise(execute(link, operation))
           .then(data => {
             let account = data.data.verifyCredentials;
-            console.log(account);
+            if (account == null)
+              account = { error: "Invalid Email or Password" };
             dispatch({
               type: actionTypes.VERIFY_CREDENTIALS,
               account
@@ -74,6 +75,7 @@ const mutation = {
         email
         password
         name
+        surname
         company
         phone
         website
@@ -81,6 +83,10 @@ const mutation = {
         approved
         admin
         address
+        country
+        city
+        postal
+        state
         description
         jwt
         createdAt
@@ -94,10 +100,15 @@ const mutation = {
       $email: String
       $company: String
       $name: String
+      $surname: String
       $phone: String
       $website: String
       $license: String
       $address: String
+      $state: String
+      $city: String
+      $country: String
+      $postal: String
       $description: String
     ) {
       createAccount(
@@ -106,16 +117,22 @@ const mutation = {
           email: $email
           company: $company
           name: $name
+          surname: $surname
           phone: $phone
           website: $website
           license: $license
           address: $address
+          postal: $postal
+          city: $city
+          country: $country
+          state: $state
           description: $description
         }
       ) {
         _id
         email
         name
+        surname
         company
         phone
         website
@@ -123,6 +140,10 @@ const mutation = {
         approved
         description
         address
+        city
+        postal
+        country
+        state
         jwt
         createdAt
       }
