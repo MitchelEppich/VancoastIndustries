@@ -14,7 +14,7 @@ const index = props => {
         <h2 className="capitalize">{props.item.alias}</h2>
         <h3 className="vcSaved-cat">{props.item.type}</h3>
         <div className="vcSaved-brand capitalize">
-          <span>Brand -</span>
+          <span className="uppercase font-bold">Brand - </span>
           {props.item.company.name}
         </div>
 
@@ -22,6 +22,11 @@ const index = props => {
           <div className="vcItem-qty flex flex-col">
             <span className="vcPrefix">QTY.</span>
             <span>x{props.item.quantity}</span>
+          </div>
+          <div className="vcItem-qty flex flex-col">
+            <span className="vcPrefix">Pack Size</span>
+            <span>{props.item.size[0]} Seeds</span>
+            {console.log(props.item)}
           </div>
 
           <div className="vcItem-price flex flex-col">

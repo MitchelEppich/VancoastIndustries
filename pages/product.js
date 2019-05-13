@@ -12,6 +12,7 @@ import {
   SimilarSeeds,
   MoreInfo
 } from "../components/product";
+import QuickView from "../components/product/quickView";
 
 class Index extends Component {
   render() {
@@ -54,6 +55,7 @@ class Index extends Component {
         <div className="mt-1">
           <MoreInfo {...this.props} />
         </div>
+        <QuickView {...this.props} />
 
         <div className="vcWholesale-page">
           <SimilarSeeds {...this.props} />

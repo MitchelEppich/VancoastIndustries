@@ -33,7 +33,7 @@ class Index extends Component {
         <div
           className={
             this.props.shop.activeBrandIndex == 0
-              ? "vcWholesale-hero vcBg flex justify-center items-center" +
+              ? "vcWholesale-hero vcBg flex justify-center items-center " +
                 this.props.shop.brands[this.props.shop.activeBrandIndex]
                   .bgImageClass
               : "vcBrand-hero vcBg flex justify-center items-center " +
