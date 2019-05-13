@@ -11,7 +11,8 @@ const initialState = {
     "Recent Orders",
     "Saved Items"
   ],
-  currentUser: null
+  currentUser: null,
+  updateError: null
   // {
   // email: "vanessa@vancoastind.com",
   // name: "Vanessa",
@@ -40,9 +41,14 @@ export default (state = initialState, action) => {
     case actionTypes.VERIFY_CREDENTIALS:
       return updateObject(state, { currentUser: action.currentUser });
     case actionTypes.UPDATE_ACCOUNT:
-      return updateObject(state, { currentUser: action.currentUser });
+      return updateObject(state, {
+        currentUser: action.currentUser,
+        updateError: null
+      });
     case actionTypes.CREATE_ACCOUNT:
       return updateObject(state, {});
+    case actionTypes.UPDATE_ERROR:
+      return updateObject(state, { updateError: action.error });
     case actionTypes.ADD_TO_WISH_LIST:
       return updateObject(state, { currentUser: action.currentUser });
     default:

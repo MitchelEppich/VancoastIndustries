@@ -9,7 +9,8 @@ const actionTypes = {
   VERIFY_CREDENTIALS: "VERIFY_CREDENTIALS",
   CREATE_ACCOUNT: "CREATE_ACCOUNT",
   ADD_TO_WISH_LIST: "ADD_TO_WISH_LIST",
-  UPDATE_ACCOUNT: "UPDATE_ACCOUNT"
+  UPDATE_ACCOUNT: "UPDATE_ACCOUNT",
+  UPDATE_ERROR: "UPDATE_ERROR"
 };
 
 const getActions = uri => {
@@ -76,6 +77,15 @@ const getActions = uri => {
         return makePromise(execute(link, operation))
           .then(data => {
             let account = data.data.updateAccount;
+            console.log(account);
+            if (account.error != null) {
+              let error = account.error;
+              dispatch({
+                type: actionTypes.UPDATE_ERROR,
+                error
+              });
+              return;
+            }
             dispatch({
               type: actionTypes.UPDATE_ACCOUNT,
               currentUser: account
@@ -245,6 +255,7 @@ const mutation = {
   updateAccount: gql`
     mutation(
       $_id: String
+      $newPassword: String
       $password: String
       $email: String
       $company: String
@@ -258,6 +269,7 @@ const mutation = {
       updateAccount(
         input: {
           _id: $_id
+          newPassword: $newPassword
           password: $password
           email: $email
           company: $company
@@ -272,6 +284,7 @@ const mutation = {
         _id
         email
         password
+        error
         address {
           _id
           name

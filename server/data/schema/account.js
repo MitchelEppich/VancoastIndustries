@@ -26,6 +26,7 @@ let Type = `
         description: String
         jwt: String
         createdAt: String
+        error: String
     }
 `;
 

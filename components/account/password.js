@@ -36,6 +36,11 @@ const password = props => {
           name="password"
           placeholder=""
         />
+        {props.account.updateError != null ? (
+          <div className="-mt-4 text-red">
+            <p>{props.account.updateError}</p>
+          </div>
+        ) : null}
 
         <label htmlFor="vcNewPassword">New Password*</label>
         <input
@@ -54,7 +59,7 @@ const password = props => {
           placeholder=""
           onChange={e => {
             let value = e.target.value;
-            let other = document.querySelector("#vcPassword").value;
+            let other = document.querySelector("#vcNewPassword").value;
             if (value != other)
               e.target.setCustomValidity("Passwords do not match each other");
             else e.target.setCustomValidity("");

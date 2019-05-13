@@ -124,18 +124,19 @@ const resolvers = {
     updateAccount: async (_, { input }) => {
       let $ = { ...input };
 
-      console.log($);
       if ($.newPassword != null) {
-        if ($.password == null) throw new Error("Incorrect old password");
-        let account = await Account.find({ _id: $._id });
-        if (account == null) throw new Error("Failed to find account by ID");
+        if ($.password == null) return { error: "Incorrect previous password" };
+        let account = await Account.findOne({ _id: $._id });
+
+        if (account == null) return { error: "Failed to find account by ID" };
         const validPassword = account.validPassword($.password);
-        console.log(validPassword);
         if (!validPassword) {
-          throw new Error("Password is incorrect");
+          return { error: "Incorrect previous password" };
         } else {
           $.password = $.newPassword;
         }
+      } else {
+        if ($.password != undefined) delete $.password;
       }
 
       let address;
