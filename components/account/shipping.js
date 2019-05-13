@@ -61,7 +61,7 @@ const shipping = props => {
           defaultValue={shipping != null ? shipping.surname : ""}
         />
 
-        <label htmlFor="vcPhone">Company Phone*</label>
+        <label htmlFor="vcPhone">Phone*</label>
         <input
           required
           type="text"

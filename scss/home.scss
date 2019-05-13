@@ -39,6 +39,7 @@
 .vc-hero img {
   max-width: 500px;
   width: 100%;
+  filter: drop-shadow(2px 2px 20px rgba(0, 0, 0, 0.3));
 }
 .vc-hero h1 {
   color: #fff;

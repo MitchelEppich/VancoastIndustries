@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const cartOptions = props => {
@@ -38,62 +38,19 @@ const cartOptions = props => {
           defaultValue="1"
           name="quantity"
         />
-        <input
-          className="vcSingle-submit"
-          type="submit"
-          value="Add To Cart"
-          onClick={() => {
-            let _identifier =
-              currentProduct.sotiId +
-              currentProduct.size[props.product.quickAddToCartQty];
-            props.modifyCart({
-              cart: cart,
-              action: "APPEND",
-              max: maxPerPackage,
-              productIdentifier: _identifier,
-              product: currentProduct,
-              quantity: potentialQuantity,
-              coupon: coupon
-            });
-          }}
-        />
-      </div>
-      <div className="w-full text-center">
         <button
-          onClick={() =>
-            props.addToWishList({
-              currentUser: props.account.currentUser,
-              product: currentProduct,
-              quantity: cart.potentialQuantity,
-              packSize: currentProduct.size[props.product.quickAddToCartQty]
-            })
-          }
-          className="vcSaveItem-btn"
-        >
-          <span className="font-bold text-grey text-lg opacity-50">
-            Add to Wish List
-          </span>
-          <FontAwesomeIcon
-            icon={faStar}
-            className="text-grey opacity-50 ml-2"
-          />{" "}
-        </button>
-      </div>
-
-      <div className="vcShop-buttons flex flex-row justify-between">
-        <Link prefetch href="/shop">
-          <button
-            onClick={() => {
-              props.setBrandIndex(0);
-            }}
-          >
-            Continue Shopping
-          </button>
-        </Link>
-        <Link prefetch href="/checkout">
-          <button
-            onClick={() => {
-              props.setBrandIndex(0);
+          className="px-6 p-3 text-center vcBuyNow-button text-lg"
+          type="submit"
+          // value="Add To Cart"
+          onClick={() => {
+            if (props.account.currentUser == null) {
+              props.toggleAlert({
+                message: "Please log in to continue",
+                message2: "You have to be logged in to do that",
+                action: "login", //Router.push("/login"),
+                actionName: "Login"
+              });
+            } else {
               let _identifier =
                 currentProduct.sotiId +
                 currentProduct.size[props.product.quickAddToCartQty];
@@ -106,11 +63,82 @@ const cartOptions = props => {
                 quantity: potentialQuantity,
                 coupon: coupon
               });
+            }
+          }}
+        >
+          Add to Cart
+        </button>
+      </div>
+      <Link prefetch href="/checkout">
+        <div className="text-center flex justify-center w-full">
+          <button
+            className="px-6 p-3 text-center vcBuyNow-button text-lg"
+            onClick={() => {
+              if (props.account.currentUser == null) {
+                props.toggleAlert({
+                  message: "Please log in to continue",
+                  message2: "You have to be logged in to do that",
+                  action: "login", //Router.push("/login"),
+                  actionName: "Login"
+                });
+              } else {
+                props.setBrandIndex(0);
+                let _identifier =
+                  currentProduct.sotiId +
+                  currentProduct.size[props.product.quickAddToCartQty];
+                props.modifyCart({
+                  cart: cart,
+                  action: "APPEND",
+                  max: maxPerPackage,
+                  productIdentifier: _identifier,
+                  product: currentProduct,
+                  quantity: potentialQuantity,
+                  coupon: coupon
+                });
+              }
             }}
           >
             Buy Now
           </button>
+        </div>
+      </Link>
+
+      <div className="vcShop-buttons flex flex-row justify-between">
+        <Link prefetch href="/shop">
+          <button
+            onClick={() => {
+              props.setBrandIndex(0);
+            }}
+          >
+            Continue Shopping
+          </button>
         </Link>
+        <button
+          onClick={() => {
+            if (props.account.currentUser == null) {
+              props.toggleAlert({
+                message: "Please log in to continue",
+                message2: "You have to be logged in to do that",
+                action: "login", //Router.push("/login"),
+                actionName: "Login"
+              });
+            } else {
+              props.addToWishList({
+                currentUser: props.account.currentUser,
+                product: currentProduct,
+                quantity: cart.potentialQuantity,
+                packSize: currentProduct.size[props.product.quickAddToCartQty]
+              });
+            }
+          }}
+          className="vcSaveItem-btn"
+        >
+          <span className="font-bold text-white">Add to Wish List</span>
+          <FontAwesomeIcon
+            icon={faHeart}
+            className="text-white opacity-50 ml-2"
+          />{" "}
+        </button>
       </div>
     </React.Fragment>
   );

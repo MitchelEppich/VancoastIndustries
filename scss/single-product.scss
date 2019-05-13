@@ -58,11 +58,11 @@
 h3.vcCompany-similar {
   text-align: center;
   font-size: 30px;
-  padding: 20px 10px 0px 10px;
+  padding: 0px 10px;
 }
 article .vcSingle {
-  margin-top: -590px;
-  // margin-top: -650px;
+  // margin-top: -590px;
+  margin-top: -650px;
 }
 .vcSingle .vcSingle-sectionOne {
   width: 20%;
@@ -111,7 +111,8 @@ article .vcSingle {
   text-transform: uppercase;
 }
 header.vcSingle-intro h1 {
-  font-size: 50px;
+  font-size: 40px;
+  // font-size: 50px;
 }
 .vcSingle-intro h3 {
   color: #1426de;
@@ -184,6 +185,10 @@ input.vcSingle-submit {
   border-radius: 3px;
   text-transform: uppercase;
   font-weight: 600;
+}
+.vcBuyNow-button {
+  max-width: 325px;
+  width: 100%;
 }
 .vcShop-buttons {
   width: 100%;

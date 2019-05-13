@@ -5,7 +5,8 @@ import fetch from "node-fetch";
 
 const actionTypes = {
   SET_CURRENT_PRODUCT: "SET_CURRENT_PRODUCT",
-  QUICK_ADD_TO_CART_QTY: "QUICK_ADD_TO_CART_QTY"
+  QUICK_ADD_TO_CART_QTY: "QUICK_ADD_TO_CART_QTY",
+  TOGGLE_FULL_SUMMARY: "TOGGLE_FULL_SUMMARY"
 };
 
 const getActions = uri => {
@@ -28,6 +29,11 @@ const getActions = uri => {
       return {
         type: actionTypes.QUICK_ADD_TO_CART_QTY,
         input: quickAddToCartQty || index
+      };
+    },
+    toggleFullSummary: () => {
+      return {
+        type: actionTypes.TOGGLE_FULL_SUMMARY
       };
     }
   };

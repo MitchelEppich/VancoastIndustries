@@ -1,120 +1,95 @@
 const StrainCharacteristics = props => {
   let _product = props.product.currentProduct;
   let colorsSativa = [
-    "#031275",
-    "#063475",
-    "#0023FF",
-    "#3270bf",
-    "#006AFF",
-    "#008DFF",
-    "#00A3FF",
-    "#00B5D8",
-    "#2693a9",
-    "#5eb4c5",
-    "#93cdd8"
+    "#89ca61",
+    "#80bc5b",
+    "#77af54",
+    "#6ea14e",
+    "#659448",
+    "#5d8943",
+    "#567e3e",
+    "#4e7339",
+    "#466733",
+    "#3f5c2e",
+    "#375128",
+    "#304623"
   ];
   let colorsIndica = [
-    "#0094BF",
-    "#0094BF",
-    "#0088BF",
-    "#007DBF",
-    "#0071BF",
-    "#0066BF",
-    "#005ABF",
-    "#004FBF",
-    "#0043BF",
-    "#0038BF",
-    "#002DBF"
+    "#73C7D8",
+    "#6ABECF",
+    "#62B5C6",
+    "#5AADBE",
+    "#51A4B5",
+    "#499CAC",
+    "#4193A4",
+    "#388B9B",
+    "#308292",
+    "#287A8A"
   ];
   let colorsRuderalis = [
-    "#73ea09",
     "#68caa6",
-    "#5f9883",
-    "#2cb150",
-    "#4aca6d",
-    "#89ca61",
-    "#afda35",
-    "#73ea09",
-    "#c0ff08",
-    "#a9d232"
+    "#61bc9b",
+    "#5aaf90",
+    "#54a185",
+    "#4d947a",
+    "#498b73",
+    "#44836c",
+    "#407a65",
+    "#3d735f",
+    "#396d5a",
+    "#366654",
+    "#33604f"
   ];
 
   let bullets = () => {
+    // _product.ruderalis = 0.6;
+    // _product.sativa = 0.2;
+    // _product.indica = 0.2;
     let arr = [];
 
-    for (let i = 1; i < 11; i++) {
+    for (let i = 0; i < 10; i++) {
       let bulletSativa = {
-        background: colorsSativa[i],
-        borderRadius: "50%",
-        margin: "0 2px"
+        background: colorsSativa[i]
       };
       let bulletIndica = {
-        // height: "40px",
-        // width: "40px",
-        background: colorsIndica[i],
-        borderRadius: "50%",
-        margin: "0 2px"
+        background: colorsIndica[i]
       };
       let bulletRuderalis = {
-        // height: "40px",
-        // width: "40px",
-        background: colorsRuderalis[i],
-        borderRadius: "50%",
-        margin: "0 2px"
+        background: colorsRuderalis[i]
       };
-      if (_product.sativa * 10 < i) {
-        arr.push(
-          <div
-            key={i}
-            style={bulletSativa}
-            className="relative h-10 w-10 sm:h-6 sm:w-6"
-          >
-            <div className="text-white text-xs absolute mt-3 ml-2 opacity-50 font-bold">
-              <small>{i * 10}%</small>
+
+      arr.push(
+        <div
+          key={i}
+          style={
+            _product.ruderalis * 10 > i
+              ? bulletRuderalis
+              : 10 - _product.indica * 10 > i
+              ? bulletSativa
+              : bulletIndica
+          }
+          className="relative h-10 w-10 sm:h-6 sm:w-6 rounded-full mx-1"
+        >
+          <div className="text-white w-full h-full text-xs absolute font-bold">
+            <div className="w-full h-full flex items-center justify-center">
+              <small>{(i + 1) * 10}%</small>
             </div>
           </div>
-        );
-      } else if (_product.ruderalis * 10 < i && _product.ruderalis != 0) {
-        arr.push(
-          <div
-            key={i}
-            style={bulletIndica}
-            className="relative h-10 w-10 sm:h-6 sm:w-6"
-          >
-            <div className="text-white text-xs absolute mt-3 ml-2 opacity-50 font-bold">
-              <small>{i * 10}%</small>
-            </div>
-          </div>
-        );
-      } else {
-        arr.push(
-          <div
-            key={i}
-            style={bulletRuderalis}
-            className="relative h-10 w-10 sm:h-6 sm:w-6"
-          >
-            <div className="text-white text-xs absolute mt-3 ml-2 opacity-50 font-bold">
-              <small>{i * 10}%</small>
-            </div>
-          </div>
-        );
-      }
+        </div>
+      );
     }
     return arr;
   };
 
   return (
-    <div className="w-700 mx-auto absolute bg-white pin-x mt-2 flex flex-wrap justify-between sm:mt-24 sm:justify-center sm:w-300">
-      <div className="w-700 shadow-md sm:w-300">
+    <div className="w-700 mx-auto absolute bg-white pin-x mt-2 flex flex-wrap justify-between sm:mt-24 sm:justify-center md:w-4/5 lg:w-4/5 sm:w-300">
+      <div className="w-700 shadow-md md:w-full lg:w-full sm:w-300">
         <div className="w-full p-2 bg-grey-light text-grey uppercase text-center">
           <p className="text-lg font-bold p-1">Strain Characteristics</p>
         </div>
         <div className="w-full text-xl text-right text-grey p-4 px-4 mt-3 mb-2 relative">
           <div className="inline-flex w-full">
             <div className="inline-flex w-full justify-around">{bullets()}</div>
-            {/* <div className="absolute pin-r text-xs opacity-25 mr-2 mt-1">
-                  100%
-                </div> */}
           </div>
           <div
             className="flex justify-center w-full"
@@ -177,7 +152,7 @@ const StrainCharacteristics = props => {
             ) : null}
             <div
               style={{
-                width: `${_product.sativa * 100}%`,
+                width: `${(_product.sativa * 100).toFixed(2)}%`,
                 borderTop: "4px solid #89ca61",
                 marginRight: "2px"
               }}
@@ -222,7 +197,7 @@ const StrainCharacteristics = props => {
                 Sativa
               </p>
               <p className="opacity-50 text-center text-2xl font-bold">
-                {_product.sativa * 100}%
+                {(_product.sativa * 100).toFixed(0)}%
               </p>
             </div>
             <div

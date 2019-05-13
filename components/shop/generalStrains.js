@@ -1,5 +1,6 @@
 import { filterStrains } from "../../store/utilities/filterVancoast";
 import ProductThumbnail from "./productThumbnail";
+import QuickView from "../product/quickView";
 
 const generalStrains = props => {
   let strains = props.shop.strains || [];
@@ -18,9 +19,9 @@ const generalStrains = props => {
   });
   return (
     <div className="vcWholesale-content">
-      <ul className="vcProduct-list mx-auto w-4/5 flex flex-row justify-center items-baseline">
+      <div className="vcProduct-list mx-auto w-4/5 flex flex-row justify-center items-baseline">
         {strains}
-      </ul>
+      </div>
     </div>
   );
 };

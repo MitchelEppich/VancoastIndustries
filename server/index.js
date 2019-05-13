@@ -46,9 +46,9 @@ app
         maxAge: "365d"
       })
     );
-    // server.get("/watch/:_id", (req, res) => {
-    //   app.render(req, res, "/", {});
-    // });
+    server.get("/checkout", (req, res) => {
+      res.redirect("/shop");
+    });
 
     server.use(
       "/graphql",

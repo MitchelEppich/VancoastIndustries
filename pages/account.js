@@ -28,9 +28,11 @@ class Index extends Component {
     return (
       <Layout {...this.props}>
         <article className="vcPage-content vcAccount">
-          <div className="vcAccount-wrap flex lg:flex-row">
+          <div className="vcAccount-wrap flex flex-wrap">
             <Menu currentOptionIndex={currentOptionIndex} {...this.props} />
-            <div className="vcAccount-content">{currentOption} </div>
+            <div className="vcAccount-content w-4/5 sm:w-full md:w-full lg:w-full xl:w-2/3">
+              {currentOption}{" "}
+            </div>
           </div>
         </article>
       </Layout>

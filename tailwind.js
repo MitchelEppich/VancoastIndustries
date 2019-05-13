@@ -168,13 +168,11 @@ module.exports = {
   */
 
   screens: {
-    sm: { min: "222px", max: "576px" },
-    md: { min: "577px", max: "768px" },
-    lg: { min: "769px", max: "992px" },
-    // sm: "576px",
-    // md: "768px",
-    // lg: "992px",
-    xl: "1200px"
+    sm: { min: "100px", max: "479px" },
+    md: { min: "480px", max: "767px" },
+    lg: { min: "768px", max: "991px" },
+    xl: { min: "992px", max: "1367px" },
+    xxl: { min: "1368px", max: "9999px" }
   },
 
   /*
@@ -260,6 +258,7 @@ module.exports = {
     xl: "1.25rem", // 20px
     "2xl": "1.5rem", // 24px
     "3xl": "1.875rem", // 30px
+    "3/5xl": "2.875rem", // 30px
     "4xl": "3.5rem", // 36px
     "5xl": "5rem", // 48px
     "6xl": "6rem"
@@ -498,6 +497,7 @@ module.exports = {
     "150": "150px",
     "200": "200px",
     "250": "250px",
+    "280": "280px",
     "300": "300px",
     "400": "400px",
     "500": "500px",

@@ -12,13 +12,13 @@ const sessionDetails = props => {
         {props.account.currentUser != null &&
         props.account.currentUser.error == null ? (
           <Link href="/account">
-            <a className="flex flex-col items-center justify-center">
+            <a className="flex flex-col items-center justify-center text-center">
               <img
-                className="flex"
+                className="text-center w-full"
                 src="../static/img/assets/icons/user-icon.svg"
                 alt=""
               />
-              <span className="flex">Welcome, {name}</span>
+              <span className="text-center">Welcome, {name}</span>
             </a>
           </Link>
         ) : (

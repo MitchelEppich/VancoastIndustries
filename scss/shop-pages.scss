@@ -108,12 +108,12 @@ p.wholesale-intro {
   -webkit-filter: none;
   filter: none;
 }
-.vcProduct-item a img.quick-view {
+.vcProduct-item div img.quick-view {
   opacity: 0;
   -webkit-filter: none;
   filter: none;
 }
-.vcProduct-item:hover > a img.quick-view {
+.vcProduct-item:hover > div img.quick-view {
   opacity: 9;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;

@@ -27,17 +27,15 @@ const MoreInfo = props => {
   let cbdToThc =
     Math.round(cbdRatioWeighting) + ":" + Math.round(thcRatioWeighting);
 
+  let yields =
+    _product.yield[1] != null
+      ? _product.yield[0] + " / " + _product.yield[1]
+      : _product.yield[0];
   return (
     <div className="w-full">
-      <div className="text-center">
-        <h3 className="vcCompany-similar capitalize text-xl font-bold">
-          About {_product.alias}
-        </h3>
-        <p className="mt-6 w-2/3 mx-auto">{_product.summary}</p>
-      </div>
       <div className="w-full mx-auto mt-8 bg-blue-new p-10 pb-12 mb-64 moreInfoBackground">
-        <div className="text-center h-300 sm:h-500 pt-4 relative">
-          <div className="moreInformation h-300 w-full absolute pin-t" />
+        <div className="text-center h-300 sm:h-500 pt-0 relative">
+          <div className="moreInformation h-300 md:h-500 w-full absolute pin-t" />
           <h3 className="vcCompany-similar text-white text-xl font-bold absolute pin-x">
             More Information about {_product.name} Seed
           </h3>
@@ -67,7 +65,7 @@ const MoreInfo = props => {
                 </div>
 
                 <div className="bg-white w-1/2 text-sm text-grey p-1 px-2">
-                  <p>{_product.avgYield}g</p>
+                  <p>{yields}g</p>
                 </div>
               </div>
               <div className="w-300 inline-flex shadow-md mt-4">

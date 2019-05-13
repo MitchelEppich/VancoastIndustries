@@ -22,7 +22,8 @@ const initialState = {
   pageReady: false,
   showSearchBar: false,
   searchValue: "",
-  showMobileMenu: false
+  showMobileMenu: false,
+  alert: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -43,6 +44,8 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, { mediaSize: action.input });
     case actionTypes.TOGGLE_PAGE_READY:
       return updateObject(state, { pageReady: action.pageReady });
+    case actionTypes.TOGGLE_ALERT:
+      return updateObject(state, { alert: action.alertObj });
     default:
       return state;
   }

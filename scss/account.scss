@@ -80,9 +80,6 @@ button.tablink {
   max-width: 250px;
   width: 100%;
 }
-.vcAccount-content {
-  width: 100%;
-}
 .vcAccount-content p {
   line-height: 50px;
 }
@@ -176,8 +173,10 @@ ul.vcSaved-list {
 }
 .vcSaved-btn {
   background-color: #1426de;
-  padding: 20px 30px;
-  margin: 20px 10px;
+  // padding: 20px 30px;
+  // margin: 20px 10px;
+  padding: 10px 30px;
+  margin: 10px 10px;
 }
 /** Mobile Styles **/
 @media screen and (min-width: 1368px) {

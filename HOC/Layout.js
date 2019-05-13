@@ -24,8 +24,8 @@ import actions from "../store/actions";
 import Menu from "../components/menu";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Cart from "../components/cart";
+import Alert from "../components/alert";
 import Footer from "../components/footer";
-import shuffle from "../scripts/shuffle";
 import Loader from "../components/loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
@@ -75,6 +75,7 @@ class Layout extends Component {
         <div id="top">
           <Menu {...this.props} />
           <Cart {...this.props} />
+          {this.props.misc.alert != null ? <Alert {...this.props} /> : null}
           {this.props.misc.pageReady ? (
             this.props.children
           ) : (
@@ -93,7 +94,7 @@ class Layout extends Component {
           {this.state.toTop ? (
             <div
               id="jumpToTop"
-              className="fixed z-999 w-12 pb-2 mb-12 mr-4 h-12 bg-blue pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-blue-dark scale-item items-center flex rounded shadow-md"
+              className="fixed z-999 w-12 pb-2 mb-12 mr-4 h-12 bg-blue pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-blue-dark scale-item items-center flex rounded-full shadow-md"
             >
               <FontAwesomeIcon
                 icon={faAngleUp}
@@ -182,7 +183,8 @@ const mapDispatchToProps = dispatch => {
     togglePageReady: isPageReady =>
       dispatch(actions.togglePageReady(isPageReady)),
     getStrains: () => dispatch(actions.getStrains()),
-    modifyCart: input => dispatch(actions.modifyCart(input))
+    modifyCart: input => dispatch(actions.modifyCart(input)),
+    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj))
   };
 };
 

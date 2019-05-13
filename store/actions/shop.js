@@ -10,7 +10,8 @@ const actionTypes = {
   SET_BRAND_INDEX: "SET_BRAND_INDEX",
   SET_STRAINS: "SET_STRAINS",
   TOGGLE_FILTER: "TOGGLE_FILTER",
-  PURGE_ACTIVE_FILTERS: "PURGE_ACTIVE_FILTERS"
+  PURGE_ACTIVE_FILTERS: "PURGE_ACTIVE_FILTERS",
+  SET_QUICK_VIEW: "SET_QUICK_VIEW"
 };
 
 const getActions = uri => {
@@ -74,6 +75,13 @@ const getActions = uri => {
               console.log(error);
             });
         });
+      };
+    },
+    setQuickView: input => {
+      return {
+        type: actionTypes.SET_QUICK_VIEW,
+        quickViewProduct: input.viewProduct,
+        showQuickViewProduct: input.showQuickViewProduct
       };
     }
   };
