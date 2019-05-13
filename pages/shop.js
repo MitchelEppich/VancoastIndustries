@@ -12,6 +12,7 @@ import {
   GeneralStrains,
   BrandBoards
 } from "../components/shop";
+import QuickView from "../components/product/quickView";
 
 class Index extends Component {
   // static async getInitialProps({ store, req }) {
@@ -57,6 +58,7 @@ class Index extends Component {
 
         <div className="vcWholesale-page">
           <Filters {...this.props} />
+
           <GeneralStrains {...this.props} />
         </div>
 
@@ -80,7 +82,14 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.setCurrentProduct(product));
     },
     toggleFilter: options => dispatch(actions.toggleFilter(options)),
-    getStrains: () => dispatch(actions.getStrains())
+    getStrains: () => dispatch(actions.getStrains()),
+    setQuickView: input => dispatch(actions.setQuickView(input)),
+    quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
+    modifyPotentialQuantity: input =>
+      dispatch(actions.modifyPotentialQuantity(input)),
+    modifyCart: input => dispatch(actions.modifyCart(input)),
+    addToWishList: input => dispatch(actions.addToWishList(input)),
+    toggleFullSummary: input => dispatch(actions.toggleFullSummary())
   };
 };
 

@@ -20,6 +20,7 @@ export default (state = initialState, action) => {
       return updateObject(state, {
         showFullSummary: !state.showFullSummary
       });
+
     default:
       return state;
   }

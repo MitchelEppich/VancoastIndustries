@@ -47,6 +47,7 @@ const productItem = props => {
           </div> */}
         </header>
       </article>
+
       {/* <a href="">
         <img
           className="quick-view"

@@ -55,7 +55,6 @@ class Index extends Component {
         <div className="mt-1">
           <MoreInfo {...this.props} />
         </div>
-        <QuickView {...this.props} />
 
         <div className="vcWholesale-page">
           <SimilarSeeds {...this.props} />
@@ -78,7 +77,8 @@ const mapDispatchToProps = dispatch => {
     },
     addToWishList: input => dispatch(actions.addToWishList(input)),
     toggleFullSummary: input => dispatch(actions.toggleFullSummary()),
-    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj))
+    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj)),
+    setQuickView: input => dispatch(actions.setQuickView(input))
   };
 };
 

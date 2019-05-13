@@ -3,12 +3,15 @@ import { updateObject } from "../utility";
 import { strains, brands, filters } from "../../server/data/temp_data";
 
 const initialState = {
+  currentProduct: null,
   showFilters: false,
   brands: brands,
   // strains: strains,
   activeBrandIndex: 0,
   filters: filters,
-  activeFilters: []
+  activeFilters: [],
+  quickViewProduct: null,
+  showQuickViewProduct: false
 };
 
 export default (state = initialState, action) => {
@@ -24,6 +27,12 @@ export default (state = initialState, action) => {
     case actionTypes.PURGE_ACTIVE_FILTERS:
       return updateObject(state, {
         activeFilters: action.activeFilters
+      });
+    case actionTypes.SET_QUICK_VIEW:
+      return updateObject(state, {
+        quickViewProduct: action.quickViewProduct,
+        showQuickViewProduct: !action.showQuickViewProduct,
+        currentProduct: action.currentProduct
       });
     default:
       return state;
