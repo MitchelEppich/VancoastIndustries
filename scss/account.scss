@@ -92,9 +92,13 @@ button.tablink {
 }
 .vcAccount-details label,
 .vcBilling-details label {
-  color: #000;
-  font-size: 20px;
+  // color: #000;
+  // font-size: 20px;
+  // line-height: 25px;
+  color: #8a8a8a;
+  font-size: 12px;
   line-height: 25px;
+  text-transform: uppercase;
 }
 .vcAccount-details input,
 .vcAccount-details select,
