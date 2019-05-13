@@ -2,8 +2,9 @@ const { makeExecutableSchema } = require("graphql-tools");
 const resolvers = require("../resolvers");
 
 const Account = require("./account");
+const Address = require("./address");
 
-let imports = [Account];
+let imports = [Account, Address];
 
 let definitions = {};
 

@@ -6,9 +6,10 @@ import { stringBuilder } from "../../scripts/savedItems";
 
 const actionTypes = {
   CHANGE_OPTION: "CHANGE_OPTION",
-  VERIFY_LOGIN: "VERIFY_LOGIN",
+  VERIFY_CREDENTIALS: "VERIFY_CREDENTIALS",
   CREATE_ACCOUNT: "CREATE_ACCOUNT",
-  ADD_TO_WISH_LIST: "ADD_TO_WISH_LIST"
+  ADD_TO_WISH_LIST: "ADD_TO_WISH_LIST",
+  UPDATE_ACCOUNT: "UPDATE_ACCOUNT"
 };
 
 const getActions = uri => {
@@ -35,8 +36,9 @@ const getActions = uri => {
               account = { error: "Invalid Email or Password" };
             dispatch({
               type: actionTypes.VERIFY_CREDENTIALS,
-              account
+              currentUser: account
             });
+            console.log(account);
             return Promise.resolve(account);
           })
           .catch(error => console.log(error));
@@ -56,6 +58,27 @@ const getActions = uri => {
             let account = data.data.createAccount;
             dispatch({
               type: actionTypes.CREATE_ACCOUNT
+            });
+            return Promise.resolve(account);
+          })
+          .catch(error => console.log(error));
+      };
+    },
+    updateAccount: input => {
+      return dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+
+        const operation = {
+          query: mutation.updateAccount,
+          variables: { ...input }
+        };
+
+        return makePromise(execute(link, operation))
+          .then(data => {
+            let account = data.data.updateAccount;
+            dispatch({
+              type: actionTypes.UPDATE_ACCOUNT,
+              currentUser: account
             });
             return Promise.resolve(account);
           })
@@ -88,19 +111,50 @@ const mutation = {
         _id
         email
         password
-        name
-        surname
+        address {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        shipping {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        billing {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
         company
-        phone
         website
         license
         approved
         admin
-        address
-        country
-        city
-        postal
-        state
         description
         jwt
         createdAt
@@ -110,54 +164,159 @@ const mutation = {
 
   createAccount: gql`
     mutation(
+      $newPassword: String
       $password: String
       $email: String
       $company: String
-      $name: String
-      $surname: String
-      $phone: String
       $website: String
       $license: String
-      $address: String
-      $state: String
-      $city: String
-      $country: String
-      $postal: String
       $description: String
+      $address: AddressInput
+      $shipping: [AddressInput]
+      $billing: [AddressInput]
     ) {
       createAccount(
         input: {
+          newPassword: $newPassword
           password: $password
           email: $email
           company: $company
-          name: $name
-          surname: $surname
-          phone: $phone
           website: $website
           license: $license
-          address: $address
-          postal: $postal
-          city: $city
-          country: $country
-          state: $state
           description: $description
+          address: $address
+          shipping: $shipping
+          billing: $billing
         }
       ) {
         _id
         email
-        name
-        surname
+        password
+        address {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        shipping {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        billing {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
         company
-        phone
         website
         license
         approved
+        admin
         description
-        address
-        city
-        postal
-        country
-        state
+        jwt
+        createdAt
+      }
+    }
+  `,
+  updateAccount: gql`
+    mutation(
+      $_id: String
+      $password: String
+      $email: String
+      $company: String
+      $website: String
+      $license: String
+      $description: String
+      $address: AddressInput
+      $shipping: [AddressInput]
+      $billing: [AddressInput]
+    ) {
+      updateAccount(
+        input: {
+          _id: $_id
+          password: $password
+          email: $email
+          company: $company
+          website: $website
+          license: $license
+          description: $description
+          address: $address
+          shipping: $shipping
+          billing: $billing
+        }
+      ) {
+        _id
+        email
+        password
+        address {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        shipping {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        billing {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        company
+        website
+        license
+        approved
+        admin
+        description
         jwt
         createdAt
       }

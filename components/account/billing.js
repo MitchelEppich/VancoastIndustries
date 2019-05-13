@@ -1,53 +1,117 @@
 const billing = props => {
+  let account = props.account.currentUser;
+  let billing = account == null ? null : account.billing[0];
+
   return (
     <div id="vcBilling-tab" className="tabcontent">
       <h1>Billing Info</h1>
+      <form
+        className="vcAccount-details flex flex-col justify-center"
+        onSubmit={e => {
+          e.preventDefault();
+          const form = e.target;
+          const formData = new window.FormData(form);
 
-      <form className="vcAccount-details flex flex-col justify-center">
-        <div className="flex flex-wrap content-center pt-4">
-          <input
-            type="checkbox"
-            id="vcBilling-check"
-            className="mt-2 mr-4"
-            defaultChecked
-          />
-          <label htmlFor="vcBilling-check" className="vcFilter-label">
-            Billing Same as Shipping
-          </label>
-        </div>
+          let name = formData.get("firstName");
+          let surname = formData.get("lastName");
+          let phone = formData.get("phone");
+          let address = formData.get("address").toLowerCase();
+          let apartment = formData.get("apartment");
+          if (apartment != null) apartment = apartment.toLowerCase();
+          let city = formData.get("city").toLowerCase();
+          let postal = formData.get("postal").toLowerCase();
+          let country = formData.get("country").toLowerCase();
+          let state = formData.get("state").toLowerCase();
 
-        <label htmlFor="vcFirstName">Your First Name*</label>
+          let _address = {
+            _id: billing == null ? null : billing._id,
+            name,
+            surname,
+            phone,
+            postal,
+            country,
+            state,
+            address,
+            apartment,
+            city
+          };
+
+          props.updateAccount({
+            _id: account._id,
+            billing: [_address]
+          });
+        }}
+      >
+        <label htmlFor="vcName">Your First Name*</label>
         <input
           required
           type="text"
-          id="vcFirstName"
+          id=""
           name="firstName"
           placeholder="First Name"
+          defaultValue={billing != null ? billing.name : ""}
         />
 
-        <label htmlFor="vcLastName">Your Last Name*</label>
+        <label htmlFor="vcName">Your Last Name*</label>
         <input
           required
           type="text"
-          id="vcLastName"
+          id=""
           name="lastName"
           placeholder="Last Name"
+          defaultValue={billing != null ? billing.surname : ""}
         />
 
-        <label htmlFor="vcCompany">Company Name*</label>
-        <input type="text" id="vcCompany" placeholder="Company Name Here" />
+        <label htmlFor="vcPhone">Company Phone*</label>
+        <input
+          required
+          type="text"
+          id=""
+          name="phone"
+          placeholder="555-555-5555"
+          defaultValue={billing != null ? billing.phone : ""}
+        />
 
-        <label htmlFor="vcEmail">Email Address*</label>
-        <input type="text" id="vcEmail" placeholder="adamsmith@gmail.com" />
+        <label htmlFor="vcAddress">Street Address*</label>
+        <input
+          required
+          type="text"
+          id=""
+          name="address"
+          placeholder="291 E. Hans Street"
+          defaultValue={billing != null ? billing.address : ""}
+        />
 
-        <label htmlFor="vcStreet">Street Address*</label>
-        <input type="text" id="vcStreet" placeholder="112 East 6th Avenue" />
+        <label htmlFor="vcCity">City*</label>
+        <input
+          required
+          type="text"
+          id=""
+          name="city"
+          placeholder="Smith Ville"
+          defaultValue={billing != null ? billing.city : ""}
+        />
 
-        <label htmlFor="vcProvince">Province/State*</label>
-        <input type="text" id="vcProvince" placeholder="British Columbia" />
+        <label htmlFor="vcState">Province/State*</label>
+        <input
+          required
+          type="text"
+          id=""
+          name="state"
+          placeholder="British Columbia"
+          defaultValue={billing != null ? billing.state : ""}
+        />
 
         <label htmlFor="vcCountry">Country*</label>
-        <select className="vcCountry" name="vcCountry">
+        <select
+          className="vcCountry"
+          name="country"
+          id=""
+          defaultValue={billing != null ? billing.country.toUpperCase() : ""}
+        >
+          <option key="default" disabled value="">
+            Select...
+          </option>
           <option value="AF">Afghanistan</option>
           <option value="AX">Åland Islands</option>
           <option value="AL">Albania</option>
@@ -303,11 +367,14 @@ const billing = props => {
           <option value="ZW">Zimbabwe</option>
         </select>
 
-        <label htmlFor="vcStreet">Postal Code/Zip Code*</label>
-        <input type="text" id="vcStreet" placeholder="V5T 1J9" />
-
-        <label htmlFor="vcPhone">Phone Number*</label>
-        <input type="text" id="vcPhone" placeholder="555-555-5555" />
+        <label htmlFor="vcPostal">Postal Code/Zip Code*</label>
+        <input
+          type="text"
+          id=""
+          name="postal"
+          placeholder="V5T 1J9"
+          defaultValue={billing != null ? billing.postal : ""}
+        />
 
         <input type="submit" value="Save" />
       </form>

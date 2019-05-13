@@ -28,17 +28,16 @@ class Index extends Component {
               const form = e.target;
               const formData = new window.FormData(form);
 
-              let name = (
-                formData.get("firstName") +
-                " " +
-                formData.get("lastName")
-              ).toLowerCase();
+              let name = formData.get("firstName");
+              let surname = formData.get("lastName");
               let company = formData.get("company").toLowerCase();
               let email = formData.get("email").toLowerCase();
               let phone = formData.get("phone");
               let website = formData.get("website").toLowerCase();
               let license = formData.get("license");
               let address = formData.get("address").toLowerCase();
+              let apartment = formData.get("apartment");
+              if (apartment != null) apartment = apartment.toLowerCase();
               let city = formData.get("city").toLowerCase();
               let postal = formData.get("postal").toLowerCase();
               let country = formData.get("country").toLowerCase();
@@ -46,20 +45,28 @@ class Index extends Component {
               let description = formData.get("description");
               let password = formData.get("password");
 
-              this.props.createAccount({
+              let _address = {
                 name,
+                surname,
+                phone,
+                postal,
+                country,
+                state,
+                address,
+                apartment,
+                city
+              };
+
+              this.props.createAccount({
                 company,
                 email,
-                phone,
                 website,
                 license,
-                address,
+                address: _address,
+                billing: [_address],
+                shipping: [_address],
                 description,
-                password,
-                state,
-                country,
-                postal,
-                city
+                password
               });
             }}
           >
@@ -153,13 +160,21 @@ class Index extends Component {
               placeholder="#License"
             />
 
-            <label htmlFor="vcAddress">Street Address*</label>
+            <label htmlFor="vcAddress">Address*</label>
             <input
               required
               type="text"
               id="vcAddress"
               name="address"
               placeholder="291 E. Hans Street"
+            />
+
+            <label htmlFor="vcApartment">Apartment</label>
+            <input
+              type="text"
+              id="vcApartment"
+              name="apartment"
+              placeholder="#3210"
             />
 
             <label htmlFor="vcCity">City*</label>
@@ -185,7 +200,7 @@ class Index extends Component {
               className="vcCountry"
               id="vcCountry"
               name="country"
-              value=""
+              defaultValue=""
             >
               <option key="default" disabled value="">
                 Select...
