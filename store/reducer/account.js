@@ -12,6 +12,7 @@ const initialState = {
     "Saved Items"
   ],
   currentUser: null
+
   // {
   // email: "vanessa@vancoastind.com",
   // name: "Vanessa",

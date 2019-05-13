@@ -43,7 +43,8 @@ class Index extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     changeOption: option => dispatch(actions.changeOption(option)),
-    updateAccount: input => dispatch(actions.updateAccount(input))
+    updateAccount: input => dispatch(actions.updateAccount(input)),
+    resetPassword: input => dispatch(actions.resetPassword(input))
   };
 };
 
