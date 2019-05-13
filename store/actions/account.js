@@ -96,16 +96,18 @@ const getActions = uri => {
       };
     },
     addToWishList: input => {
-      let savedItem = stringBuilder(input);
+      return dispatch => {
+        let savedItem = stringBuilder(input);
 
-      //send to db here
+        console.log(input, savedItem);
+        //send to db here
+        dispatch(
+          objects.updateAccount({ _id: input.currentUser._id, savedItem })
+        );
 
-      return {
-        type: actionTypes.ADD_TO_WISH_LIST,
-        currentUser: {
-          ...input.currentUser,
-          savedItems: [...input.currentUser.savedItems, savedItem]
-        }
+        dispatch({
+          type: actionTypes.ADD_TO_WISH_LIST
+        });
       };
     }
   };
@@ -168,6 +170,7 @@ const mutation = {
         description
         jwt
         createdAt
+        savedItems
       }
     }
   `,
@@ -249,6 +252,7 @@ const mutation = {
         description
         jwt
         createdAt
+        savedItems
       }
     }
   `,
@@ -265,6 +269,7 @@ const mutation = {
       $address: AddressInput
       $shipping: [AddressInput]
       $billing: [AddressInput]
+      $savedItem: String
     ) {
       updateAccount(
         input: {
@@ -279,6 +284,7 @@ const mutation = {
           address: $address
           shipping: $shipping
           billing: $billing
+          savedItem: $savedItem
         }
       ) {
         _id
@@ -332,6 +338,7 @@ const mutation = {
         description
         jwt
         createdAt
+        savedItems
       }
     }
   `

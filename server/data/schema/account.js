@@ -27,6 +27,7 @@ let Type = `
         jwt: String
         createdAt: String
         error: String
+        savedItems: [String]
     }
 `;
 
@@ -49,6 +50,7 @@ let Input = `
         address: AddressInput
         shipping: [AddressInput]
         billing: [AddressInput]
+        savedItem: String
     }
 
     input CredentialsInput {

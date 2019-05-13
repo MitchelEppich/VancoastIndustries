@@ -30,7 +30,8 @@ const AccountSchema = Schema({
   approved: Number,
   admin: Boolean,
   description: String,
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  savedItems: [String]
 });
 
 // adds a method to a user document object to create a hashed password

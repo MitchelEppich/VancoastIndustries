@@ -81,6 +81,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.quickAddToCartQty(0));
       dispatch(actions.setCurrentProduct(product));
     },
+    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj)),
     toggleFilter: options => dispatch(actions.toggleFilter(options)),
     getStrains: () => dispatch(actions.getStrains()),
     setQuickView: input => dispatch(actions.setQuickView(input)),

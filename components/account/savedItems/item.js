@@ -25,13 +25,12 @@ const index = props => {
           </div>
           <div className="vcItem-qty flex flex-col">
             <span className="vcPrefix">Pack Size</span>
-            <span>{props.item.size[0]} Seeds</span>
-            {console.log(props.item)}
+            <span>{props.item.packSize} Seeds</span>
           </div>
 
           <div className="vcItem-price flex flex-col">
             <span className="vcPrefix">Price</span>
-            <span>${price}</span>
+            <span>${price.toFixed(2)}</span>
           </div>
         </div>
         <button className="vcSaved-btn" href="#">

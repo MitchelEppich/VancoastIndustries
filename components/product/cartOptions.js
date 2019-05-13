@@ -3,7 +3,7 @@ import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const cartOptions = props => {
-  let currentProduct = props.currentProduct,
+  let currentProduct = props.product.currentProduct,
     cart = props.checkout.cart,
     maxPerPackage = cart.maxPerPackage,
     potentialQuantity = cart.potentialQuantity,
@@ -133,7 +133,7 @@ const cartOptions = props => {
           }}
           className="vcSaveItem-btn"
         >
-          <span className="font-bold text-white">Add to Wish List</span>
+          <span className="font-bold text-white">Save Item</span>
           <FontAwesomeIcon
             icon={faHeart}
             className="text-white opacity-50 ml-2"

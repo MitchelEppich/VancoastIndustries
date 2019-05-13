@@ -187,7 +187,8 @@ const resolvers = {
           $set: { ...$ },
           $push: {
             billing: newBilling,
-            shipping: newShipping
+            shipping: newShipping,
+            savedItems: $.savedItem
           }
         },
         { upsert: true, new: true }
