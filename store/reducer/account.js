@@ -7,22 +7,30 @@ const initialState = {
     "Account Info",
     "Shipping",
     "Billing",
-    "Reset Password",
+    "Change Password",
     "Recent Orders",
     "Saved Items"
   ],
-  currentUser: {
-    email: "vanessa@vancoastind.com",
-    name: "Vanessa",
-    company: "Vancoast Industries",
-    phone: "16041231234",
-    website: "vancoastindustries.com",
-    license: "",
-    approved: 0,
-    admin: true,
-    createdAt: { type: Date, default: Date.now },
-    savedItems: ["cksaha10x4", "sonccf5x1", "swgjhf15x3"]
-  }
+  currentUser: null
+  // {
+  // email: "vanessa@vancoastind.com",
+  // name: "Vanessa",
+  // surname: "MArk",
+  // company: "Vancoast Industries",
+  // phone: "16041231234",
+  // address: "112 East 6th Av.",
+  // city: "Vancouver",
+  // state: "British Columbia",
+  // country: "CA",
+  // postal: "V8X 2X3",
+  // website: "vancoastindustries.com",
+  // license: "4325233",
+  // description: "we are a nice company and we like to dance",
+  // approved: 1,
+  // admin: true,
+  // createdAt: { type: Date, default: Date.now },
+  // savedItems: ["cksaha10x4", "sonccf5x1", "swgjhf15x3"]
+  // }
 };
 
 export default (state = initialState, action) => {

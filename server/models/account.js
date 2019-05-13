@@ -7,17 +7,26 @@ const Schema = mongoose.Schema;
 const AccountSchema = Schema({
   password: String,
   email: String,
-  surname: String,
-  name: String,
   company: String,
-  phone: String,
   website: String,
   license: String,
-  postal: String,
-  country: String,
-  state: String,
-  address: String,
   jwt: String,
+  address: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Address"
+  },
+  billing: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Address"
+    }
+  ],
+  shipping: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Address"
+    }
+  ],
   approved: Number,
   admin: Boolean,
   description: String,

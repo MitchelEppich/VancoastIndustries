@@ -1,4 +1,6 @@
 const info = props => {
+  let account = props.account.currentUser;
+  if (account == null) return null;
   return (
     <div id="vcAccount-tab" className="tabcontent">
       <h1>Account Info</h1>
@@ -9,38 +11,43 @@ const info = props => {
           const form = e.target;
           const formData = new window.FormData(form);
 
-          let name = (
-            formData.get("firstName") +
-            " " +
-            formData.get("lastName")
-          ).toLowerCase();
+          let name = formData.get("firstName");
+          let surname = formData.get("lastName");
           let company = formData.get("company").toLowerCase();
           let email = formData.get("email").toLowerCase();
           let phone = formData.get("phone");
           let website = formData.get("website").toLowerCase();
           let license = formData.get("license");
           let address = formData.get("address").toLowerCase();
+          let apartment = formData.get("apartment");
+          if (apartment != null) apartment = apartment.toLowerCase();
           let city = formData.get("city").toLowerCase();
           let postal = formData.get("postal").toLowerCase();
           let country = formData.get("country").toLowerCase();
           let state = formData.get("state").toLowerCase();
           let description = formData.get("description");
-          let password = formData.get("password");
 
-          this.props.createAccount({
+          let _address = {
+            _id: account.address != null ? account.address._id : null,
             name,
-            company,
-            email,
+            surname,
             phone,
-            website,
-            license,
-            address,
-            description,
-            password,
             postal,
             country,
             state,
+            address,
+            apartment,
             city
+          };
+
+          props.updateAccount({
+            _id: account._id,
+            company,
+            email,
+            website,
+            license,
+            address: _address,
+            description
           });
         }}
       >
@@ -51,6 +58,11 @@ const info = props => {
           id="vcName"
           name="firstName"
           placeholder="First Name"
+          defaultValue={
+            account != null && account.address != null
+              ? account.address.name
+              : ""
+          }
         />
 
         <label htmlFor="vcName">Your Last Name*</label>
@@ -60,6 +72,11 @@ const info = props => {
           id="vcName"
           name="lastName"
           placeholder="Last Name"
+          defaultValue={
+            account != null && account.address != null
+              ? account.address.surname
+              : ""
+          }
         />
 
         <label htmlFor="vcCompany">Company Name*</label>
@@ -69,6 +86,7 @@ const info = props => {
           id="vcCompany"
           name="company"
           placeholder="Company Name"
+          defaultValue={account != null ? account.company : ""}
         />
 
         <label htmlFor="vcEmail">Company Email*</label>
@@ -78,31 +96,7 @@ const info = props => {
           id="vcEmail"
           name="email"
           placeholder="you@companyname.com"
-        />
-
-        <label htmlFor="vcPassword">Account Password*</label>
-        <input
-          required
-          type="password"
-          id="vcPassword"
-          name="password"
-          placeholder="Password"
-        />
-
-        <label htmlFor="vcPassword">Confirm Account Password*</label>
-        <input
-          required
-          type="password"
-          id="vcPasswordConfirm"
-          name="passwordConfirm"
-          placeholder="Retype Password"
-          onChange={e => {
-            let value = e.target.value;
-            let other = document.querySelector("#vcPassword").value;
-            if (value != other)
-              e.target.setCustomValidity("Passwords do not match each other");
-            else e.target.setCustomValidity("");
-          }}
+          defaultValue={account != null ? account.email : ""}
         />
 
         <label htmlFor="vcPhone">Company Phone*</label>
@@ -112,6 +106,11 @@ const info = props => {
           id="vcPhone"
           name="phone"
           placeholder="555-555-5555"
+          defaultValue={
+            account != null && account.address != null
+              ? account.address.phone
+              : ""
+          }
         />
 
         <label htmlFor="vcWebsite">Company Website*</label>
@@ -121,6 +120,7 @@ const info = props => {
           id="vcWebsite"
           name="website"
           placeholder="www.yoursite.com"
+          defaultValue={account != null ? account.website : ""}
         />
 
         <label htmlFor="vcLicense">Business License*</label>
@@ -130,6 +130,7 @@ const info = props => {
           id="vcLicense"
           name="license"
           placeholder="#License"
+          defaultValue={account != null ? account.license : ""}
         />
 
         <label htmlFor="vcAddress">Street Address*</label>
@@ -139,6 +140,11 @@ const info = props => {
           id="vcAddress"
           name="address"
           placeholder="291 E. Hans Street"
+          defaultValue={
+            account != null && account.address != null
+              ? account.address.address
+              : ""
+          }
         />
 
         <label htmlFor="vcCity">City*</label>
@@ -148,6 +154,11 @@ const info = props => {
           id="vcCity"
           name="city"
           placeholder="Smith Ville"
+          defaultValue={
+            account != null && account.address != null
+              ? account.address.city
+              : ""
+          }
         />
 
         <label htmlFor="vcState">Province/State*</label>
@@ -157,10 +168,24 @@ const info = props => {
           id="vcState"
           name="state"
           placeholder="British Columbia"
+          defaultValue={
+            account != null && account.address != null
+              ? account.address.state
+              : ""
+          }
         />
 
         <label htmlFor="vcCountry">Country*</label>
-        <select className="vcCountry" name="country" id="vcCountry" value="">
+        <select
+          className="vcCountry"
+          name="country"
+          id="vcCountry"
+          defaultValue={
+            account != null && account.address != null
+              ? account.address.country.toUpperCase()
+              : ""
+          }
+        >
           <option key="default" disabled value="">
             Select...
           </option>
@@ -420,7 +445,17 @@ const info = props => {
         </select>
 
         <label htmlFor="vcPostal">Postal Code/Zip Code*</label>
-        <input type="text" id="vcPostal" name="postal" placeholder="V5T 1J9" />
+        <input
+          type="text"
+          id="vcPostal"
+          name="postal"
+          placeholder="V5T 1J9"
+          defaultValue={
+            account != null && account.address != null
+              ? account.address.postal
+              : ""
+          }
+        />
 
         <label htmlFor="vcMessage">Company Profile*</label>
         <textarea
@@ -429,6 +464,7 @@ const info = props => {
           name="description"
           rows="10"
           placeholder="Some stuff here about the company and what makes the co."
+          defaultValue={account != null ? account.description : ""}
         />
 
         <input type="submit" value="Save" />

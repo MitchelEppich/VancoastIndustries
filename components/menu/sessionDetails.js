@@ -1,6 +1,9 @@
 import Link from "next/link";
 
 const sessionDetails = props => {
+  let user = props.account.currentUser;
+  let name = user != null ? user.company : "NO NAME";
+
   return (
     <div className="vcNavSection-three flex justify-center items-center">
       <button className="vcNav-login">Login</button>
@@ -15,9 +18,7 @@ const sessionDetails = props => {
                 src="../static/img/assets/icons/user-icon.svg"
                 alt=""
               />
-              <span className="flex">
-                Welcome, {props.account.currentUser.name}
-              </span>
+              <span className="flex">Welcome, {name}</span>
             </a>
           </Link>
         ) : (

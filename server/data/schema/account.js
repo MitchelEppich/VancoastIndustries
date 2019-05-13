@@ -15,19 +15,14 @@ let Type = `
         _id: String
         email: String
         password: String
-        name: String
-        surname: String
+        address: Address
+        shipping: [Address]
+        billing: [Address]
         company: String
-        phone: String
         website: String
         license: String
         approved: Int
         admin: Boolean
-        address: String
-        postal: String
-        country: String
-        city: String
-        state: String
         description: String
         jwt: String
         createdAt: String
@@ -41,21 +36,18 @@ let Input = `
     }
 
     input AccountInput {
+        _id: String
         email: String
         password: String
-        name: String
-        surname: String
+        newPassword: String
         company: String
-        phone: String
         website: String
         license: String
-        address: String
-        postal: String
-        city: String
-        country: String
-        state: String
         description: String
         approved: Int
+        address: AddressInput
+        shipping: [AddressInput]
+        billing: [AddressInput]
     }
 
     input CredentialsInput {

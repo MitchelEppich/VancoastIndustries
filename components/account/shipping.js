@@ -1,4 +1,6 @@
 const shipping = props => {
+  let account = props.account.currentUser;
+  let shipping = account == null ? null : account.shipping[0];
   return (
     <div id="" className="tabcontent">
       <h1>Shipping Info</h1>
@@ -9,39 +11,34 @@ const shipping = props => {
           const form = e.target;
           const formData = new window.FormData(form);
 
-          // let name = (
-          //   formData.get("firstName") +
-          //   " " +
-          //   formData.get("lastName")
-          // ).toLowerCase();
-          // let company = formData.get("company").toLowerCase();
-          // let email = formData.get("email").toLowerCase();
-          // let phone = formData.get("phone");
-          // let website = formData.get("website").toLowerCase();
-          // let license = formData.get("license");
-          // let address = formData.get("address").toLowerCase();
-          // let city = formData.get("city").toLowerCase();
-          // let postal = formData.get("postal").toLowerCase();
-          // let country = formData.get("country").toLowerCase();
-          // let state = formData.get("state").toLowerCase();
-          // let description = formData.get("description");
-          // let password = formData.get("password");
+          let name = formData.get("firstName");
+          let surname = formData.get("lastName");
+          let phone = formData.get("phone");
+          let address = formData.get("address").toLowerCase();
+          let apartment = formData.get("apartment");
+          if (apartment != null) apartment = apartment.toLowerCase();
+          let city = formData.get("city").toLowerCase();
+          let postal = formData.get("postal").toLowerCase();
+          let country = formData.get("country").toLowerCase();
+          let state = formData.get("state").toLowerCase();
 
-          // this.props.createAccount({
-          //   name,
-          //   company,
-          //   email,
-          //   phone,
-          //   website,
-          //   license,
-          //   address,
-          //   description,
-          //   password,
-          //   postal,
-          //   country,
-          //   state,
-          //   city
-          // });
+          let _address = {
+            _id: shipping == null ? null : shipping._id,
+            name,
+            surname,
+            phone,
+            postal,
+            country,
+            state,
+            address,
+            apartment,
+            city
+          };
+
+          props.updateAccount({
+            _id: account._id,
+            shipping: [_address]
+          });
         }}
       >
         <label htmlFor="vcName">Your First Name*</label>
@@ -51,6 +48,7 @@ const shipping = props => {
           id=""
           name="firstName"
           placeholder="First Name"
+          defaultValue={shipping != null ? shipping.name : ""}
         />
 
         <label htmlFor="vcName">Your Last Name*</label>
@@ -60,24 +58,7 @@ const shipping = props => {
           id=""
           name="lastName"
           placeholder="Last Name"
-        />
-
-        <label htmlFor="vcCompany">Company Name*</label>
-        <input
-          required
-          type="text"
-          id=""
-          name="company"
-          placeholder="Company Name"
-        />
-
-        <label htmlFor="vcEmail">Company Email*</label>
-        <input
-          required
-          type="text"
-          id=""
-          name="email"
-          placeholder="you@companyname.com"
+          defaultValue={shipping != null ? shipping.surname : ""}
         />
 
         <label htmlFor="vcPhone">Company Phone*</label>
@@ -87,6 +68,7 @@ const shipping = props => {
           id=""
           name="phone"
           placeholder="555-555-5555"
+          defaultValue={shipping != null ? shipping.phone : ""}
         />
 
         <label htmlFor="vcAddress">Street Address*</label>
@@ -96,6 +78,7 @@ const shipping = props => {
           id=""
           name="address"
           placeholder="291 E. Hans Street"
+          defaultValue={shipping != null ? shipping.address : ""}
         />
 
         <label htmlFor="vcCity">City*</label>
@@ -105,6 +88,7 @@ const shipping = props => {
           id=""
           name="city"
           placeholder="Smith Ville"
+          defaultValue={shipping != null ? shipping.city : ""}
         />
 
         <label htmlFor="vcState">Province/State*</label>
@@ -114,10 +98,16 @@ const shipping = props => {
           id=""
           name="state"
           placeholder="British Columbia"
+          defaultValue={shipping != null ? shipping.state : ""}
         />
 
         <label htmlFor="vcCountry">Country*</label>
-        <select className="vcCountry" name="country" id="" value="">
+        <select
+          className="vcCountry"
+          name="country"
+          id=""
+          defaultValue={shipping != null ? shipping.country.toUpperCase() : ""}
+        >
           <option key="default" disabled value="">
             Select...
           </option>
@@ -377,7 +367,13 @@ const shipping = props => {
         </select>
 
         <label htmlFor="vcPostal">Postal Code/Zip Code*</label>
-        <input type="text" id="" name="postal" placeholder="V5T 1J9" />
+        <input
+          type="text"
+          id=""
+          name="postal"
+          placeholder="V5T 1J9"
+          defaultValue={shipping != null ? shipping.postal : ""}
+        />
 
         <input type="submit" value="Save" />
       </form>

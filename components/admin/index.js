@@ -3,12 +3,13 @@ import Search from "./search";
 import Filters from "./filters";
 
 const index = props => {
+  let user = props.account.currentUser;
+  let name = user.company;
+
   return (
     <div className="vcAdminAccount flex flex-wrap justify-between content-start py-4 px-24">
       <div className="w-full flex justify-between items-center">
-        <h2 className="w-48 text-white font-thin">
-          Hi {props.account.currentUser.name}
-        </h2>
+        <h2 className="w-48 text-white font-thin">Hi {name}</h2>
         <img
           src="../static/img/assets/vc-full-logo.png"
           alt="vancoast industries"
