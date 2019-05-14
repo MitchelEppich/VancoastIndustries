@@ -1,5 +1,5 @@
 const seedSelect = props => {
-  let _product = props.product.currentProduct;
+  let _product = props.product.currentProduct || props.shop.quickViewModal;
   let _arr = _product.price;
   _arr = _arr.map((price, index) => {
     let numberOfSeeds = _product.size[index];

@@ -6,10 +6,10 @@ const initialState = {
   currentProduct: null,
   showFilters: false,
   brands: brands,
-  // strains: strains,
   activeBrandIndex: 0,
   filters: filters,
   activeFilters: [],
+  quickViewModal: null,
   quickViewProduct: null,
   showQuickViewProduct: false
 };
@@ -27,6 +27,10 @@ export default (state = initialState, action) => {
     case actionTypes.PURGE_ACTIVE_FILTERS:
       return updateObject(state, {
         activeFilters: action.activeFilters
+      });
+    case actionTypes.TOGGLE_MODAL:
+      return updateObject(state, {
+        quickViewModal: action.product
       });
     case actionTypes.SET_QUICK_VIEW:
       return updateObject(state, {

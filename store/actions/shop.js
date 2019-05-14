@@ -11,6 +11,7 @@ const actionTypes = {
   SET_STRAINS: "SET_STRAINS",
   TOGGLE_FILTER: "TOGGLE_FILTER",
   PURGE_ACTIVE_FILTERS: "PURGE_ACTIVE_FILTERS",
+  TOGGLE_MODAL: "TOGGLE_MODAL",
   SET_QUICK_VIEW: "SET_QUICK_VIEW"
 };
 
@@ -75,6 +76,12 @@ const getActions = uri => {
               console.log(error);
             });
         });
+      };
+    },
+    toggleModal: product => {
+      return {
+        type: actionTypes.TOGGLE_MODAL,
+        product: product
       };
     },
     setQuickView: input => {

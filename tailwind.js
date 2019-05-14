@@ -105,7 +105,7 @@ let colors = {
   blue: "#1E25BB",
   "blue-light": "#6cb2eb",
   "blue-lighter": "#bcdefa",
-  "blue-lightest": "#eff8ff",
+  "blue-lightest": "#8F92DD",
 
   "indigo-darkest": "#191e38",
   "indigo-darker": "#2f365f",
@@ -637,6 +637,7 @@ module.exports = {
     md: "40rem",
     lg: "50rem",
     xl: "60rem",
+    "500": "500px",
     "2xl": "70rem",
     "3xl": "80rem",
     "4xl": "90rem",

@@ -25,6 +25,7 @@ import Menu from "../components/menu";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Cart from "../components/cart";
 import Alert from "../components/alert";
+import QuickViewModal from "../components/product/quickView";
 import Footer from "../components/footer";
 import Loader from "../components/loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -39,7 +40,7 @@ class Layout extends Component {
   async componentDidMount() {
     let pageReady = false;
     try {
-      let strains = (await this.props.getStrains()) || {};
+      (await this.props.getStrains()) || {};
       this.prePageLoad(this.props.router);
       pageReady = true;
     } catch (err) {
@@ -68,6 +69,29 @@ class Layout extends Component {
       });
     }
   }
+  componentWillUnMount() {
+    window.removeEventListener("resize", () => {
+      this.setMediaSize();
+      if (this.props.misc.showMobileMenu) {
+        this.props.toggleMobileMenu(false);
+      }
+    });
+    window.removeEventListener("scroll", () => {
+      if (window.scrollY > window.innerHeight) {
+        this.setState({ toTop: true });
+      }
+      if (window.scrollY < window.innerHeight) {
+        this.setState({ toTop: false });
+      }
+    });
+    if (dev) {
+      window.removeEventListener("keypress", e => {
+        if (e.shiftKey && e.code === "KeyP") {
+          console.log(this.props);
+        }
+      });
+    }
+  }
 
   render() {
     return (
@@ -75,6 +99,9 @@ class Layout extends Component {
         <div id="top">
           <Menu {...this.props} />
           <Cart {...this.props} />
+          {this.props.shop.quickViewModal != null ? (
+            <QuickViewModal {...this.props} />
+          ) : null}
           {this.props.misc.alert != null ? <Alert {...this.props} /> : null}
           {this.props.misc.pageReady ? (
             this.props.children
@@ -184,7 +211,11 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.togglePageReady(isPageReady)),
     getStrains: () => dispatch(actions.getStrains()),
     modifyCart: input => dispatch(actions.modifyCart(input)),
-    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj))
+    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj)),
+    toggleModal: product => dispatch(actions.toggleModal(product)),
+    quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
+    modifyPotentialQuantity: input =>
+      dispatch(actions.modifyPotentialQuantity(input))
   };
 };
 

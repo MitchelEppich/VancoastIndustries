@@ -10,7 +10,8 @@ const actionTypes = {
   CREATE_ACCOUNT: "CREATE_ACCOUNT",
   ADD_TO_WISH_LIST: "ADD_TO_WISH_LIST",
   UPDATE_ACCOUNT: "UPDATE_ACCOUNT",
-  UPDATE_ERROR: "UPDATE_ERROR"
+  UPDATE_ERROR: "UPDATE_ERROR",
+  RESET_PASSWORD: "RESET_PASSWORD"
 };
 
 const getActions = uri => {
@@ -19,6 +20,24 @@ const getActions = uri => {
       return {
         type: actionTypes.CHANGE_OPTION,
         option: option
+      };
+    },
+    resetPassword: input => {
+      return dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+
+        const operation = {
+          query: mutation.resetPassword,
+          variables: { ...input }
+        };
+
+        return makePromise(execute(link, operation))
+          .then(data => {
+            dispatch({
+              type: actionTypes.RESET_PASSWORD
+            });
+          })
+          .catch(error => console.log(error));
       };
     },
     verifyCredentials: credentials => {
@@ -77,7 +96,6 @@ const getActions = uri => {
         return makePromise(execute(link, operation))
           .then(data => {
             let account = data.data.updateAccount;
-            console.log(account);
             if (account.error != null) {
               let error = account.error;
               dispatch({
@@ -99,8 +117,6 @@ const getActions = uri => {
       return dispatch => {
         let savedItem = stringBuilder(input);
 
-        console.log(input, savedItem);
-        //send to db here
         dispatch(
           objects.updateAccount({ _id: input.currentUser._id, savedItem })
         );
@@ -254,6 +270,11 @@ const mutation = {
         createdAt
         savedItems
       }
+    }
+  `,
+  resetPassword: gql`
+    mutation($email: String) {
+      resetPassword(input: { email: $email })
     }
   `,
   updateAccount: gql`
