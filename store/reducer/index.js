@@ -23,7 +23,8 @@ const initialState = {
   showSearchBar: false,
   searchValue: "",
   showMobileMenu: false,
-  alert: null
+  alert: null,
+  MATM: false
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -40,6 +41,8 @@ const indexReducer = (state = initialState, action) => {
       });
     case actionTypes.TOGGLE_MENU_DROPDOWN:
       return updateObject(state, { menuDropdownVisible: action.value });
+    case actionTypes.TOGGLE_MATM:
+      return updateObject(state, { MATM: action.show });
     case actionTypes.SET_MEDIA_SIZE:
       return updateObject(state, { mediaSize: action.input });
     case actionTypes.TOGGLE_PAGE_READY:

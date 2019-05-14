@@ -33,7 +33,8 @@ const actionTypes = {
   TOGGLE_SEARCH_BAR: "TOGGLE_SEARCH_BAR",
   SET_SEARCH_VALUE: "SET_SEARCH_VALUE",
   TOGGLE_MOBILE_MENU: "TOGGLE_MOBILE_MENU",
-  TOGGLE_ALERT: "TOGGLE_ALERT"
+  TOGGLE_ALERT: "TOGGLE_ALERT",
+  TOGGLE_MATM: "TOGGLE_MATM"
 };
 
 const actions = {
@@ -53,6 +54,12 @@ const actions = {
     return {
       type: actionTypes.TOGGLE_MOBILE_MENU,
       isMobileMenuVisible: isMobileMenuVisible
+    };
+  },
+  toggleMATM: show => {
+    return {
+      type: actionTypes.TOGGLE_MATM,
+      show: show
     };
   },
   toggleMenuDropdown: options => {

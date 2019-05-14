@@ -20,8 +20,10 @@ import { connect } from "react-redux";
 import Router from "next/router";
 // custom
 const dev = process.env.NODE_ENV !== "production";
+import keyCodes from "../scripts/keyCodes";
 import actions from "../store/actions";
 import Menu from "../components/menu";
+import MATM from "../components/matm";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Cart from "../components/cart";
 import Alert from "../components/alert";
@@ -30,7 +32,6 @@ import Footer from "../components/footer";
 import Loader from "../components/loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
-
 import { itemBuilder } from "../scripts/savedItems";
 
 class Layout extends Component {
@@ -63,6 +64,11 @@ class Layout extends Component {
         this.setState({ toTop: false });
       }
     });
+    window.addEventListener(
+      "keydown",
+      e => this.dealWithKeyboard(e, keyCodes, this.dealWithKeyboard),
+      false
+    );
     if (dev) {
       window.addEventListener("keypress", e => {
         if (e.shiftKey && e.code === "KeyP") {
@@ -70,9 +76,9 @@ class Layout extends Component {
         }
       });
     }
-
     this.recallVerifiedUser();
   }
+
   componentWillUnMount() {
     window.removeEventListener("resize", () => {
       this.setMediaSize();
@@ -135,6 +141,7 @@ class Layout extends Component {
         <div id="top">
           <Menu {...this.props} />
           <Cart {...this.props} />
+          {this.props.misc.MATM ? <MATM /> : null}
           {this.props.shop.quickViewModal != null ? (
             <QuickViewModal {...this.props} />
           ) : null}
@@ -227,6 +234,17 @@ class Layout extends Component {
       Router.push("/product", path);
     }
   };
+  dealWithKeyboard = (e, codes, thisFunc) => {
+    let lastKey = e.code;
+    if (codes.length == 0) {
+      this.props.toggleMATM(true);
+      return;
+    }
+    if (codes[0] == lastKey) {
+      codes.shift();
+      window.addEventListener("keypress", e => thisFunc(e, codes, thisFunc));
+    }
+  };
 }
 
 const mapDispatchToProps = dispatch => {
@@ -249,6 +267,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.quickAddToCartQty(0));
       dispatch(actions.setCurrentProduct(product));
     },
+    toggleMATM: show => dispatch(actions.toggleMATM(show)),
     verifyCredentials: credentials =>
       dispatch(actions.verifyCredentials(credentials)),
     togglePageReady: isPageReady =>
