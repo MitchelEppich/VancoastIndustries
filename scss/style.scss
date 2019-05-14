@@ -89,7 +89,7 @@ a:hover {
 }
 
 .text-shadow {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.87);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.596);
 }
 
 button,
@@ -441,7 +441,7 @@ button.vcNav-login {
   text-align: center;
 }
 .vcNav-cart img {
-  width: 70px;
+  width: 65px;
 }
 /** end Vancoast Nav **/
 img.quick-view {
@@ -637,6 +637,9 @@ img.quick-view {
   .vcNav-logo {
     display: none;
   }
+  #vcSearch-wrap {
+    width: 90%;
+  }
 }
 @media screen and (min-width: 767px) {
   .vcNav-vLogo {
@@ -675,22 +678,22 @@ img.quick-view {
     max-width: 240px;
     padding-top: 110px;
   }
-}
-@media screen and (max-width: 330px) {
   li.vcShop-cats a,
   li.vcShop-brands a {
-    font-size: 30px;
+    font-size: 27px;
     font-weight: 700;
     letter-spacing: -1px;
     color: #000;
   }
   .vcShop-cats ul li a,
   .vcShop-brands ul li a {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 400;
     letter-spacing: -1px;
-    line-height: 37px;
+    line-height: 33px;
   }
+}
+@media screen and (max-width: 330px) {
   .vcFooter-menu {
     width: 95%;
   }

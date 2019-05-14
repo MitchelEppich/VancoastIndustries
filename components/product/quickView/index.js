@@ -10,7 +10,7 @@ const index = props => {
   return (
     <div className="w-screen h-screen bg-semi-transparent z-50 fixed">
       <div className="vcSingle vcQuick flex justify-center items-center">
-        <div className="vcSingle-sectionThree flex flex-col justify-center items-start">
+        <div className="bg-white w-500 relative vcQuick flex flex-col justify-center items-start">
           <header className="vcSingle-intro flex justify-center items-center flex-col w-full">
             <img
               className="h-200"

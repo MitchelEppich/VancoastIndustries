@@ -18,7 +18,7 @@ const footer = props => {
               placeholder="Enter your email..."
             />
             <input
-              className="vcNewsletter-btn"
+              className="vcNewsletter-btn sm:mt-4"
               type="submit"
               value="Subscribe"
             />

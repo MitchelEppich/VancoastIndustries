@@ -35,11 +35,13 @@ const searchBar = props => {
           }}
         />
       </div>
-      <input
-        value="Search"
-        type="submit"
-        className="h-full px-4 cursor-pointer hover:bg-grey p-3 bg-blue-new text-white rounded mx-4 text-center text-xl sm:text-sm sm:m-0"
-      />
+      <div className="">
+        <input
+          value="Search"
+          type="submit"
+          className="px-4 sm:px-1 sm:text-lg cursor-pointer hover:bg-grey p-3 bg-blue-new text-white rounded mx-4 text-center text-xl"
+        />
+      </div>
     </form>
   );
 };
