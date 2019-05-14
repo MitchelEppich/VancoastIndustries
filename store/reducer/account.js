@@ -47,6 +47,8 @@ export default (state = initialState, action) => {
       });
     case actionTypes.CREATE_ACCOUNT:
       return updateObject(state, {});
+    case actionTypes.RESET_PASSWORD:
+      return updateObject(state, {});
     case actionTypes.UPDATE_ERROR:
       return updateObject(state, { updateError: action.error });
     case actionTypes.ADD_TO_WISH_LIST:

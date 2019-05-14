@@ -197,8 +197,35 @@ const resolvers = {
       account.password = undefined;
 
       return account.toObject();
+    },
+    resetPassword: async (_, { input }) => {
+      let $ = { ...input };
+
+      let account = await Account.findOne({ email: $.email });
+      if (account == null) return "Account does not exist";
+
+      account.password = generatePassword();
+      console.log(account.password);
+
+      // Send Email
+
+      await account.save();
+
+      account.password = null;
+
+      return "Password reset";
     }
   }
+};
+
+let generatePassword = () => {
+  let length = 12,
+    charset = "abcdefghijkmnopqrstuvwxyzACDEFGHJKLMNPQRSTUVWXYZ2345679",
+    retVal = "";
+  for (let i = 0, n = charset.length; i < length; ++i) {
+    retVal += charset.charAt(Math.floor(Math.random() * n));
+  }
+  return retVal;
 };
 
 module.exports = resolvers;

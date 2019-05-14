@@ -31,10 +31,16 @@ let typeDefs = `
 
   ${definitions.Input || ""}
 
+  input EmailInput {
+    email: String
+    newPassword: String
+  }
+
   ${definitions.Other || ""}
 
   type Mutation {
     ${definitions.Mutation || ""}
+    sendEmail(input: EmailInput) : String
   } 
 `;
 
