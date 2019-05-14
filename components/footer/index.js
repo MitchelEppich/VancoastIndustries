@@ -4,7 +4,7 @@ const footer = props => {
   return (
     <footer className="flex flex-col justify-around">
       {/* <div className="footer-overlay"> */}
-      <div className="vcSubscribe-box-wrap flex justify-end md:pr-12 lg:pr-12 pt-16 pb-10 xxl:px-32 xl:px-32">
+      <div className="vcSubscribe-box-wrap flex justify-end md:pr-12 lg:pr-12 pt-16 pb-10 sm:pb-4 xxl:px-32 xl:px-32">
         <div className="vcSubscribe-box">
           <h3 className="mb-4">
             <span className="vcSubscribe-van">Vancoast</span>{" "}
@@ -28,7 +28,7 @@ const footer = props => {
 
       <div className="vcFooter-logo-wrap flex justify-center">
         <Link prefetch href="/">
-          <a aria-label="logo-footer" className="vcFooter-logo scale-item">
+          <a aria-label="logo-footer" className="vcFooter-logo sm:w-250">
             <img src="../static/img/assets/vcText-logo.png" alt="" />
           </a>
         </Link>

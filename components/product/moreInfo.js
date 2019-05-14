@@ -34,7 +34,7 @@ const MoreInfo = props => {
   return (
     <div className="w-full">
       <div className="w-full mx-auto mt-8 bg-blue-new p-10 pb-12 mb-64 moreInfoBackground">
-        <div className="text-center h-300 sm:h-500 pt-0 relative">
+        <div className="text-center h-300 sm:h-500 lg:h-500 pt-0 lg:pt-10 relative">
           <div className="moreInformation h-300 md:h-500 w-full absolute pin-t" />
           <h3 className="vcCompany-similar text-white text-xl font-bold absolute pin-x">
             More Information about {_product.name} Seed

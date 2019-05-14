@@ -27,7 +27,7 @@ class Index extends Component {
         />
 
         <article>
-          <div className="vcSingle w-4/5 mx-auto flex sm:flex-col flex-row lg:flex-row justify-center items-center">
+          <div className="vcSingle xxl:w-4/5 w-full mx-auto flex sm:flex-col md:flex-col flex-row lg:flex-row justify-center items-center">
             <BrandLogo
               currentProduct={this.props.product.currentProduct}
               {...this.props}

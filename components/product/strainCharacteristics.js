@@ -82,12 +82,12 @@ const StrainCharacteristics = props => {
   };
 
   return (
-    <div className="w-700 mx-auto absolute bg-white pin-x mt-2 flex flex-wrap justify-between sm:mt-24 sm:justify-center md:w-4/5 lg:w-4/5 sm:w-300">
+    <div className="w-700 mx-auto absolute bg-white pin-x mt-2 flex flex-wrap justify-between sm:mt-8 sm:justify-center md:w-4/5 lg:w-4/5 sm:w-7/8">
       <div className="w-700 shadow-md md:w-full lg:w-full sm:w-300">
         <div className="w-full p-2 bg-grey-light text-grey uppercase text-center">
           <p className="text-lg font-bold p-1">Strain Characteristics</p>
         </div>
-        <div className="w-full text-xl text-right text-grey p-4 px-4 mt-3 mb-2 relative">
+        <div className="w-full text-xl text-right text-grey p-4 sm:p-2 mt-3 mb-2 relative">
           <div className="inline-flex w-full">
             <div className="inline-flex w-full justify-around">{bullets()}</div>
           </div>
@@ -141,11 +141,11 @@ const StrainCharacteristics = props => {
                 />
                 <p
                   style={{ color: "#68caa6" }}
-                  className="text-center font-bold mt-4 text-base uppercase"
+                  className="text-center font-bold mt-4 text-base uppercase sm:text-sm"
                 >
                   Rud.
                 </p>
-                <p className="opacity-50 text-center text-2xl font-bold">
+                <p className="opacity-50 text-center text-2xl font-bold sm:text-base">
                   {_product.ruderalis * 100}%
                 </p>
               </div>
@@ -192,11 +192,11 @@ const StrainCharacteristics = props => {
               />
               <p
                 style={{ color: "#89ca61" }}
-                className="text-center mt-4 font-bold text-base uppercase"
+                className="text-center mt-4 font-bold text-base uppercase sm:text-sm"
               >
                 Sativa
               </p>
-              <p className="opacity-50 text-center text-2xl font-bold">
+              <p className="opacity-50 text-center text-2xl font-bold sm:text-base">
                 {(_product.sativa * 100).toFixed(0)}%
               </p>
             </div>
@@ -242,11 +242,11 @@ const StrainCharacteristics = props => {
               />
               <p
                 style={{ color: "#73c7d8" }}
-                className="text-center mt-4 font-bold text-base uppercase"
+                className="text-center mt-4 font-bold text-base uppercase sm:text-sm"
               >
                 Indica
               </p>
-              <p className="opacity-50 text-center text-2xl font-bold">
+              <p className="opacity-50 text-center text-2xl font-bold sm:text-base">
                 {_product.indica * 100}%
               </p>
             </div>
