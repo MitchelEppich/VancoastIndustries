@@ -31,7 +31,7 @@ const brandLinks = props => {
         });
       }}
       className={`${
-        ["sm", "md", "lg"].includes(props.misc.mediaSize) ? "mt-4" : ""
+        ["sm", "md", "lg"].includes(props.misc.mediaSize) ? "mt-2" : ""
       } vcShop-brands z-50`}
     >
       <Link prefetch href="/shop">

@@ -130,13 +130,14 @@ header.vcSingle-intro h1 {
   cursor: pointer;
 }
 .vcSingle-choices label span {
-  font-size: 20px;
+  font-size: 18px;
   display: block;
 }
 input[type="radio"] + label {
   // border: 5px solid #fff;
   border-radius: 3px;
-  padding: 20px 10px;
+  // padding: 20px 10px;
+  padding: 10px 7px;
   font-weight: bold;
   text-align: center;
 }
@@ -237,4 +238,15 @@ input.vcSingle-submit {
 @media screen and (min-width: 479px) {
 }
 @media screen and (max-width: 479px) {
+  .moreInfoBackground {
+    background-image: none;
+    background-size: cover;
+  }
+  .moreInformation {
+    background-position: inherit;
+    background-size: initial;
+    opacity: 0.084;
+    padding: 0px;
+    background-size: 260px;
+  }
 }

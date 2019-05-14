@@ -4,6 +4,7 @@ import VancoastLogo from "./vancoastLogo";
 import SearchBar from "./searchBar";
 import SearchBarToggle from "./searchBarToggle";
 import SessionDetails from "./sessionDetails";
+import Link from "next/link";
 
 const header = props => {
   let showMobileMenu = {
@@ -13,6 +14,16 @@ const header = props => {
     paddingTop: "15px"
   };
 
+  let itemMenu = {
+    fontSize: "22px",
+    fontWight: "400",
+    letterSpacing: "-1px",
+    lineHeight: "33px"
+  };
+
+  let user = props.account.currentUser;
+  let name = user != null ? user.company : "NO NAME";
+
   return (
     <div id="top" className="vcNav-primary">
       <div className="vcNav-bg">
@@ -20,7 +31,7 @@ const header = props => {
           <VancoastLogo {...props} />
           <div
             id="vcNavSection-two"
-            className="flex justify-center items-center cursor-pointer"
+            className="flex justify-center lg:justify-around sm:ml-2 md:justify-start md:ml-6 sm:justify-start items-center cursor-pointer"
           >
             {!["sm", "md", "lg"].includes(props.misc.mediaSize) ? (
               <div className="vancoastMenu flex flex-col lg:flex-row items-start lg:items-center">
@@ -67,6 +78,32 @@ const header = props => {
                       }}
                       className="flex"
                     >
+                      {/* <p className="capitalize text-xl font-bold pt-2 pb-4 text-blue">
+                        Welcome, {name}!
+                      </p> */}
+                      <li className="font-bold text-2xl vcShop-cats">
+                        <a>Login</a>
+                      </li>
+                      <li>
+                        {props.account.currentUser != null &&
+                        props.account.currentUser.error == null ? (
+                          <Link href="/account">
+                            <a className="flex capitalize ml-2 mt-1">
+                              <span style={itemMenu} className="text-center">
+                                My Account
+                              </span>
+                            </a>
+                          </Link>
+                        ) : (
+                          <Link href="/login">
+                            <a className="flex capitalize ml-2 mt-1">
+                              <span style={itemMenu} className="text-center">
+                                Login Area
+                              </span>
+                            </a>
+                          </Link>
+                        )}
+                      </li>
                       <BrandLinks {...props} />
                       <MenuFilterLinks {...props} />
                     </ul>

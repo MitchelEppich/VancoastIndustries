@@ -72,7 +72,7 @@ const cartOptions = props => {
         </button>
       </div>
       <Link prefetch href="/checkout">
-        <div className="text-center flex justify-center w-full">
+        <div className="text-center flex justify-center w-full sm:w-250 sm:mx-auto">
           <button
             className="px-6 p-3 text-center vcBuyNow-button text-lg"
             onClick={() => {
@@ -137,7 +137,7 @@ const cartOptions = props => {
           }}
           className="vcSaveItem-btn"
         >
-          <span className="font-bold text-white">Save Item</span>
+          <span className="font-bold text-white">Save for Later</span>
           <FontAwesomeIcon
             icon={faHeart}
             className={`${
