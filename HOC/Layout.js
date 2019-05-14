@@ -67,7 +67,21 @@ class Layout extends Component {
         }
       });
     }
+
+    this.recallVerifiedUser();
   }
+
+  recallVerifiedUser = () => {
+    let token,
+      rememberMe = true;
+    token = localStorage.getItem("token");
+    if (token == undefined) {
+      token = sessionStorage.getItem("token");
+      rememberMe = false;
+    }
+    if (token != undefined)
+      this.props.verifyCredentials({ jwt: token, rememberMe });
+  };
 
   render() {
     return (
@@ -180,6 +194,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.quickAddToCartQty(0));
       dispatch(actions.setCurrentProduct(product));
     },
+    verifyCredentials: credentials =>
+      dispatch(actions.verifyCredentials(credentials)),
     togglePageReady: isPageReady =>
       dispatch(actions.togglePageReady(isPageReady)),
     getStrains: () => dispatch(actions.getStrains()),

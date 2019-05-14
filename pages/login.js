@@ -36,10 +36,13 @@ class Index extends Component {
 
               let email = formData.get("email");
               let password = formData.get("pass");
+              let rememberMe = formData.get("rememberMe") == "on";
 
-              this.props.verifyCredentials({ email, password }).then(res => {
-                if (res != null && res.error == null) window.history.back();
-              });
+              this.props
+                .verifyCredentials({ email, password, rememberMe })
+                .then(res => {
+                  if (res != null && res.error == null) window.history.back();
+                });
             }}
           >
             <label htmlFor="vcName">Email*</label>
@@ -66,7 +69,12 @@ class Index extends Component {
             ) : null}
 
             <label htmlFor="vcLogin-remember" className="vcLogin-checkbox">
-              <input type="checkbox" id="vcLogin-remember" checked="checked" />
+              <input
+                type="checkbox"
+                id="vcLogin-remember"
+                defaultChecked={true}
+                name="rememberMe"
+              />
               Remember Me
             </label>
 
