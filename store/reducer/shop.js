@@ -3,12 +3,15 @@ import { updateObject } from "../utility";
 import { strains, brands, filters } from "../../server/data/temp_data";
 
 const initialState = {
+  currentProduct: null,
   showFilters: false,
   brands: brands,
   activeBrandIndex: 0,
   filters: filters,
   activeFilters: [],
-  quickViewModal: null
+  quickViewModal: null,
+  quickViewProduct: null,
+  showQuickViewProduct: false
 };
 
 export default (state = initialState, action) => {
@@ -28,6 +31,12 @@ export default (state = initialState, action) => {
     case actionTypes.TOGGLE_MODAL:
       return updateObject(state, {
         quickViewModal: action.product
+      });
+    case actionTypes.SET_QUICK_VIEW:
+      return updateObject(state, {
+        quickViewProduct: action.quickViewProduct,
+        showQuickViewProduct: !action.showQuickViewProduct,
+        currentProduct: action.currentProduct
       });
     default:
       return state;

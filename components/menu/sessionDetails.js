@@ -1,6 +1,9 @@
 import Link from "next/link";
 
 const sessionDetails = props => {
+  let user = props.account.currentUser;
+  let name = user != null ? user.company : "NO NAME";
+
   return (
     <div className="vcNavSection-three flex justify-center items-center">
       <button className="vcNav-login">Login</button>
@@ -9,15 +12,13 @@ const sessionDetails = props => {
         {props.account.currentUser != null &&
         props.account.currentUser.error == null ? (
           <Link href="/account">
-            <a className="flex flex-col items-center justify-center text-center">
+            <a className="flex flex-col items-center justify-center text-center capitalize">
               <img
                 className="text-center w-full"
                 src="../static/img/assets/icons/user-icon.svg"
                 alt=""
               />
-              <span className="text-center">
-                Welcome, {props.account.currentUser.name}
-              </span>
+              <span className="text-center">Welcome, {name}</span>
             </a>
           </Link>
         ) : (

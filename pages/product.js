@@ -12,6 +12,7 @@ import {
   SimilarSeeds,
   MoreInfo
 } from "../components/product";
+import QuickView from "../components/product/quickView";
 
 class Index extends Component {
   render() {
@@ -76,7 +77,8 @@ const mapDispatchToProps = dispatch => {
     },
     addToWishList: input => dispatch(actions.addToWishList(input)),
     toggleFullSummary: input => dispatch(actions.toggleFullSummary()),
-    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj))
+    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj)),
+    setQuickView: input => dispatch(actions.setQuickView(input))
   };
 };
 

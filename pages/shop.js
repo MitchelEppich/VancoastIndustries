@@ -12,6 +12,7 @@ import {
   GeneralStrains,
   BrandBoards
 } from "../components/shop";
+import QuickView from "../components/product/quickView";
 
 class Index extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class Index extends Component {
         <div
           className={
             this.props.shop.activeBrandIndex == 0
-              ? "vcWholesale-hero vcBg flex justify-center items-center" +
+              ? "vcWholesale-hero vcBg flex justify-center items-center " +
                 this.props.shop.brands[this.props.shop.activeBrandIndex]
                   .bgImageClass
               : "vcBrand-hero vcBg flex justify-center items-center " +
@@ -51,6 +52,7 @@ class Index extends Component {
 
         <div className="vcWholesale-page">
           <Filters {...this.props} />
+
           <GeneralStrains {...this.props} />
         </div>
 
@@ -73,9 +75,17 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.quickAddToCartQty(0));
       dispatch(actions.setCurrentProduct(product));
     },
+    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj)),
     toggleFilter: options => dispatch(actions.toggleFilter(options)),
     getStrains: () => dispatch(actions.getStrains()),
-    toggleModal: product => dispatch(actions.toggleModal(product))
+    toggleModal: product => dispatch(actions.toggleModal(product)),
+    setQuickView: input => dispatch(actions.setQuickView(input)),
+    quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
+    modifyPotentialQuantity: input =>
+      dispatch(actions.modifyPotentialQuantity(input)),
+    modifyCart: input => dispatch(actions.modifyCart(input)),
+    addToWishList: input => dispatch(actions.addToWishList(input)),
+    toggleFullSummary: input => dispatch(actions.toggleFullSummary())
   };
 };
 

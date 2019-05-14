@@ -6,9 +6,12 @@ import { stringBuilder } from "../../scripts/savedItems";
 
 const actionTypes = {
   CHANGE_OPTION: "CHANGE_OPTION",
-  VERIFY_LOGIN: "VERIFY_LOGIN",
+  VERIFY_CREDENTIALS: "VERIFY_CREDENTIALS",
   CREATE_ACCOUNT: "CREATE_ACCOUNT",
-  ADD_TO_WISH_LIST: "ADD_TO_WISH_LIST"
+  ADD_TO_WISH_LIST: "ADD_TO_WISH_LIST",
+  UPDATE_ACCOUNT: "UPDATE_ACCOUNT",
+  UPDATE_ERROR: "UPDATE_ERROR",
+  RESET_PASSWORD: "RESET_PASSWORD"
 };
 
 const getActions = uri => {
@@ -17,6 +20,24 @@ const getActions = uri => {
       return {
         type: actionTypes.CHANGE_OPTION,
         option: option
+      };
+    },
+    resetPassword: input => {
+      return dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+
+        const operation = {
+          query: mutation.resetPassword,
+          variables: { ...input }
+        };
+
+        return makePromise(execute(link, operation))
+          .then(data => {
+            dispatch({
+              type: actionTypes.RESET_PASSWORD
+            });
+          })
+          .catch(error => console.log(error));
       };
     },
     verifyCredentials: credentials => {
@@ -35,8 +56,9 @@ const getActions = uri => {
               account = { error: "Invalid Email or Password" };
             dispatch({
               type: actionTypes.VERIFY_CREDENTIALS,
-              account
+              currentUser: account
             });
+            console.log(account);
             return Promise.resolve(account);
           })
           .catch(error => console.log(error));
@@ -62,17 +84,46 @@ const getActions = uri => {
           .catch(error => console.log(error));
       };
     },
+    updateAccount: input => {
+      return dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+
+        const operation = {
+          query: mutation.updateAccount,
+          variables: { ...input }
+        };
+
+        return makePromise(execute(link, operation))
+          .then(data => {
+            let account = data.data.updateAccount;
+            if (account.error != null) {
+              let error = account.error;
+              dispatch({
+                type: actionTypes.UPDATE_ERROR,
+                error
+              });
+              return;
+            }
+            dispatch({
+              type: actionTypes.UPDATE_ACCOUNT,
+              currentUser: account
+            });
+            return Promise.resolve(account);
+          })
+          .catch(error => console.log(error));
+      };
+    },
     addToWishList: input => {
-      let savedItem = stringBuilder(input);
+      return dispatch => {
+        let savedItem = stringBuilder(input);
 
-      //send to db here
+        dispatch(
+          objects.updateAccount({ _id: input.currentUser._id, savedItem })
+        );
 
-      return {
-        type: actionTypes.ADD_TO_WISH_LIST,
-        currentUser: {
-          ...input.currentUser,
-          savedItems: [...input.currentUser.savedItems, savedItem]
-        }
+        dispatch({
+          type: actionTypes.ADD_TO_WISH_LIST
+        });
       };
     }
   };
@@ -88,78 +139,227 @@ const mutation = {
         _id
         email
         password
-        name
-        surname
+        address {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        shipping {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        billing {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
         company
-        phone
         website
         license
         approved
         admin
-        address
-        country
-        city
-        postal
-        state
         description
         jwt
         createdAt
+        savedItems
       }
     }
   `,
 
   createAccount: gql`
     mutation(
+      $newPassword: String
       $password: String
       $email: String
       $company: String
-      $name: String
-      $surname: String
-      $phone: String
       $website: String
       $license: String
-      $address: String
-      $state: String
-      $city: String
-      $country: String
-      $postal: String
       $description: String
+      $address: AddressInput
+      $shipping: [AddressInput]
+      $billing: [AddressInput]
     ) {
       createAccount(
         input: {
+          newPassword: $newPassword
           password: $password
           email: $email
           company: $company
-          name: $name
-          surname: $surname
-          phone: $phone
           website: $website
           license: $license
-          address: $address
-          postal: $postal
-          city: $city
-          country: $country
-          state: $state
           description: $description
+          address: $address
+          shipping: $shipping
+          billing: $billing
         }
       ) {
         _id
         email
-        name
-        surname
+        password
+        address {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        shipping {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        billing {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
         company
-        phone
         website
         license
         approved
+        admin
         description
-        address
-        city
-        postal
-        country
-        state
         jwt
         createdAt
+        savedItems
+      }
+    }
+  `,
+  resetPassword: gql`
+    mutation($email: String) {
+      resetPassword(input: { email: $email })
+    }
+  `,
+  updateAccount: gql`
+    mutation(
+      $_id: String
+      $newPassword: String
+      $password: String
+      $email: String
+      $company: String
+      $website: String
+      $license: String
+      $description: String
+      $address: AddressInput
+      $shipping: [AddressInput]
+      $billing: [AddressInput]
+      $savedItem: String
+    ) {
+      updateAccount(
+        input: {
+          _id: $_id
+          newPassword: $newPassword
+          password: $password
+          email: $email
+          company: $company
+          website: $website
+          license: $license
+          description: $description
+          address: $address
+          shipping: $shipping
+          billing: $billing
+          savedItem: $savedItem
+        }
+      ) {
+        _id
+        email
+        password
+        error
+        address {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        shipping {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        billing {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        company
+        website
+        license
+        approved
+        admin
+        description
+        jwt
+        createdAt
+        savedItems
       }
     }
   `

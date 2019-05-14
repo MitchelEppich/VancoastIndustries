@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const cartOptions = props => {
-  let currentProduct = props.currentProduct,
+  let currentProduct = props.product.currentProduct,
     cart = props.checkout.cart,
     maxPerPackage = cart.maxPerPackage,
     potentialQuantity = cart.potentialQuantity,
@@ -38,10 +38,10 @@ const cartOptions = props => {
           defaultValue="1"
           name="quantity"
         />
-        <input
-          className="vcSingle-submit"
+        <button
+          className="px-6 p-3 text-center vcBuyNow-button text-lg"
           type="submit"
-          value="Add To Cart"
+          // value="Add To Cart"
           onClick={() => {
             if (props.account.currentUser == null) {
               props.toggleAlert({
@@ -65,51 +65,14 @@ const cartOptions = props => {
               });
             }
           }}
-        />
-      </div>
-      <div className="w-full text-center">
-        <button
-          onClick={() => {
-            if (props.account.currentUser == null) {
-              props.toggleAlert({
-                message: "Please log in to continue",
-                message2: "You have to be logged in to do that",
-                action: "login", //Router.push("/login"),
-                actionName: "Login"
-              });
-            } else {
-              props.addToWishList({
-                currentUser: props.account.currentUser,
-                product: currentProduct,
-                quantity: cart.potentialQuantity,
-                packSize: currentProduct.size[props.product.quickAddToCartQty]
-              });
-            }
-          }}
-          className="vcSaveItem-btn"
         >
-          <span className="font-bold text-grey text-lg opacity-50">
-            Add to Wish List
-          </span>
-          <FontAwesomeIcon
-            icon={faStar}
-            className="text-grey opacity-50 ml-2"
-          />{" "}
+          Add to Cart
         </button>
       </div>
-
-      <div className="vcShop-buttons flex flex-row justify-between">
-        <Link prefetch href="/shop">
+      <Link prefetch href="/checkout">
+        <div className="text-center flex justify-center w-full">
           <button
-            onClick={() => {
-              props.setBrandIndex(0);
-            }}
-          >
-            Continue Shopping
-          </button>
-        </Link>
-        <Link prefetch href="/checkout">
-          <button
+            className="px-6 p-3 text-center vcBuyNow-button text-lg"
             onClick={() => {
               if (props.account.currentUser == null) {
                 props.toggleAlert({
@@ -137,7 +100,45 @@ const cartOptions = props => {
           >
             Buy Now
           </button>
+        </div>
+      </Link>
+
+      <div className="vcShop-buttons flex flex-row justify-between">
+        <Link prefetch href="/shop">
+          <button
+            onClick={() => {
+              props.setBrandIndex(0);
+            }}
+          >
+            Continue Shopping
+          </button>
         </Link>
+        <button
+          onClick={() => {
+            if (props.account.currentUser == null) {
+              props.toggleAlert({
+                message: "Please log in to continue",
+                message2: "You have to be logged in to do that",
+                action: "login", //Router.push("/login"),
+                actionName: "Login"
+              });
+            } else {
+              props.addToWishList({
+                currentUser: props.account.currentUser,
+                product: currentProduct,
+                quantity: cart.potentialQuantity,
+                packSize: currentProduct.size[props.product.quickAddToCartQty]
+              });
+            }
+          }}
+          className="vcSaveItem-btn"
+        >
+          <span className="font-bold text-white">Save Item</span>
+          <FontAwesomeIcon
+            icon={faHeart}
+            className="text-white opacity-50 ml-2"
+          />{" "}
+        </button>
       </div>
     </React.Fragment>
   );

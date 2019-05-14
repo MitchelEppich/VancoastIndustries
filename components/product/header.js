@@ -6,27 +6,27 @@ const header = props => {
         {props.product.currentProduct.alias}
       </h1>
       {props.product.showFullSummary ? (
-        <p
-          className="pt-2"
-          onClick={() => {
-            props.toggleFullSummary();
-          }}
-        >
+        <p className="pt-2">
           {props.product.currentProduct.summary}
-          <span className="font-bold ml-2 text-blue cursor-pointer">
+          <span
+            onClick={() => {
+              props.toggleFullSummary();
+            }}
+            className="font-bold ml-2 text-blue cursor-pointer"
+          >
             {" "}
             Read Less
           </span>
         </p>
       ) : (
-        <p
-          className="pt-2"
-          onClick={() => {
-            props.toggleFullSummary();
-          }}
-        >
+        <p className="pt-2">
           {props.product.currentProduct.summary.substring(0, 300) + "..."}{" "}
-          <span className="font-bold ml-2 text-blue cursor-pointer">
+          <span
+            onClick={() => {
+              props.toggleFullSummary();
+            }}
+            className="font-bold ml-2 text-blue cursor-pointer"
+          >
             {" "}
             Read More
           </span>

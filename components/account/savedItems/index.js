@@ -2,8 +2,17 @@ import Item from "./item";
 import { itemBuilder } from "../../../scripts/savedItems";
 
 const index = props => {
+  let user = props.account.currentUser;
+  if (user == null)
+    return (
+      <div id="vcSaved-tab" className="tabcontent">
+        <h1>Saved Items</h1>
+        <p>Please sign-in to see your saved items.</p>
+      </div>
+    );
+  let savedItems = user.savedItems || [];
   let items = itemBuilder({
-    savedItems: props.account.currentUser.savedItems,
+    savedItems,
     products: props.shop.strains
   });
   items = items.map((item, index) => {
@@ -12,9 +21,13 @@ const index = props => {
   return (
     <div id="vcSaved-tab" className="tabcontent">
       <h1>Saved Items</h1>
-      <div className="vcSaved-content">
-        <ul className="vcSaved-list flex flex-row">{items}</ul>
-      </div>
+      {savedItems.length == 0 ? (
+        <p>No items have been saved yet.</p>
+      ) : (
+        <div className="vcSaved-content">
+          <ul className="vcSaved-list flex flex-row">{items}</ul>
+        </div>
+      )}
     </div>
   );
 };

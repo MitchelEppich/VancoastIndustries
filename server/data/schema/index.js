@@ -2,8 +2,9 @@ const { makeExecutableSchema } = require("graphql-tools");
 const resolvers = require("../resolvers");
 
 const Account = require("./account");
+const Address = require("./address");
 
-let imports = [Account];
+let imports = [Account, Address];
 
 let definitions = {};
 
@@ -30,10 +31,16 @@ let typeDefs = `
 
   ${definitions.Input || ""}
 
+  input EmailInput {
+    email: String
+    newPassword: String
+  }
+
   ${definitions.Other || ""}
 
   type Mutation {
     ${definitions.Mutation || ""}
+    sendEmail(input: EmailInput) : String
   } 
 `;
 
