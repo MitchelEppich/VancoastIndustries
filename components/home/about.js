@@ -12,13 +12,13 @@ const about = props => {
       <p className="vcAbout-slogan">"Company Slogan Goes Here"</p>
 
       <div className="vcAbout-images flex justify-around items-center flex-row">
-        <div className="vcAbout-imgOne scale-item">
+        <div className="vcAbout-imgOne">
           <img src="../static/img/assets/vc-about-fire.jpg" alt="" />
         </div>
-        <div className="vcAbout-imgTwo scale-item">
+        <div className="vcAbout-imgTwo">
           <img src="../static/img/assets/vc-about-cannabis.jpg" alt="" />
         </div>
-        <div className="vcAbout-imgThree scale-item">
+        <div className="vcAbout-imgThree">
           <img src="../static/img/assets/vc-about-forest.jpg" alt="" />
         </div>
       </div>
@@ -30,7 +30,7 @@ const about = props => {
       </p>
 
       <Link prefetch href="/about">
-        <button className="hover:bg-blue-darkest">Read About</button>
+        <button className="hover:bg-blue-light">Read About</button>
       </Link>
     </div>
   );

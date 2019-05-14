@@ -6,11 +6,11 @@ const brandLogo = props => {
       ? "../static/img/assets/cks-logo.png"
       : "../static/img/assets/sunwest-logo.png";
   return (
-    <div className="vcSingle-sectionOne flex items-start">
+    <div className="vcSingle-sectionOne md:hidden lg:hidden flex items-start">
       <img
         className="vcBrand-logo"
         src={img}
-        alt={props.product.currentProduct.company}
+        alt={props.product.currentProduct.company} // need to be fixed
       />
     </div>
   );

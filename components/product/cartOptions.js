@@ -140,7 +140,13 @@ const cartOptions = props => {
           <span className="font-bold text-white">Save Item</span>
           <FontAwesomeIcon
             icon={faHeart}
-            className="text-white opacity-50 ml-2"
+            className={`${
+              props.account != null ||
+              (props.account.currentUser.savedItems != null &&
+                props.account.currentUser.savedItems.length < 1)
+                ? "text-red"
+                : "text-white opacity-50 "
+            } ml-2 fa-lg`}
           />{" "}
         </button>
       </div>
