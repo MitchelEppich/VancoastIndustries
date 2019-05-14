@@ -573,7 +573,7 @@ let strains = [
 let filters = {
   Brands: ["Wholesale", "Crop King Seeds", "Sunwest Genetics", "Sonoma Seeds"],
   Type: ["Hybrid", "Indica", "Sativa"],
-  StrainKind: ["Autoflower", "Feminized", "CBD", "Regular", "Mix"]
+  "Strain Kind": ["Autoflower", "Feminized", "CBD", "Regular", "Mix"]
 };
 
 let brands = [

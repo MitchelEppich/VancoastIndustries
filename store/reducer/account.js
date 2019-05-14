@@ -11,26 +11,26 @@ const initialState = {
     "Recent Orders",
     "Saved Items"
   ],
-  currentUser: null,
-  updateError: null
+  updateError: null,
+  currentUser: null
   // {
-  // email: "vanessa@vancoastind.com",
-  // name: "Vanessa",
-  // surname: "MArk",
-  // company: "Vancoast Industries",
-  // phone: "16041231234",
-  // address: "112 East 6th Av.",
-  // city: "Vancouver",
-  // state: "British Columbia",
-  // country: "CA",
-  // postal: "V8X 2X3",
-  // website: "vancoastindustries.com",
-  // license: "4325233",
-  // description: "we are a nice company and we like to dance",
-  // approved: 1,
-  // admin: true,
-  // createdAt: { type: Date, default: Date.now },
-  // savedItems: ["cksaha10x4", "sonccf5x1", "swgjhf15x3"]
+  //   email: "vanessa@vancoastind.com",
+  //   name: "Vanessa",
+  //   surname: "MArk",
+  //   company: "Vancoast Industries",
+  //   phone: "16041231234",
+  //   address: "112 East 6th Av.",
+  //   city: "Vancouver",
+  //   state: "British Columbia",
+  //   country: "CA",
+  //   postal: "V8X 2X3",
+  //   website: "vancoastindustries.com",
+  //   license: "4325233",
+  //   description: "we are a nice company and we like to dance",
+  //   approved: 1,
+  //   admin: true,
+  //   createdAt: { type: Date, default: Date.now },
+  //   savedItems: ["cksaha10x4", "sonccf5x1", "swgjhf15x3"]
   // }
 };
 
