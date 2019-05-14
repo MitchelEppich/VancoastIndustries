@@ -31,7 +31,7 @@ const indexReducer = (state = initialState, action) => {
     case actionTypes.TOGGLE_CART:
       return updateObject(state, { showCart: action.isCartVisible });
     case actionTypes.TOGGLE_SEARCH_BAR:
-      return updateObject(state, { showSearchBar: !state.showSearchBar });
+      return updateObject(state, { showSearchBar: action.showSearch });
     case actionTypes.SET_SEARCH_VALUE:
       return updateObject(state, { searchValue: action.searchValue });
     case actionTypes.TOGGLE_MOBILE_MENU:

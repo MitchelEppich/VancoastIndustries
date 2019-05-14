@@ -43,10 +43,10 @@ const actions = {
       isCartVisible: isCartVisible
     };
   },
-  toggleSearchBar: input => {
+  toggleSearchBar: showSearch => {
     return {
       type: actionTypes.TOGGLE_SEARCH_BAR,
-      input: input
+      showSearch: showSearch
     };
   },
   toggleMobileMenu: isMobileMenuVisible => {

@@ -37,10 +37,11 @@ const getActions = uri => {
     },
     toggleFilter: options => {
       let activeFilters = options.activeFilters;
-      if (activeFilters.includes(options.newFilter)) {
-        activeFilters.splice(activeFilters.indexOf(options.newFilter), 1);
+      let cat = options.category;
+      if (activeFilters[cat] == options.newFilter) {
+        activeFilters[cat] = "";
       } else {
-        activeFilters.push(options.newFilter);
+        activeFilters[cat] = options.newFilter;
       }
       return {
         type: actionTypes.TOGGLE_FILTER,
@@ -48,8 +49,8 @@ const getActions = uri => {
       };
     },
     purgeActiveFilters: activeFilters => {
-      while (activeFilters.length > 0) {
-        activeFilters.pop();
+      for (let filter of Object.keys(activeFilters)) {
+        activeFilters[filter] = "";
       }
       return {
         type: actionTypes.PURGE_ACTIVE_FILTERS,

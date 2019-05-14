@@ -207,6 +207,11 @@ class Layout extends Component {
       let brand = path.slice(6);
       indexOfBrand = brands.indexOf(brand);
       if (indexOfBrand > 0) this.props.setBrandIndex(indexOfBrand);
+      this.props.toggleFilter({
+        activeFilters: this.props.shop.activeFilters,
+        category: "Brands",
+        newFilter: this.props.shop.brands[indexOfBrand].name
+      });
       Router.push("/shop", path);
     }
     if (path.includes("/product/") && path.length > 9) {
@@ -228,7 +233,8 @@ const mapDispatchToProps = dispatch => {
   return {
     setMediaSize: input => dispatch(actions.setMediaSize(input)),
     toggleCart: isCartVisible => dispatch(actions.toggleCart(isCartVisible)),
-    toggleSearchBar: input => dispatch(actions.toggleSearchBar(input)),
+    toggleSearchBar: showSearch =>
+      dispatch(actions.toggleSearchBar(showSearch)),
     setSearchValue: value => dispatch(actions.setSearchValue(value)),
     setBrandIndex: index => dispatch(actions.setBrandIndex(index)),
     toggleMobileMenu: isMobileMenuVisible =>

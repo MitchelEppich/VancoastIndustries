@@ -2,7 +2,7 @@ const searchBarToggle = props => {
   return (
     <div
       onClick={() => {
-        props.toggleSearchBar();
+        props.toggleSearchBar(!props.misc.showSearchBar);
       }}
       id="vancoastSearch"
       className="flex cursor-pointer scale-item"

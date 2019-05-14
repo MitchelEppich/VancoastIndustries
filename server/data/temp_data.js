@@ -634,4 +634,10 @@ for (let strain of strains) {
 }
 strains = _new;
 
-export { strains, brands, filters };
+let filterKeys = Object.keys(filters);
+let activeFilters = {};
+for (let i = 0; i < filterKeys.length; i++) {
+  activeFilters[filterKeys[i]] = "";
+}
+
+export { strains, brands, filters, activeFilters };

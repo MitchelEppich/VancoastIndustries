@@ -646,6 +646,9 @@ img.quick-view {
 @media screen and (min-width: 479px) {
 }
 @media screen and (max-width: 479px) {
+  #vcSearch-wrap {
+    width: 100%;
+  }
   .vcNavSection-one {
     width: 20%;
   }

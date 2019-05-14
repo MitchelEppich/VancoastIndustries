@@ -11,32 +11,35 @@ const searchBar = props => {
     <form
       style={searchBarStyle}
       id="vcSearch-wrap"
-      className="inline-flex w-full"
+      className="flex w-full justify-between"
       onSubmit={e => {
         e.preventDefault();
+        props.toggleSearchBar(false);
         props.setBrandIndex(0);
         window.scrollTo(0, window.innerHeight * 0.7);
         Router.push("/shop", "/shop?" + searchValue);
       }}
     >
-      <div className="w-full">
+      <div className="w-full sm:w-2/3">
         <input
           aria-label="search"
           className="vcNav-search"
           type="text"
-          placeholder="What are you looking for?"
+          placeholder={
+            props.misc.mediaSize == "sm"
+              ? "Search"
+              : "What are you looking for?"
+          }
           onChange={e => {
             props.setSearchValue(e.target.value);
           }}
         />
       </div>
-      <div className="">
-        <input
-          value="Search"
-          type="submit"
-          className="px-4 cursor-pointer hover:bg-grey p-3 bg-blue-new text-white rounded mx-4 text-center text-xl"
-        />
-      </div>
+      <input
+        value="Search"
+        type="submit"
+        className="h-full px-4 cursor-pointer hover:bg-grey p-3 bg-blue-new text-white rounded mx-4 text-center text-xl sm:text-sm sm:m-0"
+      />
     </form>
   );
 };

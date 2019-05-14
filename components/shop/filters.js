@@ -25,24 +25,18 @@ const filters = props => {
           }
         }
       }
-      if (props.shop.activeFilters.includes(value.toLowerCase())) {
+      if (
+        JSON.stringify(props.shop.activeFilters).includes(value.toLowerCase())
+      ) {
         checked = true;
       }
 
       return (
-        <label
-          key={index}
-          className={
-            "vcFilter-label " +
-            (disabled ? "text-grey-dark cursor-not-allowed" : "")
-          }
-        >
+        <label key={index} className={"vcFilter-label "}>
           {value}
           <input
             type="checkbox"
             checked={checked}
-            disabled={disabled}
-            readOnly={readOnly}
             onChange={() => {
               let isBrandFilterIndex = props.shop.filters.Brands.indexOf(value);
               if (isBrandFilterIndex > -1) {
@@ -56,12 +50,12 @@ const filters = props => {
                     "/shop/" + value.replace(/ /g, "").toLowerCase()
                   );
                 }
-              } else {
-                props.toggleFilter({
-                  activeFilters: props.shop.activeFilters,
-                  newFilter: value.toLowerCase()
-                });
               }
+              props.toggleFilter({
+                activeFilters: props.shop.activeFilters,
+                category: filter[0],
+                newFilter: value.toLowerCase()
+              });
             }}
           />
           <span className="checkmark" />

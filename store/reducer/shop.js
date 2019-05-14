@@ -1,6 +1,11 @@
 import actionTypes from "../actions";
 import { updateObject } from "../utility";
-import { strains, brands, filters } from "../../server/data/temp_data";
+import {
+  strains,
+  brands,
+  filters,
+  activeFilters
+} from "../../server/data/temp_data";
 
 const initialState = {
   currentProduct: null,
@@ -8,7 +13,7 @@ const initialState = {
   brands: brands,
   activeBrandIndex: 0,
   filters: filters,
-  activeFilters: [],
+  activeFilters: activeFilters,
   quickViewModal: null,
   quickViewProduct: null,
   showQuickViewProduct: false

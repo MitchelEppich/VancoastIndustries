@@ -11,6 +11,7 @@ const menuFilterLinks = props => {
                 props.purgeActiveFilters(props.shop.activeFilters);
                 props.toggleFilter({
                   activeFilters: props.shop.activeFilters,
+                  category: index < 3 ? "Type" : "Strain Kind",
                   newFilter: filter.toLowerCase()
                 });
                 window.scrollTo(0, 1000);
