@@ -41,15 +41,19 @@
 }
 .vcWholesale-hero {
   background-image: url("../static/img/page-bg/wholesale-bg.jpg");
+  height: 530px;
 }
 .vcBrand-hero.sonoma {
   background-image: url("../static/img/page-bg/sonoma-co-bg.jpg");
+  height: 530px;
 }
 .vcBrand-hero.sunwest {
   background-image: url("../static/img/page-bg/sunwest-co-bg.jpg");
+  height: 530px;
 }
 .vcBrand-hero.cks {
   background-image: url("../static/img/page-bg/cks-co-bg.jpg");
+  height: 530px;
 }
 .vcWholesale-header h1 {
   font-size: 55px;
@@ -137,6 +141,7 @@ p.wholesale-intro {
 }
 .vcBrand-board {
   max-height: 320px;
+  height: 100%;
   // max-height: 300px;
   padding: 20px 50px;
   margin-bottom: 50px;
@@ -160,25 +165,25 @@ p.wholesale-intro {
   background-image: url("../static/img/page-bg/cks-banner-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  // height: 325px;
+  height: 325px;
 }
 .vcBrand-board-cks {
   background-image: url("../static/img/page-bg/cks-banner-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  // height: 325px;
+  height: 325px;
 }
 .vcBrand-board-sonoma {
   background-image: url("../static/img/page-bg/sonoma-banner-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  // height: 325px;
+  height: 325px;
 }
 .vcBrand-board-sunwest {
   background-image: url("../static/img/page-bg/sunwest-banner-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  // height: 325px;
+  height: 325px;
 }
 .vcWholesale-page {
   position: relative;
