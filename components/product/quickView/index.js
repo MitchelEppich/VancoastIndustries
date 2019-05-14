@@ -27,6 +27,7 @@ const index = props => {
           <div className="vcSingle-input flex flex-col justify-around items-center">
             <input
               type="number"
+              min="1"
               onBlur={e => {
                 let _value = e.target.value;
                 if (_value == null || _value == "" || parseInt(_value) < 1) {
@@ -68,7 +69,9 @@ const index = props => {
                   let _identifier =
                     product.sotiId +
                     product.size[props.product.quickAddToCartQty];
+                  let user = props.account.currentUser;
                   props.modifyCart({
+                    accountId: user == null ? null : user._id,
                     cart: cart,
                     action: "APPEND",
                     max: maxPerPackage,

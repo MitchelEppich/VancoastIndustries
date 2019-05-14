@@ -29,6 +29,7 @@ let Type = `
         createdAt: String
         error: String
         savedItems: [String]
+        cartItems: [String]
     }
 `;
 
@@ -52,6 +53,8 @@ let Input = `
         shipping: [AddressInput]
         billing: [AddressInput]
         savedItem: String
+        cartItem: String
+        cartItems: [String]
     }
 
     input CredentialsInput {

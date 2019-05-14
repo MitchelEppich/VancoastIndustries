@@ -45,7 +45,9 @@ const item = props => {
       <div
         onClick={() => {
           let _identifier = item.product.sotiId + item.amount;
+          let user = props.account.currentUser;
           props.modifyCart({
+            accountId: user == null ? null : user._id,
             items: props.checkout.cart.items,
             action: "REMOVE",
             max: props.checkout.cart.maxPerPackage,

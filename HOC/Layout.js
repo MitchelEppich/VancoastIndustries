@@ -31,6 +31,8 @@ import Loader from "../components/loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
+import { itemBuilder } from "../scripts/savedItems";
+
 class Layout extends Component {
   constructor(props) {
     super(props);
@@ -104,7 +106,27 @@ class Layout extends Component {
       rememberMe = false;
     }
     if (token != undefined)
-      this.props.verifyCredentials({ jwt: token, rememberMe });
+      this.props.verifyCredentials({ jwt: token, rememberMe }).then(res => {
+        let cartItems = res.cartItems || [];
+        let items = itemBuilder({
+          savedItems: cartItems,
+          products: this.props.shop.strains
+        });
+        let cart = this.props.checkout.cart;
+        let coupon = this.props.checkout.orderDetails.coupon;
+        for (let item of items) {
+          let _identifier = item.sotiId + item.packSize;
+          this.props.modifyCart({
+            cart: cart,
+            action: "SET",
+            max: cart.maxPerPackage,
+            productIdentifier: _identifier,
+            product: item,
+            quantity: item.quantity,
+            coupon: coupon
+          });
+        }
+      });
   };
 
   render() {

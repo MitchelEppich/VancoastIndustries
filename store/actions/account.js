@@ -63,8 +63,8 @@ const getActions = uri => {
             });
 
             if (persistant) {
-              localStorage.setItem("token", account.jwt);
               sessionStorage.removeItem("token");
+              localStorage.setItem("token", account.jwt);
             } else {
               localStorage.removeItem("token");
               sessionStorage.setItem("token", account.jwt);
@@ -200,6 +200,7 @@ const mutation = {
         jwt
         createdAt
         savedItems
+        cartItems
       }
     }
   `,
@@ -282,6 +283,7 @@ const mutation = {
         jwt
         createdAt
         savedItems
+        cartItems
       }
     }
   `,
@@ -304,6 +306,8 @@ const mutation = {
       $shipping: [AddressInput]
       $billing: [AddressInput]
       $savedItem: String
+      $cartItem: String
+      $cartItems: [String]
     ) {
       updateAccount(
         input: {
@@ -319,6 +323,8 @@ const mutation = {
           shipping: $shipping
           billing: $billing
           savedItem: $savedItem
+          cartItem: $cartItem
+          cartItems: $cartItems
         }
       ) {
         _id
@@ -373,6 +379,7 @@ const mutation = {
         jwt
         createdAt
         savedItems
+        cartItems
       }
     }
   `

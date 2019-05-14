@@ -185,18 +185,20 @@ const resolvers = {
         delete $.shipping;
       }
 
-      let account = await Account.findOneAndUpdate(
-        { _id: $._id },
-        {
-          $set: { ...$ },
-          $push: {
-            billing: newBilling,
-            shipping: newShipping,
-            savedItems: $.savedItem
-          }
-        },
-        { upsert: true, new: true }
-      );
+      let options = { $set: { ...$ } };
+
+      let $push = {};
+      if (newBilling.length > 0) $push.billing = newBilling;
+      if (newShipping.length > 0) $push.shipping = newShipping;
+      if ($.savedItem != null) $push.savedItems = $.savedItem;
+      if ($.cartItem != null) $push.cartItems = $.cartItem;
+
+      if (Object.keys($push).length > 0) options.$push = $push;
+
+      let account = await Account.findOneAndUpdate({ _id: $._id }, options, {
+        upsert: true,
+        new: true
+      });
 
       account.password = undefined;
 
