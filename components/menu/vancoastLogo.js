@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const vancoastLogo = props => {
   return (
-    <div className="vcNavSection-one flex justify-center items-center scale-item">
+    <div className="vcNavSection-one flex justify-center items-center">
       <Link href="/">
         <a aria-label="nav-logo" className="vcNav-logo">
           <img

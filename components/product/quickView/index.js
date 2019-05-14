@@ -12,7 +12,7 @@ const QuickView = props => {
       : "../static/img/products/sunwest/sw-cheese.png";
 
   return (
-    <div className="absolute w-500 md:w-400 sm:w-300 bg-white shadow-md z-50 -ml-24 sm:ml-0 md:ml-0 pin-t">
+    <div className="absolute w-500 md:w-400 sm:w-300 bg-white shadow-md z-50 -ml-24 sm:ml-0 md:ml-0 pin-t -mt-10">
       <div
         onClick={() => {
           props.setQuickView({ showQuickViewProduct: false });
