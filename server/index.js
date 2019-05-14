@@ -49,6 +49,9 @@ app
     server.get("/checkout", (req, res) => {
       res.redirect("/shop");
     });
+    // server.get("/admin", (req, res) => {
+    //   res.redirect("/login");
+    // });
 
     server.use(
       "/graphql",

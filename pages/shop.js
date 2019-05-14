@@ -15,14 +15,8 @@ import {
 import QuickView from "../components/product/quickView";
 
 class Index extends Component {
-  // static async getInitialProps({ store, req }) {
-  //   store.dispatch(actions.getStrains());
-  //   return {};
-  // }
-
   constructor(props) {
     super(props);
-    // props.getStrains();
     this.state = {
       isClient: typeof document != undefined
     };
@@ -84,6 +78,7 @@ const mapDispatchToProps = dispatch => {
     toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj)),
     toggleFilter: options => dispatch(actions.toggleFilter(options)),
     getStrains: () => dispatch(actions.getStrains()),
+    toggleModal: product => dispatch(actions.toggleModal(product)),
     setQuickView: input => dispatch(actions.setQuickView(input)),
     quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
     modifyPotentialQuantity: input =>

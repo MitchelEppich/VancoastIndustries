@@ -62,31 +62,22 @@ const productThumbnail = props => {
             </div>
           </header>
         </article>
+        {props.router.asPath.includes("shop") ? (
+          <a
+            onClick={e => {
+              e.stopPropagation();
+              props.toggleModal(props.strain);
+            }}
+          >
+            <img
+              className="quick-view"
+              title="quick view"
+              src="../static/img/assets/icons/quick-view.svg"
+              alt="quick view"
+            />
+          </a>
+        ) : null}
       </div>
-      {props.router.asPath.includes("shop") ? (
-        <div
-          onClick={() => {
-            props.setCurrentProduct({ newProduct: props.strain });
-            props.setBrandIndex(
-              props.shop.brands.findIndex((brand, index) => {
-                return brand.name.toLowerCase() === props.strain.company.name;
-              })
-            );
-
-            props.setQuickView({
-              viewProduct: props.strain,
-              showQuickViewProduct: true
-            });
-          }}
-        >
-          <img
-            className="quick-view"
-            title="Quick View"
-            src="../static/img/assets/icons/quick-view.svg"
-            alt="quick view"
-          />
-        </div>
-      ) : null}
     </div>
   );
 };
