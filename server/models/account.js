@@ -10,6 +10,7 @@ const AccountSchema = Schema({
   company: String,
   website: String,
   license: String,
+  cartItems: [String],
   jwt: String,
   address: {
     type: mongoose.Schema.Types.ObjectId,

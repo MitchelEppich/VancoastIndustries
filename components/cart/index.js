@@ -14,7 +14,7 @@ const index = props => {
       <Items {...props} />
       <div className="absolute pin-b w-full shadow-lg">
         <Summary
-          totalItems={Object.keys(props.checkout.cart.items).length}
+          totalItems={Object.keys(props.checkout.cart.items || {}).length}
           total={props.checkout.cart.price}
           {...props}
         />

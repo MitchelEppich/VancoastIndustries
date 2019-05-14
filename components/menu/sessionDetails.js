@@ -38,7 +38,7 @@ const sessionDetails = props => {
       >
         <img src="../static/img/assets/icons/box-icon.svg" alt="" />
         <span className="vcNav-cartCount">
-          {Object.keys(props.checkout.cart.items).length}
+          {Object.keys(props.checkout.cart.items || {}).length}
         </span>
       </div>
     </div>

@@ -3,6 +3,9 @@ import { makePromise, execute } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 
+import { stringBuilder } from "../../scripts/savedItems";
+import AccountActions from "./account";
+
 const actionTypes = {
   CHANGE_STEP: "CHANGE_STEP",
   MODIFY_POTENTIAL_QUANTITY: "MODIFY_POTENTIAL_QUANTITY",
@@ -66,126 +69,137 @@ const getActions = uri => {
       };
     },
     modifyCart: input => {
-      let _cart = input.cart;
-      let _items = _cart.items;
-      let _action = input.action;
-      let _max = input.max;
+      return dispatch => {
+        let _accountId = input.accountId;
+        let _cart = input.cart;
+        let _items = _cart.items;
+        let _action = input.action;
+        let _max = input.max;
 
-      let _productIdentifier = input.productIdentifier;
-      let _product = input.product;
+        let _productIdentifier = input.productIdentifier;
+        let _product = input.product;
 
-      let { _per, _amount } = (() => {
-        if (_product == null) return {};
-        let _amount = parseInt(_productIdentifier.replace(/\D/g, ""));
-        return {
-          _per: _product.price[_product.size.indexOf(_amount)],
-          _amount
-        };
-      })();
-      let _coupon = input.coupon;
-      let sale = (() => {
-        if (_coupon == null) return undefined;
-
-        if (_coupon.itemId == _product.sotiId || _coupon.type == "%") {
-          if (_coupon.type == "%") {
-            return _per * (1 - _coupon.amount / 100);
-          } else if (_coupon.type == "$") {
-            return Math.max(0, _per - _coupon.amount);
-          }
-        }
-        return undefined;
-      })();
-
-      let _quantity = Math.min(input.quantity, _max);
-
-      let _item, price;
-      switch (_action) {
-        case "REMOVE":
-          delete _items[_productIdentifier];
-          break;
-        case "APPEND":
-          if (_productIdentifier in _items) {
-            _quantity += _items[_productIdentifier].quantity;
-          }
-          _quantity = Math.min(_quantity, _max);
-          price = (sale == null ? _per : sale) * _quantity;
-          _items[_productIdentifier] = {
-            product: _product,
-            quantity: _quantity,
-            price,
-            per: _per,
-            sale,
-            amount: _amount
+        let { _per, _amount } = (() => {
+          if (_product == null) return {};
+          let _amount = parseInt(_productIdentifier.replace(/\D/g, ""));
+          return {
+            _per: _product.price[_product.size.indexOf(_amount)],
+            _amount
           };
-          break;
-        case "MODIFY":
-          _item = _items[_productIdentifier];
-          _quantity = Math.min(Math.max(0, _quantity + _item.quantity), _max);
-          price = (sale == null ? _per : sale) * _quantity;
-          if (_quantity == 0) delete _items[_productIdentifier];
-          else {
+        })();
+        let _coupon = input.coupon;
+        let sale = (() => {
+          if (_coupon == null) return undefined;
+
+          if (_coupon.itemId == _product.sotiId || _coupon.type == "%") {
+            if (_coupon.type == "%") {
+              return _per * (1 - _coupon.amount / 100);
+            } else if (_coupon.type == "$") {
+              return Math.max(0, _per - _coupon.amount);
+            }
+          }
+          return undefined;
+        })();
+
+        let _quantity = Math.min(input.quantity, _max);
+
+        let _item, price;
+        switch (_action) {
+          case "REMOVE":
+            delete _items[_productIdentifier];
+            break;
+          case "APPEND":
+            if (_productIdentifier in _items) {
+              _quantity += _items[_productIdentifier].quantity;
+            }
+            _quantity = Math.min(_quantity, _max);
+            price = (sale == null ? _per : sale) * _quantity;
             _items[_productIdentifier] = {
+              product: _product,
+              quantity: _quantity,
+              price,
+              per: _per,
+              sale,
+              amount: _amount
+            };
+            break;
+          case "MODIFY":
+            _item = _items[_productIdentifier];
+            _quantity = Math.min(Math.max(0, _quantity + _item.quantity), _max);
+            price = (sale == null ? _per : sale) * _quantity;
+            if (_quantity == 0) delete _items[_productIdentifier];
+            else {
+              _items[_productIdentifier] = {
+                ..._item,
+                quantity: _quantity,
+                price,
+                sale,
+                per: _per
+              };
+            }
+            break;
+          case "SET":
+            _quantity = Math.min(_quantity, _max);
+            price = (sale == null ? _per : sale) * _quantity;
+            _item = _items[_productIdentifier];
+            _items[_productIdentifier] = {
+              product: _product,
+              amount: _amount,
               ..._item,
               quantity: _quantity,
               price,
               sale,
               per: _per
             };
-          }
-          break;
-        case "SET":
-          _quantity = Math.min(_quantity, _max);
-          price = (sale == null ? _per : sale) * _quantity;
-          _item = _items[_productIdentifier];
-          _items[_productIdentifier] = {
-            ..._item,
-            quantity: _quantity,
-            price,
-            sale,
-            per: _per
-          };
-        default:
-      }
-
-      let _price = Object.values(_items)
-        .map(a => {
-          if (isNaN(a.price)) return 0;
-          return a.price;
-        })
-        .reduce((a, b) => {
-          return a + b;
-        }, 0);
-
-      let _discount = (() => {
-        if (_coupon == null) return 0;
-        if (_coupon.type == "%") {
-          return Object.values(_items)
-            .map(a => {
-              if (isNaN(a.price) || isNaN(a.sale)) return 0;
-              return (a.per - a.sale) * a.quantity;
-            })
-            .reduce((a, b) => {
-              return a + b;
-            }, 0);
-        } else if (_coupon.type == "$") {
-          let _ = _coupon.amount;
-          _price = Math.max(0, _price - _);
-          return _;
+          default:
         }
-      })();
 
-      let _obj = {
-        ..._cart,
-        items: _items,
-        price: _price,
-        discount: _discount
-      };
+        let _price = Object.values(_items)
+          .map(a => {
+            if (isNaN(a.price)) return 0;
+            return a.price;
+          })
+          .reduce((a, b) => {
+            return a + b;
+          }, 0);
 
-      sessionStorage.setItem("cart", JSON.stringify(_obj));
+        let _discount = (() => {
+          if (_coupon == null) return 0;
+          if (_coupon.type == "%") {
+            return Object.values(_items)
+              .map(a => {
+                if (isNaN(a.price) || isNaN(a.sale)) return 0;
+                return (a.per - a.sale) * a.quantity;
+              })
+              .reduce((a, b) => {
+                return a + b;
+              }, 0);
+          } else if (_coupon.type == "$") {
+            let _ = _coupon.amount;
+            _price = Math.max(0, _price - _);
+            return _;
+          }
+        })();
 
-      return {
-        type: actionTypes.MODIFY_CART,
-        cart: _obj
+        let _obj = {
+          ..._cart,
+          items: _items,
+          price: _price,
+          discount: _discount
+        };
+
+        sessionStorage.setItem("cart", JSON.stringify(_obj));
+
+        if (_accountId != null) {
+          let Account = AccountActions(uri);
+          let cartItems = buildCartItems(_items);
+          dispatch(Account.updateAccount({ _id: _accountId, cartItems }));
+        }
+
+        dispatch({
+          type: actionTypes.MODIFY_CART,
+          cart: _obj
+        });
       };
     }
   };
@@ -195,6 +209,21 @@ const getActions = uri => {
 const query = {};
 
 const mutation = {};
+
+let buildCartItems = items => {
+  let arr = [];
+  for (let key of Object.keys(items)) {
+    let item = items[key];
+    arr.push(
+      stringBuilder({
+        product: item.product,
+        quantity: item.quantity,
+        packSize: item.amount
+      })
+    );
+  }
+  return arr;
+};
 
 export default uri => {
   const actions = getActions(uri);

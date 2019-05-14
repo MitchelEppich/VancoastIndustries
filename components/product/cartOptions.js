@@ -54,7 +54,9 @@ const cartOptions = props => {
               let _identifier =
                 currentProduct.sotiId +
                 currentProduct.size[props.product.quickAddToCartQty];
+              let user = props.account.currentUser;
               props.modifyCart({
+                accountId: user == null ? null : user._id,
                 cart: cart,
                 action: "APPEND",
                 max: maxPerPackage,
@@ -86,7 +88,9 @@ const cartOptions = props => {
                 let _identifier =
                   currentProduct.sotiId +
                   currentProduct.size[props.product.quickAddToCartQty];
+                let user = props.account.currentUser;
                 props.modifyCart({
+                  accountId: user == null ? null : user._id,
                   cart: cart,
                   action: "APPEND",
                   max: maxPerPackage,
