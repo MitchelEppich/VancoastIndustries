@@ -44,6 +44,9 @@ const getActions = uri => {
       return dispatch => {
         const link = new HttpLink({ uri, fetch: fetch });
 
+        let persistant = credentials.rememberMe;
+        delete credentials.rememberMe;
+
         const operation = {
           query: mutation.verifyCredentials,
           variables: { ...credentials }
@@ -58,7 +61,15 @@ const getActions = uri => {
               type: actionTypes.VERIFY_CREDENTIALS,
               currentUser: account
             });
-            console.log(account);
+
+            if (persistant) {
+              localStorage.setItem("token", account.jwt);
+              sessionStorage.removeItem("token");
+            } else {
+              localStorage.removeItem("token");
+              sessionStorage.setItem("token", account.jwt);
+            }
+
             return Promise.resolve(account);
           })
           .catch(error => console.log(error));
@@ -134,8 +145,10 @@ const query = {};
 
 const mutation = {
   verifyCredentials: gql`
-    mutation($email: String, $password: String) {
-      verifyCredentials(input: { email: $email, password: $password }) {
+    mutation($email: String, $password: String, $jwt: String) {
+      verifyCredentials(
+        input: { email: $email, password: $password, jwt: $jwt }
+      ) {
         _id
         email
         password

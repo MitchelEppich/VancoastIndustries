@@ -57,6 +57,7 @@ let Input = `
     input CredentialsInput {
         email: String
         password: String
+        jwt: String
     }
 `;
 

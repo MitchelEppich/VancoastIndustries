@@ -46,19 +46,23 @@ const resolvers = {
   Mutation: {
     verifyCredentials: async (_, { input }) => {
       let $ = { ...input };
+      if ($.email != null) $.email = $.email.toLowerCase();
       let account = await Account.findOne({
-        email: input.email.toLowerCase()
+        $or: [{ jwt: $.jwt }, { email: $.email }]
       });
 
       if (!account) {
-        throw new Error("Email not found");
+        throw new Error("Account was not found");
       }
 
-      const validPassword = account.validPassword($.password);
-      if (!validPassword) {
-        throw new Error("Password is incorrect");
+      if ($.jwt == null) {
+        const validPassword = account.validPassword($.password);
+        if (!validPassword) {
+          throw new Error("Password is incorrect");
+        }
+
+        account.jwt = account.createToken();
       }
-      account.jwt = account.createToken();
 
       await account.save();
 
