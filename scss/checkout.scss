@@ -184,7 +184,8 @@ ul.vcCheckout-list {
   flex-wrap: wrap;
 }
 ul.vcCheckout-list li {
-  padding: 30px;
+  padding: 10px;
+  // padding: 30px;
   position: relative;
 }
 .vcCheckout-content .vcItem img {
@@ -248,9 +249,9 @@ select.vcCountry {
   display: block;
 }
 .vcPayment-choices input[type="radio"] + label {
-  border: 5px solid #eee;
+  border: 3px solid #eee;
   border-radius: 3px;
-  padding: 20px 10px;
+  padding: 10px;
   font-weight: bold;
   text-align: center;
   height: 100px;

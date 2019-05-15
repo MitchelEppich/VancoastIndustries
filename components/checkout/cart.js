@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+
 const cart = props => {
   let items = Object.entries(props.checkout.cart.items).map((item, index) => {
     let product = item[1].product;
@@ -8,30 +11,43 @@ const cart = props => {
         ? "../static/img/products/cks/cks-white-widow-auto.png"
         : "../static/img/products/sunwest/sw-cheese.png";
     return (
-      <li key={index} className="vcItem vcItem-one flex items-end">
-        <img src={img} alt="bruce banner" />
-
-        <div className="vcItem-info flex flex-col justify-around items-start">
-          <h2 className="uppercase">{product.alias}</h2>
-          <h3 className="vcCheckout-cat">{product.type}</h3>
-          <div className="vcItem-brand capitalize mt-2">
-            <span className="uppercase">Brand - </span>
-            {product.company.name}
+      <li
+        key={index}
+        className="vcItem vcItem-one flex items-end relative mx-10 my-4"
+      >
+        <div className="absolute pin-r flex pin-t w-full justify-end cursor-pointer mt-2 mr-2">
+          <FontAwesomeIcon
+            icon={faTimes}
+            className="fa-lg text-grey-light hover:text-blue"
+          />
+        </div>
+        <div className="w-full inline-flex">
+          <div className="h-150">
+            <img src={img} alt="bruce banner" />
           </div>
 
-          <div className="vcItem-details flex flex-row justify-between mt-2">
-            <div className="vcItem-qty flex flex-col">
-              <span className="vcPrefix">QTY.</span>
-              <span>x{item[1].quantity}</span>
-            </div>
-            <div className="vcItem-qty flex flex-col">
-              <span className="vcPrefix">Pack Size</span>
-              <span>{item[1].amount} Seeds</span>
+          <div className="vcItem-info h-150 ml-4 flex flex-col justify-around items-start">
+            <h2 className="uppercase text-lg">{product.alias}</h2>
+            <h3 className="vcCheckout-cat">{product.type}</h3>
+            <div className="vcItem-brand capitalize mt-2">
+              <span className="uppercase">Brand - </span>
+              {product.company.name}
             </div>
 
-            <div className="vcItem-price flex flex-col">
-              <span className="vcPrefix">Price</span>
-              <span>${item[1].price}</span>
+            <div className="vcItem-details flex flex-row justify-between mt-2">
+              <div className="vcItem-qty flex flex-col">
+                <span className="vcPrefix">QTY.</span>
+                <span>x{item[1].quantity}</span>
+              </div>
+              <div className="vcItem-qty flex flex-col">
+                <span className="vcPrefix">Pack Size</span>
+                <span>{item[1].amount} Seeds</span>
+              </div>
+
+              <div className="vcItem-price flex flex-col">
+                <span className="vcPrefix">Price</span>
+                <span>${item[1].price.toFixed(2)}</span>
+              </div>
             </div>
           </div>
         </div>

@@ -185,15 +185,53 @@ const resolvers = {
         delete $.shipping;
       }
 
-      let options = { $set: { ...$ } };
+      let options = {};
 
       let $push = {};
+      let $pull = {};
       if (newBilling.length > 0) $push.billing = newBilling;
       if (newShipping.length > 0) $push.shipping = newShipping;
-      if ($.savedItem != null) $push.savedItems = $.savedItem;
-      if ($.cartItem != null) $push.cartItems = $.cartItem;
+
+      if ($.savedItem != null) {
+        if ($.savedItem.slice(0, 2) == "R_") {
+          $pull.savedItems = $.savedItem.slice(2);
+          delete $.savedItem;
+        } else {
+          let _savedItem = $.savedItem.split("x");
+          let account = await Account.findOne({ _id: $._id });
+          if (account == null) return null;
+
+          let { savedItems } = account;
+
+          let $new = true;
+          savedItems = savedItems.map(item => item.split("x"));
+          savedItems = savedItems.map(item => {
+            if (item[0] == _savedItem[0]) {
+              item[1] = parseInt(item[1]) + parseInt(_savedItem[1]);
+              $new = false;
+            }
+            return item;
+          });
+          savedItems = savedItems.map(item => item.join("x"));
+          if ($new) savedItems.push($.savedItem);
+          delete $.savedItem;
+          $.savedItems = savedItems;
+        }
+      }
+      if ($.cartItem != null) {
+        if ($.cartItem.slice(0, 2) == "R_") {
+          $pull.cartItems = $.cartItem.slice(2);
+          delete $.cartItem;
+        } else {
+          if ($.cartItem != null) $push.cartItems = $.cartItem;
+        }
+      }
 
       if (Object.keys($push).length > 0) options.$push = $push;
+      if (Object.keys($pull).length > 0) options.$pull = $pull;
+
+      options.$set = $;
+      // console.log(options);
 
       let account = await Account.findOneAndUpdate({ _id: $._id }, options, {
         upsert: true,
@@ -211,7 +249,7 @@ const resolvers = {
       if (account == null) return "Account does not exist";
 
       account.password = generatePassword();
-      console.log(account.password);
+      // console.log(account.password);
 
       // Send Email
 

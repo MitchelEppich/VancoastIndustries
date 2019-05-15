@@ -17,10 +17,8 @@ const item = props => {
       </div>
 
       <div className="vcItem-info uppercase flex flex-col justify-around items-start">
-        <h3>
-          {item.product.alias} {item.product.type}
-        </h3>
-
+        <h3>{item.product.alias}</h3>
+        <p className="font-bold">{item.product.type}</p>
         <div className="vcItem-brand">
           <span>Brand - </span>
           <span className="capitalize">{item.product.company.name}</span>
@@ -38,7 +36,7 @@ const item = props => {
 
           <div className="vcItem-price flex flex-col">
             <span className="vcPrefix">Price</span>
-            <span>${item.price}</span>
+            <span>${item.price.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -49,6 +47,7 @@ const item = props => {
           props.modifyCart({
             accountId: user == null ? null : user._id,
             items: props.checkout.cart.items,
+            product: item.product,
             action: "REMOVE",
             max: props.checkout.cart.maxPerPackage,
             productIdentifier: _identifier,

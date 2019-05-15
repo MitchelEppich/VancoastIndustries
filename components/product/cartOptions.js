@@ -52,7 +52,6 @@ const cartOptions = props => {
             props.shop.animationActive ? "scaleAnim" : ""
           }`}
           type="submit"
-          // value="Add To Cart"
           onClick={() => {
             if (props.account.currentUser == null) {
               props.toggleAlert({
@@ -142,7 +141,7 @@ const cartOptions = props => {
                 actionName: "Login"
               });
             } else {
-              props.addToWishList({
+              props.modifySavedItems({
                 currentUser: props.account.currentUser,
                 product: currentProduct,
                 quantity: cart.potentialQuantity,
