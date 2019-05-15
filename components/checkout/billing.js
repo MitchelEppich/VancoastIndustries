@@ -3,7 +3,12 @@ import data from "../../static/data";
 const billing = props => {
   let sameAsShipping = props.checkout.orderDetails.sameAsShipping;
   let shipping = props.checkout.orderDetails.shipping || {};
-  let billing = props.checkout.orderDetails.billing || {};
+  // let billing = props.checkout.orderDetails.billing || {};
+
+  let account = props.account.currentUser;
+  let billing = account == null ? null : account.billing[0];
+  let address = account == null ? null : account.address;
+
   let countries = data.countries.map((country, index) => {
     return (
       <option key={index} value={country}>
@@ -31,27 +36,9 @@ const billing = props => {
     <React.Fragment>
       <div className="vcCheckout-content">
         <form className="vcWholesale-application flex flex-col justify-center">
-          <div className="">
-            <label htmlFor="vcSameAsShipping">Billing same as Shipping?</label>
-            <input
-              value={true}
-              onChange={e => {
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  billing: {
-                    ...props.checkout.orderDetails.shipping
-                  },
-                  sameAsShipping: !props.checkout.orderDetails.sameAsShipping
-                });
-              }}
-              className="ml-4"
-              type="checkbox"
-              id="vcSameAsShipping"
-            />
-          </div>
           <label htmlFor="vcName">Name*</label>
           <input
-            value={sameAsShipping ? shipping.firstName : billing.firstName}
+            // value={sameAsShipping ? shipping.firstName : billing.firstName}
             onChange={e =>
               props.modifyOrderDetails({
                 ...props.checkout.orderDetails,
@@ -65,9 +52,10 @@ const billing = props => {
             id="vcName"
             required
             placeholder="First Name"
+            defaultValue={billing != null ? billing.name : ""}
           />
           <input
-            value={sameAsShipping ? shipping.lastName : billing.lastName}
+            // value={sameAsShipping ? shipping.lastName : billing.lastName}
             onChange={e =>
               props.modifyOrderDetails({
                 ...props.checkout.orderDetails,
@@ -81,11 +69,12 @@ const billing = props => {
             id="vcName"
             required
             placeholder="Last Name"
+            defaultValue={billing != null ? billing.surname : ""}
           />
 
           <label htmlFor="vcCompany">Company Name*</label>
           <input
-            value={sameAsShipping ? shipping.company : billing.company}
+            // value={sameAsShipping ? shipping.company : billing.company}
             onChange={e =>
               props.modifyOrderDetails({
                 ...props.checkout.orderDetails,
@@ -99,11 +88,12 @@ const billing = props => {
             id="vcCompany"
             required
             placeholder="Company Name"
+            defaultValue={account != null ? account.company : ""}
           />
 
           <label htmlFor="vcEmail">Email Address*</label>
           <input
-            value={sameAsShipping ? shipping.email : billing.email}
+            // value={sameAsShipping ? shipping.email : billing.email}
             onChange={e =>
               props.modifyOrderDetails({
                 ...props.checkout.orderDetails,
@@ -117,13 +107,14 @@ const billing = props => {
             id="vcEmail"
             required
             placeholder="you@companyname.com"
+            defaultValue={account != null ? account.email : ""}
           />
 
           <label htmlFor="vcStreet">Street Address*</label>
           <input
-            value={
-              sameAsShipping ? shipping.streetAddress : billing.streetAddress
-            }
+            // value={
+            //   sameAsShipping ? shipping.streetAddress : billing.streetAddress
+            // }
             onChange={e =>
               props.modifyOrderDetails({
                 ...props.checkout.orderDetails,
@@ -137,13 +128,14 @@ const billing = props => {
             id="vcStreet"
             required
             placeholder=""
+            defaultValue={billing != null ? billing.address : ""}
           />
 
           <label htmlFor="vcProvince">Province/State</label>
           <select
-            value={
-              sameAsShipping ? shipping.provinceState : billing.provinceState
-            }
+            // value={
+            //   sameAsShipping ? shipping.provinceState : billing.provinceState
+            // }
             onChange={e =>
               props.modifyOrderDetails({
                 ...props.checkout.orderDetails,
@@ -156,13 +148,14 @@ const billing = props => {
             required
             id="vcProvince"
             name="vcProvince"
+            defaultValue={billing != null ? billing.state : ""}
           >
             {provinceOrState}
           </select>
 
           <label htmlFor="vcCountry">Country*</label>
           <select
-            value={sameAsShipping ? shipping.country : billing.country}
+            // value={sameAsShipping ? shipping.country : billing.country}
             onChange={e =>
               props.modifyOrderDetails({
                 ...props.checkout.orderDetails,
@@ -175,13 +168,14 @@ const billing = props => {
             className="vcCountry"
             required
             name="vcCountry"
+            defaultValue={billing != null ? billing.country : ""}
           >
             {countries}
           </select>
 
-          <label htmlFor="vcStreet">Postal Code/Zip Code*</label>
+          <label htmlFor="vcPostal">Postal Code/Zip Code*</label>
           <input
-            value={sameAsShipping ? shipping.postalZip : billing.postalZip}
+            // value={sameAsShipping ? shipping.postalZip : billing.postalZip}
             onChange={e =>
               props.modifyOrderDetails({
                 ...props.checkout.orderDetails,
@@ -192,14 +186,15 @@ const billing = props => {
               })
             }
             type="text"
-            id="vcStreet"
+            id="vcPostal"
             required
             placeholder=""
+            defaultValue={billing != null ? billing.postal : ""}
           />
 
           <label htmlFor="vcPhone">Phone Number*</label>
           <input
-            value={sameAsShipping ? shipping.phone : billing.phone}
+            // value={sameAsShipping ? shipping.phone : billing.phone}
             onChange={e =>
               props.modifyOrderDetails({
                 ...props.checkout.orderDetails,
@@ -213,6 +208,7 @@ const billing = props => {
             id="vcPhone"
             required
             placeholder="555-555-5555"
+            defaultValue={billing != null ? billing.phone : ""}
           />
 
           {/* <label htmlFor="vcMessage">Special Delivery Instructions</label>

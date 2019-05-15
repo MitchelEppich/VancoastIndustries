@@ -55,8 +55,11 @@ const getActions = uri => {
         return makePromise(execute(link, operation))
           .then(data => {
             let account = data.data.verifyCredentials;
-            if (account == null)
+            if (account == null) {
               account = { error: "Invalid Email or Password" };
+              sessionStorage.removeItem("token");
+              localStorage.removeItem("token");
+            }
             dispatch({
               type: actionTypes.VERIFY_CREDENTIALS,
               currentUser: account

@@ -1,6 +1,10 @@
 import data from "../../static/data";
 
 const shipping = props => {
+  let account = props.account.currentUser;
+  let shipping = account == null ? null : account.shipping[0];
+  let address = account == null ? null : account.address;
+
   let countries = data.countries.map((country, index) => {
     return (
       <option key={index} value={country}>
@@ -27,10 +31,16 @@ const shipping = props => {
   return (
     <React.Fragment>
       <form
+        id="shippingForm"
         onSubmit={e => {
           e.preventDefault();
           props.changeStep("Billing");
           window.scrollTo(0, 0);
+
+          let $form = document.getElementById("shippingForm");
+          let $inputs = $form.getElementsByTagName("input");
+
+          console.log(Object.values($inputs));
         }}
       >
         <div className="vcCheckout-content">
@@ -48,8 +58,10 @@ const shipping = props => {
               }
               type="text"
               id="vcName"
+              name="name"
               required
               placeholder="First Name"
+              defaultValue={shipping != null ? shipping.name : ""}
             />
             <input
               onChange={e =>
@@ -63,8 +75,10 @@ const shipping = props => {
               }
               type="text"
               id="vcName"
+              name="surname"
               required
               placeholder="Last Name"
+              defaultValue={shipping != null ? shipping.surname : ""}
             />
 
             <label htmlFor="vcCompany">Company Name*</label>
@@ -80,8 +94,10 @@ const shipping = props => {
               }
               type="text"
               id="vcCompany"
+              name="company"
               required
               placeholder="Company Name"
+              defaultValue={account != null ? account.company : ""}
             />
 
             <label htmlFor="vcEmail">Email Address*</label>
@@ -98,7 +114,9 @@ const shipping = props => {
               type="text"
               id="vcEmail"
               required
+              name="email"
               placeholder="you@companyname.com"
+              defaultValue={account != null ? account.email : ""}
             />
 
             <label htmlFor="vcStreet">Street Address*</label>
@@ -114,8 +132,10 @@ const shipping = props => {
               }
               type="text"
               id="vcStreet"
+              name="address"
               required
               placeholder=""
+              defaultValue={shipping != null ? shipping.address : ""}
             />
             <label htmlFor="vcCity">City*</label>
             <input
@@ -130,12 +150,15 @@ const shipping = props => {
               }
               type="text"
               id="vcCity"
+              name="city"
               required
               placeholder=""
+              defaultValue={shipping != null ? shipping.city : ""}
             />
 
             <label htmlFor="vcProvince">Province/State</label>
-            <select
+            <input
+              type="text"
               onChange={e =>
                 props.modifyOrderDetails({
                   ...props.checkout.orderDetails,
@@ -147,10 +170,9 @@ const shipping = props => {
               }
               required
               id="vcProvince"
-              name="vcProvince"
-            >
-              {provinceOrState}
-            </select>
+              name="state"
+              defaultValue={shipping != null ? shipping.state : ""}
+            />
 
             <label htmlFor="vcCountry">Country*</label>
             <select
@@ -165,12 +187,13 @@ const shipping = props => {
               }
               className="vcCountry"
               required
-              name="vcCountry"
+              name="country"
+              defaultValue={shipping != null ? shipping.country : ""}
             >
               {countries}
             </select>
 
-            <label htmlFor="vcStreet">Postal Code/Zip Code*</label>
+            <label htmlFor="vcPostal">Postal Code/Zip Code*</label>
             <input
               onChange={e =>
                 props.modifyOrderDetails({
@@ -182,9 +205,11 @@ const shipping = props => {
                 })
               }
               type="text"
-              id="vcStreet"
+              id="vcPostal"
               required
+              name="postal"
               placeholder=""
+              defaultValue={shipping != null ? shipping.postal : ""}
             />
 
             <label htmlFor="vcPhone">Phone Number*</label>
@@ -200,8 +225,10 @@ const shipping = props => {
               }
               type="text"
               id="vcPhone"
+              name="phone"
               required
               placeholder="555-555-5555"
+              defaultValue={shipping != null ? shipping.phone : ""}
             />
 
             <label htmlFor="vcMessage">Special Delivery Instructions</label>
@@ -217,6 +244,7 @@ const shipping = props => {
               }
               type="textarea"
               id="vcMessage"
+              name="message"
               rows="10"
               placeholder="Special delivery instructions"
             />
