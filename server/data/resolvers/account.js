@@ -218,13 +218,20 @@ const resolvers = {
           $.savedItems = savedItems;
         }
       }
-      if ($.cartItem != null) $push.cartItems = $.cartItem;
+      if ($.cartItem != null) {
+        if ($.cartItem.slice(0, 2) == "R_") {
+          $pull.cartItems = $.cartItem.slice(2);
+          delete $.cartItem;
+        } else {
+          if ($.cartItem != null) $push.cartItems = $.cartItem;
+        }
+      }
 
       if (Object.keys($push).length > 0) options.$push = $push;
       if (Object.keys($pull).length > 0) options.$pull = $pull;
 
       options.$set = $;
-      console.log(options);
+      // console.log(options);
 
       let account = await Account.findOneAndUpdate({ _id: $._id }, options, {
         upsert: true,
@@ -242,7 +249,7 @@ const resolvers = {
       if (account == null) return "Account does not exist";
 
       account.password = generatePassword();
-      console.log(account.password);
+      // console.log(account.password);
 
       // Send Email
 

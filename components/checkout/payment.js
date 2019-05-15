@@ -97,7 +97,7 @@ const payment = props => {
         <div className="vcPayment-method">
           <h2>Payment Method</h2>
 
-          <div className="vcPayment-choices flex flex-row justify-around items-center">
+          <div className="vcPayment-choices flex flex-row sm:flex-col md:flex-col justify-around items-center">
             <input
               type="radio"
               id="CashMoney"
@@ -112,8 +112,12 @@ const payment = props => {
                 });
               }}
             />
-            <label className="vcCashMoney flex flex-col" htmlFor="CashMoney">
+            <label className="flex flex-col" htmlFor="CashMoney">
               <span>Cash</span>
+              <img
+                src="../../../static/img/assets/payment/cash-icon.jpg"
+                className="h-10 w-auto sm:h-8"
+              />
             </label>
 
             <input
@@ -130,8 +134,12 @@ const payment = props => {
                 });
               }}
             />
-            <label className="vcCrypto flex flex-col" htmlFor="Crypto">
-              <span>Crypto Currency</span>
+            <label className="flex flex-col" htmlFor="Crypto">
+              <span className="text-base">Cryptos</span>
+              <img
+                src="../../../static/img/assets/payment/crypto-icons.jpg"
+                className="h-10 w-auto sm:h-8"
+              />
             </label>
 
             <input
@@ -148,11 +156,12 @@ const payment = props => {
                 });
               }}
             />
-            <label
-              className="vcMoneyTransfer flex flex-col"
-              htmlFor="MoneyTransfer"
-            >
+            <label className="flex flex-col" htmlFor="MoneyTransfer">
               <span>Money Transfer</span>
+              <img
+                src="../../../static/img/assets/payment/interac-transfer.jpg"
+                className="h-10 w-auto sm:h-8"
+              />
             </label>
 
             <input
@@ -169,8 +178,12 @@ const payment = props => {
                 });
               }}
             />
-            <label className="vcCreditCard flex flex-col" htmlFor="CreditCard">
+            <label className=" flex flex-col" htmlFor="CreditCard">
               <span>Credit Card</span>
+              <img
+                src="../../../static/img/assets/payment/visaMastercard-logo.jpg"
+                className="h-10 w-auto sm:h-8"
+              />
             </label>
           </div>
 

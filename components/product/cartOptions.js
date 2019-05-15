@@ -41,7 +41,6 @@ const cartOptions = props => {
         <button
           className="px-6 p-3 text-center vcBuyNow-button text-lg"
           type="submit"
-          // value="Add To Cart"
           onClick={() => {
             if (props.account.currentUser == null) {
               props.toggleAlert({
@@ -140,14 +139,8 @@ const cartOptions = props => {
           <span className="font-bold text-white">Save for Later</span>
           <FontAwesomeIcon
             icon={faHeart}
-            className={`${
-              props.account != null ||
-              (props.account.currentUser.savedItems != null &&
-                props.account.currentUser.savedItems.length < 1)
-                ? "text-red"
-                : "text-white opacity-50 "
-            } ml-2 fa-lg`}
-          />{" "}
+            className={` text-white opacity-50 ml-2 fa-lg`}
+          />
         </button>
       </div>
     </React.Fragment>

@@ -52,7 +52,7 @@ export default (state = initialState, action) => {
     case actionTypes.UPDATE_ERROR:
       return updateObject(state, { updateError: action.error });
     case actionTypes.MODIFY_SAVED_ITEMS:
-      return updateObject(state, { currentUser: action.currentUser });
+      return updateObject(state, {});
     default:
       return state;
   }

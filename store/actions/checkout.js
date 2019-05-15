@@ -87,6 +87,7 @@ const getActions = uri => {
             _amount
           };
         })();
+
         let _coupon = input.coupon;
         let sale = (() => {
           if (_coupon == null) return undefined;
@@ -106,6 +107,7 @@ const getActions = uri => {
         let _item, price;
         switch (_action) {
           case "REMOVE":
+            _quantity = _items[_productIdentifier].quantity;
             delete _items[_productIdentifier];
             break;
           case "APPEND":
@@ -191,9 +193,28 @@ const getActions = uri => {
         sessionStorage.setItem("cart", JSON.stringify(_obj));
 
         if (_accountId != null) {
+          let remove = _action == "REMOVE";
+          let item;
+
+          if (remove) {
+            item = {
+              product: _product,
+              quantity: _quantity,
+              packSize: _amount
+            };
+            console.log(item);
+          } else {
+            item = _items[_productIdentifier];
+          }
           let Account = AccountActions(uri);
-          let cartItems = buildCartItems(_items);
-          dispatch(Account.updateAccount({ _id: _accountId, cartItems }));
+          let cartItem =
+            (remove ? "R_" : "") +
+            stringBuilder({
+              product: item.product,
+              quantity: item.quantity,
+              packSize: item.amount
+            });
+          dispatch(Account.updateAccount({ _id: _accountId, cartItem }));
         }
 
         dispatch({
@@ -209,21 +230,6 @@ const getActions = uri => {
 const query = {};
 
 const mutation = {};
-
-let buildCartItems = items => {
-  let arr = [];
-  for (let key of Object.keys(items)) {
-    let item = items[key];
-    arr.push(
-      stringBuilder({
-        product: item.product,
-        quantity: item.quantity,
-        packSize: item.amount
-      })
-    );
-  }
-  return arr;
-};
 
 export default uri => {
   const actions = getActions(uri);
