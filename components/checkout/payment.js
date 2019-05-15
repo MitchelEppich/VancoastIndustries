@@ -3,8 +3,8 @@ import SelectedPayment from "./selectedPayment";
 import Router from "next/router";
 
 const payment = props => {
-  let shipping = props.checkout.orderDetails.shipping;
-  let billing = props.checkout.orderDetails.billing;
+  let billing = props.account.currentUser.billing[0];
+  let shipping = props.account.currentUser.shipping[0];
   return (
     <React.Fragment>
       <div className="vcBill-ship flex">
@@ -12,32 +12,22 @@ const payment = props => {
           <h2>Delivery Details</h2>
 
           <div>
-            <span className="vcShipping-name">{shipping.firstName}</span>
-            <span className="vcShipping-name">{shipping.lastName}</span>
+            <span className="vcShipping-name">{shipping.name}</span>
+            <span className="vcShipping-name">{shipping.surname}</span>
           </div>
 
           <div>
-            <span className="vcShipping-coName">{shipping.company}</span>
-          </div>
-
-          <div>
-            <span className="vcShipping-eMail">{shipping.email}</span>
-          </div>
-
-          <div>
-            <span className="vcShipping-street">{shipping.streetAddress}</span>
+            <span className="vcShipping-street">{shipping.address}</span>
           </div>
 
           <div>
             <span className="vcShipping-city">{shipping.city}</span>{" "}
-            <span className="vcShipping-province">
-              {shipping.provinceState}
-            </span>
+            <span className="vcShipping-province">{shipping.state}</span>
           </div>
 
           <div>
             <span className="vcShipping-country">{shipping.country}</span>{" "}
-            <span className="vcShipping-code">{shipping.postalZip}</span>
+            <span className="vcShipping-code">{shipping.postal}</span>
           </div>
 
           <div>
@@ -49,30 +39,22 @@ const payment = props => {
           <h2>Billing Details</h2>
 
           <div>
-            <span className="vcBilling-name">{billing.firstName}</span>
-            <span className="vcBilling-name">{billing.lastName}</span>
+            <span className="vcBilling-name">{billing.name}</span>
+            <span className="vcBilling-name">{billing.surname}</span>
           </div>
 
           <div>
-            <span className="vcBilling-coName">{billing.company}</span>
-          </div>
-
-          <div>
-            <span className="vcBilling-eMail">{billing.email}</span>
-          </div>
-
-          <div>
-            <span className="vcBilling-street">{billing.streetAddress}</span>
+            <span className="vcBilling-street">{billing.address}</span>
           </div>
 
           <div>
             <span className="vcBilling-city">{billing.city}</span>{" "}
-            <span className="vcBilling-province">{billing.provinceState}</span>
+            <span className="vcBilling-province">{billing.state}</span>
           </div>
 
           <div>
             <span className="vcBilling-country">{billing.country}</span>{" "}
-            <span className="vcBilling-code">{billing.postalZip}</span>
+            <span className="vcBilling-code">{billing.postal}</span>
           </div>
 
           <div>
