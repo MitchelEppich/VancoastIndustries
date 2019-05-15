@@ -173,14 +173,17 @@ ul.vcSaved-list {
   padding: 20px;
 }
 .vcSaved-list .vcItem img {
-  margin: 20px;
+  margin: 0 20px;
 }
 .vcSaved-btn {
   background-color: #1426de;
   // padding: 20px 30px;
   // margin: 20px 10px;
-  padding: 10px 30px;
-  margin: 10px 10px;
+  // padding: 10px 30px;
+  // margin: 10px 10px;
+
+  padding: 10px 20px;
+  width: 100%;
 }
 /** Mobile Styles **/
 @media screen and (min-width: 1368px) {

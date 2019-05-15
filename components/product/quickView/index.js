@@ -1,5 +1,6 @@
 import SeedSelect from "../seedSelect";
 import Link from "next/link";
+import SeedSelectorMobile from "../seedSelectorMobile";
 
 const index = props => {
   let product = props.shop.quickViewModal,
@@ -10,10 +11,10 @@ const index = props => {
   return (
     <div className="w-screen h-screen bg-semi-transparent z-50 fixed">
       <div className="vcSingle vcQuick flex justify-center items-center">
-        <div className="bg-white w-500 relative vcQuick flex flex-col justify-center items-start">
+        <div className="bg-white w-500 md:w-400 sm:w-300 relative vcQuick flex flex-col justify-center items-start">
           <header className="vcSingle-intro flex justify-center items-center flex-col w-full">
             <img
-              className="h-200"
+              className="sm:h-48 h-200"
               src="../static/img/products/sunwest/single-front/sw-kali-mist-406x412.png"
               alt="kali mist"
             />
@@ -22,11 +23,16 @@ const index = props => {
               {product.alias}
             </h1>
           </header>
-          <SeedSelect {...props} />
+          {!["sm"].includes(props.misc.mediaSize) ? (
+            <SeedSelect {...props} />
+          ) : (
+            <SeedSelectorMobile {...props} />
+          )}
 
-          <div className="vcSingle-input flex flex-col justify-around items-center">
+          <div className="vcSingle-input flex sm:flex-row flex-col justify-around items-center">
             <input
               type="number"
+              className="mx-1"
               min="1"
               onBlur={e => {
                 let _value = e.target.value;
@@ -54,7 +60,7 @@ const index = props => {
             />
 
             <input
-              className="vcSingle-submit"
+              className="vcSingle-submitmx-1"
               type="submit"
               value="Add To Cart"
               onClick={() => {

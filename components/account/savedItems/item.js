@@ -1,10 +1,22 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTimes,
+  faExclamationTriangle
+} from "@fortawesome/free-solid-svg-icons";
+
 const index = props => {
   let price =
     props.item.price[props.item.size.indexOf(props.item.packSize)] *
     props.item.quantity;
 
   return (
-    <li className="vcItem vcItem-one flex">
+    <li className="vcItem vcItem-one flex relative">
+      <div className="w-full flex justify-end absolute pin-r pin-t mt-6 ">
+        <FontAwesomeIcon
+          icon={faTimes}
+          className="fa-lg hover:text-blue text-grey-light cursor-pointer"
+        />
+      </div>
       <img
         src="../static/img/products/sonoma/so-bruce-banner.jpg"
         alt="bruce banner"

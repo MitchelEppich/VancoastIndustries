@@ -69,18 +69,6 @@ const billing = props => {
             />
           </label>
         </div>
-        <label htmlFor="vcPhone" className="w-full mx-1 pr-2">
-          Company Phone*
-          <input
-            required
-            type="text"
-            id=""
-            name="phone"
-            className="w-full"
-            placeholder="555-555-5555"
-            defaultValue={billing != null ? billing.phone : ""}
-          />
-        </label>
 
         <div className="w-full inline-flex sm:flex-col flex">
           <label htmlFor="vcAddress" className="w-1/2 sm:w-full mx-1">
@@ -110,7 +98,7 @@ const billing = props => {
           </label>
         </div>
         <div className="w-full inline-flex sm:flex-col flex">
-          <label htmlFor="vcState" className="w-1/3 sm:w-full mx-1">
+          <label htmlFor="vcState" className="w-1/2 sm:w-full mx-1">
             Province/State*
             <input
               required
@@ -123,7 +111,7 @@ const billing = props => {
             />
           </label>
 
-          <label htmlFor="vcCountry" className="w-1/3 sm:w-full mx-1">
+          <label htmlFor="vcCountry" className="w-1/2 sm:w-full mx-1">
             Country*
             <select
               className="vcCountry"
@@ -394,8 +382,9 @@ const billing = props => {
               <option value="ZW">Zimbabwe</option>
             </select>
           </label>
-
-          <label htmlFor="vcPostal" className="w-1/3 sm:w-full mx-1">
+        </div>
+        <div className="w-full inline-flex sm:flex-col flex">
+          <label htmlFor="vcPostal" className="w-1/2 sm:w-full mx-1">
             Postal Code/Zip Code*
             <input
               type="text"
@@ -406,7 +395,20 @@ const billing = props => {
               defaultValue={billing != null ? billing.postal : ""}
             />
           </label>
+          <label htmlFor="vcPhone" className="w-1/2 sm:w-full mx-1">
+            Company Phone*
+            <input
+              required
+              type="text"
+              id=""
+              name="phone"
+              className="w-full"
+              placeholder="555-555-5555"
+              defaultValue={billing != null ? billing.phone : ""}
+            />
+          </label>
         </div>
+
         <input type="submit" value="Save" />
       </form>
     </div>
