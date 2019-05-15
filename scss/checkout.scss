@@ -203,7 +203,8 @@ ul.vcCheckout-list li {
   font-weight: 400;
 }
 input.vcCheckout-btn {
-  padding: 30px 50px;
+  padding: 20px 50px;
+  // padding: 30px 50px;
   font-size: 15px;
   text-align: center;
   display: block;
@@ -255,7 +256,7 @@ select.vcCountry {
   font-weight: bold;
   text-align: center;
   height: 100px;
-  width: 200px;
+  // width: 200px;
 }
 .vcPayment-choices input[type="radio"]:checked + label {
   border: 5px solid #1426de;
@@ -278,7 +279,7 @@ select.vcCountry {
   width: 100%;
   background: #eee;
   border: 0px;
-  padding: 20px;
+  padding: 15px;
   font-size: 15px;
   line-height: 15px;
   margin-bottom: 20px;
@@ -286,7 +287,7 @@ select.vcCountry {
 .vcPayment-ccInput select {
   background: #eee;
   border: 0px;
-  padding: 20px;
+  padding: 15px;
   font-size: 15px;
   line-height: 15px;
   margin-bottom: 20px;

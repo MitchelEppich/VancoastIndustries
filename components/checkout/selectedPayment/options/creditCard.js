@@ -45,13 +45,13 @@ const index = props => {
         required
       />
 
-      <div className="vcCardinfo flex flex-row justify-between items-center">
-        <span className="vcCardExpiry flex flex-wrap">
+      <div className="vcCardinfo flex flex-row sm:flex-col justify-between items-center">
+        <span className="w-2/3 sm:w-full justify-between flex flex-wrap mx-2">
           <label className="w-full" htmlFor="ccExpiry">
             Expiry Date
           </label>
           <select
-            className=" mr-2"
+            className="w-3/5"
             onChange={e => {
               props.modifyOrderDetails({
                 ...props.checkout.orderDetails,
@@ -82,7 +82,7 @@ const index = props => {
             <option value="12">December (12)</option>
           </select>
           <select
-            className=""
+            className="w-1/3 sm:mx-0 mx-2"
             onChange={e => {
               props.modifyOrderDetails({
                 ...props.checkout.orderDetails,
@@ -108,7 +108,7 @@ const index = props => {
           </select>
         </span>
 
-        <span className="w-1/3 ">
+        <span className="w-1/3 sm:w-full ml-4 sm:ml-0">
           <label htmlFor="ccv">CCV</label>
           <input
             onChange={e =>
