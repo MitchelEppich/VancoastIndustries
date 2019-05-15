@@ -11,7 +11,9 @@ const actionTypes = {
   MODIFY_SAVED_ITEMS: "MODIFY_SAVED_ITEMS",
   UPDATE_ACCOUNT: "UPDATE_ACCOUNT",
   UPDATE_ERROR: "UPDATE_ERROR",
-  RESET_PASSWORD: "RESET_PASSWORD"
+  RESET_PASSWORD: "RESET_PASSWORD",
+  LOGOUT: "LOGOUT",
+  SHOW_RECENT_ORDER: "SHOW_RECENT_ORDER"
 };
 
 const getActions = uri => {
@@ -20,6 +22,13 @@ const getActions = uri => {
       return {
         type: actionTypes.CHANGE_OPTION,
         option: option
+      };
+    },
+    logout: () => {
+      sessionStorage.removeItem("token");
+      localStorage.removeItem("token");
+      return {
+        type: actionTypes.LOGOUT
       };
     },
     resetPassword: input => {
@@ -90,10 +99,34 @@ const getActions = uri => {
         return makePromise(execute(link, operation))
           .then(data => {
             let account = data.data.createAccount;
+            console.log(account);
+            dispatch(objects.sendWholeSaleAppEmail(account));
+            return Promise.resolve(account);
+          })
+          .catch(error => console.log(error));
+      };
+    },
+    sendWholeSaleAppEmail: account => {
+      let input = {
+        subject: "New Wholesale Application!",
+        company: account.company,
+        name: account.address.name + " " + account.address.surname,
+        email: account.email,
+        type: "wholesale-application",
+        body: account.description
+      };
+      return dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: mutation.sendEmail,
+          variables: { ...input }
+        };
+
+        makePromise(execute(link, operation))
+          .then(data => {
             dispatch({
               type: actionTypes.CREATE_ACCOUNT
             });
-            return Promise.resolve(account);
           })
           .catch(error => console.log(error));
       };
@@ -138,6 +171,12 @@ const getActions = uri => {
         dispatch({
           type: actionTypes.MODIFY_SAVED_ITEMS
         });
+      };
+    },
+    showRecentOrder: index => {
+      return {
+        type: actionTypes.SHOW_RECENT_ORDER,
+        index: index
       };
     }
   };
@@ -207,7 +246,27 @@ const mutation = {
       }
     }
   `,
-
+  sendEmail: gql`
+    mutation(
+      $type: String
+      $name: String
+      $phone: String
+      $email: String
+      $subject: String
+      $body: String
+    ) {
+      sendEmail(
+        input: {
+          type: $type
+          name: $name
+          phone: $phone
+          email: $email
+          subject: $subject
+          body: $body
+        }
+      )
+    }
+  `,
   createAccount: gql`
     mutation(
       $newPassword: String

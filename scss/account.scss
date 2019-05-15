@@ -136,15 +136,8 @@ button.tablink {
   color: #fff;
   background-color: #283fe5;
 }
-.active,
-.vcAccordion:hover {
-  background-color: transparent;
-  // background-color: #ccc;
-  color: #fff;
-}
 .vcPanel {
   padding: 0 18px;
-  display: none;
   background-color: white;
   overflow: hidden;
 }
@@ -154,8 +147,8 @@ ul.vcPanel-orders {
 ul.vcPanel-orders li {
   font-weight: bold;
   padding: 20px 0px;
-  list-style-type: decimal;
-  width: 25%;
+  list-style-type: none;
+  width: 33%;
 }
 ul.vcPanel-orders li ul li {
   font-weight: normal;

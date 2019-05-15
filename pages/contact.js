@@ -29,9 +29,7 @@ class Index extends Component {
               formData.forEach((value, key) => {
                 object[key] = value;
               });
-              var json = JSON.stringify(object);
-              console.log(json);
-
+              this.props.sendEmail({ ...object, type: "contact" });
               form.reset();
             }}
             className="vcWholesale-application flex flex-col justify-center"
@@ -54,6 +52,13 @@ class Index extends Component {
               placeholder="you@emailaddress.com"
             />
 
+            <label htmlFor="vcCompany">Company Name</label>
+            <input
+              type="text"
+              id="vcCompany"
+              name="company"
+              placeholder="Vancoast Industries"
+            />
             <label htmlFor="vcPhone">Company Phone</label>
             <input
               type="text"
@@ -75,10 +80,10 @@ class Index extends Component {
             <textarea
               type="textarea"
               id="vcMessage"
-              name="message"
+              name="body"
               rows="10"
               required
-              placeholder="Ask us what youd like to know."
+              placeholder="Ask us what you'd like to know."
             />
 
             <input
@@ -99,7 +104,8 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleAnimation: active => dispatch(actions.toggleAnimation(active))
+    toggleAnimation: active => dispatch(actions.toggleAnimation(active)),
+    sendEmail: input => dispatch(actions.sendEmail(input))
   };
 };
 

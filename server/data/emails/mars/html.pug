@@ -1,0 +1,350 @@
+
+doctype html
+html
+  head
+    block head
+      meta(charset="utf-8")
+      meta(name="viewport", content="width=device-width")
+      meta(http-equiv="X-UA-Compatible", content="IE=edge")
+      meta(name="x-apple-disable-message-reformatting")
+      link(href="https://fonts.googleapis.comcss?family=Nunito:400,700,800",rel="stylesheet")
+      style(type="text/css").
+        body {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          font-family: "Nunito", sans-serif;
+        }
+        .container {
+          background-color: #ffffff;
+          width: 100%;
+          height: 100%;
+          padding: 0 10px 25px 10px;
+        }
+        .innerContainer {
+          width: 85%;
+          height: 100%;
+          margin: 0 auto;
+        }
+        .orderDetails {
+          width: 100%;
+          height: 200px;
+          background-color: green;
+        }
+        .orderDetails {
+          width: 100%;
+          height: 200px;
+          background-color: white;
+          margin: 10px 0;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+        }
+        .orderDetailsContent {
+          width: 100%;
+          height: 100%;
+          display: inline-flex;
+        }
+        .payment {
+          width: 100%;
+          padding-bottom: 10px;
+          background-color: white;
+          margin: 10px 0;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+        }
+        .products {
+          width: 100%;
+          padding-bottom: 20px;
+          margin: 15px 0;
+          border-radius: 11px;
+          overflow: hidden;
+        }        
+        .productInfoName{
+          background-color:white; 
+          margin: 10px 0;
+           padding: 6px 0;
+          font-weight: 600; 
+          display:inline-block; 
+          width: 55%;
+          text-align: left;
+          padding-left: 10px;
+          font-size: 14px;
+          margin: 0 auto;
+        }
+        .productInfo{
+          background-color:white; 
+          margin: 10px 0;
+          padding: 6px 0;
+          font-weight: 600; 
+          display:inline-block; 
+          width: 20%;
+          font-size: 14px;
+          text-align: center;
+          margin: 0 auto;
+        }
+        .help {
+          width: 100%;
+          height: 200px;
+              font-size: 14px;
+          display: inline-flex;
+          justify-content: space-between;
+        }
+        .thanks {
+          width: 500px;
+          margin: 0 auto;
+          text-align: center;
+        }
+        .heading-red {
+          height: 35px;
+          width: 100%;
+          background-color: #ef5753;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+        }
+        @media only screen and (max-width: 1200px) {
+          .productInfoName{
+          background-color:white; 
+          margin: 10px 0;
+          padding: 6px 0;
+          font-weight: 600; 
+          display:inline-block; 
+          width: 89%;
+          text-align: center;
+          margin: 0 auto;
+        }
+         .productInfo{
+          background-color:white; 
+          margin: 10px 0;
+           padding: 6px 0;
+          font-weight: 600; 
+          display:inline-block; 
+          width: 5%;
+          text-align: center;
+          margin: 0 auto;
+        }
+        }
+
+
+  body
+    div(class="container")
+      div(class="innerContainer")
+        div(class="thanks")
+          img(src="http://dcfgweqx7od72.cloudfront.net/logos/cks-confirmation.png", class="", width="200px")
+          if ccStatus
+            if ccStatus.toLowerCase() == "declined" || ccStatus.toLowerCase() == ""
+              h1 Important
+              p(style="color: #ef5753;font-weight: bold;text-transform: uppercase;") Your order has been declined
+            else 
+              h1 Thank you
+              p(style="color: #ef5753;font-weight: bold;text-transform: uppercase;") Your order has been approved
+          else if paymentMethod =="Bitcoin" 
+            h1 Important
+              p(style="color: #ef5753;font-weight: bold;text-transform: uppercase;") Your order is pending
+          else 
+            h1 Thank you
+            p(style="color: #ef5753;font-weight: bold;text-transform: uppercase;") Your order has been approved!
+          p(style="color:#000; font-weight: bold") Please follow the instructions below.
+
+        div(class="orderDetails", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);")
+          div(class="heading-red", style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);")
+            p(style="color:white; padding: 8px 10px;display: flex;font-weight:bold;font-size: 16px;")
+              span Order ##{orderId}-CKS
+              span(style="margin: 0 0 0 auto") Date: #{date}
+
+          div(class="orderDetailsContent")
+            div(style="width: 33%; padding: 0 10px")
+              p(style="margin-bottom:0")
+                b Payment Method:
+              p(style="margin:0; font-size: 12px;") #{paymentMethod}
+
+            div(style="width: 33%; padding: 0 10px")
+              p(style="margin-bottom:0")
+                b Shipping Destination:
+              p(style="margin:0; font-size: 12px;") #{name},
+              p(style="margin:0; font-size: 12px;") #{shippingDestination.split("&=>")[0]},
+              p(style="margin:0; font-size: 12px;") #{shippingDestination.split("&=>")[1]},
+              p(style="margin:0; font-size: 12px;") #{shippingDestination.split("&=>")[2]},
+              p(style="margin:0; font-size: 12px;") #{shippingDestination.split("&=>")[3]},
+              p(style="margin:0; font-size: 12px;") #{shippingDestination.split("&=>")[4]}
+
+            div(style="width: 33%; padding: 0 10px")
+              p(style="margin-bottom:0")
+                b Shipping Type:
+              p(style="margin:0; font-size: 12px;") #{shippingType}
+              p(style="color:#ef5753; font-size: 12px;") *#{shippingTypeDescription}
+
+
+
+        div(class="payment" style="") 
+          div(class="heading-red") 
+            p(style="color:white; padding: 8px 10px; font-weight:bold;font-size: 16px;text-align:center; text-transform: uppercase;") Payment Instructions
+          div(style="padding: 0 20px") 
+            if paymentMethod =="Cash"
+              div(style="padding: 0 10px")
+                p(style="font-size: 14px;") To ensure that your cash order is successfully received please document your order number (
+                  strong #{orderId} -CKS) on a piece of paper, along side the requested amount in applicable currency:
+                p(style="text-align:center")
+                  b In-Organic Marketing
+                  br
+                  b 112 East 6th Ave
+                  br
+                  b Vancouver, BC
+                  br
+                  b V5T 1J5
+                  br 
+                  b Canada
+                p(style="text-align:center; font-size: 14px;") It is recommended that you wrap any cash within your mail (in newspaper, charcoal paper or tin foil) to ensure privacy.
+
+            else if paymentMethod =="Interac E Transfer"
+              div
+                p(style="text-align:center; font-size: 14px;") To complete your order please initiate an Interac E-Transfer:
+
+                div(style="text-align:center; font-size: 14px;")
+                  div(style="display:inline-block;width:40%;text-align:right;margin: 0 10px 0 0;")
+                    p(style="margin:0") Recipient Email:
+                    p(style="margin:0") Recipient Name:
+                    p(style="margin:0") Message (Order Number):
+                    p(style="margin:0") Security Question:
+                    p(style="margin:0") Security Answer:
+
+                  p(style="display:inline-block;width:40%;text-align:left;margin: 0 10px 0 0;")
+                    strong(style="margin-left: 3px;") organicmarketing11@gmail.com
+                    br
+                    strong(style="margin-left: 3px;") Vancouver
+                    br
+                    strong(style="margin-left: 3px;") ##{orderId}-CKS
+                    br
+                    strong(style="margin-left: 3px;") What is your favorite color
+                    br
+                    strong(style="margin-left: 3px;") green1
+
+                  p(style="text-align:center; font-size: 14px;")
+                    strong Important: Interac E-Transfers may take a few hours to be approved. Once a payment is successfully received we will ship your order on the next applicable business day.
+                    br 
+                    span To ensure your order is shipped as soon as possible, please call us to confirm the transfer.
+
+            else if paymentMethod =="Bitcoin"
+              div
+                p(style="font-size: 14px;") To complete your payment with Bitcoin, a new tab has been opened in which you can proceed to finalize your payment. If you are unable to finalize the payment please call our Customer Support at our
+                  span(style="text-decoration: underline; margin-left: 3px;") toll-free 
+                  span(style="margin-left: 3px;") number +1 (844) 276 - 7546.
+                br 
+                br 
+            else if paymentMethod =="MoneyGram"
+              div 
+                p(style="text-align:center; font-size: 14px;") The person you are sending the MoneyGram to is: 
+                  br 
+                  span Name of Receiver: 
+                  b #{moneyGram.name}
+                  br 
+                  span Street: 
+                  b #{moneyGram.address}
+                  br 
+                  span City: 
+                  b #{moneyGram.city + ", " + moneyGram.province}
+                  br
+                  span Postal/Zip Code: 
+                  b #{moneyGram.postal}
+                  br 
+                  span Country:
+                  b #{moneyGram.country}
+                  br  
+                  span Phone Number: 
+                  b #{moneyGram.phone}
+                  br
+                  span You are best to go to a retail MoneyGram location near you and pay cash in US dollars, as they will release the funds immediately.
+                  br
+                  span After sending the payment, please provide us with the following information so that we can claim the payment: 
+                  br
+                  span Name of Sender:
+                    b "Insert Your Sender Name"
+                  br
+                  span Payment Sent to:
+                    b #{moneyGram.name}
+                  br
+                  span Street:  
+                    b #{moneyGram.address}
+                  br
+                  span City: 
+                    b #{moneyGram.city + ", " + moneyGram.province}
+                  br
+                  span Postal/Zip Code: 
+                    b #{moneyGram.postal}
+                  br 
+                  span Country: 
+                    b #{moneyGram.country}
+                  br
+                  span Amount:
+                    b $#{total.toFixed(2)}
+                  br 
+                  span Reference #:
+                    b "Insert Your Reference Number"
+                  br
+                  span We will then process and ship your order within 48 hours.
+            else 
+              div
+                p
+                  if ccStatus.toLowerCase() == "declined"  
+                    span
+                     p(style="color: #ef5753; text-transform: uppercase;font-size: 17px; font-weight: bold; text-align: center;") Your Credit Card was Declined. 
+                      br 
+                      span We are unable to process your order!
+                      br 
+                      span(style="margin-top: 28px; color: black; font-size: 15px;") Please call our Customer Support at our toll-free number +1 (844) 276 - 7546.
+                      br 
+                      span Once your payment has been received we will ship your order on the next applicable business day.
+                  else if ccStatus == ""
+                    p(style="color: #ef5753; text-transform: uppercase;font-size: 17px; font-weight: bold; text-align: center;") Your Order is Too Large.                     
+                      br 
+                      span We are unable to process your large order!
+                      br 
+                      p(style="margin-top: 28px; color: black; font-size: 15px;") Please call our Customer Support at our toll-free number +1 (844) 276 - 7546.
+                      br 
+                      span Once your payment has been received we will ship your order on the next applicable business day.
+                  else
+                    span Your payment has been approved, we will ship your order on the next applicable business day.
+                  p
+                    strong Important: The displayed order total may vary depending on fluctuations in conversion rates and bank processing fees. All charges will show up as '#{ccDescriptor}' on your credit card statement once successfully processed.
+                    br 
+                    span If you have any concerns or issues please contact our customer service representatives for help.
+
+        div(style="width: 100%;margin: 0 auto;height: 20px;border-top-left-radius: 5px;border-top-right-radius: 5px;position: relative;background-color: #ef5753;top: 20px;z-index:-10;")
+        table(class="products") 
+          tr(class="heading-red") 
+            td(style="display:inline-block;width:54%;text-align:center;color:white;margin: 0; padding: 8px 10px; font-weight:bold;font-size: 16px;") Product
+            td(style="display:inline-block;width:15%;text-align:center;color:white;margin: 0; padding: 8px 10px; font-weight:bold;font-size: 16px;") Qty
+            td(style="display:inline-block;width:15%;text-align:center;color:white;margin: 0; padding: 8px 10px; font-weight:bold;font-size: 16px;") Price
+
+          each val in productList.split("&=>")
+            tr(style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.12),0 2px 4px 0 rgba(0,0,0,0.08); background-color:white; margin: 10px 0;padding: 0 10px; border-width: 5px 0px 5px 0px; border-style: solid; border-color: #f5f5f5;")
+              td(class="productInfoName") #{val.split("x")[0]} - #{val.split("x")[1]} seeds
+              td(class="productInfo") #{val.split("x")[3]}
+              td(class="productInfo") $#{val.split("x")[2]}
+
+        div(class="help")
+          div
+            p(style="margin: 5px 0;") Need Help?
+
+              p(style="margin: 5px 0;") 
+                b We are available to assist you 24/7.
+              p(style="margin: 5px 0;") Canada: (604) 563-0291
+              p(style="margin: 5px 0;") USA: +1 (844) 276-7546
+              p(style="margin: 5px 0;") International: +1 (604) 563-0291
+              p(style="margin: 5px 0;") Email: info@cropkingseeds.com
+
+          div(style="margin: 0 0 0 auto;")
+            p(style="text-align:right;") 
+              span Subtotal:
+              span(style="margin: 0 0 0 5px;") $#{subtotal.toFixed(2)}
+            p(style="text-align:right;") 
+              span Shipping:
+              span(style="margin: 0 0 0 5px;") $#{shipping.toFixed(2)}
+            if ccFee
+              p(style="text-align:right;") 
+                span Credit Card Fee (10%):
+                span(style="margin: 0 0 0 5px;") $#{ccFee.toFixed(2)}
+            p(style="text-align:right;") 
+              span Tax:
+              span(style="margin: 0 0 0 5px;") $#{tax.toFixed(2)}
+            p(style="text-align:right;") 
+              b Total:
+              b(style="margin: 0 0 0 5px;") $#{total.toFixed(2)}

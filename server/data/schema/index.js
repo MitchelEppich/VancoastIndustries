@@ -34,6 +34,11 @@ let typeDefs = `
   input EmailInput {
     email: String
     newPassword: String
+    body: String
+    name: String
+    phone: String
+    type: String
+    subject: String
   }
 
   ${definitions.Other || ""}

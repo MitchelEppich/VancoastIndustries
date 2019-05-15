@@ -101,7 +101,6 @@ const actions = {
     };
   },
   subscribeToNewsletter: input => {
-    console.log(input);
     return dispatch => {
       const link = new HttpLink({ uri, fetch: fetch });
       const operation = {
@@ -152,6 +151,7 @@ const mutation = {
     mutation(
       $type: String
       $name: String
+      $phone: String
       $email: String
       $subject: String
       $body: String
@@ -160,6 +160,7 @@ const mutation = {
         input: {
           type: $type
           name: $name
+          phone: $phone
           email: $email
           subject: $subject
           body: $body

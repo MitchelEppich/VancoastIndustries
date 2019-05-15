@@ -1,238 +1,65 @@
+import moment from "moment";
+import { itemBuilder } from "../../scripts/savedItems";
+
 const orders = props => {
+  let orders = props.account.recentOrders.map((order, index) => {
+    let strains = itemBuilder({
+      products: props.shop.strains,
+      savedItems: order.strains
+    }).map((strain, index) => {
+      return (
+        <li key={index}>
+          {strain.alias}
+          <ul>
+            <li>
+              <span className="vcType capitalize">{strain.type}</span>
+            </li>
+            <li>
+              Brand - <span className="">{strain.company.name}</span>
+            </li>
+            <li className="vcPanel-qty">
+              QTY. x<span className="">{strain.quantity}</span>
+            </li>
+            <li>
+              Price{" "}
+              <span className="">
+                ${strain.price[strain.size.indexOf(strain.packSize)]}
+              </span>
+            </li>
+          </ul>
+        </li>
+      );
+    });
+
     return (
-        <div id="vcRecent-tab" className="tabcontent">
-            <h1>Recent Orders</h1>
-            <p>Below are your recent orders.</p>
-
-            <div className="vcAccordion flex flex-row justify-between items-center">
-                Order #3 (01/15/2019) <a href="#">Re-Order</a>
-            </div>
-            <div className="vcPanel">
-                <ul className="vcPanel-orders flex flex-row justify-start">
-                    <li>
-                        Bruce Banner
-                        <ul>
-                            <li>
-                                <span className="vcType">Indica</span>
-                            </li>
-                            <li>
-                                Brand - <span className="">Sonoma Seeds</span>
-                            </li>
-                            <li className="vcPanel-qty">
-                                QTY. x<span className="">3</span>
-                            </li>
-                            <li>
-                                Price <span className="">$155</span>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Lambs Breath
-                        <ul>
-                            <li>
-                                <span className="vcType">Sativa</span>
-                            </li>
-                            <li>
-                                Brand - <span className="">Crop King Seeds</span>
-                            </li>
-                            <li className="vcPanel-qty">
-                                QTY. x<span className="">5</span>
-                            </li>
-                            <li>
-                                Price <span className="">$155</span>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Purple Kush
-                        <ul>
-                            <li>
-                                <span className="vcType">Indica</span>
-                            </li>
-                            <li>
-                                Brand - <span className="">Sunwest Genetics</span>
-                            </li>
-                            <li className="vcPanel-qty">
-                                QTY. x<span className="">3</span>
-                            </li>
-                            <li>
-                                Price <span className="">$155</span>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Chocolope
-                        <ul>
-                            <li>
-                                <span className="vcType">Indica</span>
-                            </li>
-                            <li>
-                                Brand - <span className="">Sunwest Genetics</span>
-                            </li>
-                            <li className="vcPanel-qty">
-                                QTY. x<span className="">3</span>
-                            </li>
-                            <li>
-                                Price <span className="">$155</span>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div className="vcAccordion flex flex-row justify-between items-center">
-                Order #2 (12/01/2018)<a href="#">Re-Order</a>
-            </div>
-            <div className="vcPanel">
-                <ul className="vcPanel-orders flex flex-row justify-start">
-                    <li>
-                        Bruce Banner
-                        <ul>
-                            <li>
-                                <span className="vcType">Indica</span>
-                            </li>
-                            <li>
-                                Brand - <span className="">Sonoma Seeds</span>
-                            </li>
-                            <li className="vcPanel-qty">
-                                QTY. x<span className="">3</span>
-                            </li>
-                            <li>
-                                Price <span className="">$155</span>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Lambs Breath
-                        <ul>
-                            <li>
-                                <span className="vcType">Sativa</span>
-                            </li>
-                            <li>
-                                Brand - <span className="">Crop King Seeds</span>
-                            </li>
-                            <li className="vcPanel-qty">
-                                QTY. x<span className="">5</span>
-                            </li>
-                            <li>
-                                Price <span className="">$155</span>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Purple Kush
-                        <ul>
-                            <li>
-                                <span className="vcType">Indica</span>
-                            </li>
-                            <li>
-                                Brand - <span className="">Sunwest Genetics</span>
-                            </li>
-                            <li className="vcPanel-qty">
-                                QTY. x<span className="">3</span>
-                            </li>
-                            <li>
-                                Price <span className="">$155</span>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Chocolope
-                        <ul>
-                            <li>
-                                <span className="vcType">Indica</span>
-                            </li>
-                            <li>
-                                Brand - <span className="">Sunwest Genetics</span>
-                            </li>
-                            <li className="vcPanel-qty">
-                                QTY. x<span className="">3</span>
-                            </li>
-                            <li>
-                                Price <span className="">$155</span>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Purple Kush
-                        <ul>
-                            <li>
-                                <span className="vcType">Indica</span>
-                            </li>
-                            <li>
-                                Brand - <span className="">Sunwest Genetics</span>
-                            </li>
-                            <li className="vcPanel-qty">
-                                QTY. x<span className="">3</span>
-                            </li>
-                            <li>
-                                Price <span className="">$155</span>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
-            <div className="vcAccordion flex flex-row justify-between items-center">
-                Order #1 (09/17/2018) <a href="#">Re-Order</a>
-            </div>
-            <div className="vcPanel">
-                <ul className="vcPanel-orders flex flex-row justify-start">
-                    <li>
-                        Bruce Banner
-                        <ul>
-                            <li>
-                                <span className="vcType">Indica</span>
-                            </li>
-                            <li>
-                                Brand - <span className="">Sonoma Seeds</span>
-                            </li>
-                            <li className="vcPanel-qty">
-                                QTY. x<span className="">3</span>
-                            </li>
-                            <li>
-                                Price <span className="">$155</span>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Lambs Breath
-                        <ul>
-                            <li>
-                                <span className="vcType">Sativa</span>
-                            </li>
-                            <li>
-                                Brand - <span className="">Crop King Seeds</span>
-                            </li>
-                            <li className="vcPanel-qty">
-                                QTY. x<span className="">5</span>
-                            </li>
-                            <li>
-                                Price <span className="">$155</span>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Purple Kush
-                        <ul>
-                            <li>
-                                <span className="vcType">Indica</span>
-                            </li>
-                            <li>
-                                Brand - <span className="">Sunwest Genetics</span>
-                            </li>
-                            <li className="vcPanel-qty">
-                                QTY. x<span className="">3</span>
-                            </li>
-                            <li>
-                                Price <span className="">$155</span>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+      <React.Fragment key={index}>
+        <div
+          onClick={() => props.showRecentOrder(index)}
+          className="vcAccordion flex flex-row justify-between items-center"
+        >
+          {moment(order.date).format("MMM Do YYYY")}{" "}
+          <a onClick={e => e.stopPropagation()} href="#">
+            Re-Order
+          </a>
         </div>
+        {props.account.showRecentOrder == index ? (
+          <div className="vcPanel">
+            <ul className="vcPanel-orders flex flex-row justify-start list-reset">
+              {strains}
+            </ul>
+          </div>
+        ) : null}
+      </React.Fragment>
     );
+  });
+
+  return (
+    <div id="vcRecent-tab" className="tabcontent">
+      <h1>Recent Orders</h1>
+      <p>Below are your recent orders.</p>
+      {orders}
+    </div>
+  );
 };
 
 export default orders;
