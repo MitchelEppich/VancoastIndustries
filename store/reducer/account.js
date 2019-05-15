@@ -41,6 +41,7 @@ export default (state = initialState, action) => {
     case actionTypes.VERIFY_CREDENTIALS:
       return updateObject(state, { currentUser: action.currentUser });
     case actionTypes.UPDATE_ACCOUNT:
+      console.log(action);
       return updateObject(state, {
         currentUser: action.currentUser,
         updateError: null
@@ -52,7 +53,7 @@ export default (state = initialState, action) => {
     case actionTypes.UPDATE_ERROR:
       return updateObject(state, { updateError: action.error });
     case actionTypes.ADD_TO_WISH_LIST:
-      return updateObject(state, { currentUser: action.currentUser });
+      return updateObject(state, {});
     default:
       return state;
   }

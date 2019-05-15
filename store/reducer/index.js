@@ -24,7 +24,9 @@ const initialState = {
   searchValue: "",
   showMobileMenu: false,
   alert: null,
-  MATM: false
+  MATM: false,
+  emailSent: false,
+  subscribedToNewsletter: false
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -49,6 +51,12 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, { pageReady: action.pageReady });
     case actionTypes.TOGGLE_ALERT:
       return updateObject(state, { alert: action.alertObj });
+    case actionTypes.SEND_EMAIL:
+      return updateObject(state, { emailSent: true });
+    case actionTypes.REFRESH_EMAIL_FORM:
+      return updateObject(state, { emailSent: false });
+    case actionTypes.SUBSCRIBE_TO_NEWSLETTER:
+      return updateObject(state, { subscribedToNewsletter: true });
     default:
       return state;
   }

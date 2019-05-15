@@ -10,19 +10,36 @@ const footer = props => {
             <span className="vcSubscribe-van">Vancoast</span>{" "}
             <span className="vcSubscribe-news">Newsletter</span>
           </h3>
-          <form action="/action_page.php">
-            <input
-              aria-label="newsletter-subscription"
-              className="vcNewsletter-input"
-              type="text"
-              placeholder="Enter your email..."
-            />
-            <input
-              className="vcNewsletter-btn sm:mt-4"
-              type="submit"
-              value="Subscribe"
-            />
-          </form>
+          {props.misc.subscribedToNewsletter ? (
+            <p className="text-2xl font-bold text-white mt-2 -ml-8">
+              Thank you for subscribing!
+            </p>
+          ) : (
+            <form
+              onSubmit={e => {
+                e.preventDefault();
+                const form = e.target;
+                const formData = new window.FormData(form);
+
+                let email = formData.get("email");
+
+                props.subscribeToNewsletter({ email });
+              }}
+            >
+              <input
+                aria-label="newsletter-subscription"
+                className="vcNewsletter-input"
+                type="text"
+                name="email"
+                placeholder="Enter your email..."
+              />
+              <input
+                className="vcNewsletter-btn sm:mt-4"
+                type="submit"
+                value="Subscribe"
+              />
+            </form>
+          )}
         </div>
       </div>
 

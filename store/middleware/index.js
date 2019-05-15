@@ -8,7 +8,6 @@ const middleware = [
     return next => {
       return action => {
         const result = next(action);
-       
         return result;
       };
     };
