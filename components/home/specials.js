@@ -1,7 +1,7 @@
 const specials = props => {
   let specials = props.shop.strains.slice(0, 3).map((strain, index) => {
     return (
-      <div className="vcSpecials-product scale-item">
+      <div key={index} className="vcSpecials-product scale-item">
         <div className="vcSpecials-img">
           <a href="">
             <img
