@@ -34,7 +34,9 @@ const actionTypes = {
   SET_SEARCH_VALUE: "SET_SEARCH_VALUE",
   TOGGLE_MOBILE_MENU: "TOGGLE_MOBILE_MENU",
   TOGGLE_ALERT: "TOGGLE_ALERT",
-  TOGGLE_MATM: "TOGGLE_MATM"
+  TOGGLE_MATM: "TOGGLE_MATM",
+  SUBSCRIBE_TO_NEWSLETTER: "SUBSCRIBE_TO_NEWSLETTER",
+  SEND_EMAIL: "SEND_EMAIL"
 };
 
 const actions = {
@@ -97,12 +99,75 @@ const actions = {
       type: actionTypes.TOGGLE_ALERT,
       alertObj: alertObj
     };
+  },
+  subscribeToNewsletter: input => {
+    console.log(input);
+    return dispatch => {
+      const link = new HttpLink({ uri, fetch: fetch });
+      const operation = {
+        query: mutation.subscribeToNewsletter,
+        variables: { ...input }
+      };
+
+      makePromise(execute(link, operation))
+        .then(data => {
+          dispatch({
+            type: actionTypes.SUBSCRIBE_TO_NEWSLETTER
+          });
+        })
+        .catch(error => console.log(error));
+    };
+  },
+  sendEmail: input => {
+    return dispatch => {
+      const link = new HttpLink({ uri, fetch: fetch });
+      const operation = {
+        query: mutation.sendEmail,
+        variables: { ...input }
+      };
+
+      makePromise(execute(link, operation))
+        .then(data => {
+          dispatch({
+            type: actionTypes.SEND_EMAIL
+          });
+        })
+        .catch(error => console.log(error));
+    };
+  },
+  refreshEmailForm: () => {
+    return { type: actionTypes.REFRESH_EMAIL_FORM };
   }
 };
 
 const query = {};
 
-const mutation = {};
+const mutation = {
+  subscribeToNewsletter: gql`
+    mutation($email: String) {
+      subscribeToNewsletter(email: $email)
+    }
+  `,
+  sendEmail: gql`
+    mutation(
+      $type: String
+      $name: String
+      $email: String
+      $subject: String
+      $body: String
+    ) {
+      sendEmail(
+        input: {
+          type: $type
+          name: $name
+          email: $email
+          subject: $subject
+          body: $body
+        }
+      )
+    }
+  `
+};
 
 export default {
   // TYPES

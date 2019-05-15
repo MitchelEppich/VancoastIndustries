@@ -40,7 +40,8 @@ let typeDefs = `
 
   type Mutation {
     ${definitions.Mutation || ""}
-    sendEmail(input: EmailInput) : String
+    sendEmail(input: EmailInput): String
+    subscribeToNewsletter(email: String): String
   } 
 `;
 

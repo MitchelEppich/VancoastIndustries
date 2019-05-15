@@ -1,6 +1,8 @@
 const Account = require("./account");
 const Address = require("./address");
 
+const { Email } = require("../../models");
+
 const nodemailer = require("nodemailer");
 const path = require("path");
 // const emailTemplates = require("../emails");
@@ -23,6 +25,15 @@ for (let i = 0; i < imports.length; i++) {
 
 resolvers["Mutation"] = {
   ...resolvers["Mutation"],
+  subscribeToNewsletter: async (_, input) => {
+    let email = new Email({
+      ...input
+    });
+
+    email.save();
+
+    return input.email + " has been subscribed to the newsletter!";
+  },
   sendEmail: async (_, { input }) => {
     let transporter = nodemailer.createTransport({
       service: "gmail",

@@ -69,9 +69,10 @@ const info = props => {
             <input
               required
               type="text"
+              disabled
               id=""
               name="firstName"
-              className="w-full"
+              className="w-full opacity-75"
               placeholder="First Name"
               defaultValue={
                 account != null && account.address != null
@@ -87,8 +88,9 @@ const info = props => {
               required
               type="text"
               id=""
+              disabled
               name="lastName"
-              className="w-full"
+              className="w-full opacity-75"
               placeholder="Last Name"
               defaultValue={
                 account != null && account.address != null
@@ -105,8 +107,9 @@ const info = props => {
               required
               type="text"
               id="vcCompany"
+              disabled
               name="company"
-              className="w-full"
+              className="w-full opacity-75"
               placeholder="Company Name"
               defaultValue={account != null ? account.company : ""}
             />
@@ -118,8 +121,9 @@ const info = props => {
               required
               type="text"
               id="vcEmail"
+              disabled
               name="email"
-              className="w-full"
+              className="w-full opacity-75"
               placeholder="you@companyname.com"
               defaultValue={account != null ? account.email : ""}
             />{" "}
@@ -132,8 +136,9 @@ const info = props => {
               required
               type="text"
               id="vcPhone"
+              disabled
               name="phone"
-              className="w-full"
+              className="w-full opacity-75"
               placeholder="555-555-5555"
               defaultValue={
                 account != null && account.address != null
@@ -150,7 +155,8 @@ const info = props => {
               type="text"
               id="vcWebsite"
               name="website"
-              className="w-full"
+              disabled
+              className="w-full opacity-75"
               placeholder="www.yoursite.com"
               defaultValue={account != null ? account.website : ""}
             />
@@ -162,8 +168,9 @@ const info = props => {
               required
               type="text"
               id="vcLicense"
+              disabled
               name="license"
-              className="w-full"
+              className="w-full opacity-75"
               placeholder="#License"
               defaultValue={account != null ? account.license : ""}
             />
@@ -176,8 +183,9 @@ const info = props => {
               required
               type="text"
               id="vcAddress"
+              disabled
               name="address"
-              className="w-full"
+              className="w-full opacity-75"
               placeholder="291 E. Hans Street"
               defaultValue={
                 account != null && account.address != null
@@ -194,7 +202,8 @@ const info = props => {
               type="text"
               id="vcCity"
               name="city"
-              className="w-full"
+              disabled
+              className="w-full opacity-75"
               placeholder="Smith Ville"
               defaultValue={
                 account != null && account.address != null
@@ -212,7 +221,8 @@ const info = props => {
               type="text"
               id="vcState"
               name="state"
-              className="w-full"
+              disabled
+              className="w-full opacity-75"
               placeholder="British Columbia"
               defaultValue={
                 account != null && account.address != null
@@ -228,7 +238,8 @@ const info = props => {
               className="vcCountry"
               name="country"
               id="vcCountry"
-              className="w-full"
+              disabled
+              className="w-full opacity-75"
               defaultValue={
                 account != null && account.address != null
                   ? account.address.country.toUpperCase()
@@ -245,7 +256,8 @@ const info = props => {
               type="text"
               id="vcPostal"
               name="postal"
-              className="w-full"
+              disabled
+              className="w-full opacity-75"
               placeholder="V5T 1J9"
               defaultValue={
                 account != null && account.address != null
@@ -262,14 +274,15 @@ const info = props => {
             type="textarea"
             id="vcMessage"
             name="description"
-            className="w-full"
+            disabled
+            className="w-full opacity-75"
             rows="10"
             placeholder="Some stuff here about the company and what makes the co."
             defaultValue={account != null ? account.description : ""}
           />
         </label>
 
-        <input type="submit" value="Save" />
+        {/* <input type="submit" value="Save" /> */}
       </form>
     </div>
   );
