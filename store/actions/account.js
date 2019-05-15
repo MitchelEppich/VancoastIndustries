@@ -8,7 +8,7 @@ const actionTypes = {
   CHANGE_OPTION: "CHANGE_OPTION",
   VERIFY_CREDENTIALS: "VERIFY_CREDENTIALS",
   CREATE_ACCOUNT: "CREATE_ACCOUNT",
-  ADD_TO_WISH_LIST: "ADD_TO_WISH_LIST",
+  MODIFY_SAVED_ITEMS: "MODIFY_SAVED_ITEMS",
   UPDATE_ACCOUNT: "UPDATE_ACCOUNT",
   UPDATE_ERROR: "UPDATE_ERROR",
   RESET_PASSWORD: "RESET_PASSWORD"
@@ -127,16 +127,16 @@ const getActions = uri => {
           .catch(error => console.log(error));
       };
     },
-    addToWishList: input => {
+    modifySavedItems: input => {
       return dispatch => {
-        let savedItem = stringBuilder(input);
+        let savedItem = (input.remove ? "R_" : "") + stringBuilder(input);
 
         dispatch(
           objects.updateAccount({ _id: input.currentUser._id, savedItem })
         );
 
         dispatch({
-          type: actionTypes.ADD_TO_WISH_LIST
+          type: actionTypes.MODIFY_SAVED_ITEMS
         });
       };
     }

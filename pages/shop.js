@@ -84,7 +84,7 @@ const mapDispatchToProps = dispatch => {
     modifyPotentialQuantity: input =>
       dispatch(actions.modifyPotentialQuantity(input)),
     modifyCart: input => dispatch(actions.modifyCart(input)),
-    addToWishList: input => dispatch(actions.addToWishList(input)),
+    modifySavedItems: input => dispatch(actions.modifySavedItems(input)),
     toggleFullSummary: input => dispatch(actions.toggleFullSummary())
   };
 };

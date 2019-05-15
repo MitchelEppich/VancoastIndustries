@@ -51,7 +51,7 @@ export default (state = initialState, action) => {
       return updateObject(state, {});
     case actionTypes.UPDATE_ERROR:
       return updateObject(state, { updateError: action.error });
-    case actionTypes.ADD_TO_WISH_LIST:
+    case actionTypes.MODIFY_SAVED_ITEMS:
       return updateObject(state, { currentUser: action.currentUser });
     default:
       return state;

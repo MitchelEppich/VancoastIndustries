@@ -11,7 +11,18 @@ const index = props => {
 
   return (
     <li className="vcItem vcItem-one flex relative">
-      <div className="w-full flex justify-end absolute pin-r pin-t mt-6 ">
+      <div
+        onClick={() => {
+          props.modifySavedItems({
+            currentUser: props.account.currentUser,
+            remove: true,
+            product: props.item,
+            quantity: props.item.quantity,
+            packSize: props.item.packSize
+          });
+        }}
+        className="w-full flex justify-end absolute pin-r pin-t mt-6 "
+      >
         <FontAwesomeIcon
           icon={faTimes}
           className="fa-lg hover:text-blue text-grey-light cursor-pointer"

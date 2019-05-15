@@ -75,7 +75,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.quickAddToCartQty(0));
       dispatch(actions.setCurrentProduct(product));
     },
-    addToWishList: input => dispatch(actions.addToWishList(input)),
+    modifySavedItems: input => dispatch(actions.modifySavedItems(input)),
     toggleFullSummary: input => dispatch(actions.toggleFullSummary()),
     toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj)),
     setQuickView: input => dispatch(actions.setQuickView(input))

@@ -44,7 +44,8 @@ const mapDispatchToProps = dispatch => {
   return {
     changeOption: option => dispatch(actions.changeOption(option)),
     updateAccount: input => dispatch(actions.updateAccount(input)),
-    resetPassword: input => dispatch(actions.resetPassword(input))
+    resetPassword: input => dispatch(actions.resetPassword(input)),
+    modifySavedItems: input => dispatch(actions.modifySavedItems(input))
   };
 };
 
