@@ -1,5 +1,6 @@
 import Cart from "./cart";
 import SelectedPayment from "./selectedPayment";
+import Router from "next/router";
 
 const payment = props => {
   let shipping = props.checkout.orderDetails.shipping;
@@ -90,8 +91,12 @@ const payment = props => {
       <form
         onSubmit={e => {
           e.preventDefault();
-          this.props.changeStep("Confirmation");
-          window.scrollTo(0, 0);
+          if (props.checkout.orderDetails.payment) {
+            if (props.checkout.orderDetails.payment.selectedOption.length > 1) {
+              window.scrollTo(0, 0);
+              Router.push("/confirmation");
+            }
+          }
         }}
       >
         <div className="vcPayment-method">

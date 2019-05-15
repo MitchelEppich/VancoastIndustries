@@ -30,15 +30,7 @@ class Index extends Component {
       <Layout {...this.props}>
         <article className="vcPage-content vcCheckout">
           <Header title={this.props.checkout.currentStep} {...this.props} />
-          {/* <form
-            onSubmit={e => {
-              e.preventDefault();
-              this.props.changeStep("Confirmation");
-              window.scrollTo(0, 0);
-            }}
-          > */}
           {currentStep}
-          {/* </form> */}
         </article>
       </Layout>
     );
