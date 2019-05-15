@@ -42,11 +42,11 @@ const index = props => {
             className="vcSingle-intro flex justify-center items-center flex-col w-full"
           >
             <img
-              className="sm:hidden h-200"
+              className="sm:hidden h-200 scale-item cursor-pointer"
               src="../static/img/products/sunwest/single-front/sw-kali-mist-406x412.png"
               alt="kali mist"
             />
-            <h1 className="flex items-center justify-center">
+            <h1 className="flex items-center cursor-pointer justify-center">
               {product.alias}
             </h1>
             <h3 className="vcProduct-cat">{product.type}</h3>
@@ -143,7 +143,7 @@ const index = props => {
               className="vcSaveItem-btn"
             >
               <span className="font-bold text-white">
-                {itemSaved ? "Saved" : "Save for Later"}
+                {itemSaved ? "Item Saved" : "Save for Later"}
               </span>
               <FontAwesomeIcon
                 icon={faHeart}

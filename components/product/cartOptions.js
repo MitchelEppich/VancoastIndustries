@@ -152,7 +152,7 @@ const cartOptions = props => {
           className="vcSaveItem-btn"
         >
           <span className="font-bold text-white">
-            {itemSaved ? "Saved" : "Save for Later"}
+            {itemSaved ? "Item Saved" : "Save for Later"}
           </span>
           <FontAwesomeIcon
             icon={faHeart}

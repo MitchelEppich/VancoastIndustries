@@ -102,8 +102,9 @@ const payment = props => {
             <label className="flex flex-col" htmlFor="CashMoney">
               <span>Cash</span>
               <img
+                style={{ width: "auto" }}
                 src="../../../static/img/assets/payment/cash-icon.jpg"
-                className="h-10 w-auto sm:h-8"
+                className="h-10"
               />
             </label>
 
@@ -124,8 +125,9 @@ const payment = props => {
             <label className="flex flex-col" htmlFor="Crypto">
               <span className="text-base">Cryptos</span>
               <img
+                style={{ width: "auto" }}
                 src="../../../static/img/assets/payment/crypto-icons.jpg"
-                className="h-10 w-auto sm:h-8"
+                className="h-10"
               />
             </label>
 
@@ -146,8 +148,9 @@ const payment = props => {
             <label className="flex flex-col" htmlFor="MoneyTransfer">
               <span>Money Transfer</span>
               <img
+                style={{ width: "auto" }}
                 src="../../../static/img/assets/payment/interac-transfer.jpg"
-                className="h-10 w-auto sm:h-8"
+                className="h-10"
               />
             </label>
 
@@ -168,8 +171,9 @@ const payment = props => {
             <label className=" flex flex-col" htmlFor="CreditCard">
               <span>Credit Card</span>
               <img
+                style={{ width: "auto" }}
                 src="../../../static/img/assets/payment/visaMastercard-logo.jpg"
-                className="h-10 w-auto sm:h-8"
+                className="h-10"
               />
             </label>
           </div>
