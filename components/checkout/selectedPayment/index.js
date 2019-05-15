@@ -1,24 +1,21 @@
-import { CreditCard, Crypto, Cash, EMT } from "./options";
+import { Cash, Cheque, EMT } from "./options";
 
 const index = props => {
-  let selectedOption = props.checkout.orderDetails.payment.selectedOption;
+  let selectedOption;
+  let {
+    payment: { method: { value = null } = {} }
+  } = props.checkout.orderDetails;
 
-  switch (selectedOption) {
-    case "creditCard":
-      selectedOption = <CreditCard {...props} />;
+  switch (value) {
+    case "Cheque":
+      selectedOption = <Cheque {...props} />;
       break;
-    case "crypto":
-      selectedOption = <Crypto {...props} />;
-      break;
-    case "cash":
+    case "Cash":
       selectedOption = <Cash {...props} />;
       break;
-    case "emt":
+    case "E-Transfer":
       selectedOption = <EMT {...props} />;
       break;
-    // case "moneyGram":
-    //   selectedOption = <MoneyGram {...props} />;
-    //   break;
     default:
       selectedOption = (
         <div className="w-full flex justify-center text-2xl font-bold mt-5 mb-12">

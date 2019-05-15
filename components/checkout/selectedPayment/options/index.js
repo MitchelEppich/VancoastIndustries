@@ -1,5 +1,4 @@
 import EMT from "./emt";
-import CreditCard from "./creditCard";
-import Crypto from "./crypto";
 import Cash from "./cash";
-export { EMT, CreditCard, Crypto, Cash };
+import Cheque from "./cheque";
+export { EMT, Cheque, Cash };

@@ -101,7 +101,6 @@ const actions = {
     };
   },
   subscribeToNewsletter: input => {
-    console.log(input);
     return dispatch => {
       const link = new HttpLink({ uri, fetch: fetch });
       const operation = {

@@ -34,34 +34,33 @@ const shipping = props => {
         id="shippingForm"
         onSubmit={e => {
           e.preventDefault();
+          let tags = {
+            address: "ShipAddress1",
+            city: "ShipCity",
+            country: "ShipCountry",
+            email: "ShipEmail",
+            name: "ShipFirstName",
+            surname: "ShipLastName",
+            phone: "ShipPhoneNum",
+            postal: "ShipPostal_Zip_Code",
+            state: "ShipState",
+            apartment: "ShipAppartment"
+          };
           props.changeStep("Billing");
           window.scrollTo(0, 0);
           const form = e.target;
           const formData = new window.FormData(form);
           var object = {};
           formData.forEach((value, key) => {
-            object[key] = value;
+            object[key] = { value, tag: tags[key] };
           });
           console.log(object);
-          let $form = document.getElementById("shippingForm");
-          let $inputs = $form.getElementsByTagName("input");
-
-          // console.log($inputs);
         }}
       >
         <div className="vcCheckout-content">
           <div className="vcWholesale-application flex flex-col justify-center">
             <label htmlFor="vcName">Name*</label>
             <input
-              onChange={e =>
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  shipping: {
-                    ...props.checkout.orderDetails.shipping,
-                    firstName: e.target.value
-                  }
-                })
-              }
               type="text"
               id="vcName"
               name="name"
@@ -70,15 +69,6 @@ const shipping = props => {
               defaultValue={shipping != null ? shipping.name : ""}
             />
             <input
-              onChange={e =>
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  shipping: {
-                    ...props.checkout.orderDetails.shipping,
-                    lastName: e.target.value
-                  }
-                })
-              }
               type="text"
               id="vcName"
               name="surname"
@@ -87,36 +77,8 @@ const shipping = props => {
               defaultValue={shipping != null ? shipping.surname : ""}
             />
 
-            <label htmlFor="vcCompany">Company Name*</label>
-            <input
-              onChange={e =>
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  shipping: {
-                    ...props.checkout.orderDetails.shipping,
-                    company: e.target.value
-                  }
-                })
-              }
-              type="text"
-              id="vcCompany"
-              name="company"
-              required
-              placeholder="Company Name"
-              defaultValue={account != null ? account.company : ""}
-            />
-
             <label htmlFor="vcEmail">Email Address*</label>
             <input
-              onChange={e =>
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  shipping: {
-                    ...props.checkout.orderDetails.shipping,
-                    email: e.target.value
-                  }
-                })
-              }
               type="text"
               id="vcEmail"
               required
@@ -127,15 +89,6 @@ const shipping = props => {
 
             <label htmlFor="vcStreet">Street Address*</label>
             <input
-              onChange={e =>
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  shipping: {
-                    ...props.checkout.orderDetails.shipping,
-                    streetAddress: e.target.value
-                  }
-                })
-              }
               type="text"
               id="vcStreet"
               name="address"
@@ -143,17 +96,19 @@ const shipping = props => {
               placeholder=""
               defaultValue={shipping != null ? shipping.address : ""}
             />
+
+            <label htmlFor="vcApartment">Apartment*</label>
+            <input
+              type="text"
+              id="vcApartment"
+              name="apartment"
+              required
+              placeholder=""
+              defaultValue={shipping != null ? shipping.apartment : ""}
+            />
+
             <label htmlFor="vcCity">City*</label>
             <input
-              onChange={e =>
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  shipping: {
-                    ...props.checkout.orderDetails.shipping,
-                    city: e.target.value
-                  }
-                })
-              }
               type="text"
               id="vcCity"
               name="city"
@@ -165,15 +120,6 @@ const shipping = props => {
             <label htmlFor="vcProvince">Province/State</label>
             <input
               type="text"
-              onChange={e =>
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  shipping: {
-                    ...props.checkout.orderDetails.shipping,
-                    provinceState: e.target.value
-                  }
-                })
-              }
               required
               id="vcProvince"
               name="state"
@@ -182,15 +128,6 @@ const shipping = props => {
 
             <label htmlFor="vcCountry">Country*</label>
             <select
-              onChange={e =>
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  shipping: {
-                    ...props.checkout.orderDetails.shipping,
-                    country: e.target.value
-                  }
-                })
-              }
               className="vcCountry"
               required
               name="country"
@@ -201,15 +138,6 @@ const shipping = props => {
 
             <label htmlFor="vcPostal">Postal Code/Zip Code*</label>
             <input
-              onChange={e =>
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  shipping: {
-                    ...props.checkout.orderDetails.shipping,
-                    postalZip: e.target.value
-                  }
-                })
-              }
               type="text"
               id="vcPostal"
               required
@@ -220,39 +148,12 @@ const shipping = props => {
 
             <label htmlFor="vcPhone">Phone Number*</label>
             <input
-              onChange={e =>
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  shipping: {
-                    ...props.checkout.orderDetails.shipping,
-                    phone: e.target.value
-                  }
-                })
-              }
               type="text"
               id="vcPhone"
               name="phone"
               required
               placeholder="555-555-5555"
               defaultValue={shipping != null ? shipping.phone : ""}
-            />
-
-            <label htmlFor="vcMessage">Special Delivery Instructions</label>
-            <textarea
-              onChange={e =>
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  shipping: {
-                    ...props.checkout.orderDetails.shipping,
-                    deliveryInstructions: e.target.value
-                  }
-                })
-              }
-              type="textarea"
-              id="vcMessage"
-              name="message"
-              rows="10"
-              placeholder="Special delivery instructions"
             />
           </div>
         </div>

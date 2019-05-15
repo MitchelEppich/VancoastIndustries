@@ -80,6 +80,21 @@ const payment = props => {
             }
           }
         }}
+        onChange={e => {
+          let selection = document.querySelector(
+            'input[name="paymentOptions"]:checked'
+          ).value;
+
+          let _orderDetails = props.checkout.orderDetails;
+
+          props.modifyOrderDetails({
+            ..._orderDetails,
+            payment: {
+              ...(_orderDetails.payment || {}),
+              method: { value: selection, tag: "Payment_Method" }
+            }
+          });
+        }}
       >
         <div className="vcPayment-method">
           <h2>Payment Method</h2>
@@ -89,15 +104,7 @@ const payment = props => {
               type="radio"
               id="CashMoney"
               name="paymentOptions"
-              onClick={() => {
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  payment: {
-                    ...props.checkout.orderDetails.payment,
-                    selectedOption: "cash"
-                  }
-                });
-              }}
+              value="Cash"
             />
             <label className="flex flex-col" htmlFor="CashMoney">
               <span>Cash</span>
@@ -109,42 +116,12 @@ const payment = props => {
 
             <input
               type="radio"
-              id="Crypto"
+              id="E-Transfer"
               name="paymentOptions"
-              onClick={() => {
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  payment: {
-                    ...props.checkout.orderDetails.payment,
-                    selectedOption: "crypto"
-                  }
-                });
-              }}
+              value="E-Transfer"
             />
-            <label className="flex flex-col" htmlFor="Crypto">
-              <span className="text-base">Cryptos</span>
-              <img
-                src="../../../static/img/assets/payment/crypto-icons.jpg"
-                className="h-10 w-auto sm:h-8"
-              />
-            </label>
-
-            <input
-              type="radio"
-              id="MoneyTransfer"
-              name="paymentOptions"
-              onClick={() => {
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  payment: {
-                    ...props.checkout.orderDetails.payment,
-                    selectedOption: "emt"
-                  }
-                });
-              }}
-            />
-            <label className="flex flex-col" htmlFor="MoneyTransfer">
-              <span>Money Transfer</span>
+            <label className="flex flex-col" htmlFor="E-Transfer">
+              <span>E-Transfer</span>
               <img
                 src="../../../static/img/assets/payment/interac-transfer.jpg"
                 className="h-10 w-auto sm:h-8"
@@ -153,22 +130,14 @@ const payment = props => {
 
             <input
               type="radio"
-              id="CreditCard"
+              id="Cheque"
               name="paymentOptions"
-              onClick={() => {
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  payment: {
-                    ...props.checkout.orderDetails.payment,
-                    selectedOption: "creditCard"
-                  }
-                });
-              }}
+              value="Cheque"
             />
-            <label className=" flex flex-col" htmlFor="CreditCard">
-              <span>Credit Card</span>
+            <label className="flex flex-col" htmlFor="Cheque">
+              <span>Cheque</span>
               <img
-                src="../../../static/img/assets/payment/visaMastercard-logo.jpg"
+                src="../../../static/img/assets/payment/interac-transfer.jpg"
                 className="h-10 w-auto sm:h-8"
               />
             </label>
