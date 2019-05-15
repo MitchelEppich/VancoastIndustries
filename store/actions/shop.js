@@ -12,7 +12,8 @@ const actionTypes = {
   TOGGLE_FILTER: "TOGGLE_FILTER",
   PURGE_ACTIVE_FILTERS: "PURGE_ACTIVE_FILTERS",
   TOGGLE_MODAL: "TOGGLE_MODAL",
-  SET_QUICK_VIEW: "SET_QUICK_VIEW"
+  SET_QUICK_VIEW: "SET_QUICK_VIEW",
+  TOGGLE_ANIMATION: "TOGGLE_ANIMATION"
 };
 
 const getActions = uri => {
@@ -90,6 +91,12 @@ const getActions = uri => {
         type: actionTypes.SET_QUICK_VIEW,
         quickViewProduct: input.viewProduct,
         showQuickViewProduct: input.showQuickViewProduct
+      };
+    },
+    toggleAnimation: active => {
+      return {
+        type: actionTypes.TOGGLE_ANIMATION,
+        active: active
       };
     }
   };

@@ -143,6 +143,14 @@ input[type="submit"]:hover,
     filter: invert(80%);
   }
 }
+.scaleAnim {
+  animation: scaleAnim 0.2s 1 linear;
+}
+@keyframes scaleAnim {
+  50% {
+    transform: scale(1.1);
+  }
+}
 
 /** mobile menu CSS **/
 #vcNav-icon {

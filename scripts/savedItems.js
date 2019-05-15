@@ -2,7 +2,6 @@
 export const stringBuilder = input => {
   let product = input.product;
   let savedItem = "";
-  console.log(input);
   //company
   savedItem += companies[product.company.name];
   //sotiId

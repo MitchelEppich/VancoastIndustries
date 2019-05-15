@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { stringBuilder } from "../../scripts/savedItems";
 
 const cartOptions = props => {
   let currentProduct = props.product.currentProduct,
@@ -8,6 +9,14 @@ const cartOptions = props => {
     maxPerPackage = cart.maxPerPackage,
     potentialQuantity = cart.potentialQuantity,
     coupon = props.checkout.orderDetails.coupon;
+  let productAsSavedItemString = stringBuilder({
+    product: currentProduct,
+    packSize: currentProduct.size[props.product.quickAddToCartQty],
+    quantity: potentialQuantity
+  });
+  let itemSaved = props.account.currentUser
+    ? props.account.currentUser.savedItems.includes(productAsSavedItemString)
+    : false;
 
   return (
     <React.Fragment>
@@ -39,7 +48,9 @@ const cartOptions = props => {
           name="quantity"
         />
         <button
-          className="px-6 p-3 text-center vcBuyNow-button text-lg"
+          className={`px-6 p-3 text-center vcBuyNow-button text-lg ${
+            props.shop.animationActive ? "scaleAnim" : ""
+          }`}
           type="submit"
           // value="Add To Cart"
           onClick={() => {
@@ -51,6 +62,7 @@ const cartOptions = props => {
                 actionName: "Login"
               });
             } else {
+              props.toggleAnimation(true);
               let _identifier =
                 currentProduct.sotiId +
                 currentProduct.size[props.product.quickAddToCartQty];
@@ -65,6 +77,7 @@ const cartOptions = props => {
                 quantity: potentialQuantity,
                 coupon: coupon
               });
+              setTimeout(() => props.toggleAnimation(false), 1000);
             }
           }}
         >
@@ -137,15 +150,13 @@ const cartOptions = props => {
           }}
           className="vcSaveItem-btn"
         >
-          <span className="font-bold text-white">Save for Later</span>
+          <span className="font-bold text-white">
+            {itemSaved ? "Saved" : "Save for Later"}
+          </span>
           <FontAwesomeIcon
             icon={faHeart}
             className={`${
-              props.account != null ||
-              (props.account.currentUser.savedItems != null &&
-                props.account.currentUser.savedItems.length < 1)
-                ? "text-red"
-                : "text-white opacity-50 "
+              itemSaved ? "text-red" : "text-white opacity-50 "
             } ml-2 fa-lg`}
           />{" "}
         </button>

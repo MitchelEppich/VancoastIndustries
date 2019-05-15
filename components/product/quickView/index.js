@@ -1,6 +1,10 @@
 import SeedSelect from "../seedSelect";
 import Link from "next/link";
 import SeedSelectorMobile from "../seedSelectorMobile";
+import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { stringBuilder } from "../../../scripts/savedItems";
+import Router from "next/router";
 
 const index = props => {
   let product = props.shop.quickViewModal,
@@ -8,20 +12,44 @@ const index = props => {
     maxPerPackage = cart.maxPerPackage,
     potentialQuantity = cart.potentialQuantity,
     coupon = props.checkout.orderDetails.coupon;
+  let productAsSavedItemString = stringBuilder({
+    product: product,
+    packSize: product.size[props.product.quickAddToCartQty],
+    quantity: potentialQuantity
+  });
+  let itemSaved = props.account.currentUser
+    ? props.account.currentUser.savedItems.includes(productAsSavedItemString)
+    : false;
   return (
     <div className="w-screen h-screen bg-semi-transparent z-50 fixed">
       <div className="vcSingle vcQuick flex justify-center items-center">
         <div className="bg-white w-500 md:w-400 sm:w-300 relative vcQuick flex flex-col justify-center items-start">
-          <header className="vcSingle-intro flex justify-center items-center flex-col w-full">
+          <header
+            onClick={() => {
+              window.scrollTo(0, 0);
+              props.toggleModal(null);
+              props.setCurrentProduct({ newProduct: product });
+              props.setBrandIndex(
+                props.shop.brands.findIndex((brand, index) => {
+                  return brand.name.toLowerCase() === product.company.name;
+                })
+              );
+              Router.push(
+                "/product",
+                "/product/" + product.alias.toLowerCase().replace(/ /g, "")
+              );
+            }}
+            className="vcSingle-intro flex justify-center items-center flex-col w-full"
+          >
             <img
-              className="sm:h-48 h-200"
+              className="sm:hidden h-200"
               src="../static/img/products/sunwest/single-front/sw-kali-mist-406x412.png"
               alt="kali mist"
             />
-            <h3 className="vcProduct-cat">{product.type}</h3>
             <h1 className="flex items-center justify-center">
               {product.alias}
             </h1>
+            <h3 className="vcProduct-cat">{product.type}</h3>
           </header>
           {!["sm"].includes(props.misc.mediaSize) ? (
             <SeedSelect {...props} />
@@ -60,7 +88,9 @@ const index = props => {
             />
 
             <input
-              className="vcSingle-submitmx-1"
+              className={`cSingle-submit mx-1 ${
+                props.shop.animationActive ? "scaleAnim" : ""
+              }`}
               type="submit"
               value="Add To Cart"
               onClick={() => {
@@ -72,6 +102,7 @@ const index = props => {
                     actionName: "Login"
                   });
                 } else {
+                  props.toggleAnimation(true);
                   let _identifier =
                     product.sotiId +
                     product.size[props.product.quickAddToCartQty];
@@ -86,14 +117,43 @@ const index = props => {
                     quantity: potentialQuantity,
                     coupon: coupon
                   });
+                  setTimeout(() => props.toggleAnimation(false), 1000);
                 }
               }}
+              onAnimationEnd={() => props.toggleAnimation(false)}
             />
           </div>
 
           <div className="vcShop-buttons flex flex-row justify-between">
-            <button onClick={() => props.toggleModal(null)}>
-              Continue Shopping
+            <button
+              onClick={() => {
+                if (props.account.currentUser == null) {
+                  props.toggleAlert({
+                    message: "Please log in to continue",
+                    message2: "You have to be logged in to do that",
+                    action: "login", //Router.push("/login"),
+                    actionName: "Login"
+                  });
+                } else {
+                  props.addToWishList({
+                    currentUser: props.account.currentUser,
+                    product: product,
+                    quantity: cart.potentialQuantity,
+                    packSize: product.size[props.product.quickAddToCartQty]
+                  });
+                }
+              }}
+              className="vcSaveItem-btn"
+            >
+              <span className="font-bold text-white">
+                {itemSaved ? "Saved" : "Save for Later"}
+              </span>
+              <FontAwesomeIcon
+                icon={faHeart}
+                className={`${
+                  itemSaved ? "text-red" : "text-white opacity-50 "
+                } ml-2 fa-lg`}
+              />
             </button>
             <Link prefetch href="/checkout">
               <button

@@ -6,7 +6,7 @@ const mainImage = props => {
       ? "../static/img/products/cks/cks-white-widow-auto.png"
       : "../static/img/products/sunwest/sw-cheese.png";
   return (
-    <div className="vcSingle-sectionTwo flex justify-center items-start">
+    <div className="vcSingle-sectionTwo flex justify-center items-start ">
       <img
         className="vcSingle-image"
         src={img}

@@ -33,84 +33,84 @@ const header = props => {
             id="vcNavSection-two"
             className="flex justify-center lg:justify-around sm:ml-2 md:justify-start md:ml-6 sm:justify-start items-center cursor-pointer"
           >
-            {!["sm", "md", "lg"].includes(props.misc.mediaSize) ? (
-              <div className="vancoastMenu flex flex-col lg:flex-row items-start lg:items-center">
+            <div className="vancoastMenu flex flex-col lg:flex-row items-start lg:items-center sm:hidden md:hidden lg:hidden">
+              <nav>
+                <ul
+                  onMouseLeave={() => {
+                    props.toggleMenuDropdown({
+                      value: "",
+                      show: true
+                    });
+                  }}
+                  className="flex"
+                >
+                  <MenuFilterLinks {...props} />
+                  <BrandLinks {...props} />
+                </ul>
+              </nav>
+            </div>
+            <div
+              onClick={() => props.toggleMobileMenu(!props.misc.showMobileMenu)}
+              id="vcNav-icon"
+              className="xl:hidden xxl:hidden"
+            >
+              <div className="bar1" />
+              <div className="bar2" />
+              <div className="bar3" />
+            </div>
+            <div
+              className="xl:hidden xxl:hidden"
+              onClick={() => {
+                console.log("CLICKED");
+                props.toggleMobileMenu(false);
+              }}
+            >
+              <div
+                style={showMobileMenu}
+                className="vancoastMenu flex flex-col lg:flex-row items-start lg:items-center"
+              >
                 <nav>
                   <ul
-                    onMouseLeave={() => {
-                      props.toggleMenuDropdown({
-                        value: "",
-                        show: true
-                      });
-                    }}
+                    // onMouseLeave={() => {
+                    //   props.toggleMenuDropdown({
+                    //     value: "",
+                    //     show: true
+                    //   });
+                    // }}
                     className="flex"
                   >
-                    <MenuFilterLinks {...props} />
+                    {/* <p className="capitalize text-xl font-bold pt-2 pb-4 text-blue">
+                        Welcome, {name}!
+                      </p> */}
+                    <li className="font-bold text-2xl vcShop-cats">
+                      <a>Account</a>
+                    </li>
+                    <li>
+                      {props.account.currentUser != null &&
+                      props.account.currentUser.error == null ? (
+                        <Link href="/account">
+                          <a className="flex capitalize ml-2 mt-1">
+                            <span style={itemMenu} className="text-center">
+                              My Account
+                            </span>
+                          </a>
+                        </Link>
+                      ) : (
+                        <Link href="/login">
+                          <a className="flex capitalize ml-2 mt-1">
+                            <span style={itemMenu} className="text-center">
+                              Login/Register
+                            </span>
+                          </a>
+                        </Link>
+                      )}
+                    </li>
                     <BrandLinks {...props} />
+                    <MenuFilterLinks {...props} />
                   </ul>
                 </nav>
               </div>
-            ) : (
-              <div
-                onClick={() =>
-                  props.toggleMobileMenu(!props.misc.showMobileMenu)
-                }
-                id="vcNav-icon"
-              >
-                <div className="bar1" />
-                <div className="bar2" />
-                <div className="bar3" />
-              </div>
-            )}
-            {["sm", "md", "lg"].includes(props.misc.mediaSize) ? (
-              <div className="">
-                <div
-                  style={showMobileMenu}
-                  className="vancoastMenu flex flex-col lg:flex-row items-start lg:items-center"
-                >
-                  <nav>
-                    <ul
-                      onMouseLeave={() => {
-                        props.toggleMenuDropdown({
-                          value: "",
-                          show: true
-                        });
-                      }}
-                      className="flex"
-                    >
-                      {/* <p className="capitalize text-xl font-bold pt-2 pb-4 text-blue">
-                        Welcome, {name}!
-                      </p> */}
-                      <li className="font-bold text-2xl vcShop-cats">
-                        <a>Login</a>
-                      </li>
-                      <li>
-                        {props.account.currentUser != null &&
-                        props.account.currentUser.error == null ? (
-                          <Link href="/account">
-                            <a className="flex capitalize ml-2 mt-1">
-                              <span style={itemMenu} className="text-center">
-                                My Account
-                              </span>
-                            </a>
-                          </Link>
-                        ) : (
-                          <Link href="/login">
-                            <a className="flex capitalize ml-2 mt-1">
-                              <span style={itemMenu} className="text-center">
-                                Login Area
-                              </span>
-                            </a>
-                          </Link>
-                        )}
-                      </li>
-                      <BrandLinks {...props} />
-                      <MenuFilterLinks {...props} />
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-            ) : null}
+            </div>
             <SearchBarToggle {...props} />
           </div>
           <SessionDetails {...props} />

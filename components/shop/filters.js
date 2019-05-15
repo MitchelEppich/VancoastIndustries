@@ -32,7 +32,10 @@ const filters = props => {
       }
 
       return (
-        <label key={index} className={"vcFilter-label "}>
+        <label
+          key={index}
+          className={filter[0] == "Brands" ? "sm:hidden" : "vcFilter-label "}
+        >
           {value}
           <input
             type="checkbox"
@@ -64,7 +67,9 @@ const filters = props => {
     });
     return (
       <React.Fragment key={index}>
-        <h3>{filter[0]}</h3>
+        <h3 className={filter[0] == "Brands" ? "sm:hidden" : ""}>
+          {filter[0]}
+        </h3>
         {options}
       </React.Fragment>
     );

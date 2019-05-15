@@ -358,10 +358,14 @@ p.wholesale-intro {
     transition: all 0.3s ease-in-out;
   }
 
-  // #vcProduct-filters {
-  //   transform: translateX(-285px);
-  // }
-  // .vcFilter-list {
-  //   width: 285px;
-  // }
+  #vcProduct-filters {
+    top: 150px;
+    height: 100vh;
+    position: fixed;
+  }
+  .vcFilter-list h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-bottom: 10px;
+  }
 }

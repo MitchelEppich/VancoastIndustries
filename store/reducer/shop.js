@@ -16,7 +16,8 @@ const initialState = {
   activeFilters: activeFilters,
   quickViewModal: null,
   quickViewProduct: null,
-  showQuickViewProduct: false
+  showQuickViewProduct: false,
+  animationActive: false
 };
 
 export default (state = initialState, action) => {
@@ -43,6 +44,8 @@ export default (state = initialState, action) => {
         showQuickViewProduct: !action.showQuickViewProduct,
         currentProduct: action.currentProduct
       });
+    case actionTypes.TOGGLE_ANIMATION:
+      return updateObject(state, { animationActive: action.active });
     default:
       return state;
   }
