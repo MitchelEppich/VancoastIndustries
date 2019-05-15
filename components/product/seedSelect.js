@@ -23,7 +23,7 @@ const seedSelect = props => {
   });
 
   return (
-    <div className="vcSingle-choices flex flex-row justify-around items-center">
+    <div className="vcSingle-choices flex flex-row justify-around items-center sm:hidden">
       {_arr}
     </div>
   );

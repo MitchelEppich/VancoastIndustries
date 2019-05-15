@@ -39,24 +39,29 @@ class Index extends Component {
               e.preventDefault();
               const form = e.target;
               const formData = new window.FormData(form);
-
-              let name = formData.get("firstName");
-              let surname = formData.get("lastName");
-              let company = formData.get("company").toLowerCase();
-              let email = formData.get("email").toLowerCase();
-              let phone = formData.get("phone");
-              let website = formData.get("website").toLowerCase();
-              let license = formData.get("license");
-              let address = formData.get("address").toLowerCase();
-              let apartment = formData.get("apartment");
+              var object = {};
+              formData.forEach((value, key) => {
+                object[key] = value;
+              });
+              var json = object;
+              let {
+                name,
+                surname,
+                company,
+                email,
+                phone,
+                website,
+                license,
+                address,
+                apartment,
+                city,
+                postal,
+                country,
+                state,
+                description,
+                password
+              } = json;
               if (apartment != null) apartment = apartment.toLowerCase();
-              let city = formData.get("city").toLowerCase();
-              let postal = formData.get("postal").toLowerCase();
-              let country = formData.get("country");
-              let state = formData.get("state").toLowerCase();
-              let description = formData.get("description");
-              let password = formData.get("password");
-
               let _address = {
                 name,
                 surname,
@@ -68,7 +73,6 @@ class Index extends Component {
                 apartment,
                 city
               };
-
               this.props.createAccount({
                 company,
                 email,
@@ -80,13 +84,14 @@ class Index extends Component {
                 description,
                 password
               });
+              form.reset();
             }}
           >
             <label htmlFor="vcName">Your First Name*</label>
             <input
               required
               type="text"
-              id="vcName"
+              id="vcNameFirst"
               name="firstName"
               placeholder="First Name"
             />
@@ -95,8 +100,8 @@ class Index extends Component {
             <input
               required
               type="text"
-              id="vcName"
-              name="lastName"
+              id="vcNameLast"
+              name="surname"
               placeholder="Last Name"
             />
 
@@ -235,7 +240,15 @@ class Index extends Component {
               placeholder="Any information that would be useful like how you heard about our wholesale program."
             />
 
-            <input type="submit" value="Request Wholesale Account" />
+            <input
+              className={this.props.shop.animationActive ? "scaleAnim" : ""}
+              type="submit"
+              value="Request Wholesale Account"
+              onClick={() => {
+                this.props.toggleAnimation(true);
+                setTimeout(() => this.props.toggleAnimation(false), 1000);
+              }}
+            />
           </form>
         </article>
       </Layout>
@@ -245,7 +258,8 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createAccount: input => dispatch(actions.createAccount(input))
+    createAccount: input => dispatch(actions.createAccount(input)),
+    toggleAnimation: active => dispatch(actions.toggleAnimation(active))
   };
 };
 

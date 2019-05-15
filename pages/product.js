@@ -8,11 +8,11 @@ import {
   MainImage,
   Header,
   SeedSelect,
+  SeedSelectorMobile,
   CartOptions,
   SimilarSeeds,
   MoreInfo
 } from "../components/product";
-import QuickView from "../components/product/quickView";
 
 class Index extends Component {
   render() {
@@ -44,6 +44,7 @@ class Index extends Component {
                 {...this.props}
               />
               <SeedSelect {...this.props} />
+              <SeedSelectorMobile {...this.props} />
               <CartOptions
                 currentProduct={this.props.product.currentProduct}
                 {...this.props}

@@ -20,24 +20,54 @@ class Index extends Component {
             </p>
           </header>
 
-          <form className="vcWholesale-application flex flex-col justify-center">
+          <form
+            onSubmit={e => {
+              e.preventDefault();
+              const form = e.target;
+              const formData = new window.FormData(form);
+              var object = {};
+              formData.forEach((value, key) => {
+                object[key] = value;
+              });
+              var json = JSON.stringify(object);
+              console.log(json);
+
+              form.reset();
+            }}
+            className="vcWholesale-application flex flex-col justify-center"
+          >
             <label htmlFor="vcName">Your Name*</label>
-            <input type="text" id="vcName" placeholder="First and Last Name" />
+            <input
+              type="text"
+              id="vcName"
+              name="name"
+              required
+              placeholder="First and Last Name"
+            />
 
             <label htmlFor="vcEmail">Your Email*</label>
             <input
               type="text"
               id="vcEmail"
+              name="email"
+              required
               placeholder="you@emailaddress.com"
             />
 
             <label htmlFor="vcPhone">Company Phone</label>
-            <input type="text" id="vcPhone" placeholder="555-555-5555" />
+            <input
+              type="text"
+              id="vcPhone"
+              name="phone"
+              placeholder="555-555-5555"
+            />
 
             <label htmlFor="vcMessageTitle">Message Title*</label>
             <input
               type="text"
               id="vcMessageTitle"
+              name="subject"
+              required
               placeholder="Reason for Contacting"
             />
 
@@ -45,11 +75,21 @@ class Index extends Component {
             <textarea
               type="textarea"
               id="vcMessage"
+              name="message"
               rows="10"
+              required
               placeholder="Ask us what youd like to know."
             />
 
-            <input type="submit" value="Send" />
+            <input
+              type="submit"
+              value="Send"
+              className={this.props.shop.animationActive ? "scaleAnim" : ""}
+              onClick={() => {
+                this.props.toggleAnimation(true);
+                setTimeout(() => this.props.toggleAnimation(false), 1000);
+              }}
+            />
           </form>
         </article>
       </Layout>
@@ -58,7 +98,9 @@ class Index extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    toggleAnimation: active => dispatch(actions.toggleAnimation(active))
+  };
 };
 
 export default connect(

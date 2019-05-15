@@ -85,7 +85,7 @@ const cartOptions = props => {
         </button>
       </div>
       <Link prefetch href="/checkout">
-        <div className="text-center flex justify-center w-full sm:w-250 sm:mx-auto">
+        <div className="text-center flex justify-center w-full sm:mx-auto sm:mt-4">
           <button
             className="px-6 p-3 text-center vcBuyNow-button text-lg"
             onClick={() => {

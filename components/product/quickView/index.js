@@ -51,11 +51,8 @@ const index = props => {
             </h1>
             <h3 className="vcProduct-cat">{product.type}</h3>
           </header>
-          {!["sm"].includes(props.misc.mediaSize) ? (
-            <SeedSelect {...props} />
-          ) : (
-            <SeedSelectorMobile {...props} />
-          )}
+          <SeedSelect {...props} />
+          <SeedSelectorMobile {...props} />
 
           <div className="vcSingle-input flex sm:flex-row flex-col justify-around items-center">
             <input

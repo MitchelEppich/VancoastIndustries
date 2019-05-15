@@ -36,11 +36,17 @@ const shipping = props => {
           e.preventDefault();
           props.changeStep("Billing");
           window.scrollTo(0, 0);
-
+          const form = e.target;
+          const formData = new window.FormData(form);
+          var object = {};
+          formData.forEach((value, key) => {
+            object[key] = value;
+          });
+          console.log(object);
           let $form = document.getElementById("shippingForm");
           let $inputs = $form.getElementsByTagName("input");
 
-          console.log(Object.values($inputs));
+          // console.log($inputs);
         }}
       >
         <div className="vcCheckout-content">

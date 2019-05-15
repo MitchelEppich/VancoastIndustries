@@ -7,8 +7,7 @@ const SeedSelectorMobile = props => {
     if (price < 0) return null;
     return (
       <option
-        onClick={() => props.quickAddToCartQty(index)}
-        value={numberOfSeeds + "seeds"}
+        value={index}
         className={
           props.product.quickAddToCartQty == index
             ? "border-4 border-blue"
@@ -21,9 +20,14 @@ const SeedSelectorMobile = props => {
   });
 
   return (
-    <div className="vcSingle-choices flex flex-col justify-around items-center">
+    <div className="vcSingle-choices flex flex-col justify-around items-center md:hidden lg:hidden xl:hidden xxl:hidden">
       <p className="p-2">Options:</p>
-      <select className="bg-grey-light w-full p-2">{_arr}</select>
+      <select
+        onChange={e => props.quickAddToCartQty(e.target.value)}
+        className="bg-grey-light w-full p-2"
+      >
+        {_arr}
+      </select>
     </div>
   );
 };
