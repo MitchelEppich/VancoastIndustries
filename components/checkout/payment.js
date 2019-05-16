@@ -119,34 +119,7 @@ const payment = props => {
 
             <input
               type="radio"
-<<<<<<< HEAD
               id="E-Transfer"
-=======
-              id="Crypto"
-              name="paymentOptions"
-              onClick={() => {
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  payment: {
-                    ...props.checkout.orderDetails.payment,
-                    selectedOption: "crypto"
-                  }
-                });
-              }}
-            />
-            <label className="flex flex-col" htmlFor="Crypto">
-              <span className="text-base">Cryptos</span>
-              <img
-                style={{ width: "auto" }}
-                src="../../../static/img/assets/payment/crypto-icons.jpg"
-                className="h-10"
-              />
-            </label>
-
-            <input
-              type="radio"
-              id="MoneyTransfer"
->>>>>>> 2c5e6b3c704f5bebbf8020e1a501e9e509ae8976
               name="paymentOptions"
               value="E-Transfer"
             />
@@ -168,14 +141,8 @@ const payment = props => {
             <label className="flex flex-col" htmlFor="Cheque">
               <span>Cheque</span>
               <img
-<<<<<<< HEAD
                 src="../../../static/img/assets/payment/interac-transfer.jpg"
                 className="h-10 w-auto sm:h-8"
-=======
-                style={{ width: "auto" }}
-                src="../../../static/img/assets/payment/visaMastercard-logo.jpg"
-                className="h-10"
->>>>>>> 2c5e6b3c704f5bebbf8020e1a501e9e509ae8976
               />
             </label>
           </div>

@@ -55,9 +55,16 @@ const billing = props => {
             window.scrollTo(0, 0);
             const form = e.target;
             const formData = new window.FormData(form);
-            var object = {};
+            let object = {};
             formData.forEach((value, key) => {
               object[key] = { value, tag: tags[key] };
+            });
+
+            let _orderDetails = props.checkout.orderDetails;
+
+            props.modifyOrderDetails({
+              ..._orderDetails,
+              billing: object
             });
           }}
         >
