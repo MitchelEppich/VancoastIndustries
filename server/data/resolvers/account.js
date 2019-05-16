@@ -249,7 +249,7 @@ const resolvers = {
       if (account == null) return "Account does not exist";
 
       account.password = generatePassword();
-      // console.log(account.password);
+      console.log(account.password);
 
       // Send Email
 

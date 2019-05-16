@@ -20,7 +20,9 @@ const payment = props => {
             </div>
 
             <div>
-              <span className="vcShipping-street">{shipping.address}</span>
+              <span className="vcShipping-street">
+                {shipping.address}, {shipping.apartment}
+              </span>
             </div>
 
             <div>
@@ -53,7 +55,9 @@ const payment = props => {
             </div>
 
             <div>
-              <span className="vcBilling-street">{billing.address}</span>
+              <span className="vcBilling-street">
+                {billing.address}, {billing.apartment}
+              </span>
             </div>
 
             <div>

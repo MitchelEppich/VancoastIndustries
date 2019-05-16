@@ -94,8 +94,21 @@ const billing = props => {
               defaultValue={billing != null ? billing.address : ""}
             />
           </label>
-
-          <label htmlFor="vcCity" className="w-1/2 sm:w-full mx-1">
+          <label htmlFor="vcApartment" className="w-1/2 sm:w-full mx-1">
+            Apartment*
+            <input
+              required
+              type="text"
+              id=""
+              name="apartment"
+              className="w-full"
+              placeholder="Suite 8392"
+              defaultValue={billing != null ? billing.apartment : ""}
+            />
+          </label>
+        </div>
+        <div className="w-full inline-flex sm:flex-col flex">
+          <label htmlFor="vcCity" className="w-1/3 sm:w-full mx-1">
             City*
             <input
               required
@@ -105,11 +118,10 @@ const billing = props => {
               className="w-full"
               placeholder="Smith Ville"
               defaultValue={billing != null ? billing.city : ""}
-            />{" "}
+            />
           </label>
-        </div>
-        <div className="w-full inline-flex sm:flex-col flex">
-          <label htmlFor="vcState" className="w-1/2 sm:w-full mx-1">
+
+          <label htmlFor="vcState" className="w-1/3 sm:w-full mx-1">
             Province/State*
             <input
               required
@@ -122,13 +134,13 @@ const billing = props => {
             />
           </label>
 
-          <label htmlFor="vcCountry" className="w-1/2 sm:w-full mx-1">
+          <label htmlFor="vcCountry" className="w-1/3 sm:w-full mx-1">
             Country*
             <select
               className="vcCountry"
               name="country"
-              className="w-full"
               id=""
+              className="w-full"
               defaultValue={billing != null ? billing.country : ""}
             >
               {countries}

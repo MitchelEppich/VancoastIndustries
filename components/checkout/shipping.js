@@ -44,17 +44,23 @@ const shipping = props => {
             phone: "ShipPhoneNum",
             postal: "ShipPostal_Zip_Code",
             state: "ShipState",
-            apartment: "ShipAppartment"
+            apartment: "ShipApartment"
           };
           props.changeStep("Billing");
           window.scrollTo(0, 0);
           const form = e.target;
           const formData = new window.FormData(form);
-          var object = {};
+          let object = {};
           formData.forEach((value, key) => {
             object[key] = { value, tag: tags[key] };
           });
-          // console.log(object);
+
+          let _orderDetails = props.checkout.orderDetails;
+
+          props.modifyOrderDetails({
+            ..._orderDetails,
+            shipping: object
+          });
         }}
       >
         <div className="vcCheckout-content">

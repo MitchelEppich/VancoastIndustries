@@ -49,15 +49,22 @@ const billing = props => {
               phone: "BillPhone",
               postal: "BillPostalZipCode",
               state: "BillState",
-              apartment: "BillAppartment"
+              apartment: "BillApartment"
             };
             props.changeStep("Payment");
             window.scrollTo(0, 0);
             const form = e.target;
             const formData = new window.FormData(form);
-            var object = {};
+            let object = {};
             formData.forEach((value, key) => {
               object[key] = { value, tag: tags[key] };
+            });
+
+            let _orderDetails = props.checkout.orderDetails;
+
+            props.modifyOrderDetails({
+              ..._orderDetails,
+              billing: object
             });
           }}
         >
@@ -129,7 +136,7 @@ const billing = props => {
                     defaultValue={billing != null ? billing.address : ""}
                   />
                 </label>
-
+                {console.log(billing.apartment)}
                 <label htmlFor="vcApartment" className="w-1/2 mx-1">
                   Apartment
                   <input
