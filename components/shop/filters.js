@@ -34,7 +34,11 @@ const filters = props => {
       return (
         <label
           key={index}
-          className={filter[0] == "Brands" ? "sm:hidden" : "vcFilter-label "}
+          className={
+            filter[0] == "Brands"
+              ? "sm:hidden vcFilter-label"
+              : "vcFilter-label "
+          }
         >
           {value}
           <input
