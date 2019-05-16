@@ -92,6 +92,10 @@ a:hover {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.596);
 }
 
+.slow {
+  transition: all 0.3s ease-in-out;
+}
+
 button,
 button.vcNewsletter-btn,
 input[type="submit"],
@@ -219,7 +223,8 @@ li.vcShop-brands a {
   line-height: 45px;
 }
 .vcItem {
-  padding-bottom: 40px;
+  // padding-bottom: 40px;
+  padding: 10px 0;
 }
 .vcItemDiv {
   min-width: 93px;

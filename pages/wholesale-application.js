@@ -92,7 +92,7 @@ class Index extends Component {
               required
               type="text"
               id="vcNameFirst"
-              name="firstName"
+              name="name"
               placeholder="First Name"
             />
 

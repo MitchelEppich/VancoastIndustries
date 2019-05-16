@@ -103,8 +103,8 @@ let colors = {
   "blue-dark": "#2779bd",
   "blue-new": "#1426de",
   blue: "#1E25BB",
-  "blue-light": "#6cb2eb",
-  "blue-lighter": "#bcdefa",
+  "blue-light": "#283fe5",
+  "blue-lighter": "#6cb2eb",
   "blue-lightest": "#8F92DD",
 
   "indigo-darkest": "#191e38",

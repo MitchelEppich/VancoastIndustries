@@ -52,6 +52,9 @@ app
     // server.get("/admin", (req, res) => {
     //   res.redirect("/login");
     // });
+    server.get("/account", (req, res) => {
+      res.redirect("/login");
+    });
 
     server.use(
       "/graphql",

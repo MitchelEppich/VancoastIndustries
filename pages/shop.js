@@ -49,6 +49,17 @@ class Index extends Component {
         </div>
 
         <Heading {...this.props} />
+        <div className="w-4/5 justify-end flex mt-6 mb-4 items-center">
+          <p className="mr-2 font-bold text-sm uppercase">Order By:</p>
+          <select className="border-2 border-grey-light">
+            <option>Best Selling</option>
+            <option>New Arrivals</option>
+            <option>A-Z</option>
+            <option>Z-A</option>
+            <option>Price High to Low</option>
+            <option>Price Low to High</option>
+          </select>
+        </div>
 
         <div className="vcWholesale-page">
           <Filters {...this.props} />

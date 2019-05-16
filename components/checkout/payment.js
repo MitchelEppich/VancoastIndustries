@@ -11,27 +11,29 @@ const payment = props => {
         <div className="vcShipping-details">
           <h2>Delivery Details</h2>
 
-          <div>
-            <span className="vcShipping-name">{shipping.name}</span>
-            <span className="vcShipping-name">{shipping.surname}</span>
-          </div>
+          <div className="capitalize px-8 mt-4">
+            <div>
+              <span className="vcShipping-name">{shipping.name}</span>
+              <span className="vcShipping-name ml-2">{shipping.surname}</span>
+            </div>
 
-          <div>
-            <span className="vcShipping-street">{shipping.address}</span>
-          </div>
+            <div>
+              <span className="vcShipping-street">{shipping.address}</span>
+            </div>
 
-          <div>
-            <span className="vcShipping-city">{shipping.city}</span>{" "}
-            <span className="vcShipping-province">{shipping.state}</span>
-          </div>
+            <div>
+              <span className="vcShipping-city">{shipping.city}</span>{" "}
+              <span className="vcShipping-province">{shipping.state}</span>
+            </div>
 
-          <div>
-            <span className="vcShipping-country">{shipping.country}</span>{" "}
-            <span className="vcShipping-code">{shipping.postal}</span>
-          </div>
+            <div>
+              <span className="vcShipping-country">{shipping.country}</span>{" "}
+              <span className="vcShipping-code">{shipping.postal}</span>
+            </div>
 
-          <div>
-            <span className="vcShipping-phone">{shipping.phone}</span>
+            <div>
+              <span className="vcShipping-phone">{shipping.phone}</span>
+            </div>
           </div>
         </div>
 
@@ -109,22 +111,51 @@ const payment = props => {
             <label className="flex flex-col" htmlFor="CashMoney">
               <span>Cash</span>
               <img
+                style={{ width: "auto" }}
                 src="../../../static/img/assets/payment/cash-icon.jpg"
-                className="h-10 w-auto sm:h-8"
+                className="h-10"
               />
             </label>
 
             <input
               type="radio"
+<<<<<<< HEAD
               id="E-Transfer"
+=======
+              id="Crypto"
+              name="paymentOptions"
+              onClick={() => {
+                props.modifyOrderDetails({
+                  ...props.checkout.orderDetails,
+                  payment: {
+                    ...props.checkout.orderDetails.payment,
+                    selectedOption: "crypto"
+                  }
+                });
+              }}
+            />
+            <label className="flex flex-col" htmlFor="Crypto">
+              <span className="text-base">Cryptos</span>
+              <img
+                style={{ width: "auto" }}
+                src="../../../static/img/assets/payment/crypto-icons.jpg"
+                className="h-10"
+              />
+            </label>
+
+            <input
+              type="radio"
+              id="MoneyTransfer"
+>>>>>>> 2c5e6b3c704f5bebbf8020e1a501e9e509ae8976
               name="paymentOptions"
               value="E-Transfer"
             />
             <label className="flex flex-col" htmlFor="E-Transfer">
               <span>E-Transfer</span>
               <img
+                style={{ width: "auto" }}
                 src="../../../static/img/assets/payment/interac-transfer.jpg"
-                className="h-10 w-auto sm:h-8"
+                className="h-10"
               />
             </label>
 
@@ -137,8 +168,14 @@ const payment = props => {
             <label className="flex flex-col" htmlFor="Cheque">
               <span>Cheque</span>
               <img
+<<<<<<< HEAD
                 src="../../../static/img/assets/payment/interac-transfer.jpg"
                 className="h-10 w-auto sm:h-8"
+=======
+                style={{ width: "auto" }}
+                src="../../../static/img/assets/payment/visaMastercard-logo.jpg"
+                className="h-10"
+>>>>>>> 2c5e6b3c704f5bebbf8020e1a501e9e509ae8976
               />
             </label>
           </div>

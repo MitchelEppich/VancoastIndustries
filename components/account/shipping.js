@@ -128,12 +128,10 @@ const shipping = props => {
               name="country"
               id=""
               className="w-full"
-              defaultValue={
-                shipping != null ? shipping.country.toUpperCase() : ""
-              }
+              defaultValue={shipping != null ? shipping.country : ""}
             >
               {countries}
-            </select>{" "}
+            </select>
           </label>
         </div>
         <div className="w-full inline-flex sm:flex-col flex">
@@ -161,7 +159,10 @@ const shipping = props => {
             />
           </label>
         </div>
-
+        <label>
+          <input type="checkbox" className="checkbox" />
+          <span className="text-base">Use the Same for Billing Address?</span>
+        </label>
         <input type="submit" value="Save" />
       </form>
     </div>
