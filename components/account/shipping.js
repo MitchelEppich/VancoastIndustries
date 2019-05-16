@@ -1,4 +1,6 @@
 import data from "../../static/data";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const shipping = props => {
   let account = props.account.currentUser;
@@ -16,6 +18,32 @@ const shipping = props => {
   return (
     <div id="" className="tabcontent">
       <h1>Shipping Info</h1>
+      <div className="inline-flex w-full mt-10 mb-6">
+        <div className="border-2 border-grey-light rounded p-3 w-1/4 mx-4 scale-item ">
+          <h4 className="font-bold uppercase mb-3 text-center">Address 1#</h4>
+          <div>
+            <div className="p-0 m-0">Name Surname</div>
+            <div className="p-0 m-0">122, Main Street</div>
+            <div className="p-0 m-0">Vancouver, BC</div>
+            <div className="p-0 m-0">Canada</div>
+          </div>
+        </div>
+        <div className="border-2 border-grey-light rounded p-3 w-1/4 mx-4 scale-item ">
+          <h4 className="font-bold uppercase mb-3 text-center">Address 2#</h4>
+          <div>
+            <div className="p-0 m-0">Name Surname</div>
+            <div className="p-0 m-0">122, Main Street</div>
+            <div className="p-0 m-0">Vancouver, BC</div>
+            <div className="p-0 m-0">Canada</div>
+          </div>
+        </div>
+        <div className="border-2 border-grey-light rounded p-3 w-1/4 mx-4 scale-item text-center">
+          <h4 className="font-bold uppercase mb-3">Add New</h4>
+          <div>
+            <FontAwesomeIcon icon={faPlus} className="fa-5x text-grey-light" />
+          </div>
+        </div>
+      </div>
       <form
         className="vcAccount-details flex flex-col justify-center"
         onSubmit={e => {
@@ -93,8 +121,21 @@ const shipping = props => {
               defaultValue={shipping != null ? shipping.address : ""}
             />
           </label>
-
-          <label htmlFor="vcCity" className="w-1/2 sm:w-full mx-1">
+          <label htmlFor="vcApartment" className="w-1/2 sm:w-full mx-1">
+            Apartment*
+            <input
+              required
+              type="text"
+              id=""
+              name="apartment"
+              className="w-full"
+              placeholder="Suite 8392"
+              defaultValue={shipping != null ? shipping.apartment : ""}
+            />
+          </label>
+        </div>
+        <div className="w-full inline-flex sm:flex-col flex">
+          <label htmlFor="vcCity" className="w-1/3 sm:w-full mx-1">
             City*
             <input
               required
@@ -106,9 +147,8 @@ const shipping = props => {
               defaultValue={shipping != null ? shipping.city : ""}
             />
           </label>
-        </div>
-        <div className="w-full inline-flex sm:flex-col flex">
-          <label htmlFor="vcState" className="w-1/2 sm:w-full mx-1">
+
+          <label htmlFor="vcState" className="w-1/3 sm:w-full mx-1">
             Province/State*
             <input
               required
@@ -121,19 +161,17 @@ const shipping = props => {
             />
           </label>
 
-          <label htmlFor="vcCountry" className="w-1/2 sm:w-full mx-1">
+          <label htmlFor="vcCountry" className="w-1/3 sm:w-full mx-1">
             Country*
             <select
               className="vcCountry"
               name="country"
               id=""
               className="w-full"
-              defaultValue={
-                shipping != null ? shipping.country.toUpperCase() : ""
-              }
+              defaultValue={shipping != null ? shipping.country : ""}
             >
               {countries}
-            </select>{" "}
+            </select>
           </label>
         </div>
         <div className="w-full inline-flex sm:flex-col flex">
@@ -161,7 +199,10 @@ const shipping = props => {
             />
           </label>
         </div>
-
+        <label>
+          <input type="checkbox" className="checkbox" />
+          <span className="text-base">Use the Same for Billing Address?</span>
+        </label>
         <input type="submit" value="Save" />
       </form>
     </div>

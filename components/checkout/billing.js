@@ -35,201 +35,181 @@ const billing = props => {
   return (
     <React.Fragment>
       <div className="vcCheckout-content">
-        <form className="vcWholesale-application flex flex-col justify-center">
-          <label htmlFor="vcName">Name*</label>
-          <input
-            // value={sameAsShipping ? shipping.firstName : billing.firstName}
-            onChange={e =>
-              props.modifyOrderDetails({
-                ...props.checkout.orderDetails,
-                billing: {
-                  ...props.checkout.orderDetails.billing,
-                  firstName: e.target.value
-                }
-              })
-            }
-            type="text"
-            id="vcName"
-            required
-            placeholder="First Name"
-            defaultValue={billing != null ? billing.name : ""}
-          />
-          <input
-            // value={sameAsShipping ? shipping.lastName : billing.lastName}
-            onChange={e =>
-              props.modifyOrderDetails({
-                ...props.checkout.orderDetails,
-                billing: {
-                  ...props.checkout.orderDetails.billing,
-                  lastName: e.target.value
-                }
-              })
-            }
-            type="text"
-            id="vcName"
-            required
-            placeholder="Last Name"
-            defaultValue={billing != null ? billing.surname : ""}
-          />
+        <form
+          id="shippingForm"
+          onSubmit={e => {
+            e.preventDefault();
+            let tags = {
+              address: "BillAddress",
+              city: "BillCity",
+              country: "BillCountry",
+              email: "BillEmail",
+              name: "BillFirstName",
+              surname: "BillLastName",
+              phone: "BillPhone",
+              postal: "BillPostalZipCode",
+              state: "BillState",
+              apartment: "BillApartment"
+            };
+            props.changeStep("Payment");
+            window.scrollTo(0, 0);
+            const form = e.target;
+            const formData = new window.FormData(form);
+            let object = {};
+            formData.forEach((value, key) => {
+              object[key] = { value, tag: tags[key] };
+            });
 
-          <label htmlFor="vcCompany">Company Name*</label>
-          <input
-            // value={sameAsShipping ? shipping.company : billing.company}
-            onChange={e =>
-              props.modifyOrderDetails({
-                ...props.checkout.orderDetails,
-                billing: {
-                  ...props.checkout.orderDetails.billing,
-                  company: e.target.value
-                }
-              })
-            }
-            type="text"
-            id="vcCompany"
-            required
-            placeholder="Company Name"
-            defaultValue={account != null ? account.company : ""}
-          />
+            let _orderDetails = props.checkout.orderDetails;
 
-          <label htmlFor="vcEmail">Email Address*</label>
-          <input
-            // value={sameAsShipping ? shipping.email : billing.email}
-            onChange={e =>
-              props.modifyOrderDetails({
-                ...props.checkout.orderDetails,
-                billing: {
-                  ...props.checkout.orderDetails.billing,
-                  email: e.target.value
-                }
-              })
-            }
-            type="text"
-            id="vcEmail"
-            required
-            placeholder="you@companyname.com"
-            defaultValue={account != null ? account.email : ""}
-          />
+            props.modifyOrderDetails({
+              ..._orderDetails,
+              billing: object
+            });
+          }}
+        >
+          <div className="vcCheckout-content">
+            <div className="vcWholesale-application flex flex-col justify-center">
+              <div className="inline-flex w-full">
+                <label htmlFor="vcName" className="w-1/2 mx-1">
+                  First Name*
+                  <input
+                    type="text"
+                    id="vcName"
+                    name="name"
+                    required
+                    className="w-full"
+                    placeholder="First Name"
+                    defaultValue={billing != null ? billing.name : ""}
+                  />
+                </label>
+                <label htmlFor="vcName" className="w-1/2 mx-1">
+                  Last Name*
+                  <input
+                    type="text"
+                    id="vcName"
+                    name="surname"
+                    required
+                    className="w-full"
+                    placeholder="Last Name"
+                    defaultValue={billing != null ? billing.surname : ""}
+                  />
+                </label>
+              </div>
 
-          <label htmlFor="vcStreet">Street Address*</label>
-          <input
-            // value={
-            //   sameAsShipping ? shipping.streetAddress : billing.streetAddress
-            // }
-            onChange={e =>
-              props.modifyOrderDetails({
-                ...props.checkout.orderDetails,
-                billing: {
-                  ...props.checkout.orderDetails.billing,
-                  streetAddress: e.target.value
-                }
-              })
-            }
-            type="text"
-            id="vcStreet"
-            required
-            placeholder=""
-            defaultValue={billing != null ? billing.address : ""}
-          />
+              <div className="inline-flex w-full">
+                <label htmlFor="vcEmail" className="w-2/3 mx-1">
+                  Email Address*
+                  <input
+                    type="text"
+                    id="vcEmail"
+                    required
+                    name="email"
+                    className="w-full"
+                    placeholder="you@companyname.com"
+                    defaultValue={account != null ? account.email : ""}
+                  />
+                </label>
+                <label htmlFor="vcPhone" className="w-1/3 mx-1">
+                  Phone Number*
+                  <input
+                    type="text"
+                    id="vcPhone"
+                    name="phone"
+                    className="w-full"
+                    required
+                    placeholder="555-555-5555"
+                    defaultValue={billing != null ? billing.phone : ""}
+                  />
+                </label>
+              </div>
+              <div className="inline-flex w-full">
+                <label htmlFor="vcStreet" className="w-1/2 mx-1">
+                  Street Address*
+                  <input
+                    type="text"
+                    id="vcStreet"
+                    name="address"
+                    className="w-full"
+                    required
+                    placeholder=""
+                    defaultValue={billing != null ? billing.address : ""}
+                  />
+                </label>
+                {console.log(billing.apartment)}
+                <label htmlFor="vcApartment" className="w-1/2 mx-1">
+                  Apartment
+                  <input
+                    type="text"
+                    id="vcApartment"
+                    name="apartment"
+                    // required
+                    className="w-full"
+                    placeholder=""
+                    defaultValue={billing != null ? billing.apartment : ""}
+                  />
+                </label>
+              </div>
+              <div className="inline-flex w-full">
+                <label htmlFor="vcCity" className="w-1/2 mx-1">
+                  City*
+                  <input
+                    type="text"
+                    id="vcCity"
+                    name="city"
+                    required
+                    className="w-full"
+                    placeholder=""
+                    defaultValue={billing != null ? billing.city : ""}
+                  />
+                </label>
 
-          <label htmlFor="vcProvince">Province/State</label>
-          <select
-            // value={
-            //   sameAsShipping ? shipping.provinceState : billing.provinceState
-            // }
-            onChange={e =>
-              props.modifyOrderDetails({
-                ...props.checkout.orderDetails,
-                billing: {
-                  ...props.checkout.orderDetails.billing,
-                  provinceState: e.target.value
-                }
-              })
-            }
-            required
-            id="vcProvince"
-            name="vcProvince"
-            defaultValue={billing != null ? billing.state : ""}
-          >
-            {provinceOrState}
-          </select>
+                <label htmlFor="vcProvince" className="w-1/2 mx-1">
+                  Province/State
+                  <input
+                    type="text"
+                    required
+                    id="vcProvince"
+                    className="w-full"
+                    name="state"
+                    defaultValue={billing != null ? billing.state : ""}
+                  />
+                </label>
+              </div>
 
-          <label htmlFor="vcCountry">Country*</label>
-          <select
-            // value={sameAsShipping ? shipping.country : billing.country}
-            onChange={e =>
-              props.modifyOrderDetails({
-                ...props.checkout.orderDetails,
-                billing: {
-                  ...props.checkout.orderDetails.billing,
-                  country: e.target.value
-                }
-              })
-            }
-            className="vcCountry"
-            required
-            name="vcCountry"
-            defaultValue={billing != null ? billing.country : ""}
-          >
-            {countries}
-          </select>
+              <div className="inline-flex w-full">
+                <label htmlFor="vcCountry" className="w-1/2 mx-1">
+                  Country*
+                  <select
+                    className="vcCountry"
+                    required
+                    className="w-full"
+                    name="country"
+                    defaultValue={billing != null ? billing.country : ""}
+                  >
+                    {countries}
+                  </select>{" "}
+                </label>
 
-          <label htmlFor="vcPostal">Postal Code/Zip Code*</label>
-          <input
-            // value={sameAsShipping ? shipping.postalZip : billing.postalZip}
-            onChange={e =>
-              props.modifyOrderDetails({
-                ...props.checkout.orderDetails,
-                billing: {
-                  ...props.checkout.orderDetails.billing,
-                  postalZip: e.target.value
-                }
-              })
-            }
-            type="text"
-            id="vcPostal"
-            required
-            placeholder=""
-            defaultValue={billing != null ? billing.postal : ""}
-          />
+                <label htmlFor="vcPostal" className="w-1/2 mx-1">
+                  Postal Code/Zip Code*
+                  <input
+                    type="text"
+                    id="vcPostal"
+                    required
+                    className="w-full"
+                    name="postal"
+                    placeholder=""
+                    defaultValue={billing != null ? billing.postal : ""}
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
 
-          <label htmlFor="vcPhone">Phone Number*</label>
-          <input
-            // value={sameAsShipping ? shipping.phone : billing.phone}
-            onChange={e =>
-              props.modifyOrderDetails({
-                ...props.checkout.orderDetails,
-                billing: {
-                  ...props.checkout.orderDetails.billing,
-                  phone: e.target.value
-                }
-              })
-            }
-            type="text"
-            id="vcPhone"
-            required
-            placeholder="555-555-5555"
-            defaultValue={billing != null ? billing.phone : ""}
-          />
-
-          {/* <label htmlFor="vcMessage">Special Delivery Instructions</label>
-          <textarea
-            type="textarea"
-            id="vcMessage"
-            rows="10"
-            placeholder="Special delivery instructions"
-          /> */}
+          <input type="submit" className="vcCheckout-btn" value="Payment" />
         </form>
       </div>
-
-      <input
-        onClick={() => {
-          props.changeStep("Payment");
-          window.scrollTo(0, 0);
-        }}
-        type="button"
-        className="vcCheckout-btn"
-        value="Payment"
-      />
     </React.Fragment>
   );
 };

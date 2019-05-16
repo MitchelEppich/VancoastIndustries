@@ -200,7 +200,7 @@ const getActions = uri => {
             item = {
               product: _product,
               quantity: _quantity,
-              packSize: _amount
+              amount: _amount
             };
           } else {
             item = _items[_productIdentifier];
@@ -213,6 +213,7 @@ const getActions = uri => {
               quantity: item.quantity,
               packSize: item.amount
             });
+
           dispatch(Account.updateAccount({ _id: _accountId, cartItem }));
         }
 

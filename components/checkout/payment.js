@@ -7,65 +7,83 @@ const payment = props => {
   let shipping = props.account.currentUser.shipping[0];
   return (
     <React.Fragment>
-      <div className="vcBill-ship flex">
-        <div className="vcShipping-details">
-          <h2>Delivery Details</h2>
+      <div className="flex justify-between w-full my-4 md:flex-col sm:flex-col">
+        <div className="w-1/2 sm:w-full md:w-full sm:my-4 md:my-4 border rounded border-grey-lightest p-4 mr-3">
+          <h2 className="text-3xl font-bold text-grey-lightest">
+            Delivery Details
+          </h2>
 
-          <div>
-            <span className="vcShipping-name">{shipping.name}</span>
-            <span className="vcShipping-name">{shipping.surname}</span>
-          </div>
+          <div className="capitalize px-8 mt-4 font-bold text-lg leading-normal">
+            <div>
+              <span className="vcShipping-name">{shipping.name}</span>
+              <span className="vcShipping-name ml-2">{shipping.surname}</span>
+            </div>
 
-          <div>
-            <span className="vcShipping-street">{shipping.address}</span>
-          </div>
+            <div>
+              <span className="vcShipping-street">
+                {shipping.address}, {shipping.apartment}
+              </span>
+            </div>
 
-          <div>
-            <span className="vcShipping-city">{shipping.city}</span>{" "}
-            <span className="vcShipping-province">{shipping.state}</span>
-          </div>
+            <div>
+              <span className="vcShipping-city">{shipping.city}</span>
+              {", "}
+              <span className="vcShipping-province">{shipping.state}</span>
+            </div>
 
-          <div>
-            <span className="vcShipping-country">{shipping.country}</span>{" "}
-            <span className="vcShipping-code">{shipping.postal}</span>
-          </div>
+            <div>
+              <span className="vcShipping-country">{shipping.country}</span>
+              {" - "}
+              <span className="vcShipping-code">{shipping.postal}</span>
+            </div>
 
-          <div>
-            <span className="vcShipping-phone">{shipping.phone}</span>
+            <div>
+              <span className="vcShipping-phone">{shipping.phone}</span>
+            </div>
           </div>
         </div>
 
-        <div className="vcBilling-details flex flex-col justify-center">
-          <h2>Billing Details</h2>
+        <div className="w-1/2 sm:w-full md:w-full sm:my-4 md:my-4 border rounded border-grey-lightest p-4 ml-3">
+          <h2 className="text-3xl font-bold text-grey-lightest">
+            Billing Details
+          </h2>
 
-          <div>
-            <span className="vcBilling-name">{billing.name}</span>
-            <span className="vcBilling-name">{billing.surname}</span>
-          </div>
+          <div className="capitalize px-8 mt-4 font-bold text-lg leading-normal">
+            <div>
+              <span className="vcBilling-name">{billing.name}</span>
+              <span className="vcBilling-name">{billing.surname}</span>
+            </div>
 
-          <div>
-            <span className="vcBilling-street">{billing.address}</span>
-          </div>
+            <div>
+              <span className="vcBilling-street">
+                {billing.address}, {billing.apartment}
+              </span>
+            </div>
 
-          <div>
-            <span className="vcBilling-city">{billing.city}</span>{" "}
-            <span className="vcBilling-province">{billing.state}</span>
-          </div>
+            <div>
+              <span className="vcBilling-city">{billing.city}</span>
+              {", "}
+              <span className="vcBilling-province">{billing.state}</span>
+            </div>
 
-          <div>
-            <span className="vcBilling-country">{billing.country}</span>{" "}
-            <span className="vcBilling-code">{billing.postal}</span>
-          </div>
+            <div>
+              <span className="vcBilling-country">{billing.country}</span>
+              {" - "}
+              <span className="vcBilling-code">{billing.postal}</span>
+            </div>
 
-          <div>
-            <span className="vcBilling-phone">{billing.phone}</span>
+            <div>
+              <span className="vcBilling-phone">{billing.phone}</span>
+            </div>
           </div>
         </div>
       </div>
 
       <div className="vcCheckout-content flex flex-col justify-around">
         <div className="vcSummary">
-          <h2>Cart Summary</h2>
+          <h2 className="text-3xl font-bold text-grey-lightest">
+            Cart Summary
+          </h2>
 
           <Cart page="payment" {...props} tax={50} shipping={50} total={true} />
         </div>
@@ -80,24 +98,33 @@ const payment = props => {
             }
           }
         }}
+        onChange={e => {
+          let selection = document.querySelector(
+            'input[name="paymentOptions"]:checked'
+          ).value;
+
+          let _orderDetails = props.checkout.orderDetails;
+
+          props.modifyOrderDetails({
+            ..._orderDetails,
+            payment: {
+              ...(_orderDetails.payment || {}),
+              method: { value: selection, tag: "Payment_Method" }
+            }
+          });
+        }}
       >
         <div className="vcPayment-method">
-          <h2>Payment Method</h2>
+          <h2 className="text-3xl font-bold text-grey-lightest">
+            Payment Method
+          </h2>
 
           <div className="vcPayment-choices flex flex-row sm:flex-col md:flex-col justify-around items-center">
             <input
               type="radio"
               id="CashMoney"
               name="paymentOptions"
-              onClick={() => {
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  payment: {
-                    ...props.checkout.orderDetails.payment,
-                    selectedOption: "cash"
-                  }
-                });
-              }}
+              value="Cash"
             />
             <label className="flex flex-col" htmlFor="CashMoney">
               <span>Cash</span>
@@ -110,43 +137,12 @@ const payment = props => {
 
             <input
               type="radio"
-              id="Crypto"
+              id="E-Transfer"
               name="paymentOptions"
-              onClick={() => {
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  payment: {
-                    ...props.checkout.orderDetails.payment,
-                    selectedOption: "crypto"
-                  }
-                });
-              }}
+              value="E-Transfer"
             />
-            <label className="flex flex-col" htmlFor="Crypto">
-              <span className="text-base">Cryptos</span>
-              <img
-                style={{ width: "auto" }}
-                src="../../../static/img/assets/payment/crypto-icons.jpg"
-                className="h-10"
-              />
-            </label>
-
-            <input
-              type="radio"
-              id="MoneyTransfer"
-              name="paymentOptions"
-              onClick={() => {
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  payment: {
-                    ...props.checkout.orderDetails.payment,
-                    selectedOption: "emt"
-                  }
-                });
-              }}
-            />
-            <label className="flex flex-col" htmlFor="MoneyTransfer">
-              <span>Money Transfer</span>
+            <label className="flex flex-col" htmlFor="E-Transfer">
+              <span>E-Transfer</span>
               <img
                 style={{ width: "auto" }}
                 src="../../../static/img/assets/payment/interac-transfer.jpg"
@@ -156,24 +152,15 @@ const payment = props => {
 
             <input
               type="radio"
-              id="CreditCard"
+              id="Cheque"
               name="paymentOptions"
-              onClick={() => {
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  payment: {
-                    ...props.checkout.orderDetails.payment,
-                    selectedOption: "creditCard"
-                  }
-                });
-              }}
+              value="Cheque"
             />
-            <label className=" flex flex-col" htmlFor="CreditCard">
-              <span>Credit Card</span>
+            <label className="flex flex-col" htmlFor="Cheque">
+              <span>Cheque</span>
               <img
-                style={{ width: "auto" }}
-                src="../../../static/img/assets/payment/visaMastercard-logo.jpg"
-                className="h-10"
+                src="../../../static/img/assets/payment/interac-transfer.jpg"
+                className="h-10 w-auto sm:h-8"
               />
             </label>
           </div>
