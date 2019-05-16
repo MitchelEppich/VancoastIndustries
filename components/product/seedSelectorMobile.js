@@ -7,6 +7,7 @@ const SeedSelectorMobile = props => {
     if (price < 0) return null;
     return (
       <option
+        key={index}
         value={index}
         className={
           props.product.quickAddToCartQty == index
