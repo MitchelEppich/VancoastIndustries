@@ -26,7 +26,7 @@ const similarSeeds = props => {
       <div
         key={index}
         className={` ${
-          index % 2 === 0 ? "bg-grey-lightest pt-10" : "bg-white"
+          index % 2 === 0 ? "bg-grey-lighter pt-10" : "bg-white"
         } mt-12`}
       >
         <h3 className="vcCompany-similar">Similar Seeds by {company.name}</h3>

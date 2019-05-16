@@ -3,32 +3,52 @@ import {
   faTimes,
   faExclamationTriangle
 } from "@fortawesome/free-solid-svg-icons";
+import Router from "next/router";
 
 const index = props => {
+  console.log(props.strain);
+  let img =
+    props.item.company.name == "sonoma seeds"
+      ? "../static/img/products/sonoma/so-blue-diesel.jpg"
+      : props.item.company.name == "crop king seeds"
+      ? "../static/img/products/cks/cks-white-widow-auto.png"
+      : "../static/img/products/sunwest/sw-cheese.png";
+
   let price =
     props.item.price[props.item.size.indexOf(props.item.packSize)] *
     props.item.quantity;
 
   return (
     <li className="vcItem vcItem-one flex relative">
-      <div
-        onClick={() => {
-          props.modifySavedItems({
-            currentUser: props.account.currentUser,
-            remove: true,
-            product: props.item,
-            quantity: props.item.quantity,
-            packSize: props.item.packSize
-          });
-        }}
-        className="w-full flex justify-end absolute pin-r pin-t mt-6 "
-      >
+      <div className="w-full flex justify-end absolute pin-r pin-t mt-6 ">
         <FontAwesomeIcon
+          onClick={() => {
+            props.modifySavedItems({
+              currentUser: props.account.currentUser,
+              remove: true,
+              product: props.item,
+              quantity: props.item.quantity,
+              packSize: props.item.packSize
+            });
+          }}
           icon={faTimes}
           className="fa-lg hover:text-blue text-grey-light cursor-pointer"
         />
       </div>
       <img
+        onClick={() => {
+          window.scrollTo(0, 0);
+          props.setCurrentProduct({ newProduct: props.item });
+          props.setBrandIndex(
+            props.shop.brands.findIndex((brand, index) => {
+              return brand.name.toLowerCase() === props.item.company.name;
+            })
+          );
+          Router.push(
+            "/product",
+            "/product/" + props.item.alias.toLowerCase().replace(/ /g, "")
+          );
+        }}
         src="../static/img/products/sonoma/so-bruce-banner.jpg"
         alt="bruce banner"
       />
