@@ -108,7 +108,6 @@ const shipping = props => {
               type="text"
               id="vcApartment"
               name="apartment"
-              required
               placeholder=""
               defaultValue={shipping != null ? shipping.apartment : ""}
             />

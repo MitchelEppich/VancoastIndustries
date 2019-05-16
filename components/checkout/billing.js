@@ -113,7 +113,6 @@ const billing = props => {
                 type="text"
                 id="vcApartment"
                 name="apartment"
-                required
                 placeholder=""
                 defaultValue={billing != null ? billing.apartment : ""}
               />
