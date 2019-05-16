@@ -7,11 +7,13 @@ const payment = props => {
   let shipping = props.account.currentUser.shipping[0];
   return (
     <React.Fragment>
-      <div className="vcBill-ship flex">
-        <div className="vcShipping-details">
-          <h2>Delivery Details</h2>
+      <div className="flex justify-between w-full my-4 md:flex-col sm:flex-col">
+        <div className="w-1/2 sm:w-full md:w-full sm:my-4 md:my-4 border rounded border-grey-lightest p-4 mr-3">
+          <h2 className="text-3xl font-bold text-grey-lightest">
+            Delivery Details
+          </h2>
 
-          <div className="capitalize px-8 mt-4">
+          <div className="capitalize px-8 mt-4 font-bold text-lg leading-normal">
             <div>
               <span className="vcShipping-name">{shipping.name}</span>
               <span className="vcShipping-name ml-2">{shipping.surname}</span>
@@ -22,12 +24,14 @@ const payment = props => {
             </div>
 
             <div>
-              <span className="vcShipping-city">{shipping.city}</span>{" "}
+              <span className="vcShipping-city">{shipping.city}</span>
+              {", "}
               <span className="vcShipping-province">{shipping.state}</span>
             </div>
 
             <div>
-              <span className="vcShipping-country">{shipping.country}</span>{" "}
+              <span className="vcShipping-country">{shipping.country}</span>
+              {" - "}
               <span className="vcShipping-code">{shipping.postal}</span>
             </div>
 
@@ -37,37 +41,45 @@ const payment = props => {
           </div>
         </div>
 
-        <div className="vcBilling-details flex flex-col justify-center">
-          <h2>Billing Details</h2>
+        <div className="w-1/2 sm:w-full md:w-full sm:my-4 md:my-4 border rounded border-grey-lightest p-4 ml-3">
+          <h2 className="text-3xl font-bold text-grey-lightest">
+            Billing Details
+          </h2>
 
-          <div>
-            <span className="vcBilling-name">{billing.name}</span>
-            <span className="vcBilling-name">{billing.surname}</span>
-          </div>
+          <div className="capitalize px-8 mt-4 font-bold text-lg leading-normal">
+            <div>
+              <span className="vcBilling-name">{billing.name}</span>
+              <span className="vcBilling-name">{billing.surname}</span>
+            </div>
 
-          <div>
-            <span className="vcBilling-street">{billing.address}</span>
-          </div>
+            <div>
+              <span className="vcBilling-street">{billing.address}</span>
+            </div>
 
-          <div>
-            <span className="vcBilling-city">{billing.city}</span>{" "}
-            <span className="vcBilling-province">{billing.state}</span>
-          </div>
+            <div>
+              <span className="vcBilling-city">{billing.city}</span>
+              {", "}
+              <span className="vcBilling-province">{billing.state}</span>
+            </div>
 
-          <div>
-            <span className="vcBilling-country">{billing.country}</span>{" "}
-            <span className="vcBilling-code">{billing.postal}</span>
-          </div>
+            <div>
+              <span className="vcBilling-country">{billing.country}</span>
+              {" - "}
+              <span className="vcBilling-code">{billing.postal}</span>
+            </div>
 
-          <div>
-            <span className="vcBilling-phone">{billing.phone}</span>
+            <div>
+              <span className="vcBilling-phone">{billing.phone}</span>
+            </div>
           </div>
         </div>
       </div>
 
       <div className="vcCheckout-content flex flex-col justify-around">
         <div className="vcSummary">
-          <h2>Cart Summary</h2>
+          <h2 className="text-3xl font-bold text-grey-lightest">
+            Cart Summary
+          </h2>
 
           <Cart page="payment" {...props} tax={50} shipping={50} total={true} />
         </div>
@@ -99,7 +111,9 @@ const payment = props => {
         }}
       >
         <div className="vcPayment-method">
-          <h2>Payment Method</h2>
+          <h2 className="text-3xl font-bold text-grey-lightest">
+            Payment Method
+          </h2>
 
           <div className="vcPayment-choices flex flex-row sm:flex-col md:flex-col justify-around items-center">
             <input
@@ -119,34 +133,7 @@ const payment = props => {
 
             <input
               type="radio"
-<<<<<<< HEAD
               id="E-Transfer"
-=======
-              id="Crypto"
-              name="paymentOptions"
-              onClick={() => {
-                props.modifyOrderDetails({
-                  ...props.checkout.orderDetails,
-                  payment: {
-                    ...props.checkout.orderDetails.payment,
-                    selectedOption: "crypto"
-                  }
-                });
-              }}
-            />
-            <label className="flex flex-col" htmlFor="Crypto">
-              <span className="text-base">Cryptos</span>
-              <img
-                style={{ width: "auto" }}
-                src="../../../static/img/assets/payment/crypto-icons.jpg"
-                className="h-10"
-              />
-            </label>
-
-            <input
-              type="radio"
-              id="MoneyTransfer"
->>>>>>> 2c5e6b3c704f5bebbf8020e1a501e9e509ae8976
               name="paymentOptions"
               value="E-Transfer"
             />
@@ -168,14 +155,8 @@ const payment = props => {
             <label className="flex flex-col" htmlFor="Cheque">
               <span>Cheque</span>
               <img
-<<<<<<< HEAD
                 src="../../../static/img/assets/payment/interac-transfer.jpg"
                 className="h-10 w-auto sm:h-8"
-=======
-                style={{ width: "auto" }}
-                src="../../../static/img/assets/payment/visaMastercard-logo.jpg"
-                className="h-10"
->>>>>>> 2c5e6b3c704f5bebbf8020e1a501e9e509ae8976
               />
             </label>
           </div>

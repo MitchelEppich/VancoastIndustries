@@ -54,107 +54,144 @@ const shipping = props => {
           formData.forEach((value, key) => {
             object[key] = { value, tag: tags[key] };
           });
-          console.log(object);
+          // console.log(object);
         }}
       >
         <div className="vcCheckout-content">
           <div className="vcWholesale-application flex flex-col justify-center">
-            <label htmlFor="vcName">Name*</label>
-            <input
-              type="text"
-              id="vcName"
-              name="name"
-              required
-              placeholder="First Name"
-              defaultValue={shipping != null ? shipping.name : ""}
-            />
-            <input
-              type="text"
-              id="vcName"
-              name="surname"
-              required
-              placeholder="Last Name"
-              defaultValue={shipping != null ? shipping.surname : ""}
-            />
+            <div className="inline-flex w-full">
+              <label htmlFor="vcName" className="w-1/2 mx-1">
+                First Name*
+                <input
+                  type="text"
+                  id="vcName"
+                  name="name"
+                  required
+                  placeholder="First Name"
+                  className="w-full"
+                  defaultValue={shipping != null ? shipping.name : ""}
+                />
+              </label>
+              <label htmlFor="vcName" className="w-1/2 mx-1">
+                Last Name*
+                <input
+                  type="text"
+                  id="vcName"
+                  name="surname"
+                  required
+                  placeholder="Last Name"
+                  className="w-full"
+                  defaultValue={shipping != null ? shipping.surname : ""}
+                />
+              </label>
+            </div>
+            <div className="inline-flex w-full">
+              <label htmlFor="vcEmail" className="w-1/2 mx-1">
+                Email Address*
+                <input
+                  type="text"
+                  id="vcEmail"
+                  required
+                  name="email"
+                  className="w-full"
+                  placeholder="you@companyname.com"
+                  defaultValue={account != null ? account.email : ""}
+                />
+              </label>
+              <label htmlFor="vcPhone" className="w-1/2 mx-1">
+                Phone Number*
+                <input
+                  type="text"
+                  id="vcPhone"
+                  name="phone"
+                  required
+                  className="w-full"
+                  placeholder="555-555-5555"
+                  defaultValue={shipping != null ? shipping.phone : ""}
+                />
+              </label>
+            </div>
+            <div className="inline-flex w-full">
+              <label htmlFor="vcStreet" className="w-2/3 mx-1">
+                Street Address*
+                <input
+                  type="text"
+                  id="vcStreet"
+                  name="address"
+                  required
+                  className="w-full"
+                  placeholder=""
+                  defaultValue={shipping != null ? shipping.address : ""}
+                />
+              </label>
 
-            <label htmlFor="vcEmail">Email Address*</label>
-            <input
-              type="text"
-              id="vcEmail"
-              required
-              name="email"
-              placeholder="you@companyname.com"
-              defaultValue={account != null ? account.email : ""}
-            />
+              <label htmlFor="vcApartment" className="w-1/3 mx-1">
+                Apartment
+                <input
+                  type="text"
+                  id="vcApartment"
+                  name="apartment"
+                  // required
+                  className="w-full"
+                  placeholder=""
+                  defaultValue={shipping != null ? shipping.apartment : ""}
+                />
+              </label>
+            </div>
+            <div className="inline-flex w-full">
+              <label htmlFor="vcCity" className="w-1/2 mx-1">
+                City*
+                <input
+                  type="text"
+                  id="vcCity"
+                  className="w-full"
+                  name="city"
+                  required
+                  placeholder=""
+                  defaultValue={shipping != null ? shipping.city : ""}
+                />
+              </label>
 
-            <label htmlFor="vcStreet">Street Address*</label>
-            <input
-              type="text"
-              id="vcStreet"
-              name="address"
-              required
-              placeholder=""
-              defaultValue={shipping != null ? shipping.address : ""}
-            />
+              <label htmlFor="vcProvince" className="w-1/2 mx-1">
+                Province/State*
+                <input
+                  type="text"
+                  required
+                  className="w-full"
+                  id="vcProvince"
+                  name="state"
+                  defaultValue={shipping != null ? shipping.state : ""}
+                />
+              </label>
+            </div>
 
-            <label htmlFor="vcApartment">Apartment*</label>
-            <input
-              type="text"
-              id="vcApartment"
-              name="apartment"
-              required
-              placeholder=""
-              defaultValue={shipping != null ? shipping.apartment : ""}
-            />
+            <div className="inline-flex w-full">
+              <label htmlFor="vcCountry" className="w-1/2 mx-1">
+                Country*
+                <select
+                  className="vcCountry"
+                  required
+                  className="w-full"
+                  name="country"
+                  defaultValue={shipping != null ? shipping.country : ""}
+                >
+                  {countries}
+                </select>
+              </label>
 
-            <label htmlFor="vcCity">City*</label>
-            <input
-              type="text"
-              id="vcCity"
-              name="city"
-              required
-              placeholder=""
-              defaultValue={shipping != null ? shipping.city : ""}
-            />
-
-            <label htmlFor="vcProvince">Province/State</label>
-            <input
-              type="text"
-              required
-              id="vcProvince"
-              name="state"
-              defaultValue={shipping != null ? shipping.state : ""}
-            />
-
-            <label htmlFor="vcCountry">Country*</label>
-            <select
-              className="vcCountry"
-              required
-              name="country"
-              defaultValue={shipping != null ? shipping.country : ""}
-            >
-              {countries}
-            </select>
-
-            <label htmlFor="vcPostal">Postal Code/Zip Code*</label>
-            <input
-              type="text"
-              id="vcPostal"
-              required
-              name="postal"
-              placeholder=""
-              defaultValue={shipping != null ? shipping.postal : ""}
-            />
-
-            <label htmlFor="vcPhone">Phone Number*</label>
-            <input
-              type="text"
-              id="vcPhone"
-              name="phone"
-              required
-              placeholder="555-555-5555"
-              defaultValue={shipping != null ? shipping.phone : ""}
-            />
+              <label htmlFor="vcPostal" className="w-1/2 mx-1">
+                Postal Code/Zip Code*
+                <input
+                  type="text"
+                  id="vcPostal"
+                  className="w-full"
+                  required
+                  name="postal"
+                  placeholder=""
+                  defaultValue={shipping != null ? shipping.postal : ""}
+                />
+              </label>
+            </div>
           </div>
         </div>
 

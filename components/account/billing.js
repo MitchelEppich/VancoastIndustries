@@ -129,9 +129,7 @@ const billing = props => {
               name="country"
               className="w-full"
               id=""
-              defaultValue={
-                billing != null ? billing.country.toUpperCase() : ""
-              }
+              defaultValue={billing != null ? billing.country : ""}
             >
               {countries}
             </select>

@@ -63,102 +63,140 @@ const billing = props => {
         >
           <div className="vcCheckout-content">
             <div className="vcWholesale-application flex flex-col justify-center">
-              <label htmlFor="vcName">Name*</label>
-              <input
-                type="text"
-                id="vcName"
-                name="name"
-                required
-                placeholder="First Name"
-                defaultValue={billing != null ? billing.name : ""}
-              />
-              <input
-                type="text"
-                id="vcName"
-                name="surname"
-                required
-                placeholder="Last Name"
-                defaultValue={billing != null ? billing.surname : ""}
-              />
+              <div className="inline-flex w-full">
+                <label htmlFor="vcName" className="w-1/2 mx-1">
+                  First Name*
+                  <input
+                    type="text"
+                    id="vcName"
+                    name="name"
+                    required
+                    className="w-full"
+                    placeholder="First Name"
+                    defaultValue={billing != null ? billing.name : ""}
+                  />
+                </label>
+                <label htmlFor="vcName" className="w-1/2 mx-1">
+                  Last Name*
+                  <input
+                    type="text"
+                    id="vcName"
+                    name="surname"
+                    required
+                    className="w-full"
+                    placeholder="Last Name"
+                    defaultValue={billing != null ? billing.surname : ""}
+                  />
+                </label>
+              </div>
 
-              <label htmlFor="vcEmail">Email Address*</label>
-              <input
-                type="text"
-                id="vcEmail"
-                required
-                name="email"
-                placeholder="you@companyname.com"
-                defaultValue={account != null ? account.email : ""}
-              />
+              <div className="inline-flex w-full">
+                <label htmlFor="vcEmail" className="w-2/3 mx-1">
+                  Email Address*
+                  <input
+                    type="text"
+                    id="vcEmail"
+                    required
+                    name="email"
+                    className="w-full"
+                    placeholder="you@companyname.com"
+                    defaultValue={account != null ? account.email : ""}
+                  />
+                </label>
+                <label htmlFor="vcPhone" className="w-1/3 mx-1">
+                  Phone Number*
+                  <input
+                    type="text"
+                    id="vcPhone"
+                    name="phone"
+                    className="w-full"
+                    required
+                    placeholder="555-555-5555"
+                    defaultValue={billing != null ? billing.phone : ""}
+                  />
+                </label>
+              </div>
+              <div className="inline-flex w-full">
+                <label htmlFor="vcStreet" className="w-1/2 mx-1">
+                  Street Address*
+                  <input
+                    type="text"
+                    id="vcStreet"
+                    name="address"
+                    className="w-full"
+                    required
+                    placeholder=""
+                    defaultValue={billing != null ? billing.address : ""}
+                  />
+                </label>
 
-              <label htmlFor="vcStreet">Street Address*</label>
-              <input
-                type="text"
-                id="vcStreet"
-                name="address"
-                required
-                placeholder=""
-                defaultValue={billing != null ? billing.address : ""}
-              />
+                <label htmlFor="vcApartment" className="w-1/2 mx-1">
+                  Apartment
+                  <input
+                    type="text"
+                    id="vcApartment"
+                    name="apartment"
+                    // required
+                    className="w-full"
+                    placeholder=""
+                    defaultValue={billing != null ? billing.apartment : ""}
+                  />
+                </label>
+              </div>
+              <div className="inline-flex w-full">
+                <label htmlFor="vcCity" className="w-1/2 mx-1">
+                  City*
+                  <input
+                    type="text"
+                    id="vcCity"
+                    name="city"
+                    required
+                    className="w-full"
+                    placeholder=""
+                    defaultValue={billing != null ? billing.city : ""}
+                  />
+                </label>
 
-              <label htmlFor="vcApartment">Apartment*</label>
-              <input
-                type="text"
-                id="vcApartment"
-                name="apartment"
-                required
-                placeholder=""
-                defaultValue={billing != null ? billing.apartment : ""}
-              />
+                <label htmlFor="vcProvince" className="w-1/2 mx-1">
+                  Province/State
+                  <input
+                    type="text"
+                    required
+                    id="vcProvince"
+                    className="w-full"
+                    name="state"
+                    defaultValue={billing != null ? billing.state : ""}
+                  />
+                </label>
+              </div>
 
-              <label htmlFor="vcCity">City*</label>
-              <input
-                type="text"
-                id="vcCity"
-                name="city"
-                required
-                placeholder=""
-                defaultValue={billing != null ? billing.city : ""}
-              />
+              <div className="inline-flex w-full">
+                <label htmlFor="vcCountry" className="w-1/2 mx-1">
+                  Country*
+                  <select
+                    className="vcCountry"
+                    required
+                    className="w-full"
+                    name="country"
+                    defaultValue={billing != null ? billing.country : ""}
+                  >
+                    {countries}
+                  </select>{" "}
+                </label>
 
-              <label htmlFor="vcProvince">Province/State</label>
-              <input
-                type="text"
-                required
-                id="vcProvince"
-                name="state"
-                defaultValue={billing != null ? billing.state : ""}
-              />
-
-              <label htmlFor="vcCountry">Country*</label>
-              <select
-                className="vcCountry"
-                required
-                name="country"
-                defaultValue={billing != null ? billing.country : ""}
-              >
-                {countries}
-              </select>
-
-              <label htmlFor="vcPostal">Postal Code/Zip Code*</label>
-              <input
-                type="text"
-                id="vcPostal"
-                required
-                name="postal"
-                placeholder=""
-                defaultValue={billing != null ? billing.postal : ""}
-              />
-
-              <label htmlFor="vcPhone">Phone Number*</label>
-              <input
-                type="text"
-                id="vcPhone"
-                name="phone"
-                required
-                placeholder="555-555-5555"
-                defaultValue={billing != null ? billing.phone : ""}
-              />
+                <label htmlFor="vcPostal" className="w-1/2 mx-1">
+                  Postal Code/Zip Code*
+                  <input
+                    type="text"
+                    id="vcPostal"
+                    required
+                    className="w-full"
+                    name="postal"
+                    placeholder=""
+                    defaultValue={billing != null ? billing.postal : ""}
+                  />
+                </label>
+              </div>
             </div>
           </div>
 

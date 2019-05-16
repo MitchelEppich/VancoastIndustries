@@ -13,12 +13,12 @@ const cart = props => {
         : "../static/img/products/sunwest/sw-cheese.png";
     return (
       <li key={index} className="vcItem flex items-end relative mx-4 my-4">
-        <div className="w-full inline-flex">
-          <div className="h-150">
+        <div className="w-full inline-flex sm:flex-col flex">
+          <div className="h-150 sm:flex sm:justify-center sm:my-2">
             <img src={img} alt="bruce banner" style={{ maxHeight: "150px" }} />
           </div>
 
-          <div className="vcItem-info h-150 ml-4 flex flex-col justify-around items-start">
+          <div className="vcItem-info h-150 sm:ml-0 ml-4 flex flex-col justify-around items-start">
             <h2 className="uppercase text-lg">{product.alias}</h2>
             <h3 className="vcCheckout-cat">{product.type}</h3>
             <div className="vcItem-brand capitalize mt-2">
@@ -70,35 +70,44 @@ const cart = props => {
   return (
     <React.Fragment>
       <div className={props.page == "payment" ? "" : "vcCheckout-content"}>
-        <ul className="vcCheckout-list flex flex-row justify-center lg:justify-start items-center">
+        <ul className="vcCheckout-list flex flex-row justify-center lg:justify-start sm:my-4 items-center sm:border sm:border-grey-lightest p-2">
           {items}
         </ul>
 
         <div className="vcCheckout-totals flex flex-col justify-around items-center">
-          <div className="vcCheckout-subtotal">
-            Subtotal: <span>${props.checkout.cart.price.toFixed(2)}</span>
+          <div className="w-full inline-flex">
+            <div className="w-1/2 text-right mr-2">Subtotal: </div>{" "}
+            <div className="w-1/2 text-left ml-2 font-normal">
+              ${props.checkout.cart.price.toFixed(2)}
+            </div>
           </div>
           {props.tax != null ? (
-            <div className="vcCheckout-taxes">
-              Taxes: <span>${props.tax.toFixed(2)}</span>
+            <div className="w-full inline-flex">
+              <div className="w-1/2 text-right mr-2"> Taxes: </div>{" "}
+              <div className="w-1/2 text-left ml-2 font-normal">
+                ${props.tax.toFixed(2)}
+              </div>
             </div>
           ) : null}
           {props.shipping != null ? (
-            <div className="vcCheckout-taxes">
-              Shipping: <span>${props.shipping.toFixed(2)}</span>
+            <div className="w-full inline-flex">
+              <div className="w-1/2 text-right mr-2"> Shipping: </div>{" "}
+              <div className="w-1/2 text-left ml-2 font-normal">
+                ${props.shipping.toFixed(2)}
+              </div>
             </div>
           ) : null}
           {props.total != null ? (
-            <div className="vcCheckout-total">
-              Total:{" "}
-              <span>
+            <div className="w-full inline-flex">
+              <div className="w-1/2 text-right mr-2"> Total: </div>
+              <div className="w-1/2 text-left ml-2 font-normal">
                 $
                 {(
                   props.checkout.cart.price +
                   props.tax +
                   props.shipping
                 ).toFixed(2)}
-              </span>
+              </div>
             </div>
           ) : null}
         </div>

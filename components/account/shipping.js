@@ -1,4 +1,6 @@
 import data from "../../static/data";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const shipping = props => {
   let account = props.account.currentUser;
@@ -16,6 +18,32 @@ const shipping = props => {
   return (
     <div id="" className="tabcontent">
       <h1>Shipping Info</h1>
+      <div className="inline-flex w-full mt-10 mb-6">
+        <div className="border-2 border-grey-light rounded p-3 w-1/4 mx-4 scale-item ">
+          <h4 className="font-bold uppercase mb-3 text-center">Address 1#</h4>
+          <div>
+            <div className="p-0 m-0">Name Surname</div>
+            <div className="p-0 m-0">122, Main Street</div>
+            <div className="p-0 m-0">Vancouver, BC</div>
+            <div className="p-0 m-0">Canada</div>
+          </div>
+        </div>
+        <div className="border-2 border-grey-light rounded p-3 w-1/4 mx-4 scale-item ">
+          <h4 className="font-bold uppercase mb-3 text-center">Address 2#</h4>
+          <div>
+            <div className="p-0 m-0">Name Surname</div>
+            <div className="p-0 m-0">122, Main Street</div>
+            <div className="p-0 m-0">Vancouver, BC</div>
+            <div className="p-0 m-0">Canada</div>
+          </div>
+        </div>
+        <div className="border-2 border-grey-light rounded p-3 w-1/4 mx-4 scale-item text-center">
+          <h4 className="font-bold uppercase mb-3">Add New</h4>
+          <div>
+            <FontAwesomeIcon icon={faPlus} className="fa-5x text-grey-light" />
+          </div>
+        </div>
+      </div>
       <form
         className="vcAccount-details flex flex-col justify-center"
         onSubmit={e => {
