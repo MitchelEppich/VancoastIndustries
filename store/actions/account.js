@@ -13,7 +13,8 @@ const actionTypes = {
   UPDATE_ERROR: "UPDATE_ERROR",
   RESET_PASSWORD: "RESET_PASSWORD",
   LOGOUT: "LOGOUT",
-  SHOW_RECENT_ORDER: "SHOW_RECENT_ORDER"
+  SHOW_RECENT_ORDER: "SHOW_RECENT_ORDER",
+  MODIFY_CART: "MODIFY_CART"
 };
 
 const getActions = uri => {
@@ -177,6 +178,14 @@ const getActions = uri => {
       return {
         type: actionTypes.SHOW_RECENT_ORDER,
         index: index
+      };
+    },
+    reOrder: order => {
+      console.log(order);
+      let cart = {};
+      return {
+        type: actionTypes.MODIFY_CART,
+        cart: cart
       };
     }
   };

@@ -1,6 +1,6 @@
 const seedSelect = props => {
   let _product = props.product.currentProduct || props.shop.quickViewModal;
-  let _arr = _product.price;
+  let _arr = _product.wholesale;
   _arr = _arr.map((price, index) => {
     let numberOfSeeds = _product.size[index];
     if (price < 0) return null;
@@ -23,9 +23,14 @@ const seedSelect = props => {
   });
 
   return (
-    <div className="vcSingle-choices flex flex-row justify-around items-center sm:hidden">
-      {_arr}
-    </div>
+    <React.Fragment>
+      <div className="vcSingle-choices flex flex-row justify-around items-center sm:hidden">
+        {_arr}
+      </div>
+      <p className="w-full px-5 text-grey text-xl text-center font-bold sm:hidden">
+        Sell at...${_product.price[props.product.quickAddToCartQty]} ea.
+      </p>
+    </React.Fragment>
   );
 };
 

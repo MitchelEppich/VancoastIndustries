@@ -83,7 +83,7 @@ const getActions = uri => {
           if (_product == null) return {};
           let _amount = parseInt(_productIdentifier.replace(/\D/g, ""));
           return {
-            _per: _product.price[_product.size.indexOf(_amount)],
+            _per: _product.wholesale[_product.size.indexOf(_amount)],
             _amount
           };
         })();
@@ -158,8 +158,8 @@ const getActions = uri => {
 
         let _price = Object.values(_items)
           .map(a => {
-            if (isNaN(a.price)) return 0;
-            return a.price;
+            if (isNaN(a.wholesale)) return 0;
+            return a.wholesale;
           })
           .reduce((a, b) => {
             return a + b;
@@ -170,7 +170,7 @@ const getActions = uri => {
           if (_coupon.type == "%") {
             return Object.values(_items)
               .map(a => {
-                if (isNaN(a.price) || isNaN(a.sale)) return 0;
+                if (isNaN(a.wholesale) || isNaN(a.sale)) return 0;
                 return (a.per - a.sale) * a.quantity;
               })
               .reduce((a, b) => {
@@ -202,7 +202,6 @@ const getActions = uri => {
               quantity: _quantity,
               packSize: _amount
             };
-            console.log(item);
           } else {
             item = _items[_productIdentifier];
           }

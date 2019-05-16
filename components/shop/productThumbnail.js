@@ -57,7 +57,7 @@ const productThumbnail = props => {
             <div className="vcProduct-info flex flex-row justify-between">
               <h3 className="vcProduct-cat">{props.strain.type}</h3>
               <p className={"vcProduct-price " + props.priceColor}>
-                from ${props.strain.price[0]}
+                from ${props.strain.wholesale[0]}
               </p>
             </div>
           </header>

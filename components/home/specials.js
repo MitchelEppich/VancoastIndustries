@@ -13,7 +13,7 @@ const specials = props => {
         <div className="vcSpecials-info">
           <h3>{strain.alias}</h3>
           <p className="vcSpecials-price">
-            from <span>${strain.price[0]}</span>
+            from <span>${strain.wholesale[0]}</span>
           </p>
           <p className="vcSpecials-cat">{strain.type}</p>
         </div>

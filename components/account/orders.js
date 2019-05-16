@@ -1,5 +1,6 @@
 import moment from "moment";
 import { itemBuilder } from "../../scripts/savedItems";
+import Router from "next/router";
 
 const orders = props => {
   let orders = props.account.recentOrders.map((order, index) => {
@@ -38,7 +39,13 @@ const orders = props => {
           className="vcAccordion flex flex-row justify-between items-center"
         >
           {moment(order.date).format("MMM Do YYYY")}{" "}
-          <a onClick={e => e.stopPropagation()} href="#">
+          <a
+            onClick={e => {
+              e.stopPropagation();
+              props.reOrder(order);
+              Router.push("/checkout");
+            }}
+          >
             Re-Order
           </a>
         </div>

@@ -132,7 +132,6 @@ const cartOptions = props => {
         <button
           onClick={e => {
             e.preventDefault();
-            console.log("hello");
             if (props.account.currentUser == null) {
               props.toggleAlert({
                 message: "Please log in to continue",

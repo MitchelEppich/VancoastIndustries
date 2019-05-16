@@ -47,7 +47,8 @@ const mapDispatchToProps = dispatch => {
     resetPassword: input => dispatch(actions.resetPassword(input)),
     modifySavedItems: input => dispatch(actions.modifySavedItems(input)),
     logout: () => dispatch(actions.logout()),
-    showRecentOrder: index => dispatch(actions.showRecentOrder(index))
+    showRecentOrder: index => dispatch(actions.showRecentOrder(index)),
+    reOrder: order => dispatch(actions.reOrder(order))
   };
 };
 

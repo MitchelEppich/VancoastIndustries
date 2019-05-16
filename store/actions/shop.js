@@ -66,7 +66,7 @@ const getActions = uri => {
               crossdomain: true,
               params: {
                 query:
-                  '{variant(input:{website:["cropkingseeds.com", "sonomaseeds.com", "sunwestgenetics.com"]}){sotiId, sttId,alias, summary, description, releaseDate, company { assetsUrl, name }, attributes {price, size, stock { amount, distributor }}, strain { cbd, thc, cbn, effect, type, yield, genetic, flowerTime, origin, difficulty, indica, sativa, ruderalis, environment }}}'
+                  '{variant(input:{website:["cropkingseeds.com", "sonomaseeds.com", "sunwestgenetics.com"]}){sotiId, sttId,alias, summary, description, releaseDate, company { assetsUrl, name }, attributes {price, wholesale, size, stock { amount, distributor }}, strain { cbd, thc, cbn, effect, type, yield, genetic, flowerTime, origin, difficulty, indica, sativa, ruderalis, environment }}}'
               }
             })
             .then(function(response) {

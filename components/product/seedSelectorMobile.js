@@ -1,6 +1,6 @@
 const SeedSelectorMobile = props => {
   let _product = props.product.currentProduct || props.shop.quickViewModal;
-  let _arr = _product.price;
+  let _arr = _product.wholesale;
   _arr = _arr.map((price, index) => {
     let numberOfSeeds = _product.size[index];
 
@@ -28,6 +28,9 @@ const SeedSelectorMobile = props => {
       >
         {_arr}
       </select>
+      <p className="w-full mt-3 px-5 text-grey text-xl text-center font-bold md:hidden lg:hidden xl:hidden xxl:hidden">
+        Sell at...${_product.price[props.product.quickAddToCartQty]} ea.
+      </p>
     </div>
   );
 };

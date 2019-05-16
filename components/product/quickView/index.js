@@ -20,6 +20,13 @@ const index = props => {
   let itemSaved = props.account.currentUser
     ? props.account.currentUser.savedItems.includes(productAsSavedItemString)
     : false;
+
+  let img =
+    product.company.name == "sonoma seeds"
+      ? "../static/img/products/sonoma/so-blue-diesel.jpg"
+      : product.company.name == "crop king seeds"
+      ? "../static/img/products/cks/cks-white-widow-auto.png"
+      : "../static/img/products/sunwest/sw-cheese.png";
   return (
     <div className="w-screen h-screen bg-semi-transparent z-50 fixed">
       <div className="vcSingle vcQuick flex justify-center items-center">
@@ -43,7 +50,7 @@ const index = props => {
           >
             <img
               className="sm:hidden h-200 scale-item cursor-pointer"
-              src="../static/img/products/sunwest/single-front/sw-kali-mist-406x412.png"
+              src={img}
               alt="kali mist"
             />
             <h1 className="flex items-center cursor-pointer justify-center">
