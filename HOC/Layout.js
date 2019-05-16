@@ -50,57 +50,46 @@ class Layout extends Component {
       console.log(err);
     }
     this.props.togglePageReady(pageReady);
-    window.addEventListener("resize", () => {
-      this.setMediaSize();
-      if (this.props.misc.showMobileMenu) {
-        this.props.toggleMobileMenu(false);
-      }
-    });
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > window.innerHeight) {
-        this.setState({ toTop: true });
-      }
-      if (window.scrollY < window.innerHeight) {
-        this.setState({ toTop: false });
-      }
-    });
-    window.addEventListener(
-      "keydown",
-      e => this.dealWithKeyboard(e, keyCodes, this.dealWithKeyboard),
-      false
-    );
+    window.addEventListener("resize", this.resizeScreen);
+    window.addEventListener("scroll", this.scrollToTop);
     if (dev) {
-      window.addEventListener("keypress", e => {
-        if (e.shiftKey && e.code === "KeyP") {
-          console.log(this.props);
-        }
-      });
+      window.addEventListener("keypress", this.printProps);
     }
+    window.addEventListener("keydown", e =>
+      this.dealWithKeyboard(e, keyCodes, this.dealWithKeyboard)
+    );
     this.recallVerifiedUser();
   }
 
-  componentWillUnMount() {
-    window.removeEventListener("resize", () => {
-      this.setMediaSize();
-      if (this.props.misc.showMobileMenu) {
-        this.props.toggleMobileMenu(false);
-      }
-    });
-    window.removeEventListener("scroll", () => {
-      if (window.scrollY > window.innerHeight) {
-        this.setState({ toTop: true });
-      }
-      if (window.scrollY < window.innerHeight) {
-        this.setState({ toTop: false });
-      }
-    });
-    if (dev) {
-      window.removeEventListener("keypress", e => {
-        if (e.shiftKey && e.code === "KeyP") {
-          console.log(this.props);
-        }
-      });
+  resizeScreen() {
+    this.setMediaSize();
+    if (this.props.misc.showMobileMenu) {
+      this.props.toggleMobileMenu(false);
     }
+  }
+  scrollToTop = () => {
+    if (window.scrollY > window.innerHeight) {
+      this.setState({ toTop: true });
+    }
+    if (window.scrollY < window.innerHeight) {
+      this.setState({ toTop: false });
+    }
+  };
+  printProps = e => {
+    if (e.shiftKey && e.code === "KeyP") {
+      console.log(this.props);
+    }
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.resizeScreen);
+    window.removeEventListener("scroll", this.scrollToTop);
+    if (dev) {
+      window.removeEventListener("keypress", this.printProps);
+    }
+    window.removeEventListener("keydown", e =>
+      this.dealWithKeyboard(e, keyCodes, this.dealWithKeyboard)
+    );
   }
 
   recallVerifiedUser = () => {
