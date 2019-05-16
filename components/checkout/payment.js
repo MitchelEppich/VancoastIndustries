@@ -11,27 +11,29 @@ const payment = props => {
         <div className="vcShipping-details">
           <h2>Delivery Details</h2>
 
-          <div>
-            <span className="vcShipping-name">{shipping.name}</span>
-            <span className="vcShipping-name">{shipping.surname}</span>
-          </div>
+          <div className="capitalize px-8 mt-4">
+            <div>
+              <span className="vcShipping-name">{shipping.name}</span>
+              <span className="vcShipping-name ml-2">{shipping.surname}</span>
+            </div>
 
-          <div>
-            <span className="vcShipping-street">{shipping.address}</span>
-          </div>
+            <div>
+              <span className="vcShipping-street">{shipping.address}</span>
+            </div>
 
-          <div>
-            <span className="vcShipping-city">{shipping.city}</span>{" "}
-            <span className="vcShipping-province">{shipping.state}</span>
-          </div>
+            <div>
+              <span className="vcShipping-city">{shipping.city}</span>{" "}
+              <span className="vcShipping-province">{shipping.state}</span>
+            </div>
 
-          <div>
-            <span className="vcShipping-country">{shipping.country}</span>{" "}
-            <span className="vcShipping-code">{shipping.postal}</span>
-          </div>
+            <div>
+              <span className="vcShipping-country">{shipping.country}</span>{" "}
+              <span className="vcShipping-code">{shipping.postal}</span>
+            </div>
 
-          <div>
-            <span className="vcShipping-phone">{shipping.phone}</span>
+            <div>
+              <span className="vcShipping-phone">{shipping.phone}</span>
+            </div>
           </div>
         </div>
 
