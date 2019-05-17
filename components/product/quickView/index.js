@@ -139,12 +139,18 @@ const index = props => {
                     actionName: "Login"
                   });
                 } else {
-                  props.addToWishList({
+                  props.modifySavedItems({
                     currentUser: props.account.currentUser,
                     product: product,
                     quantity: cart.potentialQuantity,
                     packSize: product.size[props.product.quickAddToCartQty]
                   });
+                  // props.addToWishList({
+                  //   currentUser: props.account.currentUser,
+                  //   product: product,
+                  //   quantity: cart.potentialQuantity,
+                  //   packSize: product.size[props.product.quickAddToCartQty]
+                  // });
                 }
               }}
               className="vcSaveItem-btn"

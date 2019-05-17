@@ -6,7 +6,7 @@ import {
 import Router from "next/router";
 
 const index = props => {
-  console.log(props.strain);
+  // console.log(props.strain);
   let img =
     props.item.company.name == "sonoma seeds"
       ? "../static/img/products/sonoma/so-blue-diesel.jpg"

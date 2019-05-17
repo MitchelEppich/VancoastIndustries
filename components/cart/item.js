@@ -33,7 +33,7 @@ const item = props => {
         <img src={img} className="h-24" alt={item.product.alias} />
       </div>
 
-      <div className="vcItem-info uppercase flex flex-col justify-around items-start">
+      <div className="vcItem-info w-2/3 text-sm uppercase flex flex-col justify-around items-start">
         <h3>{item.product.alias}</h3>
         <p className="font-bold text-blue">{item.product.type}</p>
         <div className="vcItem-brand">
