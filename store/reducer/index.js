@@ -26,11 +26,14 @@ const initialState = {
   alert: null,
   MATM: false,
   emailSent: false,
-  subscribedToNewsletter: false
+  subscribedToNewsletter: false,
+  addressForEditor: null
 };
 
 const indexReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.SET_ADDRESS_TO_EDIT:
+      return updateObject(state, { addressForEditor: action.addressForEditor });
     case actionTypes.TOGGLE_CART:
       return updateObject(state, { showCart: action.isCartVisible });
     case actionTypes.TOGGLE_SEARCH_BAR:
