@@ -19,6 +19,8 @@ let Type = `
         address: Address
         shipping: [Address]
         billing: [Address]
+        defaultShipping: Int
+        defaultBilling: Int
         company: String
         website: String
         license: String
@@ -51,6 +53,8 @@ let Input = `
         approved: Int
         address: AddressInput
         shipping: [AddressInput]
+        defaultShipping: Int
+        defaultBilling: Int
         billing: [AddressInput]
         savedItem: String
         cartItem: String

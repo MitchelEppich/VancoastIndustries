@@ -5,6 +5,7 @@ let Query = `
 let Mutation = `
     createAddress(input: AddressInput): Address
     updateAddress(input: AddressInput): Address
+    deleteAddress(input: DeleteAddressInput): Account
 `;
 
 let Subscription = ``;
@@ -29,6 +30,11 @@ let Input = `
     input GetAddressInput {
         jwt: String
         type: String
+    }
+
+    input DeleteAddressInput {
+        _id: String
+        account: String
     }
 
     input AddressInput {

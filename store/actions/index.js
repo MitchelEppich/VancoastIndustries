@@ -35,11 +35,18 @@ const actionTypes = {
   TOGGLE_MOBILE_MENU: "TOGGLE_MOBILE_MENU",
   TOGGLE_ALERT: "TOGGLE_ALERT",
   TOGGLE_MATM: "TOGGLE_MATM",
+  SET_ADDRESS_TO_EDIT: "SET_ADDRESS_TO_EDIT",
   SUBSCRIBE_TO_NEWSLETTER: "SUBSCRIBE_TO_NEWSLETTER",
   SEND_EMAIL: "SEND_EMAIL"
 };
 
 const actions = {
+  setAddressToEdit: addressForEditor => {
+    return {
+      type: actionTypes.SET_ADDRESS_TO_EDIT,
+      addressForEditor: addressForEditor
+    };
+  },
   toggleCart: isCartVisible => {
     return {
       type: actionTypes.TOGGLE_CART,

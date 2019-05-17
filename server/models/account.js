@@ -12,6 +12,8 @@ const AccountSchema = Schema({
   license: String,
   cartItems: [String],
   jwt: String,
+  defaultShipping: Number,
+  defaultBilling: Number,
   address: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Address"
@@ -36,16 +38,16 @@ const AccountSchema = Schema({
 });
 
 // adds a method to a user document object to create a hashed password
-AccountSchema.methods.generateHash = function(password) {
+AccountSchema.methods.generateHash = function (password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 };
 
 // adds a method to a user document object to check if provided password is correct
-AccountSchema.methods.validPassword = function(password) {
+AccountSchema.methods.validPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
-AccountSchema.methods.createToken = function() {
+AccountSchema.methods.createToken = function () {
   return jwt.sign(
     { _id: this._id, email: this.email },
     process.env.JWT_SECRET,
@@ -79,16 +81,16 @@ AccountSchema.methods.verifyToken = (token, callback) => {
 
 // middleware: before saving, check if password was changed,
 // and if so, encrypt new password before saving:
-AccountSchema.pre("findOneAndUpdate", function(next) {
+AccountSchema.pre("findOneAndUpdate", function (next) {
   // Hash the password if updated
-  if (this._update.$set.password) {
+  if (this._update.$set != null && this._update.$set.password) {
     this._update.$set.password = this.schema.methods.generateHash(
       this._update.$set.password
     );
   }
   next();
 });
-AccountSchema.pre("save", function(next) {
+AccountSchema.pre("save", function (next) {
   if (this.isModified("password")) {
     this.password = this.generateHash ? this.generateHash(this.password) : null;
   }
