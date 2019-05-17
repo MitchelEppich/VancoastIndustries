@@ -14,7 +14,8 @@ const actionTypes = {
   RESET_PASSWORD: "RESET_PASSWORD",
   LOGOUT: "LOGOUT",
   SHOW_RECENT_ORDER: "SHOW_RECENT_ORDER",
-  MODIFY_CART: "MODIFY_CART"
+  MODIFY_CART: "MODIFY_CART",
+  DELETE_ADDRESS: "DELETE_ADDRESS"
 };
 
 const getActions = uri => {
@@ -135,7 +136,7 @@ const getActions = uri => {
     updateAccount: input => {
       return dispatch => {
         const link = new HttpLink({ uri, fetch: fetch });
-
+        console.log(input)
         const operation = {
           query: mutation.updateAccount,
           variables: { ...input }
@@ -154,6 +155,36 @@ const getActions = uri => {
             }
             dispatch({
               type: actionTypes.UPDATE_ACCOUNT,
+              currentUser: account
+            });
+            return Promise.resolve(account);
+          })
+          .catch(error => console.log(error));
+      };
+    },
+    deleteAddress: input => {
+      return dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+
+        const operation = {
+          query: mutation.deleteAddress,
+          variables: { ...input }
+        };
+
+        return makePromise(execute(link, operation))
+          .then(data => {
+            let account = data.data.deleteAddress;
+            if (account == null) return null;
+            if (account.error != null) {
+              let error = account.error;
+              dispatch({
+                type: actionTypes.UPDATE_ERROR,
+                error
+              });
+              return;
+            }
+            dispatch({
+              type: actionTypes.DELETE_ADDRESS,
               currentUser: account
             });
             return Promise.resolve(account);
@@ -245,6 +276,8 @@ const mutation = {
         company
         website
         license
+        defaultShipping
+        defaultBilling
         approved
         admin
         description
@@ -353,6 +386,68 @@ const mutation = {
         description
         jwt
         createdAt
+        defaultShipping
+        defaultBilling
+        savedItems
+        cartItems
+      }
+    }
+  `,
+  deleteAddress: gql`
+    mutation($account:String,$_id:String) {
+	    deleteAddress(input: {_id:$_id, account:$account}) {
+        _id
+        email
+        password
+        address {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        shipping {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        billing {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        company
+        website
+        license
+        approved
+        admin
+        defaultShipping
+        defaultBilling
+        description
+        jwt
+        createdAt
         savedItems
         cartItems
       }
@@ -379,6 +474,8 @@ const mutation = {
       $savedItem: String
       $cartItem: String
       $cartItems: [String]
+      $defaultShipping: Int
+      $defaultBilling: Int
     ) {
       updateAccount(
         input: {
@@ -396,6 +493,8 @@ const mutation = {
           savedItem: $savedItem
           cartItem: $cartItem
           cartItems: $cartItems
+          defaultShipping: $defaultShipping
+          defaultBilling: $defaultBilling
         }
       ) {
         _id
@@ -441,6 +540,8 @@ const mutation = {
           state
           createdAt
         }
+        defaultShipping
+        defaultBilling
         company
         website
         license

@@ -43,6 +43,11 @@ export default (state = initialState, action) => {
         currentUser: action.currentUser,
         updateError: null
       });
+    case actionTypes.DELETE_ADDRESS:
+      return updateObject(state, {
+        currentUser: action.currentUser,
+        updateError: null
+      });
     case actionTypes.CREATE_ACCOUNT:
       return updateObject(state, {});
     case actionTypes.RESET_PASSWORD:

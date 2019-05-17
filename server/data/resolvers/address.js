@@ -1,4 +1,4 @@
-const { Address } = require("../../models");
+const { Address, Account } = require("../../models");
 
 const mongoose = require("mongoose");
 
@@ -35,6 +35,21 @@ const resolvers = {
       await address.save();
 
       return address.toObject();
+    },
+    deleteAddress: async (_, { input }) => {
+      let $ = { ...input }
+
+      if ($.account == null || $._id == null) return null;
+
+      Address.findOneAndDelete({ _id: $._id })
+      let account = await Account.findOneAndUpdate({ _id: $.account }, { $pull: { billing: $._id, shipping: $._id } }, { new: true })
+
+      if (account == null) return null;
+
+      account.password = undefined;
+
+      return account.toObject();
+
     },
     updateAddress: async (_, { input }) => {
       let $ = { ...input };
