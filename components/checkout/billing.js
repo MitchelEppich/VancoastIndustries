@@ -1,9 +1,8 @@
-import AddressModule from "../account/address"
+import AddressModule from "../account/address";
 
 const billing = props => {
   let account = props.account.currentUser;
   let billing = account == null ? null : account.billing;
-
 
   return (
     <React.Fragment>
@@ -27,8 +26,8 @@ const billing = props => {
             props.changeStep("Payment");
             window.scrollTo(0, 0);
 
-            let object = {}
-            let address = shipping[account.defaultShipping]
+            let object = {};
+            let address = billing[account.defaultShipping];
 
             for (let key of Object.keys(address)) {
               object[key] = { value: address[key], tag: tags[key] };

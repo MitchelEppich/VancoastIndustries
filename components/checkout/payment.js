@@ -92,7 +92,7 @@ const payment = props => {
         onSubmit={e => {
           e.preventDefault();
           if (props.checkout.orderDetails.payment) {
-            if (props.checkout.orderDetails.payment.selectedOption.length > 1) {
+            if (props.checkout.orderDetails.payment.method.value.length > 0) {
               window.scrollTo(0, 0);
               Router.push("/confirmation");
             }
