@@ -3,7 +3,7 @@ const specials = props => {
     return (
       <div key={index} className="vcSpecials-product scale-item">
         <div className="vcSpecials-img">
-          <a href="">
+          <a aria-label={strain.alias + "pack"} href="">
             <img
               src="../static/img/products/sonoma/so-northern-berry.jpg"
               alt=""

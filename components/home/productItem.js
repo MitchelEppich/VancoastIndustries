@@ -30,32 +30,11 @@ const productItem = props => {
           <img className="mx-auto" src={img} alt={props.strain.alias} />
         </div>
         <header className="vcProduct-info flex flex-col">
-          {/* <Link
-            href="/product"
-            // as={
-            // }
-          > */}
           <h2 className="my-2 cursor-pointer text-shadow text-white">
             {props.strain.alias}
           </h2>
-          {/* </Link> */}
-          {/* <div className="vcProduct-info flex flex-row justify-between">
-            <h3 className="vcProduct-cat">{props.strain.type}</h3>
-            <p className={"vcProduct-price " + props.priceColor}>
-              from ${props.strain.price[1]}
-            </p>
-          </div> */}
         </header>
       </article>
-
-      {/* <a href="">
-        <img
-          className="quick-view"
-          title="quick view"
-          src="../static/img/assets/icons/quick-view.svg"
-          alt="quick view"
-        />
-      </a> */}
     </div>
   );
 };

@@ -61,8 +61,6 @@ const ourBrands = props => {
       </div>
 
       <div className="vcBrand-dir" />
-      <a href="" />
-      <a href="" />
     </div>
   );
 };

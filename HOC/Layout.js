@@ -127,7 +127,8 @@ class Layout extends Component {
   render() {
     return (
       <React.Fragment>
-        <div id="top">
+        {/* <div id="top"> */}
+        <div>
           <Menu {...this.props} />
           <Cart {...this.props} />
           {this.props.misc.MATM ? <MATM /> : null}

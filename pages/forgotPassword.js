@@ -11,12 +11,11 @@ class Index extends Component {
   render() {
     return (
       <div className="vcLogin flex flex-col justify-center items-center">
-        <a href="#">
-          <img
-            src="../static/img/assets/vc-full-logo.png"
-            alt="vancoast industries"
-          />
-        </a>
+        <img
+          className="sm:h-16 sm:my-3 my-12"
+          src="../static/img/assets/vc-full-logo.png"
+          alt="vancoast industries"
+        />
         <div className="vcLogin-panel flex flex-col items-center justify-around">
           <form
             className="vcLogin-form flex flex-col justify-center"
@@ -37,15 +36,15 @@ class Index extends Component {
               />
             </div>
 
-            <div className="text-center mt-8">
+            <div className="text-center">
               <FontAwesomeIcon
                 icon={faUserLock}
-                className="fa-7x text-grey-light opacity-50 mb-2"
+                className="text-5xl sm:text-4xl text-grey-light opacity-30 mb-2"
               />
-              <h2 className="text-3xl uppercase text-blue font-bold">
+              <h2 className="sm:text-sm text-3xl uppercase text-blue font-bold">
                 Forgot your Password?
               </h2>
-              <p className="p-4 w-full px-12">
+              <p className="p-4 w-full">
                 Enter your email address below and we will send you password
                 reset instructions.
               </p>
@@ -61,9 +60,11 @@ class Index extends Component {
             </div>
 
             <div className="w-4/5 mx-auto mt-1">
-              <button type="submit" className="px-10 p-4 w-full bg-blue">
-                Reset my Password
-              </button>
+              <input
+                value="Reset my Password"
+                type="submit"
+                className="vcLogin-btn"
+              />
             </div>
             <div className="w-4/5 mx-auto mt-1">
               <p className="text-xs uppercase opacity-50 font-bold">
@@ -75,7 +76,7 @@ class Index extends Component {
         </div>
 
         <button
-          className="vcForgot"
+          className="vcForgot vcForgot px-5 p-3 m-3"
           onClick={() => {
             Router.push("/login");
           }}

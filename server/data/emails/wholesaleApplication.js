@@ -107,7 +107,7 @@ exports.wholesaleApplication = input => {
         <td style="vertical-align: top; font-weight: bold; text-transform: uppercase; width: 130px" class="tg-0lax bold">About the company:</td>
         <td class="tg-0lax">${input.body}</td>
       </tr>
-     <a href="https://vancoastindustries.com/admin" ><button style="background-color: #1629DF; border-radius: 1rem; color: white; cursor: pointer; margin: 20px auto; padding: 5px 10px; width: 200px">Review Now</button></a>
+     <a aria-label="review wholesale app" href="https://vancoastindustries.com/admin" ><button style="background-color: #1629DF; border-radius: 1rem; color: white; cursor: pointer; margin: 20px auto; padding: 5px 10px; width: 200px">Review Now</button></a>
      
  
     </table>

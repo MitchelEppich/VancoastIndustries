@@ -56,9 +56,7 @@ const index = props => {
             <span>${price.toFixed(2)}</span>
           </div>
         </div>
-        <button className="vcSaved-btn" href="#">
-          Add To Cart
-        </button>
+        <button className="vcSaved-btn">Add To Cart</button>
       </div>
     </li>
   );

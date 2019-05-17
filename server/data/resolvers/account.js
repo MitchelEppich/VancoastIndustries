@@ -1,5 +1,7 @@
 const { Account } = require("../../models");
 
+const nodemailer = require("nodemailer");
+const emailTemplates = require("../emails");
 const mongoose = require("mongoose");
 
 const resolvers = {
@@ -252,6 +254,24 @@ const resolvers = {
       console.log(account.password);
 
       // Send Email
+      let transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: "vancoastindustries.noreply@gmail.com",
+          pass: "ag498zip^"
+        }
+      });
+      let mailOptions;
+      mailOptions = emailTemplates.resetPassword({
+        email: $.email,
+        pwd: account.password
+      });
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          // Do nothing
+          console.log(error);
+        }
+      });
 
       await account.save();
 

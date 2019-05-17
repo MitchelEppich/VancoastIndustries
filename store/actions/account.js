@@ -136,7 +136,6 @@ const getActions = uri => {
     updateAccount: input => {
       return dispatch => {
         const link = new HttpLink({ uri, fetch: fetch });
-        console.log(input)
         const operation = {
           query: mutation.updateAccount,
           variables: { ...input }
@@ -394,8 +393,8 @@ const mutation = {
     }
   `,
   deleteAddress: gql`
-    mutation($account:String,$_id:String) {
-	    deleteAddress(input: {_id:$_id, account:$account}) {
+    mutation($account: String, $_id: String) {
+      deleteAddress(input: { _id: $_id, account: $account }) {
         _id
         email
         password

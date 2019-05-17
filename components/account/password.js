@@ -8,7 +8,10 @@ const password = props => {
         password.
       </p>
       <p>
-        If you dont know your old password, you can <a href="">reset it here</a>
+        If you dont know your old password, you can{" "}
+        <a aria-label="reset password" href="">
+          reset it here
+        </a>
         .
       </p>
       <form

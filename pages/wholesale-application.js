@@ -3,7 +3,7 @@ import withData from "../lib/withData";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 import Layout from "../HOC/Layout";
-
+import Router from "next/router";
 import data from "../static/data";
 
 class Index extends Component {
@@ -243,10 +243,11 @@ class Index extends Component {
             <input
               className={this.props.shop.animationActive ? "scaleAnim" : ""}
               type="submit"
-              value="Request Wholesale Account"
+              value="Submit"
               onClick={() => {
                 this.props.toggleAnimation(true);
                 setTimeout(() => this.props.toggleAnimation(false), 1000);
+                Router.push("/");
               }}
             />
           </form>

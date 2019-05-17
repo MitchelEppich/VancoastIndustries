@@ -35,7 +35,6 @@ resolvers["Mutation"] = {
     return input.email + " has been subscribed to the newsletter!";
   },
   sendEmail: async (_, { input }) => {
-    console.log(input);
     let transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -55,29 +54,8 @@ resolvers["Mutation"] = {
             console.log(error);
           }
         });
-        // RECAPTCHA
-        // var options = {
-        //   method: "POST",
-        //   uri: "https://www.google.com/recaptcha/api/siteverify",
-        //   formData: {
-        //     secret: "6LdVgJIUAAAAAAinDAgg0p2N2v3KuIIK7wDlpMhh",
-        //     response: input.response
-        //   },
-        //   headers: {
-        //     "content-type": "application/x-www-form-urlencoded"
-        //   }
-        // };
-        // request(options)
-        //   .then(function(parsedBody) {
-        //     // POST succeeded...
-        //   })
-        //   .catch(function(err) {
-        //     // POST failed...
-        //     console.log(err);
-        //   });
         break;
       case "wholesale-application":
-        console.log("hit");
         mailOptions = emailTemplates.wholesaleApplication({
           ...input
         });
@@ -90,6 +68,26 @@ resolvers["Mutation"] = {
         break;
       default:
         break;
+      // RECAPTCHA
+      // var options = {
+      //   method: "POST",
+      //   uri: "https://www.google.com/recaptcha/api/siteverify",
+      //   formData: {
+      //     secret: "6LdVgJIUAAAAAAinDAgg0p2N2v3KuIIK7wDlpMhh",
+      //     response: input.response
+      //   },
+      //   headers: {
+      //     "content-type": "application/x-www-form-urlencoded"
+      //   }
+      // };
+      // request(options)
+      //   .then(function(parsedBody) {
+      //     // POST succeeded...
+      //   })
+      //   .catch(function(err) {
+      //     // POST failed...
+      //     console.log(err);
+      //   });
     }
   }
 };
