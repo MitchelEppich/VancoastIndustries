@@ -47,11 +47,12 @@ const cartOptions = props => {
           }}
           defaultValue="1"
           name="quantity"
+          className="sm:mb-2"
         />
         <button
           className={`px-6 p-3 text-center vcBuyNow-button text-lg ${
             props.shop.animationActive ? "scaleAnim" : ""
-            }`}
+          }`}
           type="submit"
           onClick={() => {
             if (props.account.currentUser == null) {
@@ -158,7 +159,7 @@ const cartOptions = props => {
             icon={faHeart}
             className={`${
               itemSaved ? "text-red" : "text-white opacity-50 "
-              } ml-2 fa-lg`}
+            } ml-2 fa-lg`}
           />{" "}
         </button>
       </div>

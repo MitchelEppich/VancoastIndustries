@@ -50,7 +50,12 @@ const mapDispatchToProps = dispatch => {
     modifySavedItems: input => dispatch(actions.modifySavedItems(input)),
     logout: () => dispatch(actions.logout()),
     showRecentOrder: index => dispatch(actions.showRecentOrder(index)),
-    reOrder: order => dispatch(actions.reOrder(order))
+    reOrder: order => dispatch(actions.reOrder(order)),
+    setCurrentProduct: product => {
+      dispatch(actions.quickAddToCartQty(0));
+      dispatch(actions.setCurrentProduct(product));
+    },
+    setBrandIndex: index => dispatch(actions.setBrandIndex(index))
   };
 };
 

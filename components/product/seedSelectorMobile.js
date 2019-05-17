@@ -22,15 +22,20 @@ const SeedSelectorMobile = props => {
 
   return (
     <div className="vcSingle-choices flex flex-col justify-around items-center md:hidden lg:hidden xl:hidden xxl:hidden">
-      <p className="p-2">Options:</p>
+      <p className="p-2 font-bold uppercase text-grey-lightest">
+        Select an Options:
+      </p>
       <select
         onChange={e => props.quickAddToCartQty(e.target.value)}
-        className="bg-grey-light w-full p-2"
+        className="border border-grey-light w-full p-2"
       >
         {_arr}
       </select>
       <p className="w-full mt-3 px-5 text-grey text-xl text-center font-bold md:hidden lg:hidden xl:hidden xxl:hidden">
-        Sell at...${_product.price[props.product.quickAddToCartQty]} ea.
+        <span className="text-blue font-bold uppercase mr-3">
+          Suggested Price:
+        </span>
+        ${_product.price[props.product.quickAddToCartQty]} ea.
       </p>
     </div>
   );

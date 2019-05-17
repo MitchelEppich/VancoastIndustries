@@ -87,155 +87,210 @@ class Index extends Component {
               form.reset();
             }}
           >
-            <label htmlFor="vcName">Your First Name*</label>
-            <input
-              required
-              type="text"
-              id="vcNameFirst"
-              name="name"
-              placeholder="First Name"
-            />
+            <div className="w-full inline-flex">
+              <label htmlFor="vcName" className="w-1/2 mx-1">
+                Your First Name*
+                <input
+                  required
+                  type="text"
+                  className="w-full"
+                  id="vcNameFirst"
+                  name="name"
+                  placeholder="First Name"
+                />
+              </label>
+              <label htmlFor="vcName" className="w-1/2 mx-1">
+                Your Last Name*
+                <input
+                  required
+                  type="text"
+                  className="w-full"
+                  id="vcNameLast"
+                  name="surname"
+                  placeholder="Last Name"
+                />{" "}
+              </label>{" "}
+            </div>
 
-            <label htmlFor="vcName">Your Last Name*</label>
-            <input
-              required
-              type="text"
-              id="vcNameLast"
-              name="surname"
-              placeholder="Last Name"
-            />
+            <div className="w-full inline-flex">
+              <label htmlFor="vcCompany" className="w-1/2 mx-1">
+                Company Name*
+                <input
+                  required
+                  type="text"
+                  id="vcCompany"
+                  name="company"
+                  className="w-full"
+                  placeholder="Company Name"
+                />
+              </label>
 
-            <label htmlFor="vcCompany">Company Name*</label>
-            <input
-              required
-              type="text"
-              id="vcCompany"
-              name="company"
-              placeholder="Company Name"
-            />
+              <label htmlFor="vcEmail" className="w-1/2 mx-1">
+                Company Email*
+                <input
+                  required
+                  type="text"
+                  id="vcEmail"
+                  name="email"
+                  className="w-full"
+                  placeholder="you@companyname.com"
+                />
+              </label>
+            </div>
+            <div className="w-full inline-flex">
+              <label htmlFor="vcPassword" className="w-1/2 mx-1">
+                Account Password*
+                <input
+                  required
+                  type="password"
+                  id="vcPassword"
+                  name="password"
+                  className="w-full"
+                  placeholder="Password"
+                />
+              </label>
 
-            <label htmlFor="vcEmail">Company Email*</label>
-            <input
-              required
-              type="text"
-              id="vcEmail"
-              name="email"
-              placeholder="you@companyname.com"
-            />
+              <label htmlFor="vcPassword" className="w-1/2 mx-1">
+                Confirm Account Password*
+                <input
+                  required
+                  type="password"
+                  id="vcPasswordConfirm"
+                  name="passwordConfirm"
+                  className="w-full"
+                  placeholder="Retype Password"
+                  onChange={e => {
+                    let value = e.target.value;
+                    let other = document.querySelector("#vcPassword").value;
+                    if (value != other)
+                      e.target.setCustomValidity(
+                        "Passwords do not match each other"
+                      );
+                    else e.target.setCustomValidity("");
+                  }}
+                />
+              </label>
+            </div>
 
-            <label htmlFor="vcPassword">Account Password*</label>
-            <input
-              required
-              type="password"
-              id="vcPassword"
-              name="password"
-              placeholder="Password"
-            />
+            <div className="w-full inline-flex">
+              <label htmlFor="vcPhone" className="w-1/3 mx-1">
+                Company Phone*
+                <input
+                  required
+                  type="text"
+                  id="vcPhone"
+                  className="w-full"
+                  name="phone"
+                  placeholder="555-555-5555"
+                />
+              </label>
 
-            <label htmlFor="vcPassword">Confirm Account Password*</label>
-            <input
-              required
-              type="password"
-              id="vcPasswordConfirm"
-              name="passwordConfirm"
-              placeholder="Retype Password"
-              onChange={e => {
-                let value = e.target.value;
-                let other = document.querySelector("#vcPassword").value;
-                if (value != other)
-                  e.target.setCustomValidity(
-                    "Passwords do not match each other"
-                  );
-                else e.target.setCustomValidity("");
-              }}
-            />
+              <label htmlFor="vcWebsite" className="w-1/3 mx-1">
+                Company Website*
+                <input
+                  required
+                  type="text"
+                  id="vcWebsite"
+                  className="w-full"
+                  name="website"
+                  placeholder="www.yoursite.com"
+                />
+              </label>
 
-            <label htmlFor="vcPhone">Company Phone*</label>
-            <input
-              required
-              type="text"
-              id="vcPhone"
-              name="phone"
-              placeholder="555-555-5555"
-            />
+              <label htmlFor="vcLicense" className="w-1/3 mx-1">
+                Business License*
+                <input
+                  required
+                  type="text"
+                  id="vcLicense"
+                  className="w-full"
+                  name="license"
+                  placeholder="#License"
+                />
+              </label>
+            </div>
+            <div className="w-full inline-flex">
+              <label htmlFor="vcAddress" className="w-1/3 mx-1">
+                Address*
+                <input
+                  required
+                  type="text"
+                  id="vcAddress"
+                  className="w-full"
+                  name="address"
+                  placeholder="291 E. Hans Street"
+                />
+              </label>
 
-            <label htmlFor="vcWebsite">Company Website*</label>
-            <input
-              required
-              type="text"
-              id="vcWebsite"
-              name="website"
-              placeholder="www.yoursite.com"
-            />
+              <label htmlFor="vcApartment" className="w-1/3 mx-1">
+                Apartment
+                <input
+                  type="text"
+                  id="vcApartment"
+                  name="apartment"
+                  className="w-full"
+                  placeholder="#3210"
+                />
+              </label>
+              <label htmlFor="vcPostal" className="w-1/3 mx-1">
+                Postal Code/Zip Code*
+                <input
+                  type="text"
+                  id="vcPostal"
+                  name="postal"
+                  className="w-full"
+                  placeholder="V5T 1J9"
+                />
+              </label>
+            </div>
+            <div className="w-full inline-flex">
+              <label htmlFor="vcCity" className="w-1/3 mx-1">
+                City*
+                <input
+                  required
+                  type="text"
+                  className="w-full"
+                  id="vcCity"
+                  name="city"
+                  placeholder="Smith Ville"
+                />
+              </label>
 
-            <label htmlFor="vcLicense">Business License*</label>
-            <input
-              required
-              type="text"
-              id="vcLicense"
-              name="license"
-              placeholder="#License"
-            />
+              <label htmlFor="vcState" className="w-1/3 mx-1">
+                Province/State*
+                <input
+                  required
+                  type="text"
+                  className="w-full"
+                  id="vcState"
+                  name="state"
+                  placeholder="British Columbia"
+                />
+              </label>
 
-            <label htmlFor="vcAddress">Address*</label>
-            <input
-              required
-              type="text"
-              id="vcAddress"
-              name="address"
-              placeholder="291 E. Hans Street"
-            />
+              <label htmlFor="vcCountry" className="w-1/3 mx-1">
+                Country*
+                <select
+                  className="vcCountry"
+                  id="vcCountry"
+                  className="w-full"
+                  name="country"
+                  defaultValue=""
+                >
+                  {countries}
+                </select>{" "}
+              </label>
+            </div>
 
-            <label htmlFor="vcApartment">Apartment</label>
-            <input
-              type="text"
-              id="vcApartment"
-              name="apartment"
-              placeholder="#3210"
-            />
-
-            <label htmlFor="vcCity">City*</label>
-            <input
-              required
-              type="text"
-              id="vcCity"
-              name="city"
-              placeholder="Smith Ville"
-            />
-
-            <label htmlFor="vcState">Province/State*</label>
-            <input
-              required
-              type="text"
-              id="vcState"
-              name="state"
-              placeholder="British Columbia"
-            />
-
-            <label htmlFor="vcCountry">Country*</label>
-            <select
-              className="vcCountry"
-              id="vcCountry"
-              name="country"
-              defaultValue=""
-            >
-              {countries}
-            </select>
-
-            <label htmlFor="vcPostal">Postal Code/Zip Code*</label>
-            <input
-              type="text"
-              id="vcPostal"
-              name="postal"
-              placeholder="V5T 1J9"
-            />
-
-            <label htmlFor="vcMessage">Tell Us About Your Company*</label>
+            <label htmlFor="vcMessage" className="w-full mx-1">
+              Tell Us About Your Company*
+            </label>
             <textarea
               required
               type="textarea"
               id="vcMessage"
               name="description"
+              className="w-full mr-2 pr-3"
               rows="10"
               placeholder="Any information that would be useful like how you heard about our wholesale program."
             />

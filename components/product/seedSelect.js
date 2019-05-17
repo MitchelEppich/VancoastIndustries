@@ -28,7 +28,10 @@ const seedSelect = props => {
         {_arr}
       </div>
       <p className="w-full px-5 text-grey text-xl text-center font-bold sm:hidden">
-        Sell at...${_product.price[props.product.quickAddToCartQty]} ea.
+        <span className="font-bold uppercase text-blue mr-2">
+          Suggested Price:{" "}
+        </span>{" "}
+        ${_product.price[props.product.quickAddToCartQty].toFixed(2)} ea.
       </p>
     </React.Fragment>
   );
