@@ -1,11 +1,4 @@
-/****SCROLLBAR*****/
-
 /******MIXINS*******/
-@mixin element($element) {
-  &__#{$element} {
-    @content;
-  }
-}
 
 // Block Element
 // @access public

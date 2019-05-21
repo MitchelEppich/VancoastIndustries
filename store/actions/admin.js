@@ -8,7 +8,8 @@ const actionTypes = {
   HANDLE_STATUS_CHANGE_NOTE: "HANDLE_STATUS_CHANGE_NOTE",
   CHANGE_ACCOUNT_STATUS: "CHANGE_ACCOUNT_STATUS",
   SEARCH_ACCOUNTS: "SEARCH_ACCOUNTS",
-  SORT_ACCOUNTS: "SORT_ACCOUNTS"
+  SORT_ACCOUNTS: "SORT_ACCOUNTS",
+  GET_ACCOUNTS: "GET_ACCOUNTS"
 };
 
 const getActions = uri => {
@@ -26,7 +27,7 @@ const getActions = uri => {
       };
     },
     changeAccountStatus: statusAndAccount => {
-      console.log(changeAccountStatus);
+      console.log(statusAndAccount);
       return {
         type: actionTypes.CHANGE_ACCOUNT_STATUS
       };
@@ -42,12 +43,39 @@ const getActions = uri => {
         type: actionTypes.SORT_ACCOUNTS,
         sortByIndex: sortByIndex
       };
+    },
+    getAccounts: input => {
+      return dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+
+        const operation = {
+          query: mutation.getAccounts,
+          variables: { ...input }
+        };
+
+        return makePromise(execute(link, operation))
+          .then(data => {
+            let accounts = data.data.getAccounts;
+            dispatch({
+              type: actionTypes.GET_ACCOUNTS,
+              accounts: accounts
+            });
+          })
+          .catch(error => console.log(error));
+      };
     }
   };
 
   return { ...objects };
 };
-const query = {};
+const query = {
+  getAccounts: gql`
+  query(){
+    getAccounts(input: {}){
+      
+    }
+  }`
+};
 
 const mutation = {};
 

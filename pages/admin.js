@@ -19,6 +19,9 @@ class Index extends Component {
       });
     }
   }
+  componentWillMount() {
+    this.props.getAccounts({ limit: 100 });
+  }
   render() {
     return <Admin {...this.props} />;
   }
@@ -32,7 +35,8 @@ const mapDispatchToProps = dispatch => {
     changeAccountStatus: statusAndAccount =>
       dispatch(changeAccountStatus(statusAndAccount)),
     searchAccounts: searchTerm => dispatch(actions.searchAccounts(searchTerm)),
-    sortAccounts: sortByIndex => dispatch(actions.sortAccounts(sortByIndex))
+    sortAccounts: sortByIndex => dispatch(actions.sortAccounts(sortByIndex)),
+    getAccounts: input => dispatch(actions.getAccounts(input))
   };
 };
 

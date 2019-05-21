@@ -229,7 +229,8 @@ const resolvers = {
           if ($.cartItem != null) $push.cartItems = $.cartItem;
         }
       }
-
+      // console.log($pull);
+      // console.log($push);
       if (Object.keys($push).length > 0) options.$push = $push;
       if (Object.keys($pull).length > 0) options.$pull = $pull;
 
