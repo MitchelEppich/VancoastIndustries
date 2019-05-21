@@ -4,18 +4,19 @@ import { updateObject } from "../utility";
 const initialState = {
   currentAccount: null,
   statuses: [
-    { label: "pending", color: "purple" },
+    { label: "pending", color: "orange" },
 
     { label: "approved", color: "green" },
 
-    { label: "declined", color: "orange" },
+    { label: "declined", color: "black" },
 
     { label: "banned", color: "red" }
   ],
   statusNote: "",
   searchTerm: "",
   sortByIndex: 0,
-  accounts: []
+  accounts: [],
+  showOrderBy: false
 };
 
 export default (state = initialState, action) => {
@@ -34,6 +35,8 @@ export default (state = initialState, action) => {
       return updateObject(state, { accounts: action.accounts });
     case actionTypes.CHANGE_ACCOUNT_STATUS:
       return updateObject(state, { accounts: action.accounts });
+    case actionTypes.SHOW_ORDER_BY:
+      return updateObject(state, { showOrderBy: !state.showOrderBy });
     default:
       return state;
   }

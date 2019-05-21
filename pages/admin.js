@@ -55,7 +55,8 @@ const mapDispatchToProps = dispatch => {
     sortAccounts: sortByIndex => dispatch(actions.sortAccounts(sortByIndex)),
     verifyCredentials: credentials =>
       dispatch(actions.verifyCredentials(credentials)),
-    getAccounts: input => dispatch(actions.getAccounts(input))
+    getAccounts: input => dispatch(actions.getAccounts(input)),
+    toggleShowOrderBy: () => dispatch(actions.toggleShowOrderBy())
   };
 };
 

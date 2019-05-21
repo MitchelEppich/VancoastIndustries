@@ -9,7 +9,8 @@ const actionTypes = {
   CHANGE_ACCOUNT_STATUS: "CHANGE_ACCOUNT_STATUS",
   SEARCH_ACCOUNTS: "SEARCH_ACCOUNTS",
   SORT_ACCOUNTS: "SORT_ACCOUNTS",
-  GET_ACCOUNTS: "GET_ACCOUNTS"
+  GET_ACCOUNTS: "GET_ACCOUNTS",
+  SHOW_ORDER_BY: "SHOW_ORDER_BY"
 };
 
 const getActions = uri => {
@@ -68,6 +69,7 @@ const getActions = uri => {
       };
     },
     sortAccounts: sortByIndex => {
+      console.log(sortByIndex);
       return {
         type: actionTypes.SORT_ACCOUNTS,
         sortByIndex: sortByIndex
@@ -91,6 +93,11 @@ const getActions = uri => {
             });
           })
           .catch(error => console.log(error));
+      };
+    },
+    toggleShowOrderBy: () => {
+      return {
+        type: actionTypes.SHOW_ORDER_BY
       };
     }
   };

@@ -3,7 +3,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const index = props => {
   return (
-    <div className="w-full relative bg-grey-lighter flex items-center border-b border-grey-light ">
+    <div className="w-full relative bg-grey-lighter flex items-center">
       <FontAwesomeIcon
         icon={faSearch}
         className="ml-4 fa-lg text-grey-light absolute pin-l pin-t mt-4"
