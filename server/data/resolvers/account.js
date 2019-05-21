@@ -76,6 +76,9 @@ const resolvers = {
     createAccount: async (_, { input }) => {
       let $ = { ...input };
 
+      let account = await Account.findOne({ email: $.email });
+      if (account) return { error: "Email exists" };
+
       let address = mongoose.Types.ObjectId(
         (await require("./address").Mutation.createAddress(null, {
           input: {
@@ -117,7 +120,7 @@ const resolvers = {
       }
       $.shipping = shipping;
 
-      let account = new Account({ ...$ });
+      account = new Account({ ...$ });
 
       account.jwt = account.createToken();
       account.approved = 0;

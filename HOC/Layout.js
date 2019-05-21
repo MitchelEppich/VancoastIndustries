@@ -136,7 +136,14 @@ class Layout extends Component {
           {this.props.shop.quickViewModal != null ? (
             <QuickViewModal {...this.props} />
           ) : null}
-          {this.props.misc.alert != null ? <Alert {...this.props} /> : null}
+          {this.props.misc.alert != null ? (
+            <div
+              style={{ transform: "translateX(calc(50vw - 150px))" }}
+              className="mt-64 sm:mt-32 mx-auto fixed z-50"
+            >
+              <Alert {...this.props} />
+            </div>
+          ) : null}
           {this.props.misc.pageReady ? (
             this.props.children
           ) : (

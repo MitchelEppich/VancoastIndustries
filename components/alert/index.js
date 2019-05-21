@@ -7,10 +7,7 @@ import {
 
 const index = props => {
   return (
-    <div
-      style={{ transform: "translateX(calc(50vw - 150px))" }}
-      className="bg-white shadow-md w-400 sm:w-280 h-300 mt-64 sm:mt-32 mx-auto fixed z-50 rounded-lg shadow-lg text-blue "
-    >
+    <div className="bg-white shadow-md w-400 sm:w-280 h-300 rounded-lg shadow-lg text-blue ">
       <div
         onClick={() => props.toggleAlert(null)}
         className="absolute pin-t pin-r mr-2 mt-2"
@@ -26,22 +23,24 @@ const index = props => {
           icon={faExclamationTriangle}
           className="fa-5x text-grey-light"
         />
-        <p className="font-bold text-2xl uppercase text-blue py-4 text-center">
+        <p className="font-bold text-2xl uppercase text-blue py-4 text-center px-2">
           {props.misc.alert.message}
         </p>
-        <p className="w-full font-bold text-grey text-center">
+        <p className="w-full font-bold text-grey text-center px-4">
           {props.misc.alert.message2}
         </p>
         {/* </div> */}
         {Router.asPath != "/" + props.misc.alert.action ? (
           <button
             onClick={() => {
-              actionFuncs(props.misc.alert.action);
+              if (props.misc.alert.action) actionFuncs(props.misc.alert.action);
               props.toggleAlert(null);
             }}
-            className="p-3 px-4 mt-12 sm:mt-6"
+            className="p-3 px-4 mt-4 sm:mt-6"
           >
-            {props.misc.alert.actionName}
+            {props.misc.alert.actionName
+              ? props.misc.alert.actionName
+              : "Close"}
           </button>
         ) : null}
       </div>

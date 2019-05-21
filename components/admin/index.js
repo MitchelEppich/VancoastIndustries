@@ -18,8 +18,15 @@ const index = props => {
           className="w-100"
         />
         <div className="w-48 text-right">
-          <button className="bg-white text-blue hover:bg-semi-transparent px-4 py-2 scale-item">
-            Logout
+          <button
+            key={index}
+            onClick={() => {
+              Router.push("/shop");
+              props.logout();
+            }}
+            className="bg-white text-blue hover:bg-semi-transparent px-4 py-2 scale-item"
+          >
+            Log out
           </button>
         </div>
       </div>

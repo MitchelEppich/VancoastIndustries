@@ -50,6 +50,8 @@ export default (state = initialState, action) => {
       });
     case actionTypes.CREATE_ACCOUNT:
       return updateObject(state, {});
+    case actionTypes.CREATE_ACCOUNT_ERROR:
+      return updateObject(state, { createAccountError: action.error });
     case actionTypes.RESET_PASSWORD:
       return updateObject(state, {});
     case actionTypes.UPDATE_ERROR:

@@ -8,6 +8,7 @@ const actionTypes = {
   CHANGE_OPTION: "CHANGE_OPTION",
   VERIFY_CREDENTIALS: "VERIFY_CREDENTIALS",
   CREATE_ACCOUNT: "CREATE_ACCOUNT",
+  CREATE_ACCOUNT_ERROR: "CREATE_ACCOUNT_ERROR",
   MODIFY_SAVED_ITEMS: "MODIFY_SAVED_ITEMS",
   UPDATE_ACCOUNT: "UPDATE_ACCOUNT",
   UPDATE_ERROR: "UPDATE_ERROR",
@@ -101,11 +102,23 @@ const getActions = uri => {
         return makePromise(execute(link, operation))
           .then(data => {
             let account = data.data.createAccount;
-            console.log(account);
-            dispatch(objects.sendWholeSaleAppEmail(account));
+            if (account.error == null) {
+              dispatch(objects.sendWholeSaleAppEmail(account));
+            } else {
+              dispatch({
+                type: actionTypes.CREATE_ACCOUNT_ERROR,
+                error: account.error
+              });
+            }
             return Promise.resolve(account);
           })
           .catch(error => console.log(error));
+      };
+    },
+    clearAccountError: () => {
+      return {
+        type: actionTypes.CREATE_ACCOUNT_ERROR,
+        error: null
       };
     },
     sendWholeSaleAppEmail: account => {
@@ -338,6 +351,7 @@ const mutation = {
         _id
         email
         password
+        error
         address {
           _id
           name
