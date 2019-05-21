@@ -6,8 +6,8 @@ const index = props => {
   let status = props.admin.statuses[currentAccount.approved];
   let actions = [
     { label: "ban", color: "red", pos: 3 },
-    { label: "decline", color: "black",pos:2 },
-    { label: "approve", color: "green",pos:1 }
+    { label: "decline", color: "black", pos: 2 },
+    { label: "approve", color: "green", pos: 1 }
   ]
     .filter(action => {
       switch (currentAccount.approved) {
@@ -71,10 +71,10 @@ const index = props => {
       </p> */}
         <div className="px-2 w-400">
           <p className="w-full max-w-400 text-base my-3 flex justify-between">
-            <span className="uppercase mr-2 font-bold text-grey-dark">
+            <span className="mr-2 uppercase font-bold text-grey-dark">
               email:
             </span>
-            <span>{currentAccount.email}</span>
+            <span className="lowercase">{currentAccount.email}</span>
           </p>
           <p className="w-full max-w-400 text-base my-3 flex justify-between">
             <span className="uppercase mr-2 font-bold text-grey-dark">
