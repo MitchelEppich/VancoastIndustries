@@ -30,18 +30,20 @@ const index = props => {
   return (
     <div className="w-full mt-12 h-700 rounded-lg flex inline-flex bg-white shadow-lg overflow-hidden ">
       <div className="w-1/4 shadow-md">
-        <div className="text-white uppercase font-bold bg-blue-lighter w-full h-12 flex justify-center items-center text-xl">
-          All Users
+        <div className="text-white uppercase font-bold bg-blue-lighter w-full h-12 flex items-center text-xl inline-flex relative">
+          <div className="w-full text-center">User List</div>
+          <div className="w-1/5 absolute pin-r">
+            <Sort {...props} />
+          </div>
         </div>
         <Search {...props} />
-        <Sort {...props} />
 
         <div className="relative">
           <div className="w-full inline-flex absolute pin-t bg-blue-lighter text-white p-1 shadow text-sm font-bold">
-            <div className="w-3/5 text-center uppercase">Name</div>
+            <div className="w-3/5 text-center uppercase">Company</div>
             <div className="w-2/5 text-center uppercase">Status</div>
           </div>
-          <div className="overflow-y-auto pt-4 h-550">{sortedAccounts}</div>
+          <div className="overflow-y-auto pt-6 h-600">{sortedAccounts}</div>
         </div>
       </div>
       <div className="w-3/4">
