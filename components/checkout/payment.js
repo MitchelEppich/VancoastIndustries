@@ -85,7 +85,7 @@ const payment = props => {
             Cart Summary
           </h2>
 
-          <Cart page="payment" {...props} tax={50} shipping={50} total={true} />
+          <Cart page="payment" {...props} tax={0} shipping={0} total={true} />
         </div>
       </div>
       <form
