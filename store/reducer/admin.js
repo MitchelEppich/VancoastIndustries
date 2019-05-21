@@ -2,17 +2,7 @@ import actionTypes from "../actions";
 import { updateObject } from "../utility";
 
 const initialState = {
-  currentAccount: {
-    email: "ivan@seedsforsale.com",
-    name: "Ivan Johnson",
-    company: "seeds for sale",
-    phone: "16041231234",
-    website: "seedsforsale.com",
-    license: "123456789",
-    approved: 0,
-    admin: false,
-    createdAt: { type: Date, default: Date.now }
-  },
+  currentAccount: null,
   statuses: [
     { label: "pending", color: "purple" },
 
@@ -25,217 +15,7 @@ const initialState = {
   statusNote: "",
   searchTerm: "",
   sortByIndex: 0,
-  accounts: [
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 0,
-      admin: false,
-      createdAt: { type: Date, default: Date.now() }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 0,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 0,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 0,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 1,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 1,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 1,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 1,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 1,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 1,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 1,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 2,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 2,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 2,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 3,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 3,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 3,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 3,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    },
-    {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
-      company: "seeds for sale",
-      phone: "16041231234",
-      website: "seedsforsale.com",
-      license: "123456789",
-      approved: 3,
-      admin: false,
-      createdAt: { type: Date, default: Date.now }
-    }
-  ]
+  accounts: []
 };
 
 export default (state = initialState, action) => {
@@ -250,6 +30,10 @@ export default (state = initialState, action) => {
       return updateObject(state, { searchTerm: action.searchTerm });
     case actionTypes.SORT_ACCOUNTS:
       return updateObject(state, { sortByIndex: action.sortByIndex });
+    case actionTypes.GET_ACCOUNTS:
+      return updateObject(state, { accounts: action.accounts });
+    case actionTypes.CHANGE_ACCOUNT_STATUS:
+      return updateObject(state, { accounts: action.accounts });
     default:
       return state;
   }

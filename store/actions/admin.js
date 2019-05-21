@@ -26,10 +26,39 @@ const getActions = uri => {
         note: note
       };
     },
-    changeAccountStatus: statusAndAccount => {
-      console.log(statusAndAccount);
-      return {
-        type: actionTypes.CHANGE_ACCOUNT_STATUS
+    changeAccountStatus: obj => {
+      let account = obj.account;
+      let accounts = obj.accounts;
+      let index = accounts.findIndex(el => {
+        el._id == account._id;
+      });
+      account.approved = obj.status;
+      return dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: mutation.updateAccount,
+          variables: { ...account }
+        };
+
+        return makePromise(execute(link, operation))
+          .then(data => {
+            let account = data.data.updateAccount;
+            if (account.error != null) {
+              let error = account.error;
+              dispatch({
+                type: actionTypes.UPDATE_ERROR,
+                error
+              });
+              return;
+            }
+            accounts.splice(index, 1, account);
+            dispatch({
+              type: actionTypes.CHANGE_ACCOUNT_STATUS,
+              accounts: accounts
+            });
+            return Promise.resolve(account);
+          })
+          .catch(error => console.log(error));
       };
     },
     searchAccounts: searchTerm => {
@@ -49,13 +78,13 @@ const getActions = uri => {
         const link = new HttpLink({ uri, fetch: fetch });
 
         const operation = {
-          query: mutation.getAccounts,
+          query: query.account,
           variables: { ...input }
         };
 
         return makePromise(execute(link, operation))
           .then(data => {
-            let accounts = data.data.getAccounts;
+            let accounts = data.data.account;
             dispatch({
               type: actionTypes.GET_ACCOUNTS,
               accounts: accounts
@@ -69,15 +98,170 @@ const getActions = uri => {
   return { ...objects };
 };
 const query = {
-  getAccounts: gql`
-  query(){
-    getAccounts(input: {}){
-      
+  account: gql`
+    query($jwt: String, $all: Boolean) {
+      account(input: { jwt: $jwt, all: $all }) {
+        _id
+        email
+        password
+        address {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        shipping {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        billing {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        defaultShipping
+        defaultBilling
+        company
+        website
+        license
+        approved
+        admin
+        description
+        jwt
+        createdAt
+        error
+        savedItems
+        cartItems
+      }
     }
-  }`
+  `
 };
 
-const mutation = {};
+const mutation = {
+  updateAccount: gql`
+    mutation(
+      $_id: String
+      $approved: Int
+      $newPassword: String
+      $password: String
+      $email: String
+      $company: String
+      $website: String
+      $license: String
+      $description: String
+      $address: AddressInput
+      $shipping: [AddressInput]
+      $billing: [AddressInput]
+      $savedItem: String
+      $cartItem: String
+      $cartItems: [String]
+      $defaultShipping: Int
+      $defaultBilling: Int
+    ) {
+      updateAccount(
+        input: {
+          _id: $_id
+          approved: $approved
+          newPassword: $newPassword
+          password: $password
+          email: $email
+          company: $company
+          website: $website
+          license: $license
+          description: $description
+          address: $address
+          shipping: $shipping
+          billing: $billing
+          savedItem: $savedItem
+          cartItem: $cartItem
+          cartItems: $cartItems
+          defaultShipping: $defaultShipping
+          defaultBilling: $defaultBilling
+        }
+      ) {
+        _id
+        email
+        password
+        error
+        address {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        shipping {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        billing {
+          _id
+          name
+          surname
+          phone
+          address
+          postal
+          country
+          apartment
+          city
+          state
+          createdAt
+        }
+        defaultShipping
+        defaultBilling
+        company
+        website
+        license
+        approved
+        admin
+        description
+        jwt
+        createdAt
+        savedItems
+        cartItems
+      }
+    }
+  `
+};
 
 export default uri => {
   const actions = getActions(uri);

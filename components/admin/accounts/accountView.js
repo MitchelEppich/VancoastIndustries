@@ -2,11 +2,12 @@ import moment from "moment";
 
 const index = props => {
   let currentAccount = props.admin.currentAccount;
+  if (!currentAccount) return null;
   let status = props.admin.statuses[currentAccount.approved];
   let actions = [
-    { label: "approve", color: "green" },
-    { label: "decline", color: "orange" },
-    { label: "ban", color: "red" }
+    { label: "approve", color: "green", pos: 1 },
+    { label: "decline", color: "orange", pos: 2 },
+    { label: "ban", color: "red", pos: 3 }
   ]
     .filter(action => {
       switch (currentAccount.approved) {
@@ -27,7 +28,8 @@ const index = props => {
           onClick={() => {
             props.changeAccountStatus({
               account: currentAccount,
-              status: action.label,
+              accounts: props.admin.accounts,
+              status: action.pos,
               note: props.admin.statusNote
             });
           }}

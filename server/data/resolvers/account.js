@@ -229,13 +229,11 @@ const resolvers = {
           if ($.cartItem != null) $push.cartItems = $.cartItem;
         }
       }
-      // console.log($pull);
-      // console.log($push);
+
       if (Object.keys($push).length > 0) options.$push = $push;
       if (Object.keys($pull).length > 0) options.$pull = $pull;
 
       options.$set = $;
-
       let account = await Account.findOneAndUpdate({ _id: $._id }, options, {
         upsert: true,
         new: true

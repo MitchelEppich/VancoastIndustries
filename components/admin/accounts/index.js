@@ -29,7 +29,7 @@ const index = props => {
 
   return (
     <div className="w-full h-700 rounded-lg flex flex-wrap bg-white shadow-lg overflow-hidden">
-      <div className="w-300">
+      <div className="h-700 w-300 overflow-auto">
         <Search {...props} />
         <Sort {...props} />
         {sortedAccounts}

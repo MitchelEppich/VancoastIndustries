@@ -43,7 +43,13 @@ class Index extends Component {
               this.props
                 .verifyCredentials({ email, password, rememberMe })
                 .then(res => {
-                  if (res != null && res.error == null) window.history.back();
+                  if (res != null && res.error == null) {
+                    if (this.props.misc.path) {
+                      Router.back();
+                    } else {
+                      Router.push("/shop");
+                    }
+                  }
                 });
             }}
           >

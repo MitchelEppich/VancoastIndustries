@@ -4,7 +4,7 @@ import Filters from "./sort";
 
 const index = props => {
   let user = props.account.currentUser;
-  let name = "Vanessa";
+  let name = user ? user.name : "";
 
   return (
     <div className="vcAdminAccount flex flex-wrap justify-between content-start py-4 px-24">

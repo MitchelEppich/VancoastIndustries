@@ -50,7 +50,8 @@ class Layout extends Component {
       console.log(err);
     }
     this.props.togglePageReady(pageReady);
-    window.addEventListener("resize", this.resizeScreen);
+    let setMediaSize = this.setMediaSize;
+    window.addEventListener("resize", () => this.resizeScreen(setMediaSize));
     window.addEventListener("scroll", this.scrollToTop);
     if (dev) {
       window.addEventListener("keypress", this.printProps);
@@ -61,8 +62,8 @@ class Layout extends Component {
     this.recallVerifiedUser();
   }
 
-  resizeScreen() {
-    this.setMediaSize();
+  resizeScreen(setMediaSize) {
+    setMediaSize();
     if (this.props.misc.showMobileMenu) {
       this.props.toggleMobileMenu(false);
     }
@@ -223,6 +224,11 @@ class Layout extends Component {
       if (indexOfBrand > 0) this.props.setBrandIndex(indexOfBrand);
       Router.push("/product", path);
     }
+    if (path.includes("/login")) {
+      console.log("THis");
+    } else {
+      this.props.logSiteHistory(path);
+    }
   };
   dealWithKeyboard = (e, codes, thisFunc) => {
     let lastKey = e.code;
@@ -270,7 +276,8 @@ const mapDispatchToProps = dispatch => {
     toggleModal: product => dispatch(actions.toggleModal(product)),
     quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
     modifyPotentialQuantity: input =>
-      dispatch(actions.modifyPotentialQuantity(input))
+      dispatch(actions.modifyPotentialQuantity(input)),
+    logSiteHistory: path => dispatch(actions.logSiteHistory(path))
   };
 };
 
