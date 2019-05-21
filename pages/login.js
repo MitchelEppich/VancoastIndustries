@@ -44,7 +44,9 @@ class Index extends Component {
                 .verifyCredentials({ email, password, rememberMe })
                 .then(res => {
                   if (res != null && res.error == null) {
-                    if (this.props.misc.path) {
+                    if (this.props.account.currentUser.admin) {
+                      Router.push("/admin");
+                    } else if (this.props.misc.path) {
                       Router.back();
                     } else {
                       Router.push("/shop");
