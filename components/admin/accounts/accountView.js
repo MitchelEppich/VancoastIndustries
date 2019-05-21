@@ -5,9 +5,9 @@ const index = props => {
   if (!currentAccount) return null;
   let status = props.admin.statuses[currentAccount.approved];
   let actions = [
-    { label: "approve", color: "green", pos: 1 },
-    { label: "decline", color: "orange", pos: 2 },
-    { label: "ban", color: "red", pos: 3 }
+    { label: "ban", color: "red", pos: 3 },
+    { label: "decline", color: "black",pos:2 },
+    { label: "approve", color: "green",pos:1 }
   ]
     .filter(action => {
       switch (currentAccount.approved) {
@@ -33,7 +33,7 @@ const index = props => {
               note: props.admin.statusNote
             });
           }}
-          className={`rounded-lg text-white w-32 text-center py-2 uppercase cursor-pointer bg-${
+          className={`rounded text-white text-base font-bold w-32 text-center py-2 uppercase hover:bg-grey-light hover:text-grey cursor-pointer bg-${
             action.color
           }`}
         >
@@ -42,52 +42,89 @@ const index = props => {
       );
     });
   return (
-    <div className="w-500 p-12">
-      <p className="w-full max-w-500 text-xl my-3 flex justify-between">
-        <span className="capitalize mr-2">name:</span>
+    <div className="w-full p-4">
+      <p className="uppercase text-3xl text-blue-lighter font-bold w-full text-center border-b-2 border-grey-lighter pb-4">
+        Profile Manager
+      </p>
+      <div className="w-600 p-8">
+        <div className="inline-flex w-full">
+          <div className="py-4 mx-2 w-1/2">
+            <p className="uppercase text-xs font-bold">Name:</p>
+            <h3 className="uppercase text-grey-dark text-lg">
+              {currentAccount.name}
+            </h3>
+          </div>
+          <div className="py-4 mx-2 w-1/2">
+            <p className="uppercase text-xs font-bold">Company:</p>
+            <h3 className="uppercase text-grey-dark text-lg">
+              {currentAccount.company}
+            </h3>
+          </div>
+        </div>
+        {/* <p className="w-full max-w-500 text-base my-3 flex justify-between">
+        <span className="uppercase mr-2">name:</span>
         <span>{currentAccount.name}</span>
-      </p>
-      <p className="w-full max-w-500 text-xl my-3 flex justify-between">
-        <span className="capitalize mr-2">company:</span>
+      </p> */}
+        {/* <p className="w-full max-w-500 text-base my-3 flex justify-between">
+        <span className="uppercase mr-2">company:</span>
         <span>{currentAccount.company}</span>
-      </p>
-      <p className="w-full max-w-500 text-xl my-3 flex justify-between">
-        <span className="capitalize mr-2">email:</span>
-        <span>{currentAccount.email}</span>
-      </p>
-      <p className="w-full max-w-500 text-xl my-3 flex justify-between">
-        <span className="capitalize mr-2">phone:</span>
-        <span>{currentAccount.phone}</span>
-      </p>
-      <p className="w-full max-w-500 text-xl my-3 flex justify-between">
-        <span className="capitalize mr-2">website:</span>
-        <span>{currentAccount.website}</span>
-      </p>
-      <p className="w-full max-w-500 text-xl my-3 flex justify-between">
-        <span className="capitalize mr-2">license:</span>
-        <span>{currentAccount.license}</span>
-      </p>
-      <p className="w-full max-w-500 text-xl my-3 flex justify-between">
-        <span className="capitalize mr-2">status:</span>
-        <span className={`uppercase text-${status.color}`}>{status.label}</span>
-      </p>
-      <p className="w-full max-w-500 text-xl my-3 flex justify-between">
-        <span className="capitalize mr-2">date created:</span>
-        <span>{moment(Date.now()).format("MMM Do YYYY")}</span>
-      </p>
-      <p className="border-t-1 border-grey-light border border-l-0 border-r-0 border-b-0 w-full max-w-500 text-xl my-3 flex flex-wrap justify-between">
-        <span className="w-full mt-3">Actions:</span>
-        <textarea
-          style={{ resize: "none" }}
-          onChange={e => {
-            props.handleStatusChangeNote(e.target.value);
-          }}
-          className="w-full shadow border rounded-lg my-3 p-2 h-32"
-          placeholder="Note/Reason (not required):"
-          type="text"
-        />
-        {actions}
-      </p>
+      </p> */}
+        <div className="px-2 w-400">
+          <p className="w-full max-w-400 text-base my-3 flex justify-between">
+            <span className="uppercase mr-2 font-bold text-grey-dark">
+              email:
+            </span>
+            <span>{currentAccount.email}</span>
+          </p>
+          <p className="w-full max-w-400 text-base my-3 flex justify-between">
+            <span className="uppercase mr-2 font-bold text-grey-dark">
+              phone:
+            </span>
+            <span>{currentAccount.phone}</span>
+          </p>
+          <p className="w-full max-w-400 text-base my-3 flex justify-between">
+            <span className="uppercase mr-2 font-bold text-grey-dark">
+              website:
+            </span>
+            <span>{currentAccount.website}</span>
+          </p>
+          <p className="w-full max-w-400 text-base my-3 flex justify-between">
+            <span className="uppercase mr-2 font-bold text-grey-dark">
+              license:
+            </span>
+            <span>{currentAccount.license}</span>
+          </p>
+          <p className="w-full max-w-400 text-base my-3 flex justify-between">
+            <span className="uppercase mr-2 font-bold text-grey-dark">
+              status:
+            </span>
+            <span className={`uppercase text-${status.color}`}>
+              {status.label}
+            </span>
+          </p>
+          <p className="w-full max-w-400 text-base my-3 flex justify-between">
+            <span className="uppercase mr-2 font-bold text-grey-dark">
+              date created:
+            </span>
+            <span>{moment(Date.now()).format("ll")}</span>
+          </p>
+        </div>
+        <p className="w-full max-w-400 text-lg my-3 flex flex-wrap justify-between">
+          <span className="w-full mt-3 uppercase font-bold bg-grey-light text-white p-2">
+            Actions:
+          </span>
+          <textarea
+            style={{ resize: "none" }}
+            onChange={e => {
+              props.handleStatusChangeNote(e.target.value);
+            }}
+            className="w-full text-base shadow border rounded-lg my-3 p-2 h-32"
+            placeholder="Note/Reason (not required):"
+            type="text"
+          />
+          {actions}
+        </p>
+      </div>
     </div>
   );
 };

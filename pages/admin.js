@@ -20,7 +20,6 @@ class Index extends Component {
     }
     this.recallVerifiedUser();
   }
-
   render() {
     return <Admin {...this.props} />;
   }
