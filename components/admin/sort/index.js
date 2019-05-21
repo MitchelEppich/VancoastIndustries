@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
+
 const index = props => {
   let sortOptions = ["pending", "approved", "declined", "banned"].map(
     (status, index) => {
@@ -10,17 +13,24 @@ const index = props => {
     }
   );
   return (
-    <select
-      className="w-full h-12 border border-white text-blue-lightest capitalize px-4"
-      onChange={e => {
-        props.sortAccounts(parseInt(e.target.value));
-      }}
-      name="sortOptions"
-      id="sortOptions"
-    >
-      <option>Sort by...</option>
-      {sortOptions}
-    </select>
+    <div className="w-full relative inline-flex flex items-center">
+      <FontAwesomeIcon
+        icon={faSlidersH}
+        className="ml-4 fa-lg text-grey-light absolute pin-l pin-t mt-4"
+      />
+
+      <select
+        className="ml-12 h-12 text-base text-grey-dark uppercase font-bold"
+        onChange={e => {
+          props.sortAccounts(parseInt(e.target.value));
+        }}
+        name="sortOptions"
+        id="sortOptions"
+      >
+        <option>Sort by...</option>
+        {sortOptions}
+      </select>
+    </div>
   );
 };
 

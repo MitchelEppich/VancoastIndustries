@@ -38,8 +38,8 @@ const initialState = {
       createdAt: { type: Date, default: Date.now() }
     },
     {
-      email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
+      email: "adam@seedsforsale.com",
+      name: "Adam Johnson",
       company: "seeds for sale",
       phone: "16041231234",
       website: "seedsforsale.com",
@@ -50,7 +50,7 @@ const initialState = {
     },
     {
       email: "ivan@seedsforsale.com",
-      name: "Ivan Johnson",
+      name: "Mitchel Johnson",
       company: "seeds for sale",
       phone: "16041231234",
       website: "seedsforsale.com",

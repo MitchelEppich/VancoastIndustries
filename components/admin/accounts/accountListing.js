@@ -3,11 +3,17 @@ const index = props => {
   return (
     <div
       onClick={() => props.setAccountView(props.account)}
-      className="w-full h-16 pt-5 px-4 border flex flex-wrap justify-between text-grey cursor-pointer"
+      className="w-full h-16 pt-2 px-2 border border-grey-light flex flex-wrap justify-between text-grey cursor-pointer items-center"
     >
-      <p className="w-1/2 uppercase">{props.account.name}</p>
-      <p className={`uppercase text-${status.color}`}>{status.label}</p>
-      <p className="text-blue-light">{props.account.website}</p>
+      <p className="w-3/5 uppercase text-base text-grey-dark font-bold">
+        {props.account.name}
+      </p>
+      <p className={`uppercase text-sm font-bold text-${status.color}`}>
+        {status.label}
+      </p>
+      <p className="text-grey-darker font-bold text-sm ">
+        {props.account.website}
+      </p>
     </div>
   );
 };
