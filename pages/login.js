@@ -46,6 +46,14 @@ class Index extends Component {
                   if (res != null && res.error == null) {
                     if (this.props.account.currentUser.admin) {
                       Router.push("/admin");
+                    } else if (this.props.account.currentUser.approved !== 0) {
+                      props.toggleAlert({
+                        message: "Your account status isn't valid!",
+                        message2:
+                          "If you recently applied for an account, it may be pending approval",
+                        action: null, //Router.push("/shop"),
+                        actionName: null
+                      });
                     } else if (this.props.misc.path) {
                       Router.back();
                     } else {
@@ -116,7 +124,8 @@ const mapDispatchToProps = dispatch => {
   return {
     verifyCredentials: credentials =>
       dispatch(actions.verifyCredentials(credentials)),
-    resetPassword: input => dispatch(actions.resetPassword(input))
+    resetPassword: input => dispatch(actions.resetPassword(input)),
+    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj))
   };
 };
 
