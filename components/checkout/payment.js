@@ -94,6 +94,11 @@ const payment = props => {
           if (props.checkout.orderDetails.payment) {
             if (props.checkout.orderDetails.payment.method.value.length > 0) {
               window.scrollTo(0, 0);
+              props.processOrder({
+                customerId: props.account.currentUser.customerId,
+                cart: props.checkout.cart,
+                orderDetails: props.checkout.orderDetails
+              });
               Router.push("/confirmation");
             }
           }

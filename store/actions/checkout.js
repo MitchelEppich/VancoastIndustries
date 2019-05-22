@@ -10,7 +10,8 @@ const actionTypes = {
   CHANGE_STEP: "CHANGE_STEP",
   MODIFY_POTENTIAL_QUANTITY: "MODIFY_POTENTIAL_QUANTITY",
   MODIFY_CART: "MODIFY_CART",
-  MODIFY_ORDER_DETAILS: "MODIFY_ORDER_DETAILS"
+  MODIFY_ORDER_DETAILS: "MODIFY_ORDER_DETAILS",
+  PROCESS_ORDER: "PROCESS_ORDER"
 };
 
 const getActions = uri => {
@@ -222,14 +223,84 @@ const getActions = uri => {
           cart: _obj
         });
       };
+    },
+    processOrder: input => {
+      return dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        let { productList, productCodes } = buildProductList(input.cart.items);
+
+        const operation = {
+          query: mutation.postOrder,
+          variables: { productCodes, productList, customerId: input.customerId }
+        };
+
+        return makePromise(execute(link, operation))
+          .then(data => {
+            let order = data.data.processOrder;
+            dispatch({
+              type: actionTypes.PROCESS_ORDER
+            });
+          })
+          .catch(error => console.log(error));
+      };
     }
   };
 
   return { ...objects };
 };
+
+let buildProductList = items => {
+  let productList = [];
+  let productCodes = [];
+  for (let key of Object.keys(items)) {
+    let item = items[key];
+    let product = item.product;
+    let _name = `${product.sotiId}${item.amount} - ${product.alias} ${
+      product.genetic
+    } Cannabis Seeds (${item.amount} Seeds)`;
+
+    let company = companies[item.product.company.name];
+
+    productList.push(
+      `(${company}) ${_name}/&=>${item.quantity}/&=>${item.per * item.quantity}`
+    );
+    productCodes.push(
+      stringBuilder({
+        product: item.product,
+        quantity: item.quantity,
+        packSize: item.amount
+      })
+    );
+  }
+
+  return { productList: productList.toString(), productCodes };
+};
+
+let companies = {
+  "sonoma seeds": "son",
+  "crop king seeds": "cks",
+  "sunwest genetics": "swg"
+};
+
 const query = {};
 
-const mutation = {};
+const mutation = {
+  postOrder: gql`
+    mutation(
+      $customerId: String
+      $productCodes: [String]
+      $productList: [String]
+    ) {
+      createOrderInvoice(
+        input: {
+          customerId: $customerId
+          productList: $productList
+          productCodes: $productCodes
+        }
+      )
+    }
+  `
+};
 
 export default uri => {
   const actions = getActions(uri);

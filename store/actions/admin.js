@@ -43,38 +43,37 @@ const getActions = uri => {
         type: actionTypes.SORT_ACCOUNTS,
         sortByIndex: sortByIndex
       };
-    },
-    getAccounts: input => {
-      return dispatch => {
-        const link = new HttpLink({ uri, fetch: fetch });
-
-        const operation = {
-          query: mutation.getAccounts,
-          variables: { ...input }
-        };
-
-        return makePromise(execute(link, operation))
-          .then(data => {
-            let accounts = data.data.getAccounts;
-            dispatch({
-              type: actionTypes.GET_ACCOUNTS,
-              accounts: accounts
-            });
-          })
-          .catch(error => console.log(error));
-      };
     }
+    // getAccounts: input => {
+    //   return dispatch => {
+    //     const link = new HttpLink({ uri, fetch: fetch });
+
+    //     const operation = {
+    //       query: mutation.getAccounts,
+    //       variables: { ...input }
+    //     };
+
+    //     return makePromise(execute(link, operation))
+    //       .then(data => {
+    //         let accounts = data.data.getAccounts;
+    //         dispatch({
+    //           type: actionTypes.GET_ACCOUNTS,
+    //           accounts: accounts
+    //         });
+    //       })
+    //       .catch(error => console.log(error));
+    //   };
+    // }
   };
 
   return { ...objects };
 };
 const query = {
-  getAccounts: gql`
-  query(){
-    getAccounts(input: {}){
-      
-    }
-  }`
+  // getAccounts: gql`
+  // query(){
+  //   getAccounts(input: {}){
+  //   }
+  // }`
 };
 
 const mutation = {};

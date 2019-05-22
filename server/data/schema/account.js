@@ -32,6 +32,7 @@ let Type = `
         error: String
         savedItems: [String]
         cartItems: [String]
+        customerId: String
     }
 `;
 
@@ -59,6 +60,7 @@ let Input = `
         savedItem: String
         cartItem: String
         cartItems: [String]
+        customerId: String
     }
 
     input CredentialsInput {

@@ -20,7 +20,7 @@ class Index extends Component {
     }
   }
   componentWillMount() {
-    this.props.getAccounts({ limit: 100 });
+    // this.props.getAccounts({ limit: 100 });
   }
   render() {
     return <Admin {...this.props} />;

@@ -38,6 +38,7 @@ class Index extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     changeStep: step => dispatch(actions.changeStep(step)),
+    processOrder: input => dispatch(actions.processOrder(input)),
     updateAccount: input => dispatch(actions.updateAccount(input)),
     deleteAddress: input => dispatch(actions.deleteAddress(input)),
     setAddressToEdit: input => dispatch(actions.setAddressToEdit(input)),
