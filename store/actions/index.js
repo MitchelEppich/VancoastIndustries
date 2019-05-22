@@ -37,7 +37,8 @@ const actionTypes = {
   TOGGLE_MATM: "TOGGLE_MATM",
   SET_ADDRESS_TO_EDIT: "SET_ADDRESS_TO_EDIT",
   SUBSCRIBE_TO_NEWSLETTER: "SUBSCRIBE_TO_NEWSLETTER",
-  SEND_EMAIL: "SEND_EMAIL"
+  SEND_EMAIL: "SEND_EMAIL",
+  LOG_SITE_HISTORY: "LOG_SITE_HISTORY"
 };
 
 const actions = {
@@ -143,6 +144,12 @@ const actions = {
   },
   refreshEmailForm: () => {
     return { type: actionTypes.REFRESH_EMAIL_FORM };
+  },
+  logSiteHistory: path => {
+    return {
+      type: actionTypes.LOG_SITE_HISTORY,
+      path: path
+    };
   }
 };
 

@@ -4,22 +4,35 @@ import Filters from "./sort";
 
 const index = props => {
   let user = props.account.currentUser;
-  let name = "Vanessa";
+  let name = user ? user.email : "";
 
   return (
-    <div className="vcAdminAccount flex flex-wrap justify-between content-start py-4 px-24">
-      <div className="w-full flex justify-between items-center">
-        <h2 className="w-48 text-white font-thin">Hi {name}</h2>
+    <div className="vcAdminAccount flex flex-wrap justify-between content-start  ">
+      <div className="w-full flex justify-between items-center px-32 py-4 bg-blue shadow">
+        <h2 className="text-white font-bold text-lg ml-4 capitalize">
+          Welcome {name}!
+        </h2>
         <img
           src="../static/img/assets/vc-full-logo.png"
           alt="vancoast industries"
-          className="w-24 h-16"
+          className="w-100"
         />
         <div className="w-48 text-right">
-          <button className="bg-white text-blue px-4 py-2">Logout</button>
+          <button
+            key={index}
+            onClick={() => {
+              Router.push("/shop");
+              props.logout();
+            }}
+            className="bg-white text-blue hover:bg-semi-transparent px-4 py-2 scale-item"
+          >
+            Log out
+          </button>
         </div>
       </div>
-      <Accounts {...props} />
+      <div className="px-24 w-full flex justify-center">
+        <Accounts {...props} />
+      </div>
     </div>
   );
 };

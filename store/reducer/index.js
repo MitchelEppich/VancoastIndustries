@@ -27,7 +27,8 @@ const initialState = {
   MATM: false,
   emailSent: false,
   subscribedToNewsletter: false,
-  addressForEditor: null
+  addressForEditor: null,
+  path: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -60,6 +61,8 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, { emailSent: false });
     case actionTypes.SUBSCRIBE_TO_NEWSLETTER:
       return updateObject(state, { subscribedToNewsletter: true });
+    case actionTypes.LOG_SITE_HISTORY:
+      return updateObject(state, { path: action.path });
     default:
       return state;
   }

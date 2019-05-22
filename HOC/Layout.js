@@ -50,7 +50,8 @@ class Layout extends Component {
       console.log(err);
     }
     this.props.togglePageReady(pageReady);
-    window.addEventListener("resize", this.resizeScreen);
+    let setMediaSize = this.setMediaSize;
+    window.addEventListener("resize", () => this.resizeScreen(setMediaSize));
     window.addEventListener("scroll", this.scrollToTop);
     if (dev) {
       window.addEventListener("keypress", this.printProps);
@@ -61,8 +62,8 @@ class Layout extends Component {
     this.recallVerifiedUser();
   }
 
-  resizeScreen() {
-    this.setMediaSize();
+  resizeScreen(setMediaSize) {
+    setMediaSize();
     if (this.props.misc.showMobileMenu) {
       this.props.toggleMobileMenu(false);
     }
@@ -135,7 +136,14 @@ class Layout extends Component {
           {this.props.shop.quickViewModal != null ? (
             <QuickViewModal {...this.props} />
           ) : null}
-          {this.props.misc.alert != null ? <Alert {...this.props} /> : null}
+          {this.props.misc.alert != null ? (
+            <div
+              style={{ transform: "translateX(calc(50vw - 150px))" }}
+              className="mt-64 sm:mt-32 mx-auto fixed z-50"
+            >
+              <Alert {...this.props} />
+            </div>
+          ) : null}
           {this.props.misc.pageReady ? (
             this.props.children
           ) : (
@@ -154,16 +162,14 @@ class Layout extends Component {
           {this.state.toTop ? (
             <div
               id="jumpToTop"
-              className="fixed z-999 w-12 pb-2 mb-12 mr-4 h-12 bg-blue pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-blue-dark scale-item items-center flex rounded-full shadow-md"
+              className="fixed z-999 w-12 pb-2 mb-12 mr-4 h-12 bg-blue pin-b pin-r text-white text-center text-lg justify-center cursor-pointer hover:bg-blue-light scale-item items-center flex rounded-full shadow-md"
             >
               <FontAwesomeIcon
                 icon={faAngleUp}
                 className="fa-2x cursor-pointer flex justify-center mt-1 mx-auto"
               />
             </div>
-          ) : (
-            <div />
-          )}
+          ) : null}
         </AnchorLink>
       </React.Fragment>
     );
@@ -223,6 +229,11 @@ class Layout extends Component {
       if (indexOfBrand > 0) this.props.setBrandIndex(indexOfBrand);
       Router.push("/product", path);
     }
+    if (path.includes("/login")) {
+      console.log("THis");
+    } else {
+      this.props.logSiteHistory(path);
+    }
   };
   dealWithKeyboard = (e, codes, thisFunc) => {
     let lastKey = e.code;
@@ -270,7 +281,8 @@ const mapDispatchToProps = dispatch => {
     toggleModal: product => dispatch(actions.toggleModal(product)),
     quickAddToCartQty: input => dispatch(actions.quickAddToCartQty(input)),
     modifyPotentialQuantity: input =>
-      dispatch(actions.modifyPotentialQuantity(input))
+      dispatch(actions.modifyPotentialQuantity(input)),
+    logSiteHistory: path => dispatch(actions.logSiteHistory(path))
   };
 };
 

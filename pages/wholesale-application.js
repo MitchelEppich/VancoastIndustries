@@ -73,25 +73,45 @@ class Index extends Component {
                 apartment,
                 city
               };
-              this.props.createAccount({
-                company,
-                email,
-                website,
-                license,
-                address: _address,
-                billing: [_address],
-                shipping: [_address],
-                description,
-                password
-              });
-              form.reset();
+              this.props
+                .createAccount({
+                  company,
+                  email,
+                  website,
+                  license,
+                  address: _address,
+                  billing: [_address],
+                  shipping: [_address],
+                  description,
+                  password
+                })
+                .then(() => {
+                  if (this.props.account.createAccountError) {
+                    this.props.toggleAlert({
+                      message: this.props.account.createAccountError + "!",
+                      message2: "Please use a different email",
+                      action: null, //Router.push("/shop"),
+                      actionName: null
+                    });
+                    this.props.clearAccountError();
+                  } else {
+                    this.props.toggleAlert({
+                      message: "Account being reviewed!",
+                      message2:
+                        "Your account status is pending approval. We will notify you when it is approved.",
+                      action: "shop", //Router.push("/shop"),
+                      actionName: "Shop"
+                    });
+                    form.reset();
+                  }
+                });
             }}
           >
             <div className="w-full inline-flex">
               <label htmlFor="vcName" className="w-1/2 mx-1">
                 Your First Name*
                 <input
-                  required
+                  required="required"
                   type="text"
                   className="w-full"
                   id="vcNameFirst"
@@ -102,7 +122,7 @@ class Index extends Component {
               <label htmlFor="vcName" className="w-1/2 mx-1">
                 Your Last Name*
                 <input
-                  required
+                  required="required"
                   type="text"
                   className="w-full"
                   id="vcNameLast"
@@ -116,7 +136,7 @@ class Index extends Component {
               <label htmlFor="vcCompany" className="w-1/2 mx-1">
                 Company Name*
                 <input
-                  required
+                  required="required"
                   type="text"
                   id="vcCompany"
                   name="company"
@@ -128,7 +148,7 @@ class Index extends Component {
               <label htmlFor="vcEmail" className="w-1/2 mx-1">
                 Company Email*
                 <input
-                  required
+                  required="required"
                   type="text"
                   id="vcEmail"
                   name="email"
@@ -141,7 +161,7 @@ class Index extends Component {
               <label htmlFor="vcPassword" className="w-1/2 mx-1">
                 Account Password*
                 <input
-                  required
+                  required="required"
                   type="password"
                   id="vcPassword"
                   name="password"
@@ -153,7 +173,7 @@ class Index extends Component {
               <label htmlFor="vcPassword" className="w-1/2 mx-1">
                 Confirm Account Password*
                 <input
-                  required
+                  required="required"
                   type="password"
                   id="vcPasswordConfirm"
                   name="passwordConfirm"
@@ -176,7 +196,7 @@ class Index extends Component {
               <label htmlFor="vcPhone" className="w-1/3 mx-1">
                 Company Phone*
                 <input
-                  required
+                  required="required"
                   type="text"
                   id="vcPhone"
                   className="w-full"
@@ -188,7 +208,7 @@ class Index extends Component {
               <label htmlFor="vcWebsite" className="w-1/3 mx-1">
                 Company Website*
                 <input
-                  required
+                  required="required"
                   type="text"
                   id="vcWebsite"
                   className="w-full"
@@ -200,7 +220,7 @@ class Index extends Component {
               <label htmlFor="vcLicense" className="w-1/3 mx-1">
                 Business License*
                 <input
-                  required
+                  required="required"
                   type="text"
                   id="vcLicense"
                   className="w-full"
@@ -213,7 +233,7 @@ class Index extends Component {
               <label htmlFor="vcAddress" className="w-1/3 mx-1">
                 Address*
                 <input
-                  required
+                  required="required"
                   type="text"
                   id="vcAddress"
                   className="w-full"
@@ -247,7 +267,7 @@ class Index extends Component {
               <label htmlFor="vcCity" className="w-1/3 mx-1">
                 City*
                 <input
-                  required
+                  required="required"
                   type="text"
                   className="w-full"
                   id="vcCity"
@@ -259,7 +279,7 @@ class Index extends Component {
               <label htmlFor="vcState" className="w-1/3 mx-1">
                 Province/State*
                 <input
-                  required
+                  required="required"
                   type="text"
                   className="w-full"
                   id="vcState"
@@ -286,7 +306,7 @@ class Index extends Component {
               Tell Us About Your Company*
             </label>
             <textarea
-              required
+              required="required"
               type="textarea"
               id="vcMessage"
               name="description"
@@ -302,7 +322,6 @@ class Index extends Component {
               onClick={() => {
                 this.props.toggleAnimation(true);
                 setTimeout(() => this.props.toggleAnimation(false), 1000);
-                Router.push("/");
               }}
             />
           </form>
@@ -315,7 +334,9 @@ class Index extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     createAccount: input => dispatch(actions.createAccount(input)),
-    toggleAnimation: active => dispatch(actions.toggleAnimation(active))
+    toggleAnimation: active => dispatch(actions.toggleAnimation(active)),
+    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj)),
+    clearAccountError: () => dispatch(actions.clearAccountError())
   };
 };
 

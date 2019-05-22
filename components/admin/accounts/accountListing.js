@@ -3,11 +3,31 @@ const index = props => {
   return (
     <div
       onClick={() => props.setAccountView(props.account)}
-      className="w-full h-16 pt-5 px-4 border flex flex-wrap justify-between text-grey cursor-pointer"
+      className={`w-full h-16 pt-2 border-b border-grey-light flex flex-wrap justify-between text-grey cursor-pointer items-center hover:bg-grey-lighter ${
+        (props.admin.accounts && props.account._id != null) ||
+        props.account._id == props.admin.currentAccount._id
+          ? // ? "bg-grey-light"
+            "bg-white"
+          : "bg-white"
+      }`}
     >
-      <p className="w-1/2 uppercase">{props.account.name}</p>
-      <p className={`uppercase text-${status.color}`}>{status.label}</p>
-      <p className="text-blue-light">{props.account.website}</p>
+      <div className="inline-flex w-full">
+        <p className="w-3/5 pl-4 uppercase text-base text-grey-darkest font-bold">
+          {props.account.company.length > 15
+            ? props.account.company.substring(0, 15) + "..."
+            : props.account.company}
+        </p>
+        <p
+          className={`uppercase text-sm w-2/5 pl-5 text-center font-bold text-${
+            status.color
+          }`}
+        >
+          {status.label}
+        </p>
+      </div>
+      <p className="text-grey-darker lowercase pl-4 font-bold text-xs">
+        {props.account.email}
+      </p>
     </div>
   );
 };

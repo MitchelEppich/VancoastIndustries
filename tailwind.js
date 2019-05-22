@@ -98,11 +98,12 @@ let colors = {
   "teal-lighter": "#a0f0ed",
   "teal-lightest": "#e8fffe",
 
+  "blue-purple": "#3F51B5",
   "blue-darkest": "#12283a",
   "blue-darker": "#1c3d5a",
   "blue-dark": "#2779bd",
   "blue-new": "#1426de",
-  blue: "#1E25BB",
+  blue: "#1426de",
   "blue-light": "#283fe5",
   "blue-lighter": "#6cb2eb",
   "blue-lightest": "#8F92DD",
@@ -499,6 +500,7 @@ module.exports = {
     "250": "250px",
     "280": "280px",
     "300": "300px",
+    "370": "370px",
     "400": "400px",
     "500": "500px",
     "600": "600px",
@@ -640,12 +642,14 @@ module.exports = {
     lg: "50rem",
     xl: "60rem",
     "500": "500px",
+    "400": "400px",
     "2xl": "70rem",
     "3xl": "80rem",
     "4xl": "90rem",
     "5xl": "100rem",
     full: "100%",
     sButton: "634px",
+    adminPanel: "1300px",
     uploadButton: "320px"
   },
 
@@ -692,6 +696,7 @@ module.exports = {
     "4": "1rem",
     "5": "1.25rem",
     "6": "1.5rem",
+    "7": "1.75rem",
     "8": "2rem",
     "10": "2.5rem",
     "12": "3rem",
@@ -793,6 +798,8 @@ module.exports = {
     lg: "0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08)",
     inner: "inset 0 2px 4px 0 rgba(0,0,0,0.06)",
     outline: "0 0 0 3px rgba(52,144,220,0.5)",
+    super: "0 15px 30px 0 rgba(0, 0, 0, 0.3), 0 5px 15px 0 rgba(0, 0, 0, 0.42)",
+
     none: "none"
   },
 

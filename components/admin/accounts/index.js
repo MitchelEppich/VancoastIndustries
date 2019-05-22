@@ -28,13 +28,27 @@ const index = props => {
     });
 
   return (
-    <div className="w-full h-700 rounded-lg flex flex-wrap bg-white shadow-lg overflow-hidden">
-      <div className="w-300">
+    <div className="w-full mt-12 h-700 flex inline-flex bg-white shadow-super overflow-hidden max-w-adminPanel mx-auto">
+      <div className="w-1/4 shadow-md">
+        <div className="text-white uppercase font-bold bg-blue-purple w-full py-7 h-12 flex items-center text-xl inline-flex relative">
+          <div className="w-full text-center">User List</div>
+          <div className="w-1/5 absolute pin-r">
+            <Sort {...props} />
+          </div>
+        </div>
         <Search {...props} />
-        <Sort {...props} />
-        {sortedAccounts}
+
+        <div className="relative">
+          <div className="w-full inline-flex absolute pin-t bg-grey-dark text-white p-1 border-t-2 border-grey-light text-sm font-bold">
+            <div className="w-3/5 text-left pl-6 uppercase">Company</div>
+            <div className="w-2/5 text-center uppercase">Status</div>
+          </div>
+          <div className="overflow-y-auto pt-6 h-600">{sortedAccounts}</div>
+        </div>
       </div>
-      <AccountView {...props} />
+      <div className="w-3/4">
+        <AccountView {...props} />
+      </div>
     </div>
   );
 };

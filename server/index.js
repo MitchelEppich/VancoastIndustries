@@ -49,9 +49,9 @@ app
     server.get("/checkout", (req, res) => {
       res.redirect("/shop");
     });
-    // server.get("/admin", (req, res) => {
-    //   res.redirect("/login");
-    // });
+    server.get("/admin", (req, res) => {
+      res.redirect("/login");
+    });
     server.get("/account", (req, res) => {
       res.redirect("/login");
     });
