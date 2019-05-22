@@ -15,7 +15,7 @@ const index = props => {
             props.sortAccounts(parseInt(index));
             props.toggleShowOrderBy();
           }}
-          className={`w-150 text-center p-2 font-bold hover:text-white hover:bg-blue-light cursor-pointer ${
+          className={`w-150 text-center p-2 font-bold hover:text-white hover:bg-blue-purple cursor-pointer ${
             props.admin.sortByIndex == index
               ? "bg-grey-darker text-white"
               : "bg-white text-grey-dark"

@@ -4,12 +4,12 @@ import Filters from "./sort";
 
 const index = props => {
   let user = props.account.currentUser;
-  let name = user ? user.name : "";
+  let name = user ? user.email : "";
 
   return (
     <div className="vcAdminAccount flex flex-wrap justify-between content-start  ">
-      <div className="w-full flex justify-between items-center px-24 py-4 bg-blue shadow">
-        <h2 className="w-48 text-white font-thin text-lg ml-4">
+      <div className="w-full flex justify-between items-center px-32 py-4 bg-blue shadow">
+        <h2 className="text-white font-bold text-lg ml-4 capitalize">
           Welcome {name}!
         </h2>
         <img
@@ -30,7 +30,7 @@ const index = props => {
           </button>
         </div>
       </div>
-      <div className="px-24 w-full">
+      <div className="px-24 w-full flex justify-center">
         <Accounts {...props} />
       </div>
     </div>

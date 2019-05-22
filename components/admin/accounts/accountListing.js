@@ -12,7 +12,7 @@ const index = props => {
       }`}
     >
       <div className="inline-flex w-full">
-        <p className="w-3/5 pl-3 uppercase text-base text-grey-darkest font-bold">
+        <p className="w-3/5 pl-4 uppercase text-base text-grey-darkest font-bold">
           {props.account.company.length > 15
             ? props.account.company.substring(0, 15) + "..."
             : props.account.company}
@@ -25,7 +25,7 @@ const index = props => {
           {status.label}
         </p>
       </div>
-      <p className="text-grey-darker lowercase pl-3 font-bold text-xs ">
+      <p className="text-grey-darker lowercase pl-4 font-bold text-xs">
         {props.account.email}
       </p>
     </div>
