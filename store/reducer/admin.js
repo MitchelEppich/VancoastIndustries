@@ -1,16 +1,25 @@
 import actionTypes from "../actions";
 import { updateObject } from "../utility";
 
+import {
+  faSearch,
+  faExclamationCircle,
+  faTimes,
+  faUserSlash,
+  faCheck
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const initialState = {
   currentAccount: null,
   statuses: [
-    { label: "pending", color: "orange" },
+    { label: "pending", color: "orange", icon: faExclamationCircle },
 
-    { label: "approved", color: "green" },
+    { label: "approved", color: "green", icon: faCheck },
 
-    { label: "declined", color: "black" },
+    { label: "declined", color: "black", icon: faTimes },
 
-    { label: "banned", color: "red" }
+    { label: "banned", color: "red", icon: faUserSlash }
   ],
   statusNote: "",
   searchTerm: "",

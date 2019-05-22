@@ -4,7 +4,6 @@ import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
 const index = props => {
   let sortOptions = ["pending", "approved", "declined", "banned"].map(
     (status, index) => {
-      console.log(status, index);
       let border = index == 3 ? "rounded-bl-full rounded-br-full" : "";
       return (
         // <option key={index} value={index}>
