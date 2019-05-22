@@ -4,7 +4,6 @@ import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
 const index = props => {
   let sortOptions = ["pending", "approved", "declined", "banned"].map(
     (status, index) => {
-      console.log(status, index);
       let border = index == 3 ? "rounded-bl-full rounded-br-full" : "";
       return (
         // <option key={index} value={index}>
@@ -16,7 +15,7 @@ const index = props => {
             props.sortAccounts(parseInt(index));
             props.toggleShowOrderBy();
           }}
-          className={`w-150 text-center p-2 font-bold hover:text-white hover:bg-blue-light cursor-pointer ${
+          className={`w-150 text-center p-2 font-bold hover:text-white hover:bg-blue-purple cursor-pointer ${
             props.admin.sortByIndex == index
               ? "bg-grey-darker text-white"
               : "bg-white text-grey-dark"
