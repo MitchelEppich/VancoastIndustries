@@ -7,6 +7,7 @@ let Mutation = `
     updateAccount(input: AccountInput): Account
     verifyCredentials(input: CredentialsInput): Account
     resetPassword(input: AccountInput): String
+    createZohoAccount(input: AccountInput): String
 `;
 
 let Subscription = ``;

@@ -29,16 +29,24 @@ const getActions = uri => {
     },
     changeAccountStatus: obj => {
       let account = obj.account;
+
+      Object.keys(account).forEach(
+        key => account[key] == null && delete account[key]
+      );
+
       let accounts = obj.accounts;
       let index = accounts.findIndex(el => {
         el._id == account._id;
       });
+
       account.approved = obj.status;
       return dispatch => {
         const link = new HttpLink({ uri, fetch: fetch });
         const operation = {
           query: mutation.updateAccount,
-          variables: { ...account }
+          variables: {
+            ...account
+          }
         };
 
         return makePromise(execute(link, operation))
