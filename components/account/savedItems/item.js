@@ -17,6 +17,11 @@ const index = props => {
   let price =
     props.item.price[props.item.size.indexOf(props.item.packSize)] *
     props.item.quantity;
+  let product = props.item,
+    cart = props.checkout.cart,
+    maxPerPackage = cart.maxPerPackage,
+    potentialQuantity = props.item.quantity,
+    coupon = props.checkout.orderDetails.coupon;
 
   return (
     <li className="vcItem vcItem-one flex relative">
@@ -76,7 +81,40 @@ const index = props => {
             <span>${price.toFixed(2)}</span>
           </div>
         </div>
-        <button className="vcSaved-btn">Add To Cart</button>
+        <input
+          className={`px-2 py-1 mx-1 ${
+            props.shop.animationActive ? "scaleAnim" : ""
+          }`}
+          type="submit"
+          value="Add To Cart"
+          onClick={() => {
+            if (props.account.currentUser == null) {
+              props.toggleAlert({
+                message: "Please log in to continue",
+                message2: "You have to be logged in to do that",
+                action: "login", //Router.push("/login"),
+                actionName: "Login"
+              });
+            } else {
+              props.toggleAnimation(true);
+              let _identifier =
+                product.sotiId + product.size[props.product.quickAddToCartQty];
+              let user = props.account.currentUser;
+              props.modifyCart({
+                accountId: user == null ? null : user._id,
+                cart: cart,
+                action: "APPEND",
+                max: maxPerPackage,
+                productIdentifier: _identifier,
+                product: product,
+                quantity: potentialQuantity,
+                coupon: coupon
+              });
+              setTimeout(() => props.toggleAnimation(false), 1000);
+            }
+          }}
+          onAnimationEnd={() => props.toggleAnimation(false)}
+        />
       </div>
     </li>
   );

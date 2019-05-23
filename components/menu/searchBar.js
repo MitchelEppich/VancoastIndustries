@@ -25,6 +25,7 @@ const searchBar = props => {
           aria-label="search"
           className="vcNav-search"
           type="text"
+          value={searchValue}
           placeholder={
             props.misc.mediaSize == "sm"
               ? "Search"

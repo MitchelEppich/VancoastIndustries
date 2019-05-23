@@ -57,7 +57,7 @@ class Index extends Component {
               type="text"
               id="vcCompany"
               name="company"
-              placeholder="Vancoast Industries"
+              placeholder="i.e. Vancoast Industries"
             />
             <label htmlFor="vcPhone">Company Phone</label>
             <input

@@ -17,9 +17,11 @@ const index = props => {
     packSize: product.size[props.product.quickAddToCartQty],
     quantity: potentialQuantity
   });
-  let itemSaved = props.account.currentUser
-    ? props.account.currentUser.savedItems.includes(productAsSavedItemString)
-    : false;
+  //deleted account from db, but still saved on cp session/local storage throws err, can't reproduce
+  let itemSaved =
+    props.account.currentUser != null
+      ? props.account.currentUser.savedItems.includes(productAsSavedItemString)
+      : false;
 
   let img =
     product.company.name == "sonoma seeds"

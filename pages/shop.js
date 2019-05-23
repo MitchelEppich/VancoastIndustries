@@ -14,6 +14,9 @@ import {
 } from "../components/shop";
 import QuickView from "../components/product/quickView";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -49,16 +52,34 @@ class Index extends Component {
         </div>
 
         <Heading {...this.props} />
-        <div className="w-4/5 justify-end flex mt-6 mb-4 items-center">
-          <p className="mr-2 font-bold text-sm uppercase">Order By:</p>
-          <select className="border-2 border-grey-light">
-            <option>Best Selling</option>
-            <option>New Arrivals</option>
-            <option>A-Z</option>
-            <option>Z-A</option>
-            <option>Price High to Low</option>
-            <option>Price Low to High</option>
-          </select>
+        <div className="mx-auto w-4/5 justify-between sm:justify-end  flex flex-wrap mt-6 mb-4 items-center">
+          <div className="w-300 sm:w-full mb-2 text-right">
+            {this.props.misc.searchValue != "" ? (
+              <button
+                onClick={e => {
+                  this.props.setSearchValue("");
+                }}
+                className="p-2"
+              >
+                Search: {this.props.misc.searchValue}{" "}
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  className="text-white fa-lg ml-2 cursor-pointer scale-item"
+                />
+              </button>
+            ) : null}
+          </div>
+          <div>
+            <p className="mr-2 font-bold text-sm uppercase">Order By:</p>
+            <select className="border-2 border-grey-light">
+              <option>Best Selling</option>
+              <option>New Arrivals</option>
+              <option>A-Z</option>
+              <option>Z-A</option>
+              <option>Price High to Low</option>
+              <option>Price Low to High</option>
+            </select>
+          </div>
         </div>
 
         <div className="vcWholesale-page">
@@ -97,7 +118,8 @@ const mapDispatchToProps = dispatch => {
     modifyCart: input => dispatch(actions.modifyCart(input)),
     modifySavedItems: input => dispatch(actions.modifySavedItems(input)),
     toggleFullSummary: input => dispatch(actions.toggleFullSummary()),
-    toggleAnimation: active => dispatch(actions.toggleAnimation(active))
+    toggleAnimation: active => dispatch(actions.toggleAnimation(active)),
+    setSearchValue: value => dispatch(actions.setSearchValue(value))
   };
 };
 
