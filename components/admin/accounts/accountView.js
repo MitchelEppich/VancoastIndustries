@@ -6,15 +6,13 @@ import {
   faPhone,
   faGlobe,
   faBook,
-  faClock,
-  faStickyNote,
-  faSearch,
   faUserSlash,
   faTimes,
   faCheck,
   faUser,
   faIdCard,
-  faMousePointer
+  faMousePointer,
+  faUserCircle
 } from "@fortawesome/free-solid-svg-icons";
 
 const index = props => {
@@ -22,9 +20,9 @@ const index = props => {
   if (!currentAccount)
     return (
       <div className="text-center h-full flex items-center justify-center font-bold text-2xl text-grey-light uppercase flex-col">
-        <FontAwesomeIcon
-          icon={faMousePointer}
-          className="fa-2x opacity-50 mb-10"
+        <img
+          src="../static/img/assets/vancoast-watermark.png"
+          className="w-100"
         />
         <span>Please, select an user to manage.</span>
       </div>
@@ -70,10 +68,13 @@ const index = props => {
     });
   return (
     <div className="w-full">
-      <p className="uppercase text-xl bg-white text-blue-purple font-bold w-full text-right pr-4 border-b-2 border-grey-lighter pb-4 pt-3 opacity-50">
-        Profile Manager{" "}
-        <FontAwesomeIcon icon={faUser} className=" ml-2 px-1 fa-lg" />
-      </p>
+      <div className="uppercase text-xl bg-grey-dark text-blue-purple font-bold w-full text-right pr-4 border-b border-grey-dark pb-4 pt-3 opacity-75 relative">
+        <p className="mr-16 pt-1 text-grey-lighter ">Profile Manager </p>
+        <img
+          src="../static/img/assets/vancoast-watermark.png"
+          className="w-16 absolute pin-t pin-r pr-4 mr-2 pt-2"
+        />
+      </div>
       <div className="w-full relative py-4 mt-5">
         <p className="text-center uppercase text-sm text-grey-dark font-bold">
           Company / Name
@@ -94,7 +95,7 @@ const index = props => {
       <div className="inline-flex w-full mt-8">
         <div className="w-1/2 p-6">
           <div className="px-2">
-            <h2 className="uppercase text-blue-purple opacity-50 mb-4 w-full border-b-2 border-blue-purple text-center pb-1">
+            <h2 className="uppercase text-grey-dark opacity-75 mb-4 w-full border-b-2 border-grey-dark text-center text-xl pb-1">
               Contact Information
             </h2>
 
@@ -177,7 +178,7 @@ const index = props => {
                 />{" "}
                 Description:
               </p> */}
-              <h2 className="uppercase text-blue-purple opacity-50 mb-4 w-full border-b-2 border-blue-purple text-center pb-1">
+              <h2 className="uppercase text-grey-dark text-xl opacity-75 mb-4 w-full border-b-2 border-grey-dark text-center pb-1">
                 Company Description
               </h2>
               <p className="w-full">{currentAccount.description}</p>
@@ -185,35 +186,92 @@ const index = props => {
           </div>
         </div>
         <div className="w-1/2 mt-6 border-l-2 border-grey-lighter px-4">
-          <div className="w-full text-base h-200">
-            <h2 className="uppercase text-blue-purple opacity-50 mb-4 w-full border-b-2 border-blue-purple text-center pb-1">
+          <div className="w-full text-base">
+            <h2 className="uppercase text-grey-dark text-xl opacity-75 mb-1 w-full border-b-2 border-grey-dark text-center pb-1">
               Latest Orders
             </h2>
-            <div className="inline-flex w-full my-1 bg-grey-lighter p-1">
+            <div className="inline-flex w-full my-1 bg-grey-darker font-bold uppercase text-white p-1 text-sm">
               <div className="w-1/3">
-                <p className="w-full">Order #21-35467</p>
+                <p className="w-full pl-3">Order#</p>
               </div>
               <div className="w-1/3">
-                <p className="w-full">$560.00</p>
+                <p className="w-full">Total</p>
               </div>
               <div className="w-1/3">
-                <p className="w-full">May 23, 2019</p>
+                <p className="w-full">Date</p>
               </div>
             </div>
-            <div className="inline-flex w-full my-1 bg-white p-1">
-              <div className="w-1/3">
-                <p className="w-full">Order #21-35467</p>
+            <div className="h-150 w-full overflow-y-auto">
+              <div className="inline-flex w-full my-1 bg-grey-lighter p-1 text-sm">
+                <p className="w-1/3">
+                  <span className="w-full pl-3">2135-467</span>
+                </p>
+                <p className="w-1/3">
+                  <span className="w-full">$12560.00</span>
+                </p>
+                <p className="w-1/3">
+                  <span className="w-full">May 23, 2019</span>
+                </p>
               </div>
-              <div className="w-1/3">
-                <p className="w-full">$560.00</p>
+              <div className="inline-flex w-full my-1 bg-white p-1 text-sm">
+                <p className="w-1/3">
+                  <span className="w-full pl-3">2135-467</span>
+                </p>
+                <p className="w-1/3">
+                  <span className="w-full">$1260.00</span>
+                </p>
+                <p className="w-1/3">
+                  <span className="w-full">May 23, 2019</span>
+                </p>
               </div>
-              <div className="w-1/3">
-                <p className="w-full">May 23, 2019</p>
+              <div className="inline-flex w-full my-1 bg-grey-lighter p-1 text-sm">
+                <p className="w-1/3">
+                  <span className="w-full pl-3">2135-467</span>
+                </p>
+                <p className="w-1/3">
+                  <span className="w-full">$607.00</span>
+                </p>
+                <p className="w-1/3">
+                  <span className="w-full">May 23, 2019</span>
+                </p>
+              </div>
+              <div className="inline-flex w-full my-1 bg-white p-1 text-sm">
+                <p className="w-1/3">
+                  <span className="w-full pl-3">2135-467</span>
+                </p>
+                <p className="w-1/3">
+                  <span className="w-full">$580.00</span>
+                </p>
+                <p className="w-1/3">
+                  <span className="w-full">May 23, 2019</span>
+                </p>
+              </div>
+              <div className="inline-flex w-full my-1 bg-grey-lighter p-1 text-sm">
+                <p className="w-1/3">
+                  <span className="w-full pl-3">2135-467</span>
+                </p>
+                <p className="w-1/3">
+                  <span className="w-full">$607.00</span>
+                </p>
+                <p className="w-1/3">
+                  <span className="w-full">May 23, 2019</span>
+                </p>
+              </div>{" "}
+              <div className="inline-flex w-full my-1 bg-white p-1 text-sm">
+                <p className="w-1/3">
+                  <span className="w-full pl-3">2135-467</span>
+                </p>
+                <p className="w-1/3">
+                  <span className="w-full">$580.00</span>
+                </p>
+                <p className="w-1/3">
+                  <span className="w-full">May 23, 2019</span>
+                </p>
               </div>
             </div>
           </div>
-          <div className="w-full text-lg my-3 flex flex-wrap justify-between mt-10 ">
-            <h2 className="uppercase text-blue-purple opacity-50 mb-4 w-full border-b-2 border-blue-purple text-center pb-1">
+          <div className="w-full text-lg my-3 flex flex-wrap justify-between mt-8 ">
+            <h2 className="uppercase text-grey-dark text-xl opacity-75 mb-4 w-full border-b-2 border-grey-dark text-center pb-1">
               Actions
             </h2>
             <textarea

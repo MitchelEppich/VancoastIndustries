@@ -18,15 +18,27 @@ const initialState = {
   recentOrders: [
     {
       date: "20120620",
-      strains: ["cksaha10x4", "sonccf5x1", "swgjhf15x3"]
+      strains: [
+        "cksaha10x4",
+        "sonccf5x1",
+        "swgjhf15x3",
+        "sonccf5x1",
+        "cksaha10x4"
+      ]
     },
     {
       date: "20120620",
-      strains: ["cksaha10x4", "sonccf5x1", "swgjhf15x3"]
+      strains: [
+        "cksaha10x4",
+        "sonccf5x1",
+        "swgjhf15x3",
+        "sonccf5x1",
+        "cksaha10x4"
+      ]
     },
     {
       date: "20120620",
-      strains: ["cksaha10x4", "sonccf5x1", "swgjhf15x3"]
+      strains: ["cksaha10x4", "sonccf5x1", "swgjhf15x3", "sonccf5x1"]
     }
   ],
   showRecentOrder: null
