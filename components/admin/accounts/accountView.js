@@ -57,7 +57,8 @@ const index = props => {
               accounts: props.admin.accounts,
               status: action.pos,
               note: props.admin.statusNote,
-              icon: action.icon
+              icon: action.icon,
+              createAccount: action.pos == 1 && currentAccount.approved == 0
             });
           }}
           className={`rounded text-white text-base font-bold w-32 mx-2 text-center py-2 uppercase hover:bg-grey-light hover:text-grey cursor-pointer bg-${

@@ -135,11 +135,12 @@ const resolvers = {
     updateAccount: async (_, { input }) => {
       let $ = { ...input };
 
-      console.log($);
-
-      // if ($.approved == 1) {
-      //   resolvers.Mutation.createZohoAccount(null, { input: { _id: $._id } });
-      // }
+      if ($.createAccount == true) {
+        let customerId = await resolvers.Mutation.createZohoAccount(null, {
+          input: { _id: $._id }
+        });
+        $.customerId = customerId;
+      }
 
       if ($.newPassword != null) {
         if ($.password == null) return { error: "Incorrect previous password" };
@@ -245,11 +246,16 @@ const resolvers = {
       if (Object.keys($pull).length > 0) options.$pull = $pull;
 
       options.$set = $;
-      console.log(options);
       let account = await Account.findOneAndUpdate({ _id: $._id }, options, {
         upsert: true,
         new: true
       });
+
+      if (!$.createAccount) {
+        resolvers.Mutation.updateZohoAccount(null, {
+          input: { _id: $._id }
+        });
+      }
 
       account.password = undefined;
 
@@ -261,7 +267,7 @@ const resolvers = {
       );
 
       if (account == null) return null;
-      console.log(account);
+
       let zohoAccountRequest = {
         contact_name: account.address.name + " " + account.address.surname,
         company_name: account.company,
@@ -297,11 +303,115 @@ const resolvers = {
         }
       };
 
-      console.log(zohoAccountRequest);
-
       let options = {
         method: "POST",
         uri: "https://invoice.zoho.com/api/v3/contacts",
+        formData: {
+          JSONString: JSON.stringify(zohoAccountRequest)
+        },
+        headers: {
+          Authorization: "f86f4906a3b740667322433cfb9e431d",
+          "X-com-zoho-invoice-organizationid": 59999705,
+          "Content-Type": "multipart/form-data"
+        }
+      };
+      return request(options)
+        .then(parsedBody => {
+          let $ = JSON.parse(parsedBody);
+
+          let {
+            contact: { contact_id }
+          } = $;
+          return contact_id;
+        })
+        .catch(function(err) {
+          // POST failed...
+          console.log(err);
+        });
+    },
+    updateZohoAccount: async (_, { input }) => {
+      let $ = { ...input };
+
+      let account = await Account.findOne({ _id: $._id }).populate("address");
+      console.log("HELLO", $, "YOOOO", account);
+      if (account == null) return null;
+
+      let { customerId } = account;
+
+      if (customerId == undefined) return null;
+
+      let { defaultBilling } = account;
+      let { billing } = $;
+      if (billing != undefined && defaultBilling != undefined)
+        billing = billing[defaultBilling];
+      else billing = undefined;
+
+      let { defaultShipping } = account;
+      let { shipping } = $;
+      if (shipping != undefined && defaultShipping != undefined)
+        shipping = shipping[defaultShipping];
+      else shipping = undefined;
+
+      let { address } = account;
+      let name = address == undefined ? undefined : address.name;
+      let surname = address == undefined ? undefined : address.surname;
+
+      let { license, website, company, email } = $;
+
+      let tag = "";
+      let { approved } = account;
+      if (approved == 0) tag = "*PENDING*";
+      else if (approved == 2) tag = "*DECLINED*";
+      else if (approved == 3) tag = "*BANNED*";
+
+      let zohoAccountRequest = {
+        contact_name:
+          name == undefined || surname == undefined
+            ? undefined
+            : name + " " + surname + " " + tag,
+        company_name: company == undefined ? undefined : company,
+        website: website == undefined ? undefined : website,
+        notes:
+          license == undefined ? undefined : "Business License: " + license,
+        contact_persons: [
+          {
+            first_name: name,
+            last_name: surname,
+            email: email == undefined ? undefined : email,
+            phone: address == undefined ? undefined : address.phone
+          }
+        ],
+        billing_address:
+          billing == undefined
+            ? undefined
+            : {
+                attention: billing.name + " " + billing.surname,
+                address: billing.address,
+                street2: billing.apartment,
+                city: billing.city,
+                state: billing.state,
+                zip: billing.postal,
+                country: billing.country,
+                phone: billing.phone
+              },
+        shipping_address:
+          shipping == undefined
+            ? undefined
+            : {
+                attention: shipping.name + " " + shipping.surname,
+                address: shipping.address,
+                street2: shipping.apartment,
+                city: shipping.city,
+                state: shipping.state,
+                zip: shipping.postal,
+                country: shipping.country,
+                phone: shipping.phone
+              }
+      };
+
+      let options = {
+        method: "PUT",
+        uri: "https://invoice.zoho.com/api/v3/contacts/" + customerId,
         formData: {
           JSONString: JSON.stringify(zohoAccountRequest)
         },
