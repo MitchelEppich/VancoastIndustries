@@ -1,4 +1,4 @@
-import { Cash, Cheque, EMT } from "./options";
+import { CashCheque, EMT } from "./options";
 
 const index = props => {
   let selectedOption;
@@ -7,11 +7,8 @@ const index = props => {
   } = props.checkout.orderDetails;
 
   switch (value) {
-    case "Cheque":
-      selectedOption = <Cheque {...props} />;
-      break;
-    case "Cash":
-      selectedOption = <Cash {...props} />;
+    case "CashCheque":
+      selectedOption = <CashCheque {...props} />;
       break;
     case "E-Transfer":
       selectedOption = <EMT {...props} />;

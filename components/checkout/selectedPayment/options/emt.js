@@ -1,7 +1,7 @@
 const index = props => {
   return (
-    <div className="w-full flex flex-wrap  justify-center text-xl font-bold mt-5 mb-12">
-      <p className="w-full text-center my-2">
+    <div className="w-full flex flex-wrap  justify-center text-xl font-bold mt-1 mb-12">
+      <p className="w-full text-center my-2 px-2">
         Proceeding will take you to the instructions on how to pay with Money
         Transfer.
       </p>

@@ -136,50 +136,40 @@ const payment = props => {
             Payment Method
           </h2>
 
-          <div className="vcPayment-choices flex flex-row sm:flex-col md:flex-col justify-around items-center">
-            <input
-              type="radio"
-              id="CashMoney"
-              name="paymentOptions"
-              value="Cash"
-            />
-            <label className="flex flex-col" htmlFor="CashMoney">
-              <span>Cash</span>
-              <img
-                style={{ width: "auto" }}
-                src="../../../static/img/assets/payment/cash-icon.jpg"
-                className="h-10"
+          <div className="vcPayment-choices flex flex-row sm:flex-col md:flex-col justify-center items-center">
+            <div className="mx-1">
+              <input
+                type="radio"
+                id="CashMoney"
+                name="paymentOptions"
+                value="CashCheque"
               />
-            </label>
+              <label className="flex flex-col" htmlFor="CashMoney">
+                <span>Cash</span>
+                <img
+                  style={{ width: "auto" }}
+                  src="../../../static/img/assets/payment/cash-icon.jpg"
+                  className="h-10"
+                />
+              </label>
+            </div>
 
-            <input
-              type="radio"
-              id="E-Transfer"
-              name="paymentOptions"
-              value="E-Transfer"
-            />
-            <label className="flex flex-col" htmlFor="E-Transfer">
-              <span>E-Transfer</span>
-              <img
-                style={{ width: "auto" }}
-                src="../../../static/img/assets/payment/interac-transfer.jpg"
-                className="h-10"
+            <div className="mx-1">
+              <input
+                type="radio"
+                id="E-Transfer"
+                name="paymentOptions"
+                value="E-Transfer"
               />
-            </label>
-
-            <input
-              type="radio"
-              id="Cheque"
-              name="paymentOptions"
-              value="Cheque"
-            />
-            <label className="flex flex-col" htmlFor="Cheque">
-              <span>Cheque</span>
-              <img
-                src="../../../static/img/assets/payment/interac-transfer.jpg"
-                className="h-10 w-auto sm:h-8"
-              />
-            </label>
+              <label className="flex flex-col" htmlFor="E-Transfer">
+                <span>E-Transfer</span>
+                <img
+                  style={{ width: "auto" }}
+                  src="../../../static/img/assets/payment/interac-transfer.jpg"
+                  className="h-10"
+                />
+              </label>
+            </div>
           </div>
 
           <SelectedPayment {...props} />
