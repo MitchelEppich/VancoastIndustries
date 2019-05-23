@@ -15,7 +15,7 @@ const index = props => {
       : "../static/img/products/sunwest/sw-cheese.png";
 
   let price =
-    props.item.price[props.item.size.indexOf(props.item.packSize)] *
+    props.item.wholesale[props.item.size.indexOf(props.item.packSize)] *
     props.item.quantity;
   let product = props.item,
     cart = props.checkout.cart,
@@ -41,6 +41,7 @@ const index = props => {
         />
       </div>
       <img
+        className="cursor-pointer scale-item"
         onClick={() => {
           window.scrollTo(0, 0);
           props.setCurrentProduct({ newProduct: props.item });
@@ -97,8 +98,7 @@ const index = props => {
               });
             } else {
               props.toggleAnimation(true);
-              let _identifier =
-                product.sotiId + product.size[props.product.quickAddToCartQty];
+              let _identifier = product.sotiId + product.packSize;
               let user = props.account.currentUser;
               props.modifyCart({
                 accountId: user == null ? null : user._id,

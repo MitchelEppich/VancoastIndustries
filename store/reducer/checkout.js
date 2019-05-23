@@ -53,6 +53,16 @@ export default (state = initialState, action) => {
       return updateObject(state, {
         cart: action.cart
       });
+    case actionTypes.CLEAR_CART:
+      return updateObject(state, {
+        cart: {
+          discount: 0,
+          items: {},
+          maxPerPackage: 500,
+          potentialQuantity: 1,
+          price: 0
+        }
+      });
     default:
       return state;
   }

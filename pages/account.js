@@ -55,7 +55,10 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.quickAddToCartQty(0));
       dispatch(actions.setCurrentProduct(product));
     },
-    setBrandIndex: index => dispatch(actions.setBrandIndex(index))
+    setBrandIndex: index => dispatch(actions.setBrandIndex(index)),
+    toggleAnimation: active => dispatch(actions.toggleAnimation(active)),
+    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj)),
+    modifyCart: input => dispatch(actions.modifyCart(input))
   };
 };
 

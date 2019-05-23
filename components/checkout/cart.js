@@ -2,7 +2,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const cart = props => {
-  let item = props.item;
+  let tax = props.taxPercent
+    ? (props.checkout.cart.price * props.taxPercent).toFixed(2)
+    : (props.checkout.cart.price * 0.12).toFixed(2);
+  let total = (parseFloat(props.checkout.cart.price) + parseFloat(tax)).toFixed(
+    2
+  );
+
   let items = Object.entries(props.checkout.cart.items).map((item, index) => {
     let product = item[1].product;
     let img =
@@ -81,33 +87,23 @@ const cart = props => {
               ${props.checkout.cart.price.toFixed(2)}
             </div>
           </div>
-          {props.tax != null ? (
+
+          {tax != null ? (
             <div className="w-full inline-flex">
               <div className="w-1/2 text-right mr-2"> Taxes: </div>{" "}
-              <div className="w-1/2 text-left ml-2 font-normal">
-                ${props.tax.toFixed(2)}
-              </div>
+              <div className="w-1/2 text-left ml-2 font-normal">${tax}</div>
             </div>
           ) : null}
-          {props.shipping != null ? (
-            <div className="w-full inline-flex">
-              <div className="w-1/2 text-right mr-2"> Shipping: </div>{" "}
-              <div className="w-1/2 text-left ml-2 font-normal">
-                ${props.shipping.toFixed(2)}
-              </div>
-            </div>
-          ) : null}
-          {props.total != null ? (
+
+          <div className="w-full inline-flex">
+            <div className="w-1/2 text-right mr-2"> Shipping: </div>{" "}
+            <div className="w-1/2 text-left ml-2 font-normal">FREE!</div>
+          </div>
+
+          {total != null ? (
             <div className="w-full inline-flex">
               <div className="w-1/2 text-right mr-2"> Total: </div>
-              <div className="w-1/2 text-left ml-2 font-normal">
-                $
-                {(
-                  props.checkout.cart.price +
-                  props.tax +
-                  props.shipping
-                ).toFixed(2)}
-              </div>
+              <div className="w-1/2 text-left ml-2 font-normal">${total}</div>
             </div>
           ) : null}
         </div>

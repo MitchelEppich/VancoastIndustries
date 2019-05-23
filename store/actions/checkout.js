@@ -11,7 +11,8 @@ const actionTypes = {
   MODIFY_POTENTIAL_QUANTITY: "MODIFY_POTENTIAL_QUANTITY",
   MODIFY_CART: "MODIFY_CART",
   MODIFY_ORDER_DETAILS: "MODIFY_ORDER_DETAILS",
-  PROCESS_ORDER: "PROCESS_ORDER"
+  PROCESS_ORDER: "PROCESS_ORDER",
+  CLEAR_CART: "CLEAR_CART"
 };
 
 const getActions = uri => {
@@ -22,7 +23,6 @@ const getActions = uri => {
         step: step
       };
     },
-
     modifyOrderDetails: orderDetails => {
       return {
         type: actionTypes.MODIFY_ORDER_DETAILS,
@@ -237,11 +237,17 @@ const getActions = uri => {
         return makePromise(execute(link, operation))
           .then(data => {
             let order = data.data.processOrder;
-            dispatch({
-              type: actionTypes.PROCESS_ORDER
-            });
+            dispatch(objects.clearCart(input._id));
           })
           .catch(error => console.log(error));
+      };
+    },
+    clearCart: _id => {
+      sessionStorage.removeItem("cart");
+      return dispatch => {
+        let Account = AccountActions(uri);
+        dispatch(Account.updateAccount({ _id: _id, cartItems: [] }));
+        dispatch({ type: actionTypes.CLEAR_CART });
       };
     }
   };

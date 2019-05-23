@@ -3,12 +3,13 @@ import SelectedPayment from "./selectedPayment";
 import Router from "next/router";
 
 const payment = props => {
+  if (!props.account.currentUser) return null;
   let billing = props.account.currentUser.billing[0];
   let shipping = props.account.currentUser.shipping[0];
   return (
     <React.Fragment>
       <div className="flex justify-between w-full my-4 md:flex-col sm:flex-col">
-        <div className="w-1/2 sm:w-full md:w-full sm:my-4 md:my-4 border rounded border-grey-lightest p-4 mr-3">
+        <div className="w-1/2 sm:w-full sm:mx-auto md:mx-auto md:w-full sm:my-4 md:my-4 border rounded border-grey-lightest p-4 mr-3">
           <h2 className="text-3xl font-bold text-grey-lightest">
             Delivery Details
           </h2>
@@ -43,7 +44,7 @@ const payment = props => {
           </div>
         </div>
 
-        <div className="w-1/2 sm:w-full md:w-full sm:my-4 md:my-4 border rounded border-grey-lightest p-4 ml-3">
+        <div className="w-1/2 sm:w-full sm:mx-auto md:mx-auto md:w-full sm:my-4 md:my-4 border rounded border-grey-lightest p-4 ml-3">
           <h2 className="text-3xl font-bold text-grey-lightest">
             Billing Details
           </h2>
@@ -85,22 +86,33 @@ const payment = props => {
             Cart Summary
           </h2>
 
-          <Cart page="payment" {...props} tax={0} shipping={0} total={true} />
+          <Cart page="payment" {...props} />
         </div>
       </div>
       <form
         onSubmit={e => {
           e.preventDefault();
-          if (props.checkout.orderDetails.payment) {
+          if (
+            props.checkout.orderDetails.payment &&
+            props.checkout.orderDetails.payment.method
+          ) {
             if (props.checkout.orderDetails.payment.method.value.length > 0) {
               window.scrollTo(0, 0);
               props.processOrder({
                 customerId: props.account.currentUser.customerId,
+                _id: props.account.currentUser._id,
                 cart: props.checkout.cart,
                 orderDetails: props.checkout.orderDetails
               });
               Router.push("/confirmation");
             }
+          } else {
+            props.toggleAlert({
+              message: "Please select a payment method!",
+              message2: "You must select a payment method to proceed.",
+              action: null,
+              actionName: null
+            });
           }
         }}
         onChange={e => {

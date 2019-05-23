@@ -83,7 +83,7 @@ class Layout extends Component {
   };
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.resizeScreen);
+    window.removeEventListener("resize", () => this.resizeScreen(setMediaSize));
     window.removeEventListener("scroll", this.scrollToTop);
     if (dev) {
       window.removeEventListener("keypress", this.printProps);

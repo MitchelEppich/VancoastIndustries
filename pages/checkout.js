@@ -45,7 +45,8 @@ const mapDispatchToProps = dispatch => {
     modifyOrderDetails: orderDetails =>
       dispatch(actions.modifyOrderDetails(orderDetails)),
     toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj)),
-    modifyCart: input => dispatch(actions.modifyCart(input))
+    modifyCart: input => dispatch(actions.modifyCart(input)),
+    toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj))
   };
 };
 
