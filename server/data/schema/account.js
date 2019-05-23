@@ -7,6 +7,7 @@ let Mutation = `
     updateAccount(input: AccountInput): Account
     verifyCredentials(input: CredentialsInput): Account
     resetPassword(input: AccountInput): String
+    createZohoAccount(input: AccountInput): String
 `;
 
 let Subscription = ``;
@@ -32,6 +33,7 @@ let Type = `
         error: String
         savedItems: [String]
         cartItems: [String]
+        customerId: String
     }
 `;
 
@@ -59,6 +61,7 @@ let Input = `
         savedItem: String
         cartItem: String
         cartItems: [String]
+        customerId: String
     }
 
     input CredentialsInput {

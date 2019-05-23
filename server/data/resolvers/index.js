@@ -1,5 +1,6 @@
 const Account = require("./account");
 const Address = require("./address");
+const Order = require("./order");
 
 const { Email } = require("../../models");
 
@@ -7,7 +8,7 @@ const nodemailer = require("nodemailer");
 const path = require("path");
 const emailTemplates = require("../emails");
 
-let imports = [Account, Address];
+let imports = [Account, Address, Order];
 
 let resolvers = {};
 

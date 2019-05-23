@@ -3,8 +3,9 @@ const resolvers = require("../resolvers");
 
 const Account = require("./account");
 const Address = require("./address");
+const Order = require("./order");
 
-let imports = [Account, Address];
+let imports = [Account, Address, Order];
 
 let definitions = {};
 

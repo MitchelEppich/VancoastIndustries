@@ -4,6 +4,8 @@ const nodemailer = require("nodemailer");
 const emailTemplates = require("../emails");
 const mongoose = require("mongoose");
 
+const request = require("request-promise");
+
 const resolvers = {
   Account: {
     address(account) {
@@ -133,6 +135,12 @@ const resolvers = {
     updateAccount: async (_, { input }) => {
       let $ = { ...input };
 
+      console.log($);
+
+      // if ($.approved == 1) {
+      //   resolvers.Mutation.createZohoAccount(null, { input: { _id: $._id } });
+      // }
+
       if ($.newPassword != null) {
         if ($.password == null) return { error: "Incorrect previous password" };
         let account = await Account.findOne({ _id: $._id });
@@ -237,6 +245,7 @@ const resolvers = {
       if (Object.keys($pull).length > 0) options.$pull = $pull;
 
       options.$set = $;
+      console.log(options);
       let account = await Account.findOneAndUpdate({ _id: $._id }, options, {
         upsert: true,
         new: true
@@ -245,6 +254,75 @@ const resolvers = {
       account.password = undefined;
 
       return account.toObject();
+    },
+    createZohoAccount: async (_, { input }) => {
+      let account = await Account.findOne({ _id: input._id }).populate(
+        "address"
+      );
+
+      if (account == null) return null;
+      console.log(account);
+      let zohoAccountRequest = {
+        contact_name: account.address.name + " " + account.address.surname,
+        company_name: account.company,
+        website: account.website,
+        notes: "Business License: " + account.license,
+        contact_persons: [
+          {
+            first_name: account.address.name,
+            last_name: account.address.surname,
+            email: account.email,
+            phone: account.address.phone
+          }
+        ],
+        billing_address: {
+          attention: account.address.name + " " + account.address.surname,
+          address: account.address.address,
+          street2: account.address.apartment,
+          city: account.address.city,
+          state: account.address.state,
+          zip: account.address.postal,
+          country: account.address.country,
+          phone: account.address.phone
+        },
+        shipping_address: {
+          attention: account.address.name + " " + account.address.surname,
+          address: account.address.address,
+          street2: account.address.apartment,
+          city: account.address.city,
+          state: account.address.state,
+          zip: account.address.postal,
+          country: account.address.country,
+          phone: account.address.phone
+        }
+      };
+
+      console.log(zohoAccountRequest);
+
+      let options = {
+        method: "POST",
+        uri: "https://invoice.zoho.com/api/v3/contacts",
+        formData: {
+          JSONString: JSON.stringify(zohoAccountRequest)
+        },
+        headers: {
+          Authorization: "f86f4906a3b740667322433cfb9e431d",
+          "X-com-zoho-invoice-organizationid": 59999705,
+          "Content-Type": "multipart/form-data"
+        }
+      };
+      request(options)
+        .then(parsedBody => {
+          let $ = JSON.parse(parsedBody);
+
+          console.log($);
+        })
+        .catch(function(err) {
+          // POST failed...
+          console.log(err);
+        });
+
+      return null;
     },
     resetPassword: async (_, { input }) => {
       let $ = { ...input };

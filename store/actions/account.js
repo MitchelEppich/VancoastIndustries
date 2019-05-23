@@ -235,7 +235,18 @@ const getActions = uri => {
 
   return { ...objects };
 };
-const query = {};
+const query = {
+  getOrders: gql`
+    query($jwt: String, $customerId: String) {
+      order(input: { jwt: $jwt, customerId: $customerId }) {
+        _id
+        customerId
+        invoiceId
+        orderDate
+      }
+    }
+  `
+};
 
 const mutation = {
   verifyCredentials: gql`
@@ -297,6 +308,7 @@ const mutation = {
         createdAt
         savedItems
         cartItems
+        customerId
       }
     }
   `,
@@ -403,6 +415,7 @@ const mutation = {
         defaultBilling
         savedItems
         cartItems
+        customerId
       }
     }
   `,
@@ -463,6 +476,7 @@ const mutation = {
         createdAt
         savedItems
         cartItems
+        customerId
       }
     }
   `,
@@ -565,6 +579,7 @@ const mutation = {
         createdAt
         savedItems
         cartItems
+        customerId
       }
     }
   `

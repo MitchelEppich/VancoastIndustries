@@ -242,9 +242,9 @@ const info = props => {
               className="w-full opacity-75"
               defaultValue={
                 account != null &&
-                account.address &&
+                account.address != null &&
                 account.address.country != null
-                  ? account.address.country.toUpperCase()
+                  ? account.address.country
                   : ""
               }
             >
