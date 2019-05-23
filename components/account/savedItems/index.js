@@ -7,7 +7,7 @@ const index = props => {
     return (
       <div id="vcSaved-tab" className="tabcontent">
         <h1>Saved Items</h1>
-        <p>Please sign-in to see your saved items.</p>
+        <p className="my-4">Please sign-in to see your saved items.</p>
       </div>
     );
   let savedItems = user.savedItems || [],
@@ -32,7 +32,7 @@ const index = props => {
           <ul className="vcSaved-list flex flex-row">{items}</ul>
         </div>
       ) : (
-        <p>No items have been saved yet.</p>
+        <p className="my-4">No items have been saved yet.</p>
       )}
     </div>
   );

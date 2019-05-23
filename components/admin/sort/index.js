@@ -33,7 +33,7 @@ const index = props => {
           props.toggleShowOrderBy();
         }}
         icon={faSlidersH}
-        className="mr-4 fa-lg -mt-2 text-grey-light absolute pin-r hover:text-white cursor-pointer"
+        className="mr-4 fa-lg -mt-2 text-white absolute pin-r hover:text-grey-dark cursor-pointer"
       />
       {/* 
       <select

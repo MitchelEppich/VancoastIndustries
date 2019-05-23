@@ -3,7 +3,7 @@ const password = props => {
   return (
     <div id="vcPass-tab" className="tabcontent">
       <h1>Change Password</h1>
-      <p>
+      <p className="my-4">
         To reset your password, enter your old password and set your new
         password.
       </p>
