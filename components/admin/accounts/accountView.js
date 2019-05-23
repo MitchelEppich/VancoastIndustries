@@ -13,7 +13,8 @@ import {
   faTimes,
   faCheck,
   faUser,
-  faIdCard
+  faIdCard,
+  faMousePointer
 } from "@fortawesome/free-solid-svg-icons";
 
 const index = props => {
@@ -21,7 +22,10 @@ const index = props => {
   if (!currentAccount)
     return (
       <div className="text-center h-full flex items-center justify-center font-bold text-2xl text-grey-light uppercase flex-col">
-        <FontAwesomeIcon icon={faIdCard} className="fa-5x opacity-50 mb-10" />
+        <FontAwesomeIcon
+          icon={faMousePointer}
+          className="fa-2x opacity-50 mb-10"
+        />
         <span>Please, select an user to manage.</span>
       </div>
     );

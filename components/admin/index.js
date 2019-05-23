@@ -4,13 +4,15 @@ import Filters from "./sort";
 
 const index = props => {
   let user = props.account.currentUser;
+  console.log(user);
   let name = user ? user.email : "";
+  let company = user ? user.company : "";
 
   return (
     <div className="vcAdminAccount flex flex-wrap justify-between content-start  ">
       <div className="w-full flex justify-between items-center px-32 py-4 bg-blue shadow">
         <h2 className="text-white font-bold text-lg ml-4 capitalize">
-          Welcome {name}!
+          Welcome {company}!
         </h2>
         <img
           src="../static/img/assets/vc-full-logo.png"
