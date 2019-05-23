@@ -244,7 +244,7 @@ const info = props => {
                 account != null &&
                 account.address != null &&
                 account.address.country != null
-                  ? account.address.country.toUpperCase()
+                  ? account.address.country
                   : ""
               }
             >
