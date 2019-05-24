@@ -235,7 +235,7 @@ const getActions = uri => {
 
         return makePromise(execute(link, operation))
           .then(data => {
-            let orders = data.data.order;
+            let orders = data.data.order.slice(0, 10);
             dispatch({
               type: actionTypes.GET_ORDERS,
               orders: orders
@@ -244,12 +244,10 @@ const getActions = uri => {
           .catch(error => console.log(error));
       };
     },
-    reOrder: order => {
-      console.log(order);
-      let cart = {};
+    reOrder: input => {
       return {
         type: actionTypes.MODIFY_CART,
-        cart: cart
+        cart: input.cart
       };
     }
   };

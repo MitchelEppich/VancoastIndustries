@@ -6,10 +6,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const orders = props => {
   let orders = props.account.orders.map((order, index) => {
+    let cart = {
+      ...props.checkout.cart,
+      items: { ...props.checkout.cart.items },
+      reOrder: true
+    };
     let strains = itemBuilder({
       products: props.shop.strains,
       savedItems: order.productList
     }).map((strain, index) => {
+      cart.items[strain.sotiId + strain.packSize] = {
+        amount: strain.packSize,
+        per: strain.wholesale[strain.size.indexOf(strain.packSize)],
+        price: strain.wholesale[strain.size.indexOf(strain.packSize)],
+        product: strain,
+        quantity: strain.quantity,
+        sale: undefined
+      };
       return (
         <li
           key={index}
@@ -71,7 +84,9 @@ const orders = props => {
           <a
             onClick={e => {
               e.stopPropagation();
-              props.reOrder(order);
+              props.reOrder({
+                cart: cart
+              });
               Router.push("/checkout");
             }}
           >
