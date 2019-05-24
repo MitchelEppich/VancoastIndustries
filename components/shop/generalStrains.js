@@ -13,9 +13,7 @@ const generalStrains = props => {
     });
   }
   strains = strains.map((strain, index) => {
-    return (
-      <ProductThumbnail key={index} priceColor="" strain={strain} {...props} />
-    );
+    return <ProductThumbnail key={index} strain={strain} {...props} />;
   });
   return (
     <div className="vcWholesale-content">

@@ -69,17 +69,26 @@ class Index extends Component {
               </button>
             ) : null}
           </div>
-          <div>
-            <p className="mr-2 font-bold text-sm uppercase">Order By:</p>
-            <select className="border-2 border-grey-light">
-              <option>Best Selling</option>
-              <option>New Arrivals</option>
-              <option>A-Z</option>
-              <option>Z-A</option>
-              <option>Price High to Low</option>
-              <option>Price Low to High</option>
+          <form>
+            <label
+              htmlFor="orderBy"
+              className="mr-2 font-bold text-sm uppercase"
+            >
+              Order By:
+            </label>
+            <select
+              id="orderBy"
+              name="orderBy"
+              className="border-2 border-grey-light"
+            >
+              <option value="Best Selling">Best Selling</option>
+              <option value="New Arrivals">New Arrivals</option>
+              <option value="A-Z">A-Z</option>
+              <option value="Z-A">Z-A</option>
+              <option value="Price High to Low">Price High to Low</option>
+              <option value="Price Low to High">Price Low to High</option>
             </select>
-          </div>
+          </form>
         </div>
 
         <div className="vcWholesale-page">

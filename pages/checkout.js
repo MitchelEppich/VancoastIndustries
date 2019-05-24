@@ -10,9 +10,10 @@ import {
   Payment,
   Header
 } from "../components/checkout";
-import Router from "next/router";
-
 class Index extends Component {
+  componentWillUnmount() {
+    this.props.changeStep("Cart");
+  }
   render() {
     let stepComponents = [
       <Cart page="cart" {...this.props} />,

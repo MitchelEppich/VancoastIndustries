@@ -25,7 +25,7 @@ const header = props => {
   let name = user != null ? user.company : "NO NAME";
 
   return (
-    <div id="top" className="vcNav-primary">
+    <div className="vcNav-primary">
       <div className="vcNav-bg">
         <div className="vcNav-wrap flex row justify-around items-center">
           <VancoastLogo {...props} />

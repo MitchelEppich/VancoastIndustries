@@ -17,6 +17,7 @@ const brandBoard = props => {
         as={"/shop/" + props.name.replace(/ /g, "").toLowerCase()}
       >
         <button
+          className="text-blue hover:text-white slowish"
           onClick={() => {
             props.setBrandIndex(props.brandIndex);
             window.scrollTo(0, 0);
