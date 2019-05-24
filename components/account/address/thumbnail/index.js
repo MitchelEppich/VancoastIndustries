@@ -17,6 +17,8 @@ const thumbnail = props => {
   let index = props.index;
   let isDefault = account[key] == index;
 
+  let fullName = address.name + " " + address.surname;
+
   return (
     <div className="border-2 border-grey-lighter rounded w-300 text-sm h-200 m-4 relative">
       <h4
@@ -24,7 +26,7 @@ const thumbnail = props => {
           isDefault ? "bg-blue text-white" : "bg-grey-lighter text-grey"
         }  text-left text-lg`}
       >
-        {address.name} {address.surname}{" "}
+        {fullName.length > 16 ? fullName.substring(0, 16) + "..." : fullName}
         {isDefault ? (
           <FontAwesomeIcon
             icon={faCheckCircle}
@@ -33,7 +35,7 @@ const thumbnail = props => {
         ) : null}
       </h4>
 
-      <div className="mt-2 capitalize">
+      <div className="capitalize">
         <div className="p-2">
           <div className="ml-2 mt-1">{address.address}</div>
           <div className="ml-2 mt-1">{address.apartment}</div>
