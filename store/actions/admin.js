@@ -45,7 +45,8 @@ const getActions = uri => {
         const operation = {
           query: mutation.updateAccount,
           variables: {
-            ...account
+            ...account,
+            createAccount: obj.createAccount
           }
         };
 
@@ -60,6 +61,7 @@ const getActions = uri => {
               });
               return;
             }
+            if (account.approved == 4) account.approved = 1;
             accounts.splice(index, 1, account);
             dispatch({
               type: actionTypes.CHANGE_ACCOUNT_STATUS,
@@ -196,6 +198,7 @@ const mutation = {
       $cartItems: [String]
       $defaultShipping: Int
       $defaultBilling: Int
+      $createAccount: Boolean
     ) {
       updateAccount(
         input: {
@@ -216,6 +219,7 @@ const mutation = {
           cartItems: $cartItems
           defaultShipping: $defaultShipping
           defaultBilling: $defaultBilling
+          createAccount: $createAccount
         }
       ) {
         _id
