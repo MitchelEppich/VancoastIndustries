@@ -5,11 +5,10 @@ import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const orders = props => {
-  // console.log(props.shop.strains);
-  let orders = props.account.recentOrders.map((order, index) => {
+  let orders = props.account.orders.map((order, index) => {
     let strains = itemBuilder({
       products: props.shop.strains,
-      savedItems: order.strains
+      savedItems: order.productList
     }).map((strain, index) => {
       return (
         <li

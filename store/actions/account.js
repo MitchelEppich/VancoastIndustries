@@ -16,7 +16,8 @@ const actionTypes = {
   LOGOUT: "LOGOUT",
   SHOW_RECENT_ORDER: "SHOW_RECENT_ORDER",
   MODIFY_CART: "MODIFY_CART",
-  DELETE_ADDRESS: "DELETE_ADDRESS"
+  DELETE_ADDRESS: "DELETE_ADDRESS",
+  GET_ORDERS: "GET_ORDERS"
 };
 
 const getActions = uri => {
@@ -223,6 +224,26 @@ const getActions = uri => {
         index: index
       };
     },
+    getOrders: input => {
+      return dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+
+        const operation = {
+          query: query.getOrders,
+          variables: { ...input }
+        };
+
+        return makePromise(execute(link, operation))
+          .then(data => {
+            let orders = data.data.order;
+            dispatch({
+              type: actionTypes.GET_ORDERS,
+              orders: orders
+            });
+          })
+          .catch(error => console.log(error));
+      };
+    },
     reOrder: order => {
       console.log(order);
       let cart = {};
@@ -243,6 +264,7 @@ const query = {
         customerId
         invoiceId
         orderDate
+        productList
       }
     }
   `

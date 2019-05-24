@@ -14,6 +14,12 @@ import {
 } from "../components/account";
 
 class Index extends Component {
+  componentDidMount() {
+    this.props.getOrders({
+      jwt: this.props.account.currentUser.jwt,
+      customerId: this.props.account.currentUser.customerId
+    });
+  }
   render() {
     let menuOptions = [
       <Info {...this.props} />,
@@ -58,7 +64,8 @@ const mapDispatchToProps = dispatch => {
     setBrandIndex: index => dispatch(actions.setBrandIndex(index)),
     toggleAnimation: active => dispatch(actions.toggleAnimation(active)),
     toggleAlert: alertObj => dispatch(actions.toggleAlert(alertObj)),
-    modifyCart: input => dispatch(actions.modifyCart(input))
+    modifyCart: input => dispatch(actions.modifyCart(input)),
+    getOrders: input => dispatch(actions.getOrders(input))
   };
 };
 

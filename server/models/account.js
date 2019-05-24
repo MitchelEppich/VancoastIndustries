@@ -35,7 +35,13 @@ const AccountSchema = Schema({
   admin: Boolean,
   description: String,
   createdAt: { type: Date, default: Date.now },
-  savedItems: [String]
+  savedItems: [String],
+  recentOrders: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Order"
+    }
+  ],
 });
 
 // adds a method to a user document object to create a hashed password

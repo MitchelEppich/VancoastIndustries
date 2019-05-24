@@ -14,33 +14,6 @@ const initialState = {
   ],
   updateError: null,
   currentUser: null,
-  //OUTSIDE OF CURRENTUSER AS I DONT KNOW HOW IT WILL BE STRUCTURED YET
-  recentOrders: [
-    {
-      date: "20120620",
-      strains: [
-        "cksaha10x4",
-        "sonccf5x1",
-        "swgjhf15x3",
-        "sonccf5x1",
-        "cksaha10x4"
-      ]
-    },
-    {
-      date: "20120620",
-      strains: [
-        "cksaha10x4",
-        "sonccf5x1",
-        "swgjhf15x3",
-        "sonccf5x1",
-        "cksaha10x4"
-      ]
-    },
-    {
-      date: "20120620",
-      strains: ["cksaha10x4", "sonccf5x1", "swgjhf15x3", "sonccf5x1"]
-    }
-  ],
   showRecentOrder: null
 };
 
@@ -72,6 +45,8 @@ export default (state = initialState, action) => {
       return updateObject(state, {});
     case actionTypes.LOGOUT:
       return updateObject(state, { currentUser: null });
+    case actionTypes.GET_ORDERS:
+      return updateObject(state, { orders: action.orders });
     case actionTypes.SHOW_RECENT_ORDER:
       return updateObject(state, {
         showRecentOrder:
