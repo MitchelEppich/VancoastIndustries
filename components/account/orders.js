@@ -11,6 +11,7 @@ const orders = props => {
       items: { ...props.checkout.cart.items },
       reOrder: true
     };
+    let total = 0;
     let strains = itemBuilder({
       products: props.shop.strains,
       savedItems: order.productList
@@ -23,6 +24,9 @@ const orders = props => {
         quantity: strain.quantity,
         sale: undefined
       };
+      total +=
+        strain.wholesale[strain.size.indexOf(strain.packSize)] *
+        strain.quantity;
       return (
         <li
           key={index}
@@ -80,7 +84,7 @@ const orders = props => {
           <span className="pl-12">
             {moment(order.date).format("MMM Do YYYY")}{" "}
           </span>
-          <span>$ 14500,00</span>
+          <span>${total.toFixed(2)}</span>
           <a
             onClick={e => {
               e.stopPropagation();
@@ -90,7 +94,7 @@ const orders = props => {
               Router.push("/checkout");
             }}
           >
-            Re-Order
+            Add to Cart
           </a>
         </div>
         {props.account.showRecentOrder == index ? (
