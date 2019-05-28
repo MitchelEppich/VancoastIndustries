@@ -131,7 +131,7 @@ class Layout extends Component {
         <div id="top">
           <Menu {...this.props} />
           <Cart {...this.props} />
-          {this.props.misc.MATM ? <MATM /> : null}
+          {/* {this.props.misc.MATM ? <MATM /> : null} */}
           {this.props.shop.quickViewModal != null ? (
             <QuickViewModal {...this.props} />
           ) : null}
@@ -235,7 +235,7 @@ class Layout extends Component {
     }
   };
   dealWithKeyboard = (e, codes, thisFunc) => {
-    let lastKey = e.code;
+    let last = e.code;
     if (codes.length == 0) {
       this.props.toggleMATM(true);
       return;
