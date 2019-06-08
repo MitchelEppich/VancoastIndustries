@@ -40,7 +40,7 @@ const index = props => {
 
         <div className="relative">
           <div className="w-full inline-flex absolute pin-t bg-grey-dark text-white p-1 border-t-2 border-grey-light text-sm font-bold">
-            <div className="w-3/5 text-left pl-6 uppercase">Company</div>
+            <div className="w-3/5 text-left pl-5 uppercase">Company</div>
             <div className="w-2/5 text-center uppercase">Status</div>
           </div>
           <div className="overflow-y-auto pt-6 h-600">{sortedAccounts}</div>

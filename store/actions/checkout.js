@@ -231,7 +231,12 @@ const getActions = uri => {
 
         const operation = {
           query: mutation.postOrder,
-          variables: { productCodes, productList, customerId: input.customerId }
+          variables: {
+            productCodes,
+            productList,
+            customerId: input.customerId,
+            _id: input._id
+          }
         };
 
         return makePromise(execute(link, operation))

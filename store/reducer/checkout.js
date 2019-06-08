@@ -31,6 +31,7 @@ const initialState = {
     }
   },
   cart: {
+    // reOrder: false,
     discount: 0,
     items: {},
     maxPerPackage: 500,

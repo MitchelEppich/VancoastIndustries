@@ -5,12 +5,28 @@ import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const orders = props => {
-  // console.log(props.shop.strains);
-  let orders = props.account.recentOrders.map((order, index) => {
+  let orders = props.account.orders.map((order, index) => {
+    let cart = {
+      ...props.checkout.cart,
+      items: { ...props.checkout.cart.items },
+      reOrder: true
+    };
+    let total = 0;
     let strains = itemBuilder({
       products: props.shop.strains,
-      savedItems: order.strains
+      savedItems: order.productList
     }).map((strain, index) => {
+      cart.items[strain.sotiId + strain.packSize] = {
+        amount: strain.packSize,
+        per: strain.wholesale[strain.size.indexOf(strain.packSize)],
+        price: strain.wholesale[strain.size.indexOf(strain.packSize)],
+        product: strain,
+        quantity: strain.quantity,
+        sale: undefined
+      };
+      total +=
+        strain.wholesale[strain.size.indexOf(strain.packSize)] *
+        strain.quantity;
       return (
         <li
           key={index}
@@ -68,15 +84,17 @@ const orders = props => {
           <span className="pl-12">
             {moment(order.date).format("MMM Do YYYY")}{" "}
           </span>
-          <span>$ 14500,00</span>
+          <span>${total.toFixed(2)}</span>
           <a
             onClick={e => {
               e.stopPropagation();
-              props.reOrder(order);
+              props.reOrder({
+                cart: cart
+              });
               Router.push("/checkout");
             }}
           >
-            Re-Order
+            Add to Cart
           </a>
         </div>
         {props.account.showRecentOrder == index ? (

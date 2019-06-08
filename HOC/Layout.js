@@ -110,6 +110,7 @@ class Layout extends Component {
         });
         let cart = this.props.checkout.cart;
         let coupon = this.props.checkout.orderDetails.coupon;
+        // if (cart.reOrder) return;
         for (let item of items) {
           let _identifier = item.sotiId + item.packSize;
           this.props.modifyCart({
