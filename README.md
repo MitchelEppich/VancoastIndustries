@@ -11,3 +11,4 @@ Page Previews
 ![screencapture-159-203-58-182-admin-2019-06-20-13_06_58](https://user-images.githubusercontent.com/8814112/59879588-e71b1a00-935f-11e9-81b0-218b8a8a9b68.png)
 ![screencapture-159-203-58-182-account-2019-06-20-13_09_21](https://user-images.githubusercontent.com/8814112/59879591-e84c4700-935f-11e9-95d2-d97edfef4104.png)
 ![ADMIN VCI](https://user-images.githubusercontent.com/8814112/59879603-ec786480-935f-11e9-9087-c78c16e9e982.PNG)
+![screencapture-159-203-58-182-2019-06-20-13_03_20-min](https://user-images.githubusercontent.com/8814112/59879720-34978700-9360-11e9-9c40-14fa06b417da.png)
